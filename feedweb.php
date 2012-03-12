@@ -106,7 +106,7 @@ function FeedwebPluginMenu()
 
 function BuildLanguageBox($language)
 {
-	$languages = array("en"=>"English", "fr"=>"French", "he"=>"Hebrew", "ru"=>"Russian");
+	$languages = array("en"=>"English", "fr"=>"French", "ru"=>"Russian");
 
 	echo "<select id='WidgetLanguageBox' name='WidgetLanguageBox' style='width: 99%;' onchange='OnChangeLanguage()'>";
 	foreach ($languages as $key => $value)

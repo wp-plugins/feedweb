@@ -5,7 +5,7 @@ Requires at least: 3.0
 Tested up to: 3.3.1
 Stable Tag: 1.0.2
 
-Expose your blog to the Feedweb reader's community, promote your views, and get a comprehensive and detailed feedback from your readers.
+Expose your blog to the Feedweb reader's community. Promote your views. Get a comprehensive and detailed feedback from your readers.
 
 
 == Description ==

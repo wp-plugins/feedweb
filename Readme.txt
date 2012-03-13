@@ -1,9 +1,9 @@
-=== Feedweb's Blog Rating Network ===
+=== Feedweb ===
 Contributors: Feedweb
 Tags: blog, rating, network, feedback, public, opinion, research, flash
 Requires at least: 3.0
 Tested up to: 3.3.1
-Stable Tag: 1.0.2
+Stable Tag: 1.0.3
 
 Expose your blog to the Feedweb reader's community. Promote your views. Get a comprehensive and detailed feedback from your readers.
 

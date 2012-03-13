@@ -16,6 +16,7 @@ $error_message = "";
 function UpdateSettings()
 {
 	$data = array();
+	$data["delay"] = $_POST["DelayResults"];
 	$data["language"] = $_POST["FeedwebLanguage"];
 	$data["mp_widgets"] = $_POST["FeedwebMPWidgets"];
 	$data["widget_width"] = $_POST["WidgetWidthEdit"];

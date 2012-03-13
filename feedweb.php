@@ -119,6 +119,23 @@ function BuildLanguageBox($language)
 	echo "</select>";
 }
 
+
+function BuildDelayBox($delay)
+{
+	$values = array("0"=>"No Delay", "1"=>"1 Hour", "2"=>"2 Hours", "5"=>"5 Hours");
+
+	echo "<select id='DelayResultsBox' name='DelayResultsBox' style='width: 99%;' onchange='OnChangeDelay()'>";
+	foreach ($values as $key => $value)
+	{
+		echo "<option";
+		if ($key == $delay)
+			echo " selected='selected'";
+		echo " value='".$key."'>".$value."</option>";
+	}
+	echo "</select>";
+}
+
+
 function FeedwebPluginOptions()
 {
 	if (!current_user_can('manage_options'))
@@ -141,6 +158,13 @@ function FeedwebPluginOptions()
 					input.value = list.options[list.selectedIndex].value;
 				}
 
+				function OnChangeDelay()
+				{
+					var list = document.getElementsByName('DelayResultsBox')[0];
+					var input = document.getElementsByName('DelayResults')[0];
+					input.value = list.options[list.selectedIndex].value;
+				}
+				
 				function OnCheckMPWidgets()
 				{
 					var box = document.getElementsByName('MPWidgetsBox')[0];
@@ -175,6 +199,7 @@ function FeedwebPluginOptions()
 				}
 			</script>
 			<?php wp_referer_field(true)?>
+			<input type='hidden' id='DelayResults' name='DelayResults' value='<?php echo $feedweb_data["delay"];?>'/>
 			<input type='hidden' id='FeedwebLanguage' name='FeedwebLanguage' value='<?php echo $feedweb_data["language"];?>'/>
 			<input type='hidden' id='FeedwebMPWidgets' name='FeedwebMPWidgets' value='<?php echo $feedweb_data["mp_widgets"];?>'/>
 			<table class="form-table">
@@ -209,6 +234,7 @@ function FeedwebPluginOptions()
 							<span><i>Allowed width: 350 to 700 pixels. Recommended width: 380 to 440 pixels.</i></span>
 						</td>
 					</tr>
+					
 					<tr>
 						<td>
 							<span><b>Widgets at the Home/Front Page:</b></span> 				
@@ -226,6 +252,24 @@ function FeedwebPluginOptions()
 					<tr>
 						<td colspan="5"/>
 					</tr>
+					
+					<tr>
+						<td>
+							<span><b>Delay displaying results:</b></span> 				
+						</td>
+						<td />
+						<td>
+							<?php BuildDelayBox($feedweb_data['delay']) ?>				
+						</td>
+						<td />
+						<td>
+							<span><i>Set the period of time you want to hide voting results after the widget is created.</i></span>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="5"/>
+					</tr>
+					
 					<tr>
 						<td colspan="5">
 							<?php echo get_submit_button('Save Changes', 'primary', 'submit', false, "style='width: 100px;'") ?>

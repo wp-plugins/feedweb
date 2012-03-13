@@ -62,6 +62,9 @@ function CreatePageWidget($id)
 			$query = $query."&qn=".$count;
 		}
 		
+		if ($data["delay"] != "0")
+			$query = $query."&delay=".$data["delay"];
+		
 		$code = GetPostCode($id);
 		if ($code == null)
 		{

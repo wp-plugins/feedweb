@@ -1,6 +1,6 @@
 === Feedweb ===
 Contributors: Feedweb
-Tags: blog, rating, network, feedback, public, opinion, research, flash
+Tags: blog, rating, network, feedback, public, opinion, research, flash, widget, media
 Requires at least: 3.0
 Tested up to: 3.3.1
 Stable Tag: 1.0.4

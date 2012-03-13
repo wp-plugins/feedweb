@@ -3,7 +3,7 @@ Contributors: Feedweb
 Tags: blog, rating, network, feedback, public, opinion, research, flash
 Requires at least: 3.0
 Tested up to: 3.3.1
-Stable Tag: 1.0.3
+Stable Tag: 1.0.4
 
 Expose your blog to the Feedweb reader's community. Promote your views. Get a comprehensive and detailed feedback from your readers.
 
@@ -26,3 +26,8 @@ Requires WordPress 3.0 and PHP 5.
 3. In the Posts table choose a post and click 'Insert' button. 
 4. Choose the questions you want to ask your readers and commit the widget. The number of widget-powered posts in your blog is unlimited.
 5. View your post and see the widget in the bottom of the post's content.
+
+== Changelog ==
+
+= 1.0.4 =
+* 'Delay results' option.

@@ -3,18 +3,18 @@ Contributors: Feedweb
 Tags: blog, rating, network, feedback, public, opinion, research, flash, widget, media, news, politics, society, question, answer, survey, poll, discussion
 Requires at least: 3.0
 Tested up to: 3.3.1
-Stable Tag: 1.0.4
+Stable Tag: 1.0.5
 
 Expose your blog to the Feedweb reader's community. Promote your views. Get a comprehensive and detailed feedback from your readers.
 
 
 == Description ==
 
-The Blog Rating plugin is a simple and easy way to join Feedweb Research Network. The plugin helps you expose your blog to the Feedweb Readers' Community, promote your views and participate in various Public Opinion research projects.
+The Blog Rating plugin is a simple and easy way to promote your views, improve your blog and to contribute to the Feedweb Research Network. This plugin helps you to expose your blog to the Feedweb Readers' Community, and to participate in various Public Opinion research projects.
 
-After activating the plugin you can freely insert customized blog rating widgets in your selected posts and receive a comprehensive, detailed and correct feedback from your readers.
+After activating the plugin you can freely insert customized blog rating widgets in your selected posts, and choose questions you want to ask your readers. You will receive a comprehensive, detailed and correct feedback from your readers.
 
-The blog rating widget is an attractive animated visual element that can contribute to your blog's look and feel. It is built using a cutting-edge Flash technology with highest privacy and security standards and enterprise-level quality.
+The blog rating widget is an attractive animated visual element that will improve your ratings! It is built using a cutting-edge Flash technology with highest privacy and security standards and enterprise-level quality.
 
 Requires WordPress 3.0 and PHP 5.
 

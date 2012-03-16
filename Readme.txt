@@ -12,7 +12,7 @@ Expose your blog to the Feedweb reader's community. Promote your views. Get a co
 
 The Blog Rating plugin is a simple and easy way to promote your views, improve your blog and to contribute to the Feedweb Research Network. The plugin helps you expose your blog to the Feedweb Readers' Community, and participate in various Public Opinion research projects.
 
-After activating the plugin you can freely insert customized blog rating widgets in your selected posts, and choose questions you want to ask your readers. You will receive a comprehensive, detailed and correct feedback from your readers.
+After activating the plugin you can freely insert customized blog rating widgets in your selected posts, choose questions you want to ask your readers, and receive a comprehensive, detailed and correct feedback from them.
 
 The blog rating widget is an attractive animated visual element that will improve your ratings! It is built using a cutting-edge Flash technology with highest privacy and security standards and enterprise-level quality.
 

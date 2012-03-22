@@ -15,7 +15,8 @@ function GetQuestionList($pac)
 	global $feedweb_url;
 
 	$data = GetFeedwebOptions();
-	$query = $feedweb_url."FBanner.aspx?action=gql&lang=".$data["language"];
+	$site = PrepareParam(site_url());
+	$query = $feedweb_url."FBanner.aspx?action=gql&lang=".$data["language"]."&site=".$site;
 	if ($pac != null) 
 		$query = $query."&pac=".$pac;
 
@@ -247,7 +248,7 @@ function BuildQuestionsCombo()
 						<tr>
 							<td/>
 							<td colspan="2">
-								<span id='NewQuestionLabel'><b>New Question:</b></span>
+								<span id='NewQuestionLabel'><b>New Question</b> (<i>must be a <a href="http://en.wikipedia.org/wiki/Yes%E2%80%93no_question">YES / NO question</a></i>)<b>:</b></span>
 							</td>
 							<td/>
 						</tr>

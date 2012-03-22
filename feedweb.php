@@ -4,7 +4,7 @@ Plugin Name: Feedweb
 Plugin URI: http://wordpress.org/extend/plugins/feedweb/
 Description: Expose your blog to the Feedweb reader's community, promote your views, get a comprehensive and detailed feedback from your readers.
 Author: Feedweb
-Version: 1.0.7
+Version: 1.0.8
 Author URI: http://feedweb.net
 */
 
@@ -71,14 +71,10 @@ function FillFeedwebCell($id)
 	if ($pac == null) // Not created yet - display 'Insert' button
 	{
 		// Get post's age
-		$post = get_post($id);
-		$now = new DateTime("now");
-		$date = new DateTime($post->post_date); 
-		$interval = $date->diff($now);
-		if ($interval->days > GetMaxPostAge())
+		$tip = IsPostOld($id);
+		if ($tip != null)
 		{
 			$url = plugin_dir_url(__FILE__)."/SWarning.jpg";
-			$tip = "Cannot insert widget into a post published ".$interval->days." days ago";
 			echo "<div style='text-align: center; width: 100px;'><img src='$url' title='$tip'/></div>";
 		}
 		else 

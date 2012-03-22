@@ -92,6 +92,24 @@ function GetFeedwebOptions()
 	return $data;
 }
 
+function IsPostOld($id)
+{
+	try
+	{
+		$post = get_post($id);
+		$now = new DateTime("now");
+		$date = new DateTime($post->post_date);
+		$interval = $date->diff($now);
+		if ($interval->days > GetMaxPostAge())
+			return "Cannot insert widget into a post published ".$interval->days." days ago";
+	}
+	catch(Exception $e)
+	{
+	}
+	return null;
+}
+
+
 function GetMaxPostAge()
 {
 	return 30;

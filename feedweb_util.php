@@ -94,6 +94,9 @@ function GetFeedwebOptions()
 
 function IsPostOld($id)
 {
+	if (phpversion() < "5.3")
+		return null;
+	
 	try
 	{
 		$post = get_post($id);

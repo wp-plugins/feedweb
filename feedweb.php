@@ -4,7 +4,7 @@ Plugin Name: Feedweb
 Plugin URI: http://wordpress.org/extend/plugins/feedweb/
 Description: Expose your blog to the Feedweb reader's community, promote your views, get a comprehensive and detailed feedback from your readers.
 Author: Feedweb
-Version: 1.0.6
+Version: 1.0.7
 Author URI: http://feedweb.net
 */
 
@@ -70,8 +70,22 @@ function FillFeedwebCell($id)
 	echo "<div style='vertical-align: bottom; height: 100%;'>";
 	if ($pac == null) // Not created yet - display 'Insert' button
 	{
-		$url = plugin_dir_url(__FILE__)."widget_dialog.php?wp_post_id=".$id."&KeepThis=true&TB_iframe=true&height=345&width=675";
-		echo "<input alt='".$url."' class='thickbox' title='Insert Widget' value='Insert' type='button' style='width: 100px;'/>";
+		// Get post's age
+		$post = get_post($id);
+		$now = new DateTime("now");
+		$date = new DateTime($post->post_date); 
+		$interval = $date->diff($now);
+		if ($interval->days > GetMaxPostAge())
+		{
+			$url = plugin_dir_url(__FILE__)."/SWarning.jpg";
+			$tip = "Cannot insert widget into a post published ".$interval->days." days ago";
+			echo "<div style='text-align: center; width: 100px;'><img src='$url' title='$tip'/></div>";
+		}
+		else 
+		{
+			$url = plugin_dir_url(__FILE__)."widget_dialog.php?wp_post_id=".$id."&KeepThis=true&TB_iframe=true&height=345&width=675";
+			echo "<input alt='".$url."' class='thickbox' title='Insert Widget' value='Insert' type='button' style='width: 100px;'/>";
+		}
 	}
 	else			// Created - display 'Remove' button
 	{

@@ -92,6 +92,12 @@ function GetFeedwebOptions()
 	return $data;
 }
 
+function GetMaxPostAge()
+{
+	return 30;
+}
+
+
 function IsRTL($language)
 {
 	if ($language == 'he' || $language == 'ar')

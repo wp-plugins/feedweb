@@ -8,7 +8,8 @@ Version: 1.1.1
 Author URI: http://feedweb.net
 */
 
-require_once( 'feedweb_util.php');
+require_once('feedweb_util.php');
+require_once(ABSPATH.'wp-admin/includes/plugin.php');
 
 $feedweb_fw_swf = "FL/FrontWidget.swf";
 $feedweb_rw_swf = "FL/RatingWidget.swf";
@@ -52,9 +53,19 @@ function ContentFilter($content)
         "pluginspage='http://www.adobe.com/go/getflashplayer'>".
 		"</embed></object>";
 	
-	$copyright = "<p><span style='font-size: x-small;'>[Powered by <a href='http://wordpress.org/extend/plugins/feedweb/'>Feedweb plugin for Wordpress</a>. &copy; <a href='http://feedweb.net'>Feedweb Research</a>, 2012]</span></p>";
-	return $content."<br/>".$obj.$copyright;
+	
+	return $content."<br/>".$obj.GetCopyrightNotice();
 }
+
+function GetCopyrightNotice()
+{
+	$url = "http://wordpress.org/extend/plugins/feedweb/";
+	$data = get_plugin_data( __FILE__ );
+	$version = $data['Version'];
+	return "<p><span style='font-size: x-small;'>[<a href='$url'>Feedweb plugin for Wordpress</a>. ".
+		"v$version &copy; <a href='http://feedweb.net'>Feedweb Research</a>, 2012]</span></p>";
+}
+
 
 function AddFeedwebColumn($columns) 
 {

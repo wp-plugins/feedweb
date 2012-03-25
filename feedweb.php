@@ -52,7 +52,8 @@ function ContentFilter($content)
         "pluginspage='http://www.adobe.com/go/getflashplayer'>".
 		"</embed></object>";
 	
-	return $content."<br/>".$obj;
+	$copyright = "<p><span style='font-size: x-small;'>[Powered by <a href='http://wordpress.org/extend/plugins/feedweb/'>Feedweb plugin for Wordpress</a>. &copy; <a href='http://feedweb.net'>Feedweb Research</a>, 2012]</span></p>";
+	return $content."<br/>".$obj.$copyright;
 }
 
 function AddFeedwebColumn($columns) 

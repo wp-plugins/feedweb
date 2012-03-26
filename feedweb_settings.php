@@ -20,11 +20,12 @@ function UpdateSettings()
 	$data["language"] = $_POST["FeedwebLanguage"];
 	$data["mp_widgets"] = $_POST["FeedwebMPWidgets"];
 	$data["widget_width"] = $_POST["WidgetWidthEdit"];
+	$data["copyright_notice"] = $_POST["FeedwebCopyrightNotice"];
 	
 	if (SetFeedwebOptions($data))
 		$error_message = "";
 	else
-		$error_message = "Failed to update settings";
+		$error_message = __("Failed to update settings");
 }
 
 function GetErrorMessage()

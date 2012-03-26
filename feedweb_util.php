@@ -78,7 +78,7 @@ function SetFeedwebOptions($data)
 function GetFeedwebOptions()
 {
 	// Default widgets options: Engglish, 400 pix., Hide from the Main Page
-	$data = array("language" => "en", "mp_widgets" => "0", "widget_width" => "400", "delay" => "2");	// Set default data
+	$data = array("language" => "en", "mp_widgets" => "0", "widget_width" => "400", "delay" => "2", "copyright_notice" => "0");	// Set default data
 	
 	global $wpdb;
 	$query = "SELECT meta_key, meta_value FROM $wpdb->usermeta WHERE meta_key LIKE 'feedweb%%'";
@@ -92,10 +92,10 @@ function GetFeedwebOptions()
 	return $data;
 }
 
-function IsPostOld($id)
+function GetPostAge($id)
 {
 	if (phpversion() < "5.3")
-		return null;
+		return 0;
 	
 	try
 	{
@@ -103,13 +103,12 @@ function IsPostOld($id)
 		$now = new DateTime("now");
 		$date = new DateTime($post->post_date);
 		$interval = $date->diff($now);
-		if ($interval->days > GetMaxPostAge())
-			return "Cannot insert widget into a post published ".$interval->days." days ago";
+		return $interval->days;
 	}
 	catch(Exception $e)
 	{
 	}
-	return null;
+	return 0;
 }
 
 

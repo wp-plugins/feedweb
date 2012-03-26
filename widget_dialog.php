@@ -67,6 +67,14 @@ function BuildQuestionsCombo()
 	return $combo."</select>";
 }
 
+function YesNoQuestionPrompt()
+{
+	$wiki_url = __("http://en.wikipedia.org/wiki/Yes%E2%80%93no_question");
+	$format = __("must be a %sYES / NO%s question");
+	$tag = sprintf("<a href='%s'>", $wiki_url);
+	printf($format, $tag, "</a>");
+}
+
 ?>
 
 <html>
@@ -79,7 +87,9 @@ function BuildQuestionsCombo()
 				{
 					if (text == list.options[index].text)
 					{
-						window.alert ("Question '" + text + "' already selected");
+						var message = "<?php _e("Question '{0}' is already selected")?>";
+						var warning = message.replace("{0}", text);
+						window.alert(warning);
 						return;
 					}
 				}
@@ -111,7 +121,8 @@ function BuildQuestionsCombo()
 				var edit = document.getElementsByName("NewQuestionText")[0];
 				if (edit.value.length == 0)
 				{
-					window.alert ("Please pecify a question");
+					var text = "<?php _e("Please pecify a question")?>";
+					window.alert(text);
 					return;
 				}
 
@@ -165,11 +176,11 @@ function BuildQuestionsCombo()
 				var list = document.getElementsByName("QuestionsList")[0];
 				if (list.selectedIndex < 0)
 				{
-					window.alert ("Please select a question to remove");
+					window.alert ('<?php _e("Please select a question to remove")?>');
 					return;
 				}
-				
-				var result = window.confirm('The question will be removed.\nProceed?');
+
+				var result = window.confirm('<?php _e("The question will be removed. Proceed?")?>');
 	            if (result == true)
 	            	list.remove(list.selectedIndex);
 			}
@@ -228,7 +239,7 @@ function BuildQuestionsCombo()
 						<tr>
 							<td/>
 							<td colspan="2">
-								<span id='OldQuestionsLabel'><b>Existing Questions:</b></span>
+								<span id='OldQuestionsLabel'><b><?php _e("Existing Questions:")?></b></span>
 							</td>
 							<td/>
 						</tr>
@@ -248,7 +259,7 @@ function BuildQuestionsCombo()
 						<tr>
 							<td/>
 							<td colspan="2">
-								<span id='NewQuestionLabel'><b>New Question</b> (<i>must be a <a href="http://en.wikipedia.org/wiki/Yes%E2%80%93no_question">YES / NO question</a></i>)<b>:</b></span>
+								<span id='NewQuestionLabel'><b><?php _e("New Question")?></b> (<i><?php YesNoQuestionPrompt()?></i>)<b>:</b></span>
 							</td>
 							<td/>
 						</tr>

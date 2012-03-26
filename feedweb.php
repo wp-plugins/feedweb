@@ -4,7 +4,7 @@ Plugin Name: Feedweb
 Plugin URI: http://wordpress.org/extend/plugins/feedweb/
 Description: Expose your blog to the Feedweb reader's community, promote your views, get a comprehensive and detailed feedback from your readers.
 Author: Feedweb
-Version: 1.1.3
+Version: 1.1.4
 Author URI: http://feedweb.net
 */
 
@@ -53,16 +53,19 @@ function ContentFilter($content)
         "pluginspage='http://www.adobe.com/go/getflashplayer'>".
 		"</embed></object>";
 	
-	
-	return $content."<br/>".$obj.GetCopyrightNotice();
+	if ($data["copyright_notice"] == "1")
+		return $content."<br/>".$obj.GetCopyrightNotice('#ffffff');
+	return $content."<br/>".$obj;
 }
 
-function GetCopyrightNotice()
+
+function GetCopyrightNotice($highlight)
 {
 	$data = get_plugin_data( __FILE__ );
 	$version = $data['Version'];
-	return "<p><span style='font-size: x-small;'><i>Feedweb plugin for Wordpress. ".
-		"v$version</i> &copy; Feedweb Research, 2012</span></p>";
+	return "<p><span style='font-size: x-small; background-color: $highlight;'><i>".
+		"<a href='http://wordpress.org/extend/plugins/feedweb'>Feedweb plugin for Wordpress</a>. ".
+		"v$version</i>  &copy; <a href='http://feedweb.net'>Feedweb Research</a>, 2012</span></p>";
 }
 
 
@@ -70,7 +73,7 @@ function AddFeedwebColumn($columns)
 {
 	// Check if user is admin
 	if (current_user_can('manage_options'))
-		$columns['feedweb'] = "Feedweb Widget";
+		$columns['feedweb'] = __("Feedweb Widget");
 	return $columns;
 }
 
@@ -82,9 +85,11 @@ function FillFeedwebCell($id)
 	if ($pac == null) // Not created yet - display 'Insert' button
 	{
 		// Get post's age
-		$tip = IsPostOld($id);
-		if ($tip != null)
+		$days = GetPostAge($id);
+		if ($days > GetMaxPostAge())
 		{
+			$format = __("Cannot insert widget into a post published %d days ago");
+			$tip = sprintf($format, $days);
 			$url = plugin_dir_url(__FILE__)."/SWarning.jpg";
 			echo "<div style='text-align: center; width: 100px;'><img src='$url' title='$tip'/></div>";
 		}
@@ -143,7 +148,7 @@ function BuildLanguageBox($language)
 
 function BuildDelayBox($delay)
 {
-	$values = array("0"=>"No Delay", "1"=>"1 Hour", "2"=>"2 Hours", "5"=>"5 Hours");
+	$values = array("0"=>__("No Delay"), "1"=>__("1 Hour"), "2"=>__("2 Hours"), "5"=>__("5 Hours"));
 
 	echo "<select id='DelayResultsBox' name='DelayResultsBox' style='width: 99%;' onchange='OnChangeDelay()'>";
 	foreach ($values as $key => $value)
@@ -196,19 +201,29 @@ function FeedwebPluginOptions()
 						input.value = "0";
 				}
 
+				function OnCheckCopyrightNotice()
+				{
+					var box = document.getElementsByName('CopyrightNoticeBox')[0];
+					var input = document.getElementsByName('FeedwebCopyrightNotice')[0];
+					if (box.checked == true)
+						input.value = "1";
+					else
+						input.value = "0";
+				}
+
 				function OnSubmitFeedwebSettingsForm()
 				{
 					var input = document.getElementsByName("WidgetWidthEdit")[0];
 					var width = parseInt(input.value);
 					if (isNaN(width))
 					{
-						window.alert ('Please enter a valid width');
+						window.alert ('<?php _e("Please enter a valid width")?>');
 						return false;
 					}
 
 					if (width < 350 || width > 700)
 					{
-						window.alert ('Width is out of range');
+						window.alert ('<?php _e("Width is out of range")?>');
 						return false;
 					}
 					input.value = width.toString();
@@ -223,6 +238,7 @@ function FeedwebPluginOptions()
 			<input type='hidden' id='DelayResults' name='DelayResults' value='<?php echo $feedweb_data["delay"];?>'/>
 			<input type='hidden' id='FeedwebLanguage' name='FeedwebLanguage' value='<?php echo $feedweb_data["language"];?>'/>
 			<input type='hidden' id='FeedwebMPWidgets' name='FeedwebMPWidgets' value='<?php echo $feedweb_data["mp_widgets"];?>'/>
+			<input type='hidden' id='FeedwebCopyrightNotice' name='FeedwebCopyrightNotice' value='<?php echo $feedweb_data["copyright_notice"];?>'/>
 			<table class="form-table">
 				<tbody>
 					<tr>
@@ -230,7 +246,7 @@ function FeedwebPluginOptions()
 					</tr>
 					<tr>
 						<td style='width: 150px;'>
-							<span><b>Widget Language:</b></span>
+							<span><b><?php _e("Widget Language:")?></b></span>
 						</td>
 						<td style='width: 10px;'/>
 						<td style='width: 100px;'>
@@ -243,7 +259,7 @@ function FeedwebPluginOptions()
 					</tr>
 					<tr>
 						<td>
-							<span><b>Widget width (pixels):</b></span>
+							<span><b><?php _e("Widget width (pixels):")?></b></span>
 						</td>
 						<td/>
 						<td>
@@ -252,22 +268,22 @@ function FeedwebPluginOptions()
 						</td>
 						<td/>
 						<td>
-							<span><i>Allowed width: 350 to 700 pixels. Recommended width: 380 to 440 pixels.</i></span>
+							<span><i><?php _e("Allowed width: 350 to 700 pixels. Recommended width: 380 to 440 pixels.")?></i></span>
 						</td>
 					</tr>
 					
 					<tr>
 						<td>
-							<span><b>Widgets at the Home/Front Page:</b></span> 				
+							<span><b><?php _e("Widgets at the Home/Front Page:")?></b></span> 				
 						</td>
 						<td />
 						<td>
 							<input <?php if($feedweb_data['mp_widgets'] == "1") echo 'checked="checked"' ?>
-							id="MPWidgetsBox" name="MPWidgetsBox" type="checkbox" onchange='OnCheckMPWidgets()'> Display Widgets</input>				
+							id="MPWidgetsBox" name="MPWidgetsBox" type="checkbox" onchange='OnCheckMPWidgets()'> <?php _e("Display Widgets")?></input>				
 						</td>
 						<td />
 						<td>
-							<span><i>Check to display the widgets both in the Front Page and the single post pages.</i></span>
+							<span><i><?php _e("Check to display the widgets both in the Front Page and the single post pages.")?></i></span>
 						</td>
 					</tr>
 					<tr>
@@ -276,7 +292,7 @@ function FeedwebPluginOptions()
 					
 					<tr>
 						<td>
-							<span><b>Delay displaying results:</b></span> 				
+							<span><b><?php _e("Delay displaying results:")?></b></span> 				
 						</td>
 						<td />
 						<td>
@@ -284,7 +300,26 @@ function FeedwebPluginOptions()
 						</td>
 						<td />
 						<td>
-							<span><i>Set the period of time you want to hide voting results after the widget is created.</i></span>
+							<span><i><?php _e("Set the period of time you want to hide voting results after the widget is created.")?></i></span>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="5"/>
+					</tr>
+					
+					<tr>
+						<td>
+							<span><b><?php _e("Feedweb Copyright Notice:")?></b></span> 				
+						</td>
+						<td />
+						<td>
+							<input <?php if($feedweb_data['copyright_notice'] == "1") echo 'checked="checked"' ?>
+							id="CopyrightNoticeBox" name="CopyrightNoticeBox" type="checkbox" onchange='OnCheckCopyrightNotice()'> <?php _e("Allow")?></input>				
+						</td>
+						<td />
+						<td>
+							<span><i><?php _e("Please check to display the following text below the widgets: ")?></i></span>
+							<?php echo GetCopyrightNotice('#ffff00')?>
 						</td>
 					</tr>
 					<tr>
@@ -293,7 +328,7 @@ function FeedwebPluginOptions()
 					
 					<tr>
 						<td colspan="5">
-							<?php echo get_submit_button('Save Changes', 'primary', 'submit', false, "style='width: 100px;'") ?>
+							<?php echo get_submit_button(__('Save Changes'), 'primary', 'submit', false, "style='width: 100px;'") ?>
 						</td>
 					</tr>
 				</tbody>

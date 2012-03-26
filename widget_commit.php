@@ -26,7 +26,7 @@ function InsertWidget($id)
 	
 	global $alert;
 	if (InsertPac($pac, $id) == false)
-		$alert = "Wordpress cannot insert your widget";
+		$alert = __("Wordpress cannot insert your widget");
 }
 
 function CreatePageWidget($id)
@@ -68,7 +68,7 @@ function CreatePageWidget($id)
 		$code = GetPostCode($id);
 		if ($code == null)
 		{
-			$alert = "Error in the Post data";
+			$alert = __("Error in the Post data");
 			return null;
 		}
 		$query = $query."&code=".$code;
@@ -76,7 +76,7 @@ function CreatePageWidget($id)
 		$response = wp_remote_get ($query, array('timeout' => 60));
 		if (is_wp_error ($response))
 		{
-			$alert = "Cannot connect Feedweb server";
+			$alert = __("Cannot connect Feedweb server");
 			return null;
 		}
 		
@@ -92,11 +92,11 @@ function CreatePageWidget($id)
 				
 				$alert = $el->getAttribute("error");
 				if ($alert == "")
-					$alert = "Unknown server error";
+					$alert = __("Unknown server error");
 				return null;
 			}
 		}
-		$alert = "Feedweb service cannot create a widget";
+		$alert = __("Feedweb service cannot create a widget");
 	}
 	catch (Exception $e)
 	{
@@ -114,19 +114,19 @@ function GetAlertText()
 ?>
 
 <html>
-<head>
-	<script language="javascript" type="text/javascript">
-		function OnInit()
-		{
-			var text = "<?php GetAlertText() ?>";
-			if (text != "")
-				window.alert(text);
-			
-			window.parent.tb_remove();
-			window.parent.location.href = window.parent.location.href;
-		}
-	</script>
-</head>
-<body onload="OnInit()">
-</body>
+	<head>
+		<script language="javascript" type="text/javascript">
+			function OnInit()
+			{
+				var text = "<?php GetAlertText() ?>";
+				if (text != "")
+					window.alert(text);
+				
+				window.parent.tb_remove();
+				window.parent.location.href = window.parent.location.href;
+			}
+		</script>
+	</head>
+	<body onload="OnInit()">
+	</body>
 </html> 

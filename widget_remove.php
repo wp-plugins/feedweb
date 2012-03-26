@@ -10,12 +10,14 @@ function GetAction()
 	echo "widget_commit.php?wp_post_id=".$_GET["wp_post_id"]."&feedweb_cmd=DEL";
 }
 
-function GetPostTitle()
+
+function GetRemovePrompt()
 {
 	$id = intval($_GET["wp_post_id"]);
-	echo get_the_title($id);
+	$format = __("The rating widget in the post %s will be removed");
+	$arg = "'<i>".get_the_title($id)."</i>'";
+	printf($format, $arg);
 }
-
 
 ?>
 
@@ -57,14 +59,14 @@ function GetPostTitle()
 		 				<tr style="height:50px;">
 		 					<td/>
 		 					<td align="center">
- 								<span id='PromptLabel'><b>The widget in the post <i>'<?php echo GetPostTitle()?>'</i> will be removed</b></span>
+ 								<span id='PromptLabel'><b><?php GetRemovePrompt()?></b></span>
 		 					</td>
 		 					<td/>
 		 				</tr>
 		 				<tr valign="bottom">
 		 					<td/>
 		 					<td align="center">
-								<?php echo get_submit_button('Remove Widget', 'primary', 'submit', false, "style='width: 100%;'") ?>
+								<?php echo get_submit_button(__("Remove Widget"), "primary", "submit", false, "style='width: 100%;'") ?>
 		 					</td>
 		 					<td/>
 		 				</tr>

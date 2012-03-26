@@ -249,7 +249,7 @@ function YesNoQuestionPrompt()
 								<?php echo BuildQuestionsCombo() ?> 
 							</td>
 							<td>
-								<input type="button" value='Select' style='width: 100%;' onclick='OnSelect()'/>
+								<input type="button" value='<?php _e("Select")?>' style='width: 100%;' onclick='OnSelect()'/>
 							</td>
 							<td/>
 						</tr>
@@ -269,7 +269,7 @@ function YesNoQuestionPrompt()
 								<input type='text' id='NewQuestionText' name='NewQuestionText' style='width:100%;'/>
 							</td>
 							<td>
-								<input type='button' value='Add' onclick="OnAddNew()" style='width: 100%;'/>
+								<input type='button' value='<?php _e("Add")?>' onclick="OnAddNew()" style='width: 100%;'/>
 							</td>
 							<td/>
 						</tr>
@@ -279,7 +279,7 @@ function YesNoQuestionPrompt()
 						<tr>
 							<td/>
 							<td colspan="2">
-								<span id='QuestionsLabel'><b>Selected Questions:</b></span>
+								<span id='QuestionsLabel'><b><?php _e("Selected Questions:")?></b></span>
 							</td>
 							<td/>
 						</tr>
@@ -289,18 +289,18 @@ function YesNoQuestionPrompt()
 								<select size='4' id='QuestionsList' name='QuestionsList' style='width:100%;height:100px;'> </select>
 							</td>
 							<td valign='top'>
-								<input type='button' value='Move Up' onclick='OnMoveUp()' style='width: 100%;'/>
+								<input type='button' value='<?php _e("Move Up")?>' onclick='OnMoveUp()' style='width: 100%;'/>
 							</td>
 							<td rowspan='3'/>
 						</tr>
 						<tr>
 							<td>
-								<input type='button' value='Move Down' onclick='OnMoveDown()' style='width: 100%;'/>
+								<input type='button' value='<?php _e("Move Down")?>' onclick='OnMoveDown()' style='width: 100%;'/>
 							</td>
 						</tr>
 						<tr>
 							<td valign='bottom'>
-								<input type='button' value='Remove' onclick='OnRemove()' style='width: 100%;'/>
+								<input type='button' value='<?php _e("Remove")?>' onclick='OnRemove()' style='width: 100%;'/>
 							</td>
 						</tr>
 						<tr height='20px'>
@@ -312,7 +312,7 @@ function YesNoQuestionPrompt()
 								<?php echo get_submit_button('Insert Widget', 'primary', 'submit', false, "style='width: 95%;'") ?> 
 							</td>
 							<td>
-								<input type='button' value='Cancel' style='width: 100%;' onclick='OnCancel()'/>
+								<input type='button' value='<?php _e("Cancel")?>' style='width: 100%;' onclick='OnCancel()'/>
 							</td>
 							<td/>
 						</tr>

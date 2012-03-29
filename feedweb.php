@@ -18,8 +18,6 @@ $feedweb_url = "http://wpblogs.feedweb.net/";
 if (get_bloginfo('url') == "http://localhost/wordpress")
 	$feedweb_url = "http://localhost/FeedwebServer/";
 
-$test_str = __("Test String", "FWTD")
-
 function ContentFilter($content)
 {
 	global $post_ID;

@@ -4,7 +4,7 @@ Plugin Name: Feedweb
 Plugin URI: http://wordpress.org/extend/plugins/feedweb/
 Description: Expose your blog to the Feedweb reader's community, promote your views, get a comprehensive and detailed feedback from your readers.
 Author: Feedweb
-Version: 1.1.4
+Version: 1.1.5
 Author URI: http://feedweb.net
 */
 
@@ -118,9 +118,10 @@ function FillFeedwebColumn($column_name, $id)
 	}
 }
 
-function InitTheme() 
+function InitPlugin() 
 {
 	add_thickbox();
+	load_plugin_textdomain( 'Feedweb', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
 }
 
 
@@ -340,12 +341,12 @@ function FeedwebPluginOptions()
 
 function FeedwebSettingsLink($links)
 {
-	$settings_link = "<a href='options-general.php?page=".basename(__FILE__)."'>Settings</a>";
+	$settings_link = "<a href='options-general.php?page=".basename(__FILE__)."'>".__("Settings")."</a>";
 	array_unshift($links, $settings_link);
 	return $links;
 }
 
-add_action('init', 'InitTheme');
+add_action('init', 'InitPlugin');
 add_filter('the_content', 'ContentFilter');
 
 add_filter( 'manage_posts_columns', 'AddFeedwebColumn');

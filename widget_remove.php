@@ -14,7 +14,7 @@ function GetAction()
 function GetRemovePrompt()
 {
 	$id = intval($_GET["wp_post_id"]);
-	$format = __("The rating widget in the post %s will be removed");
+	$format = __("The rating widget in the post %s will be removed", "FWTD");
 	$arg = "'<i>".get_the_title($id)."</i>'";
 	printf($format, $arg);
 }
@@ -66,7 +66,7 @@ function GetRemovePrompt()
 		 				<tr valign="bottom">
 		 					<td/>
 		 					<td align="center">
-								<?php echo get_submit_button(__("Remove Widget"), "primary", "submit", false, "style='width: 100%;'") ?>
+								<?php echo get_submit_button(__("Remove Widget", "FWTD"), "primary", "submit", false, "style='width: 100%;'") ?>
 		 					</td>
 		 					<td/>
 		 				</tr>

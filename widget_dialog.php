@@ -69,8 +69,8 @@ function BuildQuestionsCombo()
 
 function YesNoQuestionPrompt()
 {
-	$wiki_url = __("http://en.wikipedia.org/wiki/Yes%E2%80%93no_question");
-	$format = __("must be a %sYES / NO%s question");
+	$wiki_url = __("http://en.wikipedia.org/wiki/Yes%E2%80%93no_question", "FWTD");
+	$format = __("must be a %sYES / NO%s question", "FWTD");
 	$tag = sprintf("<a href='%s'>", $wiki_url);
 	printf($format, $tag, "</a>");
 }
@@ -87,7 +87,7 @@ function YesNoQuestionPrompt()
 				{
 					if (text == list.options[index].text)
 					{
-						var message = "<?php _e("Question '{0}' is already selected")?>";
+						var message = "<?php _e("Question '{0}' is already selected", "FWTD")?>";
 						var warning = message.replace("{0}", text);
 						window.alert(warning);
 						return;
@@ -121,7 +121,7 @@ function YesNoQuestionPrompt()
 				var edit = document.getElementsByName("NewQuestionText")[0];
 				if (edit.value.length == 0)
 				{
-					var text = "<?php _e("Please pecify a question")?>";
+					var text = "<?php _e("Please pecify a question", "FWTD")?>";
 					window.alert(text);
 					return;
 				}
@@ -176,11 +176,11 @@ function YesNoQuestionPrompt()
 				var list = document.getElementsByName("QuestionsList")[0];
 				if (list.selectedIndex < 0)
 				{
-					window.alert ('<?php _e("Please select a question to remove")?>');
+					window.alert ('<?php _e("Please select a question to remove", "FWTD")?>');
 					return;
 				}
 
-				var result = window.confirm('<?php _e("The question will be removed. Proceed?")?>');
+				var result = window.confirm('<?php _e("The question will be removed. Proceed?", "FWTD")?>');
 	            if (result == true)
 	            	list.remove(list.selectedIndex);
 			}
@@ -239,7 +239,7 @@ function YesNoQuestionPrompt()
 						<tr>
 							<td/>
 							<td colspan="2">
-								<span id='OldQuestionsLabel'><b><?php _e("Existing Questions:")?></b></span>
+								<span id='OldQuestionsLabel'><b><?php _e("Existing Questions:", "FWTD")?></b></span>
 							</td>
 							<td/>
 						</tr>
@@ -259,7 +259,7 @@ function YesNoQuestionPrompt()
 						<tr>
 							<td/>
 							<td colspan="2">
-								<span id='NewQuestionLabel'><b><?php _e("New Question")?></b> (<i><?php YesNoQuestionPrompt()?></i>)<b>:</b></span>
+								<span id='NewQuestionLabel'><b><?php _e("New Question", "FWTD")?></b> (<i><?php YesNoQuestionPrompt()?></i>)<b>:</b></span>
 							</td>
 							<td/>
 						</tr>
@@ -279,7 +279,7 @@ function YesNoQuestionPrompt()
 						<tr>
 							<td/>
 							<td colspan="2">
-								<span id='QuestionsLabel'><b><?php _e("Selected Questions:")?></b></span>
+								<span id='QuestionsLabel'><b><?php _e("Selected Questions:", "FWTD")?></b></span>
 							</td>
 							<td/>
 						</tr>
@@ -289,13 +289,13 @@ function YesNoQuestionPrompt()
 								<select size='4' id='QuestionsList' name='QuestionsList' style='width:100%;height:100px;'> </select>
 							</td>
 							<td valign='top'>
-								<input type='button' value='<?php _e("Move Up")?>' onclick='OnMoveUp()' style='width: 100%;'/>
+								<input type='button' value='<?php _e("Move Up", "FWTD")?>' onclick='OnMoveUp()' style='width: 100%;'/>
 							</td>
 							<td rowspan='3'/>
 						</tr>
 						<tr>
 							<td>
-								<input type='button' value='<?php _e("Move Down")?>' onclick='OnMoveDown()' style='width: 100%;'/>
+								<input type='button' value='<?php _e("Move Down", "FWTD")?>' onclick='OnMoveDown()' style='width: 100%;'/>
 							</td>
 						</tr>
 						<tr>

@@ -26,7 +26,7 @@ function InsertWidget($id)
 	
 	global $alert;
 	if (InsertPac($pac, $id) == false)
-		$alert = __("Wordpress cannot insert your widget");
+		$alert = __("Wordpress cannot insert your widget", "FWTD");
 }
 
 function CreatePageWidget($id)
@@ -68,7 +68,7 @@ function CreatePageWidget($id)
 		$code = GetPostCode($id);
 		if ($code == null)
 		{
-			$alert = __("Error in the Post data");
+			$alert = __("Error in the Post data", "FWTD");
 			return null;
 		}
 		$query = $query."&code=".$code;
@@ -76,7 +76,7 @@ function CreatePageWidget($id)
 		$response = wp_remote_get ($query, array('timeout' => 60));
 		if (is_wp_error ($response))
 		{
-			$alert = __("Cannot connect Feedweb server");
+			$alert = __("Cannot connect Feedweb server", "FWTD");
 			return null;
 		}
 		
@@ -92,11 +92,11 @@ function CreatePageWidget($id)
 				
 				$alert = $el->getAttribute("error");
 				if ($alert == "")
-					$alert = __("Unknown server error");
+					$alert = __("Unknown server error", "FWTD");
 				return null;
 			}
 		}
-		$alert = __("Feedweb service cannot create a widget");
+		$alert = __("Feedweb service cannot create a widget", "FWTD");
 	}
 	catch (Exception $e)
 	{

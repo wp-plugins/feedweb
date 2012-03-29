@@ -25,7 +25,7 @@ function UpdateSettings()
 	if (SetFeedwebOptions($data))
 		$error_message = "";
 	else
-		$error_message = __("Failed to update settings");
+		$error_message = __("Failed to update settings", "FWTD");
 }
 
 function GetErrorMessage()

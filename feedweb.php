@@ -18,6 +18,8 @@ $feedweb_url = "http://wpblogs.feedweb.net/";
 if (get_bloginfo('url') == "http://localhost/wordpress")
 	$feedweb_url = "http://localhost/FeedwebServer/";
 
+$test_str = __("Test String", "FWTD")
+
 function ContentFilter($content)
 {
 	global $post_ID;
@@ -73,7 +75,7 @@ function AddFeedwebColumn($columns)
 {
 	// Check if user is admin
 	if (current_user_can('manage_options'))
-		$columns['feedweb'] = __("Feedweb Widget");
+		$columns['feedweb'] = __("Feedweb Widget", "FWTD");
 	return $columns;
 }
 
@@ -88,7 +90,7 @@ function FillFeedwebCell($id)
 		$days = GetPostAge($id);
 		if ($days > GetMaxPostAge())
 		{
-			$format = __("Cannot insert widget into a post published %d days ago");
+			$format = __("Cannot insert widget into a post published %d days ago", "FWTD");
 			$tip = sprintf($format, $days);
 			$url = plugin_dir_url(__FILE__)."/SWarning.jpg";
 			echo "<div style='text-align: center; width: 100px;'><img src='$url' title='$tip'/></div>";
@@ -149,7 +151,7 @@ function BuildLanguageBox($language)
 
 function BuildDelayBox($delay)
 {
-	$values = array("0"=>__("No Delay"), "1"=>__("1 Hour"), "2"=>__("2 Hours"), "5"=>__("5 Hours"));
+	$values = array("0"=>__("No Delay", "FWTD"), "1"=>__("1 Hour", "FWTD"), "2"=>__("2 Hours", "FWTD"), "5"=>__("5 Hours", "FWTD"));
 
 	echo "<select id='DelayResultsBox' name='DelayResultsBox' style='width: 99%;' onchange='OnChangeDelay()'>";
 	foreach ($values as $key => $value)
@@ -165,8 +167,8 @@ function BuildDelayBox($delay)
 
 function FeedwebPluginOptions()
 {
-	if (!current_user_can('manage_options'))
-		wp_die( __('You do not have sufficient permissions to access this page.') );
+	if (!current_user_can("manage_options"))
+		wp_die( __("You do not have sufficient permissions to access this page.") );
 	
 	// Read options 
 	$feedweb_data = GetFeedwebOptions();
@@ -218,13 +220,13 @@ function FeedwebPluginOptions()
 					var width = parseInt(input.value);
 					if (isNaN(width))
 					{
-						window.alert ('<?php _e("Please enter a valid width")?>');
+						window.alert ('<?php _e("Please enter a valid width", "FWTD")?>');
 						return false;
 					}
 
 					if (width < 350 || width > 700)
 					{
-						window.alert ('<?php _e("Width is out of range")?>');
+						window.alert ('<?php _e("Width is out of range", "FWTD")?>');
 						return false;
 					}
 					input.value = width.toString();
@@ -247,7 +249,7 @@ function FeedwebPluginOptions()
 					</tr>
 					<tr>
 						<td style='width: 150px;'>
-							<span><b><?php _e("Widget Language:")?></b></span>
+							<span><b><?php _e("Widget Language:", "FWTD")?></b></span>
 						</td>
 						<td style='width: 10px;'/>
 						<td style='width: 100px;'>
@@ -260,7 +262,7 @@ function FeedwebPluginOptions()
 					</tr>
 					<tr>
 						<td>
-							<span><b><?php _e("Widget width (pixels):")?></b></span>
+							<span><b><?php _e("Widget width (pixels):", "FWTD")?></b></span>
 						</td>
 						<td/>
 						<td>
@@ -269,22 +271,22 @@ function FeedwebPluginOptions()
 						</td>
 						<td/>
 						<td>
-							<span><i><?php _e("Allowed width: 350 to 700 pixels. Recommended width: 380 to 440 pixels.")?></i></span>
+							<span><i><?php _e("Allowed width: 350 to 700 pixels. Recommended width: 380 to 440 pixels.", "FWTD")?></i></span>
 						</td>
 					</tr>
 					
 					<tr>
 						<td>
-							<span><b><?php _e("Widgets at the Home/Front Page:")?></b></span> 				
+							<span><b><?php _e("Widgets at the Home/Front Page:", "FWTD")?></b></span> 				
 						</td>
 						<td />
 						<td>
 							<input <?php if($feedweb_data['mp_widgets'] == "1") echo 'checked="checked"' ?>
-							id="MPWidgetsBox" name="MPWidgetsBox" type="checkbox" onchange='OnCheckMPWidgets()'> <?php _e("Display Widgets")?></input>				
+							id="MPWidgetsBox" name="MPWidgetsBox" type="checkbox" onchange='OnCheckMPWidgets()'> <?php _e("Display Widgets", "FWTD")?></input>				
 						</td>
 						<td />
 						<td>
-							<span><i><?php _e("Check to display the widgets both in the Front Page and the single post pages.")?></i></span>
+							<span><i><?php _e("Check to display the widgets both in the Front Page and the single post pages.", "FWTD")?></i></span>
 						</td>
 					</tr>
 					<tr>
@@ -293,7 +295,7 @@ function FeedwebPluginOptions()
 					
 					<tr>
 						<td>
-							<span><b><?php _e("Delay displaying results:")?></b></span> 				
+							<span><b><?php _e("Delay displaying results:", "FWTD")?></b></span> 				
 						</td>
 						<td />
 						<td>
@@ -301,7 +303,7 @@ function FeedwebPluginOptions()
 						</td>
 						<td />
 						<td>
-							<span><i><?php _e("Set the period of time you want to hide voting results after the widget is created.")?></i></span>
+							<span><i><?php _e("Set the period of time you want to hide voting results after the widget is created.", "FWTD")?></i></span>
 						</td>
 					</tr>
 					<tr>
@@ -310,7 +312,7 @@ function FeedwebPluginOptions()
 					
 					<tr>
 						<td>
-							<span><b><?php _e("Feedweb Copyright Notice:")?></b></span> 				
+							<span><b><?php _e("Feedweb Copyright Notice:", "FWTD")?></b></span> 				
 						</td>
 						<td />
 						<td>
@@ -319,7 +321,7 @@ function FeedwebPluginOptions()
 						</td>
 						<td />
 						<td>
-							<span><i><?php _e("Please check to display the following text below the widgets: ")?></i></span>
+							<span><i><?php _e("Please check to display the following text below the widgets: ", "FWTD")?></i></span>
 							<?php echo GetCopyrightNotice('#ffff00')?>
 						</td>
 					</tr>
@@ -329,7 +331,7 @@ function FeedwebPluginOptions()
 					
 					<tr>
 						<td colspan="5">
-							<?php echo get_submit_button(__('Save Changes'), 'primary', 'submit', false, "style='width: 100px;'") ?>
+							<?php echo get_submit_button(__('Save Changes'), 'primary', 'submit', false, "style='width: 200px;'") ?>
 						</td>
 					</tr>
 				</tbody>

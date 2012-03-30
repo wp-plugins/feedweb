@@ -269,7 +269,7 @@ function FeedwebPluginOptions()
 						</td>
 						<td/>
 						<td>
-							<span><i><?php _e("Allowed width: 350 to 700 pixels. Recommended width: 380 to 440 pixels.", "FWTD")?></i></span>
+							<span><i><?php _e("Allowed width: 350 to 700 pixels. Recommended width: 400 to 450 pixels.", "FWTD")?></i></span>
 						</td>
 					</tr>
 					

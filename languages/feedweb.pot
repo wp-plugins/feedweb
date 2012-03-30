@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Feedweb 1.1.5\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/feedweb\n"
-"POT-Creation-Date: 2012-03-29 18:47:40+00:00\n"
+"POT-Creation-Date: 2012-03-30 11:18:01+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -12,95 +12,95 @@ msgstr ""
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 
-#: feedweb.php:78
+#: feedweb.php:76
 msgid "Feedweb Widget"
 msgstr ""
 
-#: feedweb.php:93
+#: feedweb.php:91
 msgid "Cannot insert widget into a post published %d days ago"
 msgstr ""
 
-#: feedweb.php:154
+#: feedweb.php:152
 msgid "No Delay"
 msgstr ""
 
-#: feedweb.php:154
+#: feedweb.php:152
 msgid "1 Hour"
 msgstr ""
 
-#: feedweb.php:154
+#: feedweb.php:152
 msgid "2 Hours"
 msgstr ""
 
-#: feedweb.php:154
+#: feedweb.php:152
 msgid "5 Hours"
 msgstr ""
 
-#: feedweb.php:171
+#: feedweb.php:169
 msgid "You do not have sufficient permissions to access this page."
 msgstr ""
 
-#: feedweb.php:223
+#: feedweb.php:221
 msgid "Please enter a valid width"
 msgstr ""
 
-#: feedweb.php:229
+#: feedweb.php:227
 msgid "Width is out of range"
 msgstr ""
 
-#: feedweb.php:252
+#: feedweb.php:250
 msgid "Widget Language:"
 msgstr ""
 
-#: feedweb.php:265
+#: feedweb.php:263
 msgid "Widget width (pixels):"
 msgstr ""
 
-#: feedweb.php:274
-msgid "Allowed width: 350 to 700 pixels. Recommended width: 380 to 440 pixels."
+#: feedweb.php:272
+msgid "Allowed width: 350 to 700 pixels. Recommended width: 400 to 450 pixels."
 msgstr ""
 
-#: feedweb.php:280
+#: feedweb.php:278
 msgid "Widgets at the Home/Front Page:"
 msgstr ""
 
-#: feedweb.php:285
+#: feedweb.php:283
 msgid "Display Widgets"
 msgstr ""
 
-#: feedweb.php:289
+#: feedweb.php:287
 msgid ""
 "Check to display the widgets both in the Front Page and the single post "
 "pages."
 msgstr ""
 
-#: feedweb.php:298
+#: feedweb.php:296
 msgid "Delay displaying results:"
 msgstr ""
 
-#: feedweb.php:306
+#: feedweb.php:304
 msgid ""
 "Set the period of time you want to hide voting results after the widget is "
 "created."
 msgstr ""
 
-#: feedweb.php:315
+#: feedweb.php:313
 msgid "Feedweb Copyright Notice:"
 msgstr ""
 
-#: feedweb.php:320
+#: feedweb.php:318
 msgid "Allow"
 msgstr ""
 
-#: feedweb.php:324
+#: feedweb.php:322
 msgid "Please check to display the following text below the widgets: "
 msgstr ""
 
-#: feedweb.php:334
+#: feedweb.php:332
 msgid "Save Changes"
 msgstr ""
 
-#: feedweb.php:346
+#: feedweb.php:344
 msgid "Settings"
 msgstr ""
 

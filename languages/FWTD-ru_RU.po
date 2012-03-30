@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Feedweb\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/feedweb\n"
-"POT-Creation-Date: 2012-03-29 17:42:39+00:00\n"
-"PO-Revision-Date: 2012-03-29 19:44+0200\n"
+"POT-Creation-Date: 2012-03-30 11:18:01+00:00\n"
+"PO-Revision-Date: 2012-03-30 14:22+0200\n"
 "Last-Translator: Michael Rovinsky <misha@feedweb.net>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -59,8 +59,8 @@ msgid "Widget width (pixels):"
 msgstr "Ширина виджета:"
 
 #: feedweb.php:272
-msgid "Allowed width: 350 to 700 pixels. Recommended width: 380 to 440 pixels."
-msgstr "Допустимая ширина: от 350 до 700 пикселей. Рекомендованная ширина: от 380 до 440 пикселей"
+msgid "Allowed width: 350 to 700 pixels. Recommended width: 400 to 450 pixels."
+msgstr "Допустимая ширина: от 350 до 700 пикселей. Рекомендованная ширина: от 400 до 450 пикселей"
 
 #: feedweb.php:278
 msgid "Widgets at the Home/Front Page:"

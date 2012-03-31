@@ -96,13 +96,13 @@ function FillFeedwebCell($id)
 		else 
 		{
 			$url = plugin_dir_url(__FILE__)."widget_dialog.php?wp_post_id=".$id."&KeepThis=true&TB_iframe=true&height=345&width=675";
-			echo "<input alt='".$url."' class='thickbox' title='Insert Widget' value='Insert' type='button' style='width: 100px;'/>";
+			echo "<input alt='".$url."' class='thickbox' title='".__("Insert Widget", "FWTD")."' value='".__("Insert")."' type='button' style='width: 100px;'/>";
 		}
 	}
 	else			// Created - display 'Remove' button
 	{
 		$url = plugin_dir_url(__FILE__)."widget_remove.php?wp_post_id=".$id."&KeepThis=true&TB_iframe=true&height=125&width=575";
-		echo "<input alt='".$url."' class='thickbox' title='Remove Widget' value='Remove' type='button' ".
+		echo "<input alt='".$url."' class='thickbox' title='".__("Remove Widget", "FWTD")."' value='".__("Remove")."' type='button' ".
 			"style='width: 100px; background-color: #405060; color: #FFFFFF;'/>";
 	}
 	echo "</div>";

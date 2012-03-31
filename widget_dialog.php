@@ -309,7 +309,7 @@ function YesNoQuestionPrompt()
 						<tr>
 							<td/>
 							<td>
-								<?php echo get_submit_button('Insert Widget', 'primary', 'submit', false, "style='width: 95%;'") ?> 
+								<?php echo get_submit_button(__("Insert Widget", "FWTD"), "primary", "submit", false, "style='width: 95%;'") ?> 
 							</td>
 							<td>
 								<input type='button' value='<?php _e("Cancel")?>' style='width: 100%;' onclick='OnCancel()'/>

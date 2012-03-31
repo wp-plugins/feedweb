@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Feedweb\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/feedweb\n"
-"POT-Creation-Date: 2012-03-30 11:18:01+00:00\n"
-"PO-Revision-Date: 2012-03-30 14:22+0200\n"
+"POT-Creation-Date: 2012-03-31 17:17:46+00:00\n"
+"PO-Revision-Date: 2012-03-31 20:21+0200\n"
 "Last-Translator: Michael Rovinsky <misha@feedweb.net>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -42,6 +42,10 @@ msgstr "5 часов"
 msgid "You do not have sufficient permissions to access this page."
 msgstr "У вас нет доступа на эту страницу"
 
+#: feedweb.php:177
+msgid "Feedweb Plugin Settings"
+msgstr "Настройки плагина Feedweb"
+
 #: feedweb.php:221
 msgid "Please enter a valid width"
 msgstr "Пожалуйста введите приемлемую ширину"
@@ -52,7 +56,7 @@ msgstr "Введенная ширина за рамками допустимог
 
 #: feedweb.php:250
 msgid "Widget Language:"
-msgstr "Язык общения:"
+msgstr "Язык Виджета:"
 
 #: feedweb.php:263
 msgid "Widget width (pixels):"
@@ -199,9 +203,9 @@ msgstr "Виджет будет удален из поста %s"
 msgid "Remove Widget"
 msgstr "Удалить Виджет"
 
-#. #-#-#-#-#  plugin.pot (Feedweb 1.1.5)  #-#-#-#-#
+#. #-#-#-#-#  plugin.pot (Feedweb 1.1.7)  #-#-#-#-#
 #. Plugin Name of the plugin/theme
-#. #-#-#-#-#  plugin.pot (Feedweb 1.1.5)  #-#-#-#-#
+#. #-#-#-#-#  plugin.pot (Feedweb 1.1.7)  #-#-#-#-#
 #. Author of the plugin/theme
 msgid "Feedweb"
 msgstr "Feedweb"

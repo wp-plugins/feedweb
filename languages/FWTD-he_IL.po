@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Feedweb 1.1.5\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/feedweb\n"
-"POT-Creation-Date: 2012-03-30 11:18:01+00:00\n"
-"PO-Revision-Date: 2012-03-30 14:19+0200\n"
+"POT-Creation-Date: 2012-03-31 17:17:46+00:00\n"
+"PO-Revision-Date: 2012-03-31 20:21+0200\n"
 "Last-Translator: Michael Rovinsky <misha@feedweb.net>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -40,6 +40,10 @@ msgstr ""
 
 #: feedweb.php:169
 msgid "You do not have sufficient permissions to access this page."
+msgstr ""
+
+#: feedweb.php:177
+msgid "Feedweb Plugin Settings"
 msgstr ""
 
 #: feedweb.php:221
@@ -199,9 +203,9 @@ msgstr ""
 msgid "Remove Widget"
 msgstr ""
 
-#. #-#-#-#-#  plugin.pot (Feedweb 1.1.5)  #-#-#-#-#
+#. #-#-#-#-#  plugin.pot (Feedweb 1.1.7)  #-#-#-#-#
 #. Plugin Name of the plugin/theme
-#. #-#-#-#-#  plugin.pot (Feedweb 1.1.5)  #-#-#-#-#
+#. #-#-#-#-#  plugin.pot (Feedweb 1.1.7)  #-#-#-#-#
 #. Author of the plugin/theme
 msgid "Feedweb"
 msgstr ""

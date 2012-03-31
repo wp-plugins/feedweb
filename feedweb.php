@@ -121,7 +121,7 @@ function FillFeedwebColumn($column_name, $id)
 function InitPlugin() 
 {
 	add_thickbox();
-	load_plugin_textdomain( 'Feedweb', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
+	load_plugin_textdomain( 'FWTD', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
 }
 
 

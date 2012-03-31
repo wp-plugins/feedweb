@@ -174,7 +174,7 @@ function FeedwebPluginOptions()
 	
 	<div class="wrap">
 		<div id="icon-options-general" class="icon32"><br /></div>
-		<h2>Feedweb Plugin Settings</h2>
+		<h2><?php _e("Feedweb Plugin Settings", "FWTD");?></h2>
 
 		<form name="FeedwebSettingsForm" onsubmit="return OnSubmitFeedwebSettingsForm();">
 			<script type="text/javascript">

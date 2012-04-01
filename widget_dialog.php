@@ -12,11 +12,9 @@ function GetPostId()
 
 function GetQuestionList($pac)
 {
-	global $feedweb_url;
-
 	$data = GetFeedwebOptions();
 	$site = PrepareParam(site_url());
-	$query = $feedweb_url."FBanner.aspx?action=gql&lang=".$data["language"]."&site=".$site;
+	$query = GetFeedwebUrl()."FBanner.aspx?action=gql&lang=".$data["language"]."&site=".$site;
 	if ($pac != null) 
 		$query = $query."&pac=".$pac;
 

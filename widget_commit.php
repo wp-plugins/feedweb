@@ -32,12 +32,11 @@ function InsertWidget($id)
 function CreatePageWidget($id)
 {
 	global $alert;
-	global $feedweb_url;
 	$data = GetFeedwebOptions();
 	
 	try
 	{
-		$query = $feedweb_url."FBanner.aspx?action=cpw&lang=".$data["language"];
+		$query = GetFeedwebUrl()."FBanner.aspx?action=cpw&lang=".$data["language"];
 		
 		if ($_POST["WidgetQuestionsData"] != "")
 		{

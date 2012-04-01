@@ -140,4 +140,13 @@ function CreateGuid()
 	);
 }
 
+function GetFeedwebUrl()
+{
+	$url = get_bloginfo('url');
+	$host = parse_url($url, PHP_URL_HOST);
+	if ($host == "localhost")
+		return "http://localhost/FeedwebServer/";
+	return "http://wpblogs.feedweb.net/";
+}
+
 ?>

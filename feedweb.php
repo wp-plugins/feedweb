@@ -14,14 +14,9 @@ require_once(ABSPATH.'wp-admin/includes/plugin.php');
 $feedweb_fw_swf = "FL/FrontWidget.swf";
 $feedweb_rw_swf = "FL/RatingWidget.swf";
 
-$feedweb_url = "http://wpblogs.feedweb.net/";
-if (get_bloginfo('url') == "http://localhost/wordpress")
-	$feedweb_url = "http://localhost/FeedwebServer/";
-
 function ContentFilter($content)
 {
 	global $post_ID;
-	global $feedweb_url;
 	global $feedweb_rw_swf;
 	
 	$data = GetFeedwebOptions();
@@ -33,7 +28,7 @@ function ContentFilter($content)
 	if ($pac == null)
 		return  $content;
 	
-	$swf = $feedweb_url.$feedweb_rw_swf;
+	$swf = GetFeedwebUrl().$feedweb_rw_swf;
 	$width = $data["widget_width"];
 
 	$obj = "<object width='".$width."' height='150' ". 
@@ -81,7 +76,6 @@ function FillFeedwebCell($id)
 {
 	// First, find out if a wiget has been created already
 	$pac = GetPac($id);
-	echo "<div style='vertical-align: bottom; height: 100%;'>";
 	if ($pac == null) // Not created yet - display 'Insert' button
 	{
 		// Get post's age
@@ -105,7 +99,6 @@ function FillFeedwebCell($id)
 		echo "<input alt='".$url."' class='thickbox' title='".__("Remove Widget", "FWTD")."' value='".__("Remove")."' type='button' ".
 			"style='width: 100px; background-color: #405060; color: #FFFFFF;'/>";
 	}
-	echo "</div>";
 }
 
 function FillFeedwebColumn($column_name, $id) 

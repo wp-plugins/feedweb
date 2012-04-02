@@ -1,9 +1,9 @@
 === Feedweb ===
 Contributors: Feedweb
-Tags: blog, rating, network, feedback, public, opinion, research, flash, widget, media, news, politics, society, question, answer, survey, poll, discussion, controversy, view, comments
+Tags: blog, rating, network, feedback, public, opinion, research, flash, widget, media, press, news, politics, society, social, question, answer, survey, poll, stats, discussion, controversy, cooperation, view, comments, statistics
 Requires at least: 3.0
 Tested up to: 3.3.1
-Stable Tag: 1.1.7
+Stable Tag: 1.1.8
 
 Expose your blog to the Feedweb reader's community. Promote your views. Get a comprehensive and detailed feedback from your readers.
 

@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Feedweb 1.1.5\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/feedweb\n"
-"POT-Creation-Date: 2012-03-31 17:17:46+00:00\n"
-"PO-Revision-Date: 2012-03-31 20:21+0200\n"
+"POT-Creation-Date: 2012-03-31 20:22:13+00:00\n"
+"PO-Revision-Date: 2012-04-03 17:04+0200\n"
 "Last-Translator: Michael Rovinsky <misha@feedweb.net>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -20,6 +20,24 @@ msgstr ""
 
 #: feedweb.php:91
 msgid "Cannot insert widget into a post published %d days ago"
+msgstr ""
+
+#: feedweb.php:99
+msgid "Insert Widget"
+msgstr ""
+
+#: feedweb.php:99
+msgid "Insert"
+msgstr ""
+
+#: feedweb.php:105
+#: widget_remove.php:69
+msgid "Remove Widget"
+msgstr ""
+
+#: feedweb.php:105
+#: widget_dialog.php:303
+msgid "Remove"
 msgstr ""
 
 #: feedweb.php:152
@@ -187,20 +205,12 @@ msgstr ""
 msgid "Move Down"
 msgstr ""
 
-#: widget_dialog.php:303
-msgid "Remove"
-msgstr ""
-
 #: widget_dialog.php:315
 msgid "Cancel"
 msgstr ""
 
 #: widget_remove.php:17
 msgid "The rating widget in the post %s will be removed"
-msgstr ""
-
-#: widget_remove.php:69
-msgid "Remove Widget"
 msgstr ""
 
 #. #-#-#-#-#  plugin.pot (Feedweb 1.1.7)  #-#-#-#-#

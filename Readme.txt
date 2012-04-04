@@ -20,7 +20,7 @@ Requires WordPress 3.0 and PHP 5.
 1. Upload the Feedweb plugin to your blog and activate it. 
 2. Choose your preffered language, widget width and other options in the Feedweb Settings page. 
 3. In the Posts table choose a post and click 'Insert' button. 
-4. Choose the questions you want to ask your readers and commit the widget. The number of widget-powered posts in your blog is unlimited.
+4. Choose the questions you want to ask your readers and commit the widget. You can insert up to 50 widgets in a month.
 5. View your post and see the widget in the bottom of the post's content.
 
 == Changelog ==

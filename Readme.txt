@@ -3,7 +3,7 @@ Contributors: Feedweb
 Tags: blog, rating, network, feedback, public, opinion, research, flash, widget, media, press, news, politics, society, social, question, answer, survey, poll, stats, discussion, controversy, cooperation, view, comments, statistics
 Requires at least: 3.0
 Tested up to: 3.3.1
-Stable Tag: 1.1.8
+Stable Tag: 1.1.9
 
 Expose your blog to the Feedweb reader's community. Promote your views. Get a comprehensive and detailed feedback from your readers.
 
@@ -24,6 +24,9 @@ Requires WordPress 3.0 and PHP 5.
 5. View your post and see the widget in the bottom of the post's content.
 
 == Changelog ==
+
+= 1.1.9 =
+* Text corrections.
 
 = 1.1.7 =
 * Text domain bug fix.

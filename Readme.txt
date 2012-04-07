@@ -18,10 +18,6 @@ The Blog Rating Widget is an attractive animated visual element that will improv
 
 Requires WordPress 3.0 and PHP 5.
 
-[Visit Feedweb Research website] 
-(http://feedweb.net/ 
-"Feedweb Research")
-
 
 == Installation ==
 

@@ -23,7 +23,10 @@ function GetPostAuthor()
 	$id = GetPostId();
 	$post = get_post($id);
 	$data = get_userdata($post->post_author);
-	echo $data->user_firstname." ".$data->user_lastname;
+	if ($data->user_firstname != "" || $data->user_lastname != "")
+		echo $data->user_firstname." ".$data->user_lastname;
+	else
+		echo $data->display_name;
 }
 
 function GetPostUrl()

@@ -20,7 +20,7 @@ Requires WordPress 3.0 and PHP 5.
 
 
 
-**[Feedweb Research website](http://feedweb.net)
+[Feedweb Research website](http://feedweb.net)
 
 
 == Installation ==

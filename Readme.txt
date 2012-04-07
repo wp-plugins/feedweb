@@ -31,6 +31,7 @@ Requires WordPress 3.0 and PHP 5.
 == Screenshots ==
 
 1. Feedweb plugin settings
+2. Managing widgets in the posts' table
 
 
 == Changelog ==

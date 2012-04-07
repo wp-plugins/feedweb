@@ -10,6 +10,29 @@ function GetPostId()
 	return $_GET["wp_post_id"];
 }
 
+
+function GetPostTitle()
+{
+	$id = GetPostId();
+	$post = get_post($id);
+	echo $post->post_title;
+}
+
+function GetPostAuthor()
+{
+	$id = GetPostId();
+	$post = get_post($id);
+	$data = get_userdata($post->post_author);
+	echo $data->user_firstname." ".$data->user_lastname;
+}
+
+function GetPostUrl()
+{
+	$id = GetPostId();
+	echo get_permalink($id);
+}
+
+
 function GetQuestionList($pac)
 {
 	$data = GetFeedwebOptions();
@@ -182,17 +205,30 @@ function YesNoQuestionPrompt()
 	            if (result == true)
 	            	list.remove(list.selectedIndex);
 			}
+
+			function OnBack()
+			{
+				var div = document.getElementsByName("FirstPhaseDiv")[0];
+				div.style.visibility = "visible";
+
+				div = document.getElementsByName("SecondPhaseDiv")[0];
+				div.style.visibility = "hidden";
+			}
 			
+			function OnNext()
+			{
+				var div = document.getElementsByName("FirstPhaseDiv")[0];
+				div.style.visibility = "hidden";
+
+				div = document.getElementsByName("SecondPhaseDiv")[0];
+				div.style.visibility = "visible";
+			}
 		
 			function OnCancel() 
 			{ 
 				window.parent.tb_remove(); 
 			} 
 		
-			function OnLoad()
-			{
-		    }
-
 			function OnSubmitForm()
 			{
 				var input = document.getElementsByName("WidgetQuestionsData")[0];
@@ -221,102 +257,204 @@ function YesNoQuestionPrompt()
 		<link rel='stylesheet' id='colors-css'  href='<?php echo get_bloginfo('url') ?>/wp-admin/css/colors-fresh.css' type='text/css' media='all' />
 		
 	</head>
-	<body onload="OnLoad()" style="margin: 0px;">
+	<body style="margin: 0px;">
 		<div id="WidgetDialog" >
 			<!--  method="post" action="widget_commit.php"  -->
 		 	<form id="WidgetDialogForm" onsubmit="return OnSubmitForm();">
 				<input type="hidden" name="WidgetQuestionsData" id="WidgetQuestionsData"/>
-		 		<table class="wp-list-table widefat fixed posts" cellspacing="0">
-					<tbody>
-						<tr height='5px'>
-							<td style='width: 10px;'/>
-							<td style='width: 350px;'/>
-							<td style='width: 100px;'/>
-							<td style='width: 10px;'/>
-						</tr>
-						<tr>
-							<td/>
-							<td colspan="2">
-								<span id='OldQuestionsLabel'><b><?php _e("Existing Questions:", "FWTD")?></b></span>
-							</td>
-							<td/>
-						</tr>
-						<tr>
-							<td/>
-							<td> 
-								<?php echo BuildQuestionsCombo() ?> 
-							</td>
-							<td>
-								<input type="button" value='<?php _e("Select")?>' style='width: 100%;' onclick='OnSelect()'/>
-							</td>
-							<td/>
-						</tr>
-						<tr height='5px'>
-							<td colspan='4'/>
-						</tr>
-						<tr>
-							<td/>
-							<td colspan="2">
-								<span id='NewQuestionLabel'><b><?php _e("New Question", "FWTD")?></b> (<i><?php YesNoQuestionPrompt()?></i>)<b>:</b></span>
-							</td>
-							<td/>
-						</tr>
-						<tr>
-							<td/>
-							<td>
-								<input type='text' id='NewQuestionText' name='NewQuestionText' style='width:100%;'/>
-							</td>
-							<td>
-								<input type='button' value='<?php _e("Add")?>' onclick="OnAddNew()" style='width: 100%;'/>
-							</td>
-							<td/>
-						</tr>
-						<tr height='5px'>
-							<td colspan='4'/>
-						</tr>
-						<tr>
-							<td/>
-							<td colspan="2">
-								<span id='QuestionsLabel'><b><?php _e("Selected Questions:", "FWTD")?></b></span>
-							</td>
-							<td/>
-						</tr>
-						<tr>
-							<td rowspan='3'/>
-							<td rowspan='3'>
-								<select size='4' id='QuestionsList' name='QuestionsList' style='width:100%;height:100px;'> </select>
-							</td>
-							<td valign='top'>
-								<input type='button' value='<?php _e("Move Up", "FWTD")?>' onclick='OnMoveUp()' style='width: 100%;'/>
-							</td>
-							<td rowspan='3'/>
-						</tr>
-						<tr>
-							<td>
-								<input type='button' value='<?php _e("Move Down", "FWTD")?>' onclick='OnMoveDown()' style='width: 100%;'/>
-							</td>
-						</tr>
-						<tr>
-							<td valign='bottom'>
-								<input type='button' value='<?php _e("Remove")?>' onclick='OnRemove()' style='width: 100%;'/>
-							</td>
-						</tr>
-						<tr height='20px'>
-							<td colspan='4'/>
-						</tr>
-						<tr>
-							<td/>
-							<td>
-								<?php echo get_submit_button(__("Insert Widget", "FWTD"), "primary", "submit", false, "style='width: 95%;'") ?> 
-							</td>
-							<td>
-								<input type='button' value='<?php _e("Cancel")?>' style='width: 100%;' onclick='OnCancel()'/>
-							</td>
-							<td/>
-						</tr>
-					</tbody>
-				</table>
-		  	</form>
+				<div id="FirstPhaseDiv" name="FirstPhaseDiv" style="visibility: visible;">
+			 		<table id="FirstPhaseTable" name="FirstPhaseTable" class="wp-list-table widefat fixed posts" cellspacing="0">
+						<tbody>
+							<tr height='5px'>
+								<td style='width: 10px;'/>
+								<td style='width: 150px;'/>
+								<td style='width: 10px;'/>
+								<td style='width: 150px;'/>
+								<td style='width: 100px;'/>
+								<td style='width: 10px;'/>
+							</tr>
+							<tr>
+								<td/>
+								<td colspan="4">
+									<span id='TitleLabel'><b><?php _e("Title:", "FWTD")?></b></span>
+								</td>
+								<td/>
+							</tr>
+							<tr style="height: 36px;">
+								<td/>
+								<td colspan="4"> 
+									<input type='text' id='TitleText' name='TitleText' value='<?php GetPostTitle();?>' style='width:100%;'/> 
+								</td>
+								<td/>
+							</tr>
+							
+							<tr height='5px'>
+								<td colspan="6"/>
+							</tr>
+							<tr>
+								<td/>
+								<td colspan="4">
+									<span id='SubTitleLabel'><b><?php _e("Sub-Title:", "FWTD")?></b></span>
+								</td>
+								<td/>
+							</tr>
+							<tr style="height: 36px;">
+								<td/>
+								<td colspan="4"> 
+									<input type='text' id='SubTitleText' name='SubTitleText' style='width:100%;'/> 
+								</td>
+								<td/>
+							</tr>
+							
+							<tr height='5px'>
+								<td colspan="6"/>
+							</tr>
+							<tr>
+								<td/>
+								<td colspan="4">
+									<span id='AuthorLabel'><b><?php _e("Author:", "FWTD")?></b></span>
+								</td>
+								<td/>
+							</tr>
+							<tr style="height: 36px;">
+								<td/>
+								<td colspan="4"> 
+									<input type='text' id='AuthorText' name='AuthorText' value='<?php GetPostAuthor();?>' style='width:100%;'/> 
+								</td>
+								<td/>
+							</tr>
+							
+							<tr height='5px'>
+								<td colspan="6"/>
+							</tr>
+							<tr>
+								<td/>
+								<td colspan="4">
+									<span id='UrlLabel'><b><?php _e("URL:", "FWTD")?></b></span>
+								</td>
+								<td/>
+							</tr>
+							<tr style="height: 36px;">
+								<td/>
+								<td colspan="4"> 
+									<input type='text' id='UrlText' name='UrlText' value='<?php GetPostUrl();?>' style='width:100%;'/> 
+								</td>
+								<td/>
+							</tr>
+													
+							<tr height='32px'>
+								<td colspan='6'/>
+							</tr>
+							<tr>
+								<td/>
+								<td colspan="3">
+									 <input type='button' value='<?php _e("Cancel")?>' style='width: 150px;' onclick='OnCancel()'/>
+								</td>
+								<td>
+									<input type='button' value='<?php _e("Next >")?>' style='width: 100%;' onclick='OnNext()'/>
+								</td>
+								<td/>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div id="SecondPhaseDiv" name="SecondPhaseDiv" style="visibility: hidden; position: absolute; top: 0; left: 0;">
+			 		<table id="SecondPhaseTable" name="SecondPhaseTable" class="wp-list-table widefat fixed posts" cellspacing="0">
+						<tbody>
+							<tr style="height: 5px;">
+								<td style='width: 10px;'/>
+								<td style='width: 175px;'/>
+								<td style='width: 175px;'/>
+								<td style='width: 100px;'/>
+								<td style='width: 10px;'/>
+							</tr>
+							<tr>
+								<td/>
+								<td colspan="3">
+									<span id='OldQuestionsLabel'><b><?php _e("Existing Questions:", "FWTD")?></b></span>
+								</td>
+								<td/>
+							</tr>
+							<tr style="height: 36px;">
+								<td/>
+								<td colspan="2"> 
+									<?php echo BuildQuestionsCombo() ?> 
+								</td>
+								<td>
+									<input type="button" value='<?php _e("Select")?>' style='width: 100%;' onclick='OnSelect()'/>
+								</td>
+								<td/>
+							</tr>
+							<tr height='5px'>
+								<td colspan='5'/>
+							</tr>
+							<tr>
+								<td/>
+								<td colspan="3">
+									<span id='NewQuestionLabel'><b><?php _e("New Question", "FWTD")?></b> (<i><?php YesNoQuestionPrompt()?></i>)<b>:</b></span>
+								</td>
+								<td/>
+							</tr>
+							<tr>
+								<td/>
+								<td colspan="2">
+									<input type='text' id='NewQuestionText' name='NewQuestionText' style='width:100%;'/>
+								</td>
+								<td>
+									<input type='button' value='<?php _e("Add")?>' onclick="OnAddNew()" style='width: 100%;'/>
+								</td>
+								<td/>
+							</tr>
+							<tr height='5px'>
+								<td colspan='5'/>
+							</tr>
+							<tr>
+								<td/>
+								<td colspan="3">
+									<span id='QuestionsLabel'><b><?php _e("Selected Questions:", "FWTD")?></b></span>
+								</td>
+								<td/>
+							</tr>
+							<tr>
+								<td rowspan='3'/>
+								<td rowspan='3' colspan='2'>
+									<select size='4' id='QuestionsList' name='QuestionsList' style='width:100%;height:100px;'> </select>
+								</td>
+								<td valign='top'>
+									<input type='button' value='<?php _e("Move Up", "FWTD")?>' onclick='OnMoveUp()' style='width: 100%;'/>
+								</td>
+								<td rowspan='3'/>
+							</tr>
+							<tr>
+								<td>
+									<input type='button' value='<?php _e("Move Down", "FWTD")?>' onclick='OnMoveDown()' style='width: 100%;'/>
+								</td>
+							</tr>
+							<tr>
+								<td valign='bottom'>
+									<input type='button' value='<?php _e("Remove")?>' onclick='OnRemove()' style='width: 100%;'/>
+								</td>
+							</tr>
+							<tr height='20px'>
+								<td colspan='5'/>
+							</tr>
+							<tr>
+								<td/>
+								<td>
+									<input type='button' value='<?php _e("Cancel")?>' style='width: 150px;' onclick='OnCancel()'/>
+								</td>
+								<td style="text-align: right;">
+									<input type='button' value='<?php _e("< Back")?>' style='width: 150px;' onclick='OnBack()'/> 
+								</td>
+								<td>
+									<?php echo get_submit_button(__("Finish", "FWTD"), "primary", "submit", false, "style='width: 120px;'") ?>								
+								</td>
+								<td/>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</form>
 		</div>
 	</body>
 </html>

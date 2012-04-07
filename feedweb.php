@@ -4,7 +4,7 @@ Plugin Name: Feedweb
 Plugin URI: http://wordpress.org/extend/plugins/feedweb/
 Description: Expose your blog to the Feedweb reader's community, promote your views, get a comprehensive and detailed feedback from your readers.
 Author: Feedweb
-Version: 1.1.9
+Version: 1.2
 Author URI: http://feedweb.net
 */
 
@@ -31,7 +31,7 @@ function ContentFilter($content)
 	$swf = GetFeedwebUrl().$feedweb_rw_swf;
 	$width = $data["widget_width"];
 
-	$obj = "<object width='".$width."' height='150' ". 
+	$obj = "<object width='".$width."' ". 
 		"type='application/x-shockwave-flash' ". 
     	"classid='clsid:D27CDB6E-AE6D-11cf-96B8-444553540000' ". 
     	"codebase='http://fpdownload.macromedia.com/get/flashplayer/current/swflash.cab' ".
@@ -41,7 +41,7 @@ function ContentFilter($content)
         "<param name='Movie' value='" . $swf. "'/>".
         "<param name='allowScriptAccess' value='always'/>".
         "<param name='allowFullScreen' value='true'/>".
-        "<embed src='" .$swf. "' width='".$width."' height='150' ".
+        "<embed src='" .$swf. "' width='".$width."' ".
         "flashvars='PAC=" .$pac. "&amp;lang=" .$data["language"]. "' ". 
         "allowfullscreen='true' allowScriptAccess='always' ".
         "type='application/x-shockwave-flash' ".

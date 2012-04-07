@@ -28,6 +28,13 @@ function GetPostCode($id)
 	return null;
 }
 
+function GetPostAuthorId($id)
+{
+	$post = get_post($id);
+	return $post->post_author;
+}
+
+
 function InsertPac($pac, $id)
 {
 	global $wpdb;
@@ -41,12 +48,14 @@ function InsertPac($pac, $id)
 	return true;
 }
 
+
 function RemovePac($id)
 {
 	global $wpdb;
 	$query = "DELETE FROM $wpdb->postmeta WHERE post_id=$id AND meta_key='feedweb_pac'";
 	$result = $wpdb->query($query);
 }
+
 
 function GetPac($id)
 {
@@ -59,7 +68,7 @@ function SetFeedwebOptions($data)
 {
 	global $wpdb;
 	
-	$query = "DELETE FROM $wpdb->usermeta WHERE LIKE 'feedweb%%'";
+	$query = "DELETE FROM $wpdb->usermeta WHERE meta_key LIKE 'feedweb%%'";
 	$wpdb->query($query);
 	
 	$id = wp_get_current_user()->ID;
@@ -91,6 +100,26 @@ function GetFeedwebOptions()
 	}
 	return $data;
 }
+
+
+function GetUserCode($id)
+{
+	global $wpdb;
+	$query = "SELECT meta_value FROM $wpdb->usermeta WHERE user_id=$id AND meta_key='user_code_feedweb'";
+	$code = $wpdb->get_var($query);
+	if ($code != null)
+		return $code;
+	
+	$code = CreateGuid();
+	$query = "INSERT INTO $wpdb->usermeta (user_id, meta_key, meta_value) VALUES ($id, 'user_code_feedweb', '$code')";
+	$result = $wpdb->query($query);
+	if ($result == false)
+		return null;
+	
+	return $code;
+}
+
+
 
 function GetPostAge($id)
 {

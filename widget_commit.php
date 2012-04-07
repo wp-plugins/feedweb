@@ -64,6 +64,44 @@ function CreatePageWidget($id)
 		if ($data["delay"] != "0")
 			$query = $query."&delay=".$data["delay"];
 		
+		$url = PrepareParam($_POST["UrlText"]);
+		if ($url == "")
+		{
+			$alert = __("Error in the Post data", "FWTD");
+			return null;
+		}
+		$query = $query."&page=".$url;
+			
+		$title = PrepareParam($_POST["TitleText"]);
+		if ($title == "")
+		{
+			$alert = __("Error in the Post data", "FWTD");
+			return null;
+		}
+		$query = $query."&title=".$title;
+		
+		$author = PrepareParam($_POST["AuthorText"]);
+		if ($author == "")
+		{
+			$alert = __("Error in the Post data", "FWTD");
+			return null;
+		}
+		$query = $query."&author=".$author;
+		
+		$author_id = GetPostAuthorId($id);
+		$author_code = GetUserCode($author_id);
+		if ($author_code == null)
+		{
+			$alert = __("Error in the User data", "FWTD");
+			return null;
+		}
+		$query = $query."&guid=".$author_code;
+		
+		$sub_title = PrepareParam($_POST["SubTitleText"]);
+		if ($sub_title != "")
+			$query = $query."&brief=".$sub_title;
+		
+		/*
 		$code = GetPostCode($id);
 		if ($code == null)
 		{
@@ -71,7 +109,8 @@ function CreatePageWidget($id)
 			return null;
 		}
 		$query = $query."&code=".$code;
-				
+		*/
+			
 		$response = wp_remote_get ($query, array('timeout' => 60));
 		if (is_wp_error ($response))
 		{

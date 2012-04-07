@@ -34,6 +34,8 @@ Requires WordPress 3.0 and PHP 5.
 2. Managing widgets in the posts' table
 3. Insert Widget Wizard: Step 1
 4. Insert Widget Wizard: Step 2
+5. Rating Widget in a post. Voting.
+6. Rating Widget in a post. Results.
 
 
 == Changelog ==

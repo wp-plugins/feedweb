@@ -5,13 +5,17 @@ Requires at least: 3.0
 Tested up to: 3.3.1
 Stable Tag: 1.2
 
-Expose your blog to the Feedweb reader's community. Promote your views. Get a comprehensive and detailed feedback from your readers.
+Expose your blog to the Feedweb reader's community. Promote your views. Get a comprehensive and detailed feedback from your readers.
+
 
 == Description ==
 
-The Blog Rating Plugin is a simple and easy way to promote your views, improve your blog and to contribute to the Feedweb Research Network. The plugin helps you expose your blog to the Feedweb Readers' Community, and participate in various public opinion research projects.
-After activating the plugin you can freely insert customized blog rating widgets in your selected posts, choose questions you want to ask your readers, and receive a comprehensive, detailed and precise feedback from them.
-The Blog Rating Widget is an attractive animated visual element that will improve your ratings! It is built using a cutting-edge Flash technology with the highest privacy and security standards, and enterprise-level quality.
+The Blog Rating Plugin is a simple and easy way to promote your views, improve your blog and to contribute to the Feedweb Research Network. The plugin helps you expose your blog to the Feedweb Readers' Community, and participate in various public opinion research projects.
+
+After activating the plugin you can freely insert customized blog rating widgets in your selected posts, choose questions you want to ask your readers, and receive a comprehensive, detailed and precise feedback from them.
+
+The Blog Rating Widget is an attractive animated visual element that will improve your ratings! It is built using a cutting-edge Flash technology with the highest privacy and security standards, and enterprise-level quality.
+
 Requires WordPress 3.0 and PHP 5.
 
 
@@ -22,6 +26,17 @@ Requires WordPress 3.0 and PHP 5.
 3. In the Posts table choose a post and click 'Insert' button. 
 4. Choose the questions you want to ask your readers and commit the widget. You can insert up to 50 widgets in a month.
 5. View your post and see the widget in the bottom of the post's content.
+
+
+== Screenshots ==
+
+1. Feedweb plugin settings
+2. Managing widgets in the posts' table
+3. Insert Widget Wizard: Step 1
+4. Insert Widget Wizard: Step 2
+5. Rating Widget in a post. Voting.
+6. Rating Widget in a post. Results.
+
 
 == Changelog ==
 

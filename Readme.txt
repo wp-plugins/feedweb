@@ -3,7 +3,7 @@ Contributors: Feedweb
 Tags: blog, rating, network, feedback, public, opinion, research, flash, widget, media, press, news, politics, society, social, question, answer, survey, poll, stats, discussion, controversy, cooperation, view, comments, statistics
 Requires at least: 3.0
 Tested up to: 3.3.1
-Stable Tag: 1.2.1
+Stable Tag: 1.2.2
 
 Expose your blog to the Feedweb reader's community. Promote your views. Get a comprehensive and detailed feedback from your readers.
 
@@ -41,6 +41,9 @@ More information at [Feedweb Research website](http://feedweb.net).
 
 
 == Changelog ==
+
+= 1.2.2 =
+* The Quote/Slash bug fix.
 
 = 1.2.1 =
 * Widget size correction.

@@ -9,11 +9,16 @@ function PrepareParam($param)
 	if (strlen ($param) == 0)
 		return "";
 
-	$param = base64_encode($param);
+	$param = base64_encode(stripcslashes($param));
 	$param = str_replace("+", "-", $param);
 	$param = str_replace("=", "~", $param);
 	$param = str_replace("/", "_", $param);
 	return $param;
+}
+
+function ConvertHtml($str)
+{
+	return htmlspecialchars($str, ENT_QUOTES|ENT_HTML5);
 }
 
 function GetPostCode($id)

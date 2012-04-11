@@ -15,7 +15,7 @@ function GetPostTitle()
 {
 	$id = GetPostId();
 	$post = get_post($id);
-	echo $post->post_title;
+	echo ConvertHtml($post->post_title);
 }
 
 function GetPostAuthor()
@@ -24,15 +24,15 @@ function GetPostAuthor()
 	$post = get_post($id);
 	$data = get_userdata($post->post_author);
 	if ($data->user_firstname != "" || $data->user_lastname != "")
-		echo $data->user_firstname." ".$data->user_lastname;
+		echo ConvertHtml($data->user_firstname." ".$data->user_lastname);
 	else
-		echo $data->display_name;
+		echo ConvertHtml($data->display_name);
 }
 
 function GetPostUrl()
 {
 	$id = GetPostId();
-	echo get_permalink($id);
+	echo ConvertHtml(get_permalink($id));
 }
 
 

@@ -8,7 +8,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2012-04-10 17:50+0200\n"
+"PO-Revision-Date: 2012-04-12 16:31+0200\n"
 "Last-Translator: Michael Rovinsky <misha@feedweb.net>\n"
 "Language-Team: \n"
 "X-Poedit-Language: German\n"
@@ -16,254 +16,254 @@ msgstr ""
 
 #: feedweb.php:71
 msgid "Feedweb Widget"
-msgstr ""
+msgstr "Feedweb Widget"
 
 #: feedweb.php:85
 msgid "Cannot insert widget into a post published %d days ago"
-msgstr ""
+msgstr "Ich kann kein Widget in einen Beitrag eingeben der vor %d Tagen veröffentlicht wurde"
 
 #: feedweb.php:93
 msgid "Insert Widget"
-msgstr ""
+msgstr "Widget eingeben"
 
 #: feedweb.php:93
 msgid "Insert"
-msgstr ""
+msgstr "Eingeben"
 
 #: feedweb.php:99
 #: widget_remove.php:69
 msgid "Remove Widget"
-msgstr ""
+msgstr "Widget entfernen"
 
 #: feedweb.php:99
 #: widget_dialog.php:438
 msgid "Remove"
-msgstr ""
+msgstr "Entfernen"
 
 #: feedweb.php:145
 msgid "No Delay"
-msgstr ""
+msgstr "Keine Verzögerung"
 
 #: feedweb.php:145
 msgid "1 Hour"
-msgstr ""
+msgstr "1 Stunde"
 
 #: feedweb.php:145
 msgid "2 Hours"
-msgstr ""
+msgstr "2 Stunden"
 
 #: feedweb.php:145
 msgid "5 Hours"
-msgstr ""
+msgstr "5 Stunden"
 
 #: feedweb.php:162
 msgid "You do not have sufficient permissions to access this page."
-msgstr ""
+msgstr "Sie haben keine ausreichende Erlaubnis diese Seite aufzurufen"
 
 #: feedweb.php:170
 msgid "Feedweb Plugin Settings"
-msgstr ""
+msgstr "Feedweb Plugin Einstellungen"
 
 #: feedweb.php:214
 msgid "Please enter a valid width"
-msgstr ""
+msgstr "Bitte eine gültige Breite eingeben"
 
 #: feedweb.php:220
 msgid "Width is out of range"
-msgstr ""
+msgstr "Breite ist außerhalb des zulässigen Bereichs"
 
 #: feedweb.php:243
 msgid "Widget Language:"
-msgstr ""
+msgstr "Widget Sprache"
 
 #: feedweb.php:256
 msgid "Widget width (pixels):"
-msgstr ""
+msgstr "Widget Breite (Pixel)"
 
 #: feedweb.php:265
 msgid "Allowed width: 350 to 700 pixels. Recommended width: 400 to 450 pixels."
-msgstr ""
+msgstr "Zulässige Breite: 350 bis 700 Pixel. Empfohlene Breite: 400 bis 450 Pixel"
 
 #: feedweb.php:271
 msgid "Widgets at the Home/Front Page:"
-msgstr ""
+msgstr "Widgets auf der Homepage/Titelseite"
 
 #: feedweb.php:276
 msgid "Display Widgets"
-msgstr ""
+msgstr "Bildschirm Widgets"
 
 #: feedweb.php:280
 msgid "Check to display the widgets both in the Front Page and the single post pages."
-msgstr ""
+msgstr "Prüfen um die Widgets auf der Titelseite und auf Einzelbeitragsseiten darzustellen"
 
 #: feedweb.php:289
 msgid "Delay displaying results:"
-msgstr ""
+msgstr "Ergebnisanzeige verzögern"
 
 #: feedweb.php:297
 msgid "Set the period of time you want to hide voting results after the widget is created."
-msgstr ""
+msgstr "Legen Sie die Zeitspanne fest in der Sie Wahlergebnisse verbergen möchten nachdem das Widget erstellt wurde."
 
 #: feedweb.php:306
 msgid "Feedweb Copyright Notice:"
-msgstr ""
+msgstr "Feedweb Urheberrecht Anzeige"
 
 #: feedweb.php:311
 msgid "Allow"
-msgstr ""
+msgstr "Erlauben"
 
 #: feedweb.php:315
 msgid "Please check to display the following text below the widgets: "
-msgstr ""
+msgstr "Bitte prüfen um den folgenden Text unter dem Widget anzuzeigen"
 
 #: feedweb.php:325
 msgid "Save Changes"
-msgstr ""
+msgstr "Änderungen speichern"
 
 #: feedweb.php:337
 msgid "Settings"
-msgstr ""
+msgstr "Einstellungen"
 
 #: feedweb_settings.php:10
 #: widget_commit.php:10
 msgid "You are not allowed to be here"
-msgstr ""
+msgstr "Sie haben keine Erlaubnis hier zu sein"
 
 #: feedweb_settings.php:28
 msgid "Failed to update settings"
-msgstr ""
+msgstr "Einstellungsaktualisierung fehlgeschlagen"
 
 #: widget_commit.php:29
 msgid "Wordpress cannot insert your widget"
-msgstr ""
+msgstr "Wordpress kann Ihr Widget nicht einfügen"
 
 #: widget_commit.php:70
 #: widget_commit.php:78
 #: widget_commit.php:86
 msgid "Error in the Post data"
-msgstr ""
+msgstr "Fehler in den veröffentlichten Daten"
 
 #: widget_commit.php:95
 msgid "Error in the User data"
-msgstr ""
+msgstr "Fehler in den Benutzerdaten"
 
 #: widget_commit.php:117
 msgid "Cannot connect Feedweb server"
-msgstr ""
+msgstr "Kann keine Verbindung zum Feedweb Server herstellen"
 
 #: widget_commit.php:133
 msgid "Unknown server error"
-msgstr ""
+msgstr "Unbekannter Server Fehler"
 
 #: widget_commit.php:137
 msgid "Feedweb service cannot create a widget"
-msgstr ""
+msgstr "Feedweb Service kann kein Widget erstellen"
 
 #: widget_dialog.php:96
 msgid "http://en.wikipedia.org/wiki/Yes%E2%80%93no_question"
-msgstr ""
+msgstr "http://de.wikipedia.org/wiki/Entscheidungsfrage"
 
 #: widget_dialog.php:97
 msgid "must be a %sYES / NO%s question"
-msgstr ""
+msgstr "muss eine JA / NEIN Frage sein"
 
 #: widget_dialog.php:114
 msgid "Question '{0}' is already selected"
-msgstr ""
+msgstr "Frage '{0}' wurde bereits ausgewählt"
 
 #: widget_dialog.php:148
 msgid "Please pecify a question"
-msgstr ""
+msgstr "Bitte bestimmen Sie eine Frage"
 
 #: widget_dialog.php:203
 msgid "Please select a question to remove"
-msgstr ""
+msgstr "Bitte wählen Sie eine Frage zum entfernen"
 
 #: widget_dialog.php:207
 msgid "The question will be removed. Proceed?"
-msgstr ""
+msgstr "Die Frage wird entfernt. Fortfahren?"
 
 #: widget_dialog.php:282
 msgid "Title:"
-msgstr ""
+msgstr "Titel:"
 
 #: widget_dialog.php:300
 msgid "Sub-Title:"
-msgstr ""
+msgstr "Untertitel:"
 
 #: widget_dialog.php:318
 msgid "Author:"
-msgstr ""
+msgstr "Autor:"
 
 #: widget_dialog.php:336
 msgid "URL:"
-msgstr ""
+msgstr "URL:"
 
 #: widget_dialog.php:354
 #: widget_dialog.php:447
 msgid "Cancel"
-msgstr ""
+msgstr "Abbrechen"
 
 #: widget_dialog.php:357
 msgid "Next >"
-msgstr ""
+msgstr "Nächste >"
 
 #: widget_dialog.php:377
 msgid "Existing Questions:"
-msgstr ""
+msgstr "Bestehende Fragen:"
 
 #: widget_dialog.php:387
 msgid "Select"
-msgstr ""
+msgstr "Auswählen"
 
 #: widget_dialog.php:397
 msgid "New Question"
-msgstr ""
+msgstr "Neue Frage"
 
 #: widget_dialog.php:407
 msgid "Add"
-msgstr ""
+msgstr "Hinzufügen"
 
 #: widget_dialog.php:417
 msgid "Selected Questions:"
-msgstr ""
+msgstr "Gewählte Fragen:"
 
 #: widget_dialog.php:427
 msgid "Move Up"
-msgstr ""
+msgstr "Nach oben"
 
 #: widget_dialog.php:433
 msgid "Move Down"
-msgstr ""
+msgstr "Nach unten"
 
 #: widget_dialog.php:450
 msgid "< Back"
-msgstr ""
+msgstr "< Zurück"
 
 #: widget_dialog.php:453
 msgid "Finish"
-msgstr ""
+msgstr "Fertig"
 
 #: widget_remove.php:17
 msgid "The rating widget in the post %s will be removed"
-msgstr ""
+msgstr "Das Bewertungs-Widget in Beitrag %s  wird entfernt"
 
 #. #-#-#-#-#  plugin.pot (Feedweb 1.2.1)  #-#-#-#-#
 #. Plugin Name of the plugin/theme
 #. #-#-#-#-#  plugin.pot (Feedweb 1.2.1)  #-#-#-#-#
 #. Author of the plugin/theme
 msgid "Feedweb"
-msgstr ""
+msgstr "Feedweb"
 
 #. Plugin URI of the plugin/theme
 msgid "http://wordpress.org/extend/plugins/feedweb/"
-msgstr ""
+msgstr "http://wordpress.org/extend/plugins/feedweb/"
 
 #. Description of the plugin/theme
 msgid "Expose your blog to the Feedweb reader's community, promote your views, get a comprehensive and detailed feedback from your readers."
-msgstr ""
+msgstr "Geben Sie Ihren Blog der Feedweb Leser Geimeinschaft preis, fördern Sie Ihre Meinungen, erhalten Sie umfassendes und ausführliches Feedback von Ihren Lesren."
 
 #. Author URI of the plugin/theme
 msgid "http://feedweb.net"
-msgstr ""
+msgstr "http://feedweb.net"
 

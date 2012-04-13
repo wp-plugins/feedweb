@@ -1,12 +1,16 @@
 === Feedweb ===
 Contributors: Feedweb
-Tags: blog, rating, network, feedback, public, opinion, research, flash, widget, media, press, news, politics, society, social, question, answer, survey, poll, stats, discussion, controversy, cooperation, view, comments, statistics
+Tags: blog, rate, rating, network, feedback, public, opinion, research, flash, widget, media, press, news, politics, society, social, question, answer, survey, poll, polling, vote, voting, stats, discussion, controversy, cooperation, view, comments, statistics
 Requires at least: 3.0
 Tested up to: 3.3.1
-Stable Tag: 1.2.2
+Stable Tag: 1.2.3
 
 Expose your blog to the Feedweb reader's community. Promote your views. Get a comprehensive and detailed feedback from your readers.
 
+= Translators =
+* German (de_DE)  - Anna Davidov
+* Hebrew (he_IL)  - Dana Rovinsky
+* Russian (ru_RU) - Misha
 
 == Description ==
 
@@ -41,6 +45,9 @@ More information at [Feedweb Research website](http://feedweb.net).
 
 
 == Changelog ==
+
+= 1.2.3 =
+* German language support.
 
 = 1.2.2 =
 * The Quote/Slash bug fix.

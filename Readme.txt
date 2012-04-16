@@ -37,12 +37,12 @@ More information at [Feedweb Research website](http://feedweb.net).
 
 == Screenshots ==
 
-1. Feedweb plugin settings
-2. Managing widgets in the posts' table
-3. Insert Widget Wizard: Step 1
-4. Insert Widget Wizard: Step 2
-5. Rating Widget in a post. Voting.
-6. Rating Widget in a post. Results.
+1. Feedweb plugin settings.
+2. Managing widgets in the posts' table.
+3. Insert Widget Wizard: Step 1.
+4. Insert Widget Wizard: Step 2.
+5. The Rating Widget: Voting panels.
+6. The Rating Widget: Results panels.
 
 
 == Changelog ==

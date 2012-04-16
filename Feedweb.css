@@ -1,0 +1,28 @@
+.FeedwebPostDataTable 
+{
+	border-collapse: collapse;
+	border-style: none;
+}
+
+.FeedwebPostDataTable tbody 
+{
+	border-top: 0px; 
+	border-left: 0px; 
+	border-style: none;
+}
+
+.FeedwebPostDataTable tbody tr 
+{
+	border-top: 0px; 
+	border-left: 0px; 
+	border-style: none;
+}
+
+.FeedwebPostDataTable tbody tr td 
+{
+	vertical-align: middle;
+	text-align: center;
+	border-bottom-style: none; 
+	border-top-style: solid; 
+	padding: 0 0 0 0;
+}

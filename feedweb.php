@@ -4,7 +4,7 @@ Plugin Name: Feedweb
 Plugin URI: http://wordpress.org/extend/plugins/feedweb/
 Description: Expose your blog to the Feedweb reader's community, promote your views, get a comprehensive and detailed feedback from your readers.
 Author: Feedweb
-Version: 1.2.3
+Version: 1.2.4
 Author URI: http://feedweb.net
 */
 
@@ -80,24 +80,38 @@ function FillFeedwebCell($id)
 	{
 		// Get post's age
 		$days = GetPostAge($id);
+		echo "<div style='text-align: center; width: 120px;'>";
 		if ($days > GetMaxPostAge())
 		{
 			$format = __("Cannot insert widget into a post published %d days ago", "FWTD");
 			$tip = sprintf($format, $days);
-			$url = plugin_dir_url(__FILE__)."/SWarning.jpg";
-			echo "<div style='text-align: center; width: 100px;'><img src='$url' title='$tip'/></div>";
+			$src = plugin_dir_url(__FILE__)."/Warning.png";
+			echo "<img src='$src' title='$tip'/>";
 		}
 		else 
 		{
+			$src = plugin_dir_url(__FILE__)."/Insert.png";
 			$url = plugin_dir_url(__FILE__)."widget_dialog.php?wp_post_id=".$id."&KeepThis=true&TB_iframe=true&height=345&width=675";
-			echo "<input alt='".$url."' class='thickbox' title='".__("Insert Widget", "FWTD")."' value='".__("Insert")."' type='button' style='width: 100px;'/>";
+			echo "<input alt='".$url."' class='thickbox' title='".__("Insert Widget", "FWTD")."' type='image' src='$src'/>";
 		}
+		echo "</div>";
 	}
 	else			// Created - display 'Remove' button
 	{
+		$data = GetPostVotes($pac);
+		$votes = $data['votes'];
+		$score = $data['score'];
+		if ($score != "")
+			$score = "($score)";
+		$src = plugin_dir_url(__FILE__)."/Remove.png";
 		$url = plugin_dir_url(__FILE__)."widget_remove.php?wp_post_id=".$id."&KeepThis=true&TB_iframe=true&height=125&width=575";
-		echo "<input alt='".$url."' class='thickbox' title='".__("Remove Widget", "FWTD")."' value='".__("Remove")."' type='button' ".
-			"style='width: 100px; background-color: #405060; color: #FFFFFF;'/>";
+		$button = "<input alt='$url' class='thickbox' title='".__("Remove Widget", "FWTD")."' type='image' src='$src'/>";
+
+		echo "<link rel='stylesheet' type='text/css' href='".plugin_dir_url(__FILE__)."/Feedweb.css'/>".
+			"<table class='FeedwebPostDataTable'><tbody><tr><td rowspan='2'>".
+			"<img src='".plugin_dir_url(__FILE__)."/Score.png' title='".__("Votes / (Average Score)", "FWTD")."'/></td>".
+			"<td style='width: 50px;'>$votes</td><td rowspan='2'>$button</td></tr><tr><td>$score</td></tr>".
+			"</tbody></table>";
 	}
 }
 

@@ -3,7 +3,7 @@ Contributors: Feedweb
 Tags: blog, rate, rating, network, feedback, public, opinion, research, flash, widget, media, press, news, politics, society, social, question, answer, survey, poll, polling, vote, voting, stats, discussion, controversy, cooperation, view, comments, statistics
 Requires at least: 3.0
 Tested up to: 3.3.1
-Stable Tag: 1.2.3
+Stable Tag: 1.2.4
 
 Expose your blog to the Feedweb reader's community. Promote your views. Get a comprehensive and detailed feedback from your readers.
 
@@ -46,6 +46,9 @@ More information at [Feedweb Research website](http://feedweb.net).
 
 
 == Changelog ==
+
+= 1.2.4 =
+* Displaying votes and score in the posts table.
 
 = 1.2.3 =
 * German language support.

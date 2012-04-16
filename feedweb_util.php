@@ -183,4 +183,24 @@ function GetFeedwebUrl()
 	return "http://wpblogs.feedweb.net/";
 }
 
+function GetPostVotes($pac)
+{
+	$query = GetFeedwebUrl()."FBanner.aspx?action=gpd&pac=".$pac;
+	$response = wp_remote_get ($query, array('timeout' => 30));
+	if (is_wp_error ($response))
+		return null;
+	
+	$dom = new DOMDocument;
+	if ($dom->loadXML($response['body']) == true)
+		if ($dom->documentElement->tagName == "BANNER")
+		{
+			$data['id'] = $dom->documentElement->getAttribute("id");
+			$data['votes'] = $dom->documentElement->getAttribute("votes");
+			$data['score'] = $dom->documentElement->getAttribute("score");
+			return $data;
+		}
+	return null;
+}
+
+
 ?>

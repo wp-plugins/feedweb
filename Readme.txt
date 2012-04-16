@@ -7,10 +7,6 @@ Stable Tag: 1.2.3
 
 Expose your blog to the Feedweb reader's community. Promote your views. Get a comprehensive and detailed feedback from your readers.
 
-= Translators =
-* German (de_DE)  - Anna Davidov
-* Hebrew (he_IL)  - Dana Rovinsky
-* Russian (ru_RU) - Misha
 
 == Description ==
 
@@ -23,6 +19,11 @@ The Blog Rating Widget is an attractive animated visual element that will improv
 Requires WordPress 3.0 and PHP 5.
 
 More information at [Feedweb Research website](http://feedweb.net).
+
+= Translators =
+* German (de_DE)  - Anna Davidov
+* Hebrew (he_IL)  - Dana Rovinsky
+* Russian (ru_RU) - Misha
 
 
 == Installation ==

@@ -4,7 +4,7 @@ Plugin Name: Feedweb
 Plugin URI: http://wordpress.org/extend/plugins/feedweb/
 Description: Expose your blog to the Feedweb reader's community, promote your views, get a comprehensive and detailed feedback from your readers.
 Author: Feedweb
-Version: 1.2.4
+Version: 1.2.5
 Author URI: http://feedweb.net
 */
 
@@ -68,7 +68,7 @@ function AddFeedwebColumn($columns)
 {
 	// Check if user is admin
 	if (current_user_can('manage_options'))
-		$columns['feedweb'] = __("Feedweb Widget", "FWTD");
+		$columns['feedweb'] = __("Feedweb", "FWTD");
 	return $columns;
 }
 
@@ -80,38 +80,38 @@ function FillFeedwebCell($id)
 	{
 		// Get post's age
 		$days = GetPostAge($id);
-		echo "<div style='text-align: center; width: 120px;'>";
 		if ($days > GetMaxPostAge())
 		{
 			$format = __("Cannot insert widget into a post published %d days ago", "FWTD");
 			$tip = sprintf($format, $days);
-			$src = plugin_dir_url(__FILE__)."/Warning.png";
+			$src = GetFeedwebUrl()."IMG/Warning.png";
 			echo "<img src='$src' title='$tip'/>";
 		}
 		else 
 		{
-			$src = plugin_dir_url(__FILE__)."/Insert.png";
+			$src = GetFeedwebUrl()."IMG/Insert.png";
 			$url = plugin_dir_url(__FILE__)."widget_dialog.php?wp_post_id=".$id."&KeepThis=true&TB_iframe=true&height=345&width=675";
 			echo "<input alt='".$url."' class='thickbox' title='".__("Insert Widget", "FWTD")."' type='image' src='$src'/>";
 		}
-		echo "</div>";
 	}
 	else			// Created - display 'Remove' button
 	{
+		$src = GetFeedwebUrl()."IMG/Remove.png";
 		$data = GetPostVotes($pac);
 		$votes = $data['votes'];
 		$score = $data['score'];
 		if ($score != "")
-			$score = "($score)";
-		$src = plugin_dir_url(__FILE__)."/Remove.png";
+		{
+			$format = __("Remove Widget (%s Votes. Average Score: %s)", "FWTD");
+			$title = sprintf($format, $votes, $score);
+			if ($data['url'] != "")
+				$src = GetFeedwebUrl().$data['url'];
+		}
+		else
+			$title = __("Remove Widget (No Votes)", "FWTD");
+			
 		$url = plugin_dir_url(__FILE__)."widget_remove.php?wp_post_id=".$id."&KeepThis=true&TB_iframe=true&height=125&width=575";
-		$button = "<input alt='$url' class='thickbox' title='".__("Remove Widget", "FWTD")."' type='image' src='$src'/>";
-
-		echo "<link rel='stylesheet' type='text/css' href='".plugin_dir_url(__FILE__)."/Feedweb.css'/>".
-			"<table class='FeedwebPostDataTable'><tbody><tr><td rowspan='2'>".
-			"<img src='".plugin_dir_url(__FILE__)."/Score.png' title='".__("Votes / (Average Score)", "FWTD")."'/></td>".
-			"<td style='width: 50px;'>$votes</td><td rowspan='2'>$button</td></tr><tr><td>$score</td></tr>".
-			"</tbody></table>";
+		echo "<input alt='$url' class='thickbox' title='$title' type='image' src='$src'/>";
 	}
 }
 
@@ -350,6 +350,12 @@ function FeedwebSettingsLink($links)
 {
 	$settings_link = "<a href='options-general.php?page=".basename(__FILE__)."'>".__("Settings")."</a>";
 	array_unshift($links, $settings_link);
+	/*
+	$title = __("Quick Tour", "FWTD");
+	$url = plugin_dir_url(__FILE__)."feedweb_tour.php?Mode=QT&KeepThis=true&TB_iframe=true&height=200&width=200";
+	$quick_tour_link = "<a class='thickbox' title='$title' href='$url'>$title</a>";
+	array_unshift($links, $quick_tour_link);
+	*/
 	return $links;
 }
 

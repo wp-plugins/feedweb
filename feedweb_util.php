@@ -195,6 +195,7 @@ function GetPostVotes($pac)
 		if ($dom->documentElement->tagName == "BANNER")
 		{
 			$data['id'] = $dom->documentElement->getAttribute("id");
+			$data['url'] = $dom->documentElement->getAttribute("url");
 			$data['votes'] = $dom->documentElement->getAttribute("votes");
 			$data['score'] = $dom->documentElement->getAttribute("score");
 			return $data;

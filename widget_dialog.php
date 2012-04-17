@@ -340,7 +340,7 @@ function YesNoQuestionPrompt()
 							<tr style="height: 36px;">
 								<td/>
 								<td colspan="4"> 
-									<input type='text' id='UrlText' name='UrlText' value='<?php GetPostUrl();?>' style='width:100%;'/> 
+									<input type='text' id='UrlText' name='UrlText' value='<?php GetPostUrl();?>' style='width:100%;' readonly="readonly"/> 
 								</td>
 								<td/>
 							</tr>

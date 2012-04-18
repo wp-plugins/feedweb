@@ -107,15 +107,30 @@ function GetFeedwebOptions()
 }
 
 
-function GetUserCode($id)
+function GetUserCode($id, $must_exist)
 {
 	global $wpdb;
 	$query = "SELECT meta_value FROM $wpdb->usermeta WHERE user_id=$id AND meta_key='user_code_feedweb'";
 	$code = $wpdb->get_var($query);
 	if ($code != null)
 		return $code;
+		
+	if ($must_exist)
+		return null;
 	
-	$code = CreateGuid();
+	$query = GetFeedwebUrl()."FBanner.aspx?action=get&mode=temp";
+	$response = wp_remote_get ($query, array('timeout' => 30));
+	if (is_wp_error ($response))
+		return null;
+	
+	$dom = new DOMDocument;
+	if ($dom->loadXML($response['body']) == true)
+		if ($dom->documentElement->tagName == "BANNER")
+			$code = $dom->documentElement->getAttribute("newgid");
+	
+	if ($code == null || $code == "")	
+		return null;
+	
 	$query = "INSERT INTO $wpdb->usermeta (user_id, meta_key, meta_value) VALUES ($id, 'user_code_feedweb', '$code')";
 	$result = $wpdb->query($query);
 	if ($result == false)
@@ -157,21 +172,6 @@ function IsRTL($language)
 	if ($language == 'he' || $language == 'ar')
 		return true;
 	return false;
-}
-
-function CreateGuid() 
-{
-	// The field names refer to RFC 4122 section 4.1.2
-	return sprintf('%04x%04x-%04x-%03x4-%04x-%04x%04x%04x',
-			mt_rand(0, 65535), mt_rand(0, 65535), // 32 bits for "time_low"
-			mt_rand(0, 65535), // 16 bits for "time_mid"
-			mt_rand(0, 4095),  // 12 bits before the 0100 of (version) 4 for "time_hi_and_version"
-			bindec(substr_replace(sprintf('%016b', mt_rand(0, 65535)), '01', 6, 2)),
-			// 8 bits, the last two of which (positions 6 and 7) are 01, for "clk_seq_hi_res"
-			// (hence, the 2nd hex digit after the 3rd hyphen can only be 1, 5, 9 or d)
-			// 8 bits for "clk_seq_low"
-			mt_rand(0, 65535), mt_rand(0, 65535), mt_rand(0, 65535) // 48 bits for "node"
-	);
 }
 
 function GetFeedwebUrl()

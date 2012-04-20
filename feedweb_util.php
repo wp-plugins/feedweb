@@ -203,5 +203,39 @@ function GetPostVotes($pac)
 	return null;
 }
 
+function GetLanguageList()
+{
+	$query = GetFeedwebUrl()."FBanner.aspx?action=gll";
+	$response = wp_remote_get ($query, array('timeout' => 30));
+	if (is_wp_error ($response))
+		return null;
+	
+	$dom = new DOMDocument;
+    if ($dom->loadXML($response['body']) == true)
+		if ($dom->documentElement->tagName == "BANNER")
+		{
+		    $root = $dom->documentElement->getElementsByTagName("LANGUAGES");
+		    if ($root != null && $root->length > 0)
+			{
+				$list = $root->item(0);
+				$items = $list->getElementsByTagName("L");
+				if ($items != null)
+				{
+				    $languages = array();
+					foreach($items as $item)
+				    {
+						$code = $item->getAttribute("code");
+						$text = $item->getAttribute("text");
+						$name = $item->getAttribute("name");
+						if ($name != $text)
+						    $name .= " - ".$text; 
+						$languages[$code] = $name;
+				    }
+					return $languages;
+				}
+			}
+		}
+	return null;
+}
 
 ?>

@@ -53,7 +53,6 @@ function InsertPac($pac, $id)
 	return true;
 }
 
-
 function RemovePac($id)
 {
 	global $wpdb;
@@ -67,6 +66,40 @@ function GetPac($id)
 	global $wpdb;
 	$query = "SELECT meta_value FROM $wpdb->postmeta WHERE post_id=$id AND meta_key='feedweb_pac'";
 	return $wpdb->get_var($query);
+}
+
+function GetBac($must_exist)
+{
+	global $wpdb;
+	$query = "SELECT meta_value FROM $wpdb->postmeta WHERE post_id=0 AND meta_key='feedweb_bac'";
+	$bac = $wpdb->get_var($query);
+	if ($bac != null)
+		return $bac;
+
+    if ($must_exist)
+		return null;
+
+    // Register Site Domain command
+	$root = PrepareParam(get_option('siteurl'));
+	$query = GetFeedwebUrl()."FBanner.aspx?action=rsd&root=$root";
+	$response = wp_remote_get ($query, array('timeout' => 30));
+	if (is_wp_error ($response))
+		return null;
+	
+	$dom = new DOMDocument;
+	if ($dom->loadXML($response['body']) == true)
+		if ($dom->documentElement->tagName == "BANNER")
+			$code = $dom->documentElement->getAttribute("bac");
+	
+	if ($code == null || $code == "")	
+		return null;
+	
+	$query = "INSERT INTO $wpdb->postmeta (post_id, meta_key, meta_value) VALUES (0, 'feedweb_bac', '$code')";
+	$result = $wpdb->query($query);
+	if ($result == false)
+		return null;
+	
+	return $code;
 }
 
 function SetFeedwebOptions($data)
@@ -160,12 +193,10 @@ function GetPostAge($id)
 	return 0;
 }
 
-
 function GetMaxPostAge()
 {
 	return 30;
 }
-
 
 function IsRTL($language)
 {
@@ -186,6 +217,10 @@ function GetFeedwebUrl()
 function GetPostVotes($pac)
 {
 	$query = GetFeedwebUrl()."FBanner.aspx?action=gpd&pac=".$pac;
+    $bac = GetBac(true);
+    if ($bac != null)
+		$query = $query."&bac=".$bac;
+		
 	$response = wp_remote_get ($query, array('timeout' => 30));
 	if (is_wp_error ($response))
 		return null;
@@ -236,6 +271,78 @@ function GetLanguageList()
 			}
 		}
 	return null;
+}
+
+
+function UpdateBlogCapabilities()
+{
+    if (current_user_can('manage_options') == false) // Must be admin
+		return;
+
+    $bac = GetBac(false);
+	if ($bac == null)
+		return;
+	
+	// Request blog caps by Blog Access Code
+    global $feedweb_blog_caps;
+	$query = GetFeedwebUrl()."FBanner.aspx?action=cap&bac=$bac";
+	$response = wp_remote_get ($query, array('timeout' => 30));
+	if (is_wp_error ($response))
+		return null;
+	
+	$dom = new DOMDocument;
+	if ($dom->loadXML($response['body']) == true)
+		if ($dom->documentElement->tagName == "BANNER")
+		{
+		    $feedweb_blog_caps = array();
+		    $caps = $dom->documentElement->getElementsByTagName("CAP");
+		    
+			foreach ($caps as $cap)
+			{
+				$name = $cap->getAttribute("name");
+				$used = intval($cap->getAttribute("used"));
+				$limit = intval($cap->getAttribute("limit"));
+								
+				$value = array();
+				$value["used"] = $used;
+				$value["limit"] = $limit;
+				$feedweb_blog_caps[$name] = $value;
+			}
+		}
+}
+
+function GetInsertWidgetStatus($id)
+{
+    $days = GetPostAge($id);
+    if ($days > GetMaxPostAge())
+    {
+	    $format = __("Cannot insert widget into a post published %d days ago", "FWTD");
+	    return sprintf($format, $days);
+	}
+    	
+	global $feedweb_blog_caps;
+	$cap = $feedweb_blog_caps["DW"];
+	if ($cap["used"] >= $cap["limit"])
+	{
+		$format = __("You have created %d widgets in the last 24 hours. The daily limit is %d new widgets", "FWTD");
+		return sprintf ($format, $cap["used"], $cap["limit"]);
+	}
+		
+	$cap = $feedweb_blog_caps["MW"];
+	if ($cap["used"] >= $cap["limit"])
+	{
+		$format = __("You have created %d widgets in the last 30 days. The monthly limit is %d new widgets", "FWTD");
+		return sprintf ($format, $cap["used"], $cap["limit"]);
+	}
+    
+	return null;
+}
+
+function WriteDebugLog($text)
+{
+    global $wpdb;
+	$query = "INSERT INTO debug_log(log_time, log_text) VALUES(NOW(), '$text')";
+	$wpdb->query($query);
 }
 
 ?>

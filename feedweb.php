@@ -2,15 +2,16 @@
 /*
 Plugin Name: Feedweb
 Plugin URI: http://wordpress.org/extend/plugins/feedweb/
-Description: Expose your blog to the Feedweb reader's community, promote your views, get a comprehensive and detailed feedback from your readers.
+Description: Expose your blog to the Feedweb reader's community. Promote your views. Get a comprehensive and detailed feedback from your readers.
 Author: Feedweb
-Version: 1.2.7
+Version: 1.2.8
 Author URI: http://feedweb.net
 */
 
 require_once('feedweb_util.php');
 require_once(ABSPATH.'wp-admin/includes/plugin.php');
 
+$feedweb_blog_caps = null;
 $feedweb_fw_swf = "FL/FrontWidget.swf";
 $feedweb_rw_swf = "FL/RatingWidget.swf";
 
@@ -68,7 +69,10 @@ function AddFeedwebColumn($columns)
 {
 	// Check if user is admin
 	if (current_user_can('manage_options'))
-		$columns['feedweb'] = __("Feedweb", "FWTD");
+	{
+		UpdateBlogCapabilities();
+		$columns['feedweb'] = "Feedweb";
+	}
 	return $columns;
 }
 
@@ -78,14 +82,11 @@ function FillFeedwebCell($id)
 	$pac = GetPac($id);
 	if ($pac == null) // Not created yet - display 'Insert' button
 	{
-		// Get post's age
-		$days = GetPostAge($id);
-		if ($days > GetMaxPostAge())
+		$status = GetInsertWidgetStatus($id);
+		if ($status != null)
 		{
-			$format = __("Cannot insert widget into a post published %d days ago", "FWTD");
-			$tip = sprintf($format, $days);
 			$src = GetFeedwebUrl()."IMG/Warning.png";
-			echo "<img src='$src' title='$tip'/>";
+			echo "<img src='$src' title='$status'/>";
 		}
 		else 
 		{
@@ -108,7 +109,7 @@ function FillFeedwebCell($id)
 				$src = GetFeedwebUrl().$data['url'];
 		}
 		else
-			$title = __("Remove Widget (No Votes)", "FWTD");
+			$title = __("Remove Widget (No votes yet)", "FWTD");
 			
 		$url = plugin_dir_url(__FILE__)."widget_remove.php?wp_post_id=".$id."&KeepThis=true&TB_iframe=true&height=125&width=575";
 		echo "<input alt='$url' class='thickbox' title='$title' type='image' src='$src'/>";

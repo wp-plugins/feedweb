@@ -76,6 +76,9 @@ function CreatePageWidget($id)
 	try
 	{
 		$query = GetFeedwebUrl()."FBanner.aspx?action=cpw&client=WP:$version&lang=$lang";
+		$bac = GetBac(true);
+		if ($bac != null)
+		    $query = $query."&bac=".$bac;
 		
 		if ($_POST["WidgetQuestionsData"] != "")
 		{
@@ -185,11 +188,12 @@ function GetAlertText()
 		<script language="javascript" type="text/javascript">
 			function OnInit()
 			{
+				window.parent.tb_remove();
+				
 				var text = "<?php GetAlertText() ?>";
 				if (text != "")
 					window.alert(text);
 				
-				window.parent.tb_remove();
 				window.parent.location.href = window.parent.location.href;
 			}
 		</script>

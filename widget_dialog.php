@@ -145,7 +145,7 @@ function YesNoQuestionPrompt()
 				var edit = document.getElementsByName("NewQuestionText")[0];
 				if (edit.value.length == 0)
 				{
-					var text = "<?php _e("Please pecify a question", "FWTD")?>";
+					var text = "<?php _e("Please specify a question", "FWTD")?>";
 					window.alert(text);
 					return;
 				}

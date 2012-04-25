@@ -23,7 +23,7 @@ More information at [Feedweb Research website](http://feedweb.net).
 = Translators =
 * German (de_DE)     - Anna Davidov
 * Hebrew (he_IL)     - Dana Rovinsky
-* Portuguese (pt_PT) - Tome Mendes Simoes
+* Portuguese (pt_PT) - Tomé Mendes
 * Russian (ru_RU)    - Misha
 
 

@@ -9,7 +9,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "PO-Revision-Date: 2012-04-12 16:31+0200\n"
-"Last-Translator: Michael Rovinsky <misha@feedweb.net>\n"
+"Last-Translator: Anna Davidov <anna@feedweb.net>\n"
 "Language-Team: \n"
 "X-Poedit-Language: German\n"
 "X-Poedit-Country: GERMANY\n"
@@ -172,7 +172,7 @@ msgid "Question '{0}' is already selected"
 msgstr "Frage '{0}' wurde bereits ausgewählt"
 
 #: widget_dialog.php:148
-msgid "Please pecify a question"
+msgid "Please specify a question"
 msgstr "Bitte bestimmen Sie eine Frage"
 
 #: widget_dialog.php:203

@@ -173,7 +173,7 @@ msgid "Question '{0}' is already selected"
 msgstr "Вопрос  '{0}' уже выбран"
 
 #: widget_dialog.php:148
-msgid "Please pecify a question"
+msgid "Please specify a question"
 msgstr "Пожалуйста введите текст вопроса"
 
 #: widget_dialog.php:203

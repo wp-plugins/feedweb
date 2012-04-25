@@ -175,7 +175,7 @@ msgid "Question '{0}' is already selected"
 msgstr ""
 
 #: widget_dialog.php:148
-msgid "Please pecify a question"
+msgid "Please specify a question"
 msgstr ""
 
 #: widget_dialog.php:203

@@ -2,129 +2,114 @@
 # This file is distributed under the same license as the Feedweb package.
 msgid ""
 msgstr ""
-"Project-Id-Version: Feedweb 1.2.7\n"
+"Project-Id-Version: Feedweb 1.2.8\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/feedweb\n"
-"POT-Creation-Date: 2012-04-22 07:25:06+00:00\n"
+"POT-Creation-Date: 2012-04-24 16:25:22+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2012-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"PO-Revision-Date: 2012-04-25 08:28+0200\n"
+"Last-Translator: Michael Rovinsky <misha@feedweb.net>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 
-#. #-#-#-#-#  plugin.pot (Feedweb 1.2.7)  #-#-#-#-#
-#. Plugin Name of the plugin/theme
-#. #-#-#-#-#  plugin.pot (Feedweb 1.2.7)  #-#-#-#-#
-#. Author of the plugin/theme
-#: feedweb.php:71
-msgid "Feedweb"
-msgstr ""
-
-#: feedweb.php:85
-msgid "Cannot insert widget into a post published %d days ago"
-msgstr ""
-
-#: feedweb.php:94
+#: feedweb.php:95
 msgid "Insert Widget"
 msgstr ""
 
-#: feedweb.php:105
+#: feedweb.php:106
 msgid "Remove Widget (%s Votes. Average Score: %s)"
 msgstr ""
 
-#: feedweb.php:111
-msgid "Remove Widget (No Votes)"
+#: feedweb.php:112
+msgid "Remove Widget (No votes yet)"
 msgstr ""
 
-#: feedweb.php:161
+#: feedweb.php:162
 msgid "No Delay"
 msgstr ""
 
-#: feedweb.php:161
+#: feedweb.php:162
 msgid "1 Hour"
 msgstr ""
 
-#: feedweb.php:161
+#: feedweb.php:162
 msgid "2 Hours"
 msgstr ""
 
-#: feedweb.php:161
+#: feedweb.php:162
 msgid "5 Hours"
 msgstr ""
 
-#: feedweb.php:178
+#: feedweb.php:179
 msgid "You do not have sufficient permissions to access this page."
 msgstr ""
 
-#: feedweb.php:186
+#: feedweb.php:187
 msgid "Feedweb Plugin Settings"
 msgstr ""
 
-#: feedweb.php:230
+#: feedweb.php:231
 msgid "Please enter a valid width"
 msgstr ""
 
-#: feedweb.php:236
+#: feedweb.php:237
 msgid "Width is out of range"
 msgstr ""
 
-#: feedweb.php:259
+#: feedweb.php:260
 msgid "Widget Language:"
 msgstr ""
 
-#: feedweb.php:272
+#: feedweb.php:273
 msgid "Widget width (pixels):"
 msgstr ""
 
-#: feedweb.php:281
+#: feedweb.php:282
 msgid "Allowed width: 350 to 700 pixels. Recommended width: 400 to 450 pixels."
 msgstr ""
 
-#: feedweb.php:287
+#: feedweb.php:288
 msgid "Widgets at the Home/Front Page:"
 msgstr ""
 
-#: feedweb.php:292
+#: feedweb.php:293
 msgid "Display Widgets"
 msgstr ""
 
-#: feedweb.php:296
-msgid ""
-"Check to display the widgets both in the Front Page and the single post "
-"pages."
+#: feedweb.php:297
+msgid "Check to display the widgets both in the Front Page and the single post pages."
 msgstr ""
 
-#: feedweb.php:305
+#: feedweb.php:306
 msgid "Delay displaying results:"
 msgstr ""
 
-#: feedweb.php:313
-msgid ""
-"Set the period of time you want to hide voting results after the widget is "
-"created."
+#: feedweb.php:314
+msgid "Set the period of time you want to hide voting results after the widget is created."
 msgstr ""
 
-#: feedweb.php:322
+#: feedweb.php:323
 msgid "Feedweb Copyright Notice:"
 msgstr ""
 
-#: feedweb.php:327
+#: feedweb.php:328
 msgid "Allow"
 msgstr ""
 
-#: feedweb.php:331
+#: feedweb.php:332
 msgid "Please check to display the following text below the widgets: "
 msgstr ""
 
-#: feedweb.php:341
+#: feedweb.php:342
 msgid "Save Changes"
 msgstr ""
 
-#: feedweb.php:353
+#: feedweb.php:354
 msgid "Settings"
 msgstr ""
 
-#: feedweb_settings.php:10 widget_commit.php:10
+#: feedweb_settings.php:10
+#: widget_commit.php:10
 msgid "You are not allowed to be here"
 msgstr ""
 
@@ -132,11 +117,24 @@ msgstr ""
 msgid "Failed to update settings"
 msgstr ""
 
+#: feedweb_util.php:319
+msgid "Cannot insert widget into a post published %d days ago"
+msgstr ""
+
+#: feedweb_util.php:327
+msgid "You have created %d widgets in the last 24 hours. The daily limit is %d new widgets"
+msgstr ""
+
+#: feedweb_util.php:334
+msgid "You have created %d widgets in the last 30 days. The monthly limit is %d new widgets"
+msgstr ""
+
 #: widget_commit.php:29
 msgid "Wordpress cannot insert your widget"
 msgstr ""
 
-#: widget_commit.php:47 widget_commit.php:146
+#: widget_commit.php:47
+#: widget_commit.php:149
 msgid "Cannot connect Feedweb server"
 msgstr ""
 
@@ -144,19 +142,21 @@ msgstr ""
 msgid "Wordpress cannot remove your widget"
 msgstr ""
 
-#: widget_commit.php:109 widget_commit.php:117 widget_commit.php:125
+#: widget_commit.php:112
+#: widget_commit.php:120
+#: widget_commit.php:128
 msgid "Error in the Post data"
 msgstr ""
 
-#: widget_commit.php:134
+#: widget_commit.php:137
 msgid "Error in the User data"
 msgstr ""
 
-#: widget_commit.php:162
+#: widget_commit.php:165
 msgid "Unknown server error"
 msgstr ""
 
-#: widget_commit.php:166
+#: widget_commit.php:169
 msgid "Feedweb service cannot create a widget"
 msgstr ""
 
@@ -173,7 +173,7 @@ msgid "Question '{0}' is already selected"
 msgstr ""
 
 #: widget_dialog.php:148
-msgid "Please pecify a question"
+msgid "Please specify a question"
 msgstr ""
 
 #: widget_dialog.php:203
@@ -200,7 +200,8 @@ msgstr ""
 msgid "URL:"
 msgstr ""
 
-#: widget_dialog.php:354 widget_dialog.php:447
+#: widget_dialog.php:354
+#: widget_dialog.php:447
 msgid "Cancel"
 msgstr ""
 
@@ -256,16 +257,7 @@ msgstr ""
 msgid "Remove Widget"
 msgstr ""
 
-#. Plugin URI of the plugin/theme
-msgid "http://wordpress.org/extend/plugins/feedweb/"
-msgstr ""
-
 #. Description of the plugin/theme
-msgid ""
-"Expose your blog to the Feedweb reader's community, promote your views, get "
-"a comprehensive and detailed feedback from your readers."
+msgid "Expose your blog to the Feedweb reader's community. Promote your views. Get a comprehensive and detailed feedback from your readers."
 msgstr ""
 
-#. Author URI of the plugin/theme
-msgid "http://feedweb.net"
-msgstr ""

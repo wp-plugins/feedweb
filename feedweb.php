@@ -4,7 +4,7 @@ Plugin Name: Feedweb
 Plugin URI: http://wordpress.org/extend/plugins/feedweb/
 Description: Expose your blog to the Feedweb reader's community. Promote your views. Get a comprehensive and detailed feedback from your readers.
 Author: Feedweb
-Version: 1.2.9
+Version: 1.2.10
 Author URI: http://feedweb.net
 */
 
@@ -139,11 +139,22 @@ function FeedwebPluginMenu()
 }
 
 
-function BuildLanguageBox($language)
+function BuildLanguageBox($language, $language_set)
 {
 	echo "<select id='WidgetLanguageBox' name='WidgetLanguageBox' style='width: 99%;' onchange='OnChangeLanguage()'>";
-	
+    
 	$languages = GetLanguageList();
+    if ($language_set != true) // Language was not set yet by the admin. Try to set by default locale
+	{
+		$locale = get_locale();
+		$pos = strpos($locale, "_");
+		if ($pos > 0)
+		    $locale = substr($locale, 0, $pos);
+			
+		if (array_key_exists($locale, $languages) == true)
+		    $language = $locale;
+	}
+	
 	if ($languages != null)
 		foreach ($languages as $key => $value)
 		{
@@ -261,7 +272,7 @@ function FeedwebPluginOptions()
 						</td>
 						<td style='width: 10px;'/>
 						<td style='width: 100px;'>
-							<?php BuildLanguageBox($feedweb_data['language']) ?>
+							<?php BuildLanguageBox($feedweb_data['language'], $feedweb_data['language_set']) ?>
 						</td>
 						<td style='width: 10px;'/>
 						<td style='width: 500px;'>

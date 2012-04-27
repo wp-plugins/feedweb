@@ -124,7 +124,7 @@ function SetFeedwebOptions($data)
 
 function GetFeedwebOptions()
 {
-	// Default widgets options: Engglish, 400 pix., Hide from the Main Page
+	// Default widgets options: English, 400 pix., Hide from the Main Page
 	$data = array("language" => "en", "mp_widgets" => "0", "widget_width" => "400", "delay" => "2", "copyright_notice" => "0");	// Set default data
 	
 	global $wpdb;
@@ -134,7 +134,11 @@ function GetFeedwebOptions()
 	{
 		$key = substr($row->meta_key, 8);
 		if ($key != false && $key != "")
+		{
 			$data[$key] = $row->meta_value;
+			if ($key == "language")
+				$data["language_set"] = true;
+		}
 	}
 	return $data;
 }

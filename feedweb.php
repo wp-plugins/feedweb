@@ -4,7 +4,7 @@ Plugin Name: Feedweb
 Plugin URI: http://wordpress.org/extend/plugins/feedweb/
 Description: Expose your blog to the Feedweb reader's community. Promote your views. Get a comprehensive and detailed feedback from your readers.
 Author: Feedweb
-Version: 1.2.11
+Version: 1.2.12
 Author URI: http://feedweb.net
 */
 
@@ -271,7 +271,7 @@ function FeedwebPluginOptions()
 							<span><b><?php _e("Widget Language:", "FWTD")?></b></span>
 						</td>
 						<td style='width: 10px;'/>
-						<td style='width: 100px;'>
+						<td style='width: 150px;'>
 							<?php BuildLanguageBox($feedweb_data['language'], $feedweb_data['language_set']) ?>
 						</td>
 						<td style='width: 10px;'/>

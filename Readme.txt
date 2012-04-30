@@ -3,7 +3,7 @@ Contributors: Feedweb
 Tags: blog, rate, rating, network, feedback, article, content, post, public, opinion, research, flash, widget, media, press, news, politics, society, social, question, answer, survey, poll, polling, vote, voting, stats, discussion, controversy, cooperation, view, comments, statistics, syndication, marketing
 Requires at least: 3.0
 Tested up to: 3.3.1
-Stable Tag: 1.2.11
+Stable Tag: 1.2.12
 
 Expose your blog to the Feedweb reader's community. Promote your views. Get a comprehensive and detailed feedback from your readers.
 
@@ -23,6 +23,7 @@ More information at [Feedweb Research website](http://feedweb.net).
 = Translators =
 * German (de_DE)     - Anna Davidov
 * Hebrew (he_IL)     - Dana Rovinsky
+* Italian (it_IT)    - Menashè Eliezer
 * Portuguese (pt_PT) - Tomé Mendes
 * Russian (ru_RU)    - Misha
 * Spanish (es_ES)    - Javier Sanz
@@ -48,6 +49,9 @@ More information at [Feedweb Research website](http://feedweb.net).
 
 
 == Changelog ==
+
+= 1.2.12 =
+* Italian language support.
 
 = 1.2.11 =
 * Spanish language support.

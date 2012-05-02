@@ -2,8 +2,8 @@
 Contributors: Feedweb
 Tags: blog, rate, rating, network, feedback, article, content, post, public, opinion, research, flash, widget, media, press, news, politics, society, social, question, answer, survey, poll, polling, vote, voting, stats, discussion, controversy, cooperation, view, comments, statistics, syndication, marketing
 Requires at least: 3.0
-Tested up to: 3.3.1
-Stable Tag: 1.2.12
+Tested up to: 3.3.2
+Stable Tag: 1.3
 
 Expose your blog to the Feedweb reader's community. Promote your views. Get a comprehensive and detailed feedback from your readers.
 
@@ -49,6 +49,9 @@ More information at [Feedweb Research website](http://feedweb.net).
 
 
 == Changelog ==
+
+= 1.3 =
+* Front Page Widget - First Release.
 
 = 1.2.12 =
 * Italian language support.

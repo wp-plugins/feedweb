@@ -3,7 +3,7 @@ Contributors: Feedweb
 Tags: blog, rate, rating, network, feedback, article, content, post, public, opinion, research, flash, widget, media, press, news, politics, society, social, question, answer, survey, poll, polling, vote, voting, stats, discussion, controversy, cooperation, view, comments, statistics, syndication, marketing
 Requires at least: 3.0
 Tested up to: 3.3.2
-Stable Tag: 1.3
+Stable Tag: 1.3.1
 
 Expose your blog to the Feedweb reader's community. Promote your views. Get a comprehensive and detailed feedback from your readers.
 
@@ -34,8 +34,9 @@ More information at [Feedweb Research website](http://feedweb.net).
 1. Upload the Feedweb plugin to your blog and activate it. 
 2. Choose your preffered language, widget width and other options in the Feedweb Settings page. 
 3. In the Posts table choose a post and click 'Insert' button. 
-4. Choose the questions you want to ask your readers and commit the widget. You can insert up to 50 widgets in a month.
+4. Choose the questions you want to ask your readers and commit the widget. You can insert up to 50 widgets in a month and 5 widgets a day.
 5. View your post and see the widget in the bottom of the post's content.
+6. A new feature for the advanced bloggers: The Front Page Widget. Use shortcode [FeedwebFrontWidget] to display the list of Most Voted / Best Rated posts in the front page of your blog.
 
 
 == Screenshots ==
@@ -46,9 +47,13 @@ More information at [Feedweb Research website](http://feedweb.net).
 4. Insert Widget Wizard: Step 2.
 5. The Rating Widget: Voting panels.
 6. The Rating Widget: Results panels.
+7. The Front Page Widget (beta version). Use shortcode [FeedwebFrontWidget] to display the widget in your blog.
 
 
 == Changelog ==
+
+= 1.3.1 =
+* Front Page Widget - Style improvements.
 
 = 1.3 =
 * Front Page Widget - First Release.

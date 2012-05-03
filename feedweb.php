@@ -4,7 +4,7 @@ Plugin Name: Feedweb
 Plugin URI: http://wordpress.org/extend/plugins/feedweb/
 Description: Expose your blog to the Feedweb reader's community. Promote your views. Get a comprehensive and detailed feedback from your readers.
 Author: Feedweb
-Version: 1.3
+Version: 1.3.1
 Author URI: http://feedweb.net
 */
 
@@ -385,7 +385,7 @@ function FrontWidgetCallback($atts)
 		
 	$lang = $data["language"];
 	$url = GetFeedwebUrl()."FPW/FrontWidget.aspx?bac=$bac&amp;lang=$lang";
-	return "<iframe id='FrontWidgetFrame' src='$url' style='width: 250px; height: 300px;'></iframe>";
+	return "<iframe id='FrontWidgetFrame' src='$url' style='width: 250px; height: 300px; border-style: none;'></iframe>";
 }
 
 add_action('init', 'InitPlugin');

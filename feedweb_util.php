@@ -125,7 +125,7 @@ function SetFeedwebOptions($data)
 function GetFeedwebOptions()
 {
 	// Default widgets options: English, 400 pix., Hide from the Main Page
-	$data = array("language" => "en", "mp_widgets" => "0", "widget_width" => "400", "delay" => "2", "copyright_notice" => "0");	// Set default data
+	$data = array("language" => "en", "mp_widgets" => "0", "widget_width" => "400", "delay" => "2", "copyright_notice" => "0", "fpw_color_scheme" => "classic");	// Set default data
 	
 	global $wpdb;
 	$query = "SELECT meta_key, meta_value FROM $wpdb->usermeta WHERE meta_key LIKE 'feedweb%%'";

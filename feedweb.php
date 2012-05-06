@@ -4,7 +4,7 @@ Plugin Name: Feedweb
 Plugin URI: http://wordpress.org/extend/plugins/feedweb/
 Description: Expose your blog to the Feedweb reader's community. Promote your views. Get a comprehensive and detailed feedback from your readers.
 Author: Feedweb
-Version: 1.3.1
+Version: 1.3.2
 Author URI: http://feedweb.net
 */
 
@@ -167,6 +167,20 @@ function BuildLanguageBox($language, $language_set)
 	echo "</select>";
 }
 
+function BuildColorSchemeBox($sceme)
+{
+	$values = array("classic" => __("Classic", "FWTD"), "monochrome" => __("Monochrome", "FWTD"));
+	
+	echo "<select id='ColorSchemeBox' name='ColorSchemeBox' style='width: 99%;' onchange='OnChangeColorSceme()'>";
+	foreach ($values as $key => $value)
+	{
+		echo "<option";
+		if ($key == $sceme)
+			echo " selected='selected'";
+		echo " value='".$key."'>".$value."</option>";
+	}
+	echo "</select>";
+}
 
 function BuildDelayBox($delay)
 {
@@ -211,6 +225,19 @@ function FeedwebPluginOptions()
 					var list = document.getElementsByName('DelayResultsBox')[0];
 					var input = document.getElementsByName('DelayResults')[0];
 					input.value = list.options[list.selectedIndex].value;
+				}
+				
+				function OnChangeColorSceme()
+				{
+					var input = document.getElementsByName('FrontWidgetColorScheme')[0];
+					var list = document.getElementsByName('ColorSchemeBox')[0];
+					input.value = list.options[list.selectedIndex].value;
+					
+					/*
+					var img = document.getElementsByName('FrontPageWidgetColorSchemePreview')[0];
+					var src = "<?php echo GetFeedwebUrl()?>Img/" + input.value + ".jpg";
+					img.setAttribute('src', src);
+					*/
 				}
 				
 				function OnCheckMPWidgets()
@@ -261,6 +288,7 @@ function FeedwebPluginOptions()
 			<input type='hidden' id='FeedwebLanguage' name='FeedwebLanguage' value='<?php echo $feedweb_data["language"];?>'/>
 			<input type='hidden' id='FeedwebMPWidgets' name='FeedwebMPWidgets' value='<?php echo $feedweb_data["mp_widgets"];?>'/>
 			<input type='hidden' id='FeedwebCopyrightNotice' name='FeedwebCopyrightNotice' value='<?php echo $feedweb_data["copyright_notice"];?>'/>
+			<input type='hidden' id='FrontWidgetColorScheme' name='FrontWidgetColorScheme' value='<?php echo $feedweb_data["fpw_color_scheme"];?>'/>
 			<table class="form-table">
 				<tbody>
 					<tr>
@@ -329,6 +357,30 @@ function FeedwebPluginOptions()
 						<td colspan="5"/>
 					</tr>
 					
+					
+					<tr style="vertical-align: top;">
+						<td>
+							<span><b><?php _e("Front Page Widget Color Sceme:", "FWTD")?></b></span> 				
+						</td>
+						<td />
+						<td>
+							<?php BuildColorSchemeBox($feedweb_data['fpw_color_scheme']) ?>				
+						</td>
+						<td />
+						<td>
+							<span><i><?php _e("Select color scheme for the Front Page widget", "FWTD")?></i></span>
+							<!--
+							<img name="FrontPageWidgetColorSchemePreview" src="<?php /*echo GetFeedwebUrl()."Img/".$feedweb_data['fpw_color_scheme'].".jpg" */?>"/>
+							-->
+						</td>
+					</tr>
+					<tr>
+						<td colspan="5"/>
+					</tr>
+
+					
+					
+					
 					<tr>
 						<td>
 							<span><b><?php _e("Feedweb Copyright Notice:", "FWTD")?></b></span> 				
@@ -385,7 +437,13 @@ function FrontWidgetCallback($atts)
 		
 	$lang = $data["language"];
 	$url = GetFeedwebUrl()."FPW/FrontWidget.aspx?bac=$bac&amp;lang=$lang";
-	return "<iframe id='FrontWidgetFrame' src='$url' style='width: 250px; height: 300px; border-style: none;'></iframe>";
+	switch ($data["fpw_color_scheme"])
+	{
+		case 'monochrome':
+			$url = $url."&background_color=ffffff&title_color=000000&content_color=404040&title_highlight=808080&selected_item_color=E0E0E0";
+			break;
+	}
+	return "<iframe id='FrontWidgetFrame' src='$url' style='width: 250px; height: 400px; border-style: none;'></iframe>";
 }
 
 add_action('init', 'InitPlugin');

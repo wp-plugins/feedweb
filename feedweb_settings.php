@@ -21,7 +21,9 @@ function UpdateSettings()
 	$data["mp_widgets"] = $_POST["FeedwebMPWidgets"];
 	$data["widget_width"] = $_POST["WidgetWidthEdit"];
 	$data["copyright_notice"] = $_POST["FeedwebCopyrightNotice"];
-	$data["fpw_color_scheme"] = $_POST["FrontWidgetColorScheme"];
+	$data["front_widget_height"] = $_POST["FrontWidgetHeightEdit"];
+	$data["front_widget_hide_scroll"] = $_POST["FrontWidgetHideScroll"];
+	$data["front_widget_color_scheme"] = $_POST["FrontWidgetColorScheme"];
 	
 	if (SetFeedwebOptions($data))
 		$error_message = "";

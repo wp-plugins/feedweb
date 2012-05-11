@@ -224,7 +224,7 @@ function FeedwebPluginOptions()
 											<span><b><?php _e("Widget Language:", "FWTD")?></b></span>
 										</td>
 										<td style='width: 10px;'/>
-										<td style='width: 150px;'>
+										<td style='width: 200px;'>
 											<?php BuildLanguageBox($feedweb_data['language'], $feedweb_data['language_set']) ?>
 										</td>
 										<td style='width: 10px;'/>
@@ -300,7 +300,7 @@ function FeedwebPluginOptions()
 											<span><b><?php _e("Front Page Widget Color Sceme:", "FWTD")?></b></span> 				
 										</td>
 										<td style='width: 10px;'/>
-										<td style="width: 150px;">
+										<td style="width: 200px;">
 											<?php BuildColorSchemeBox($feedweb_data['front_widget_color_scheme']) ?>				
 										</td>
 										<td style='width: 10px;'/>

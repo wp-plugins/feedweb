@@ -4,7 +4,7 @@ Plugin Name: Feedweb
 Plugin URI: http://wordpress.org/extend/plugins/feedweb/
 Description: Expose your blog to the Feedweb reader's community. Promote your views. Get a comprehensive and detailed feedback from your readers.
 Author: Feedweb
-Version: 1.3.4
+Version: 1.3.5
 Author URI: http://feedweb.net
 */
 
@@ -91,28 +91,30 @@ function FillFeedwebCell($id)
 		}
 		else 
 		{
-			$src = GetFeedwebUrl()."IMG/Insert.png";
-			$url = plugin_dir_url(__FILE__)."widget_dialog.php?wp_post_id=".$id."&KeepThis=true&TB_iframe=true&height=345&width=675";
-			echo "<input alt='".$url."' class='thickbox' title='".__("Insert Widget", "FWTD")."' type='image' src='$src'/>";
+			$src = GetFeedwebUrl()."IMG/Append.png";
+			$url = plugin_dir_url(__FILE__)."widget_dialog.php?wp_post_id=".$id."&mode=add&KeepThis=true&TB_iframe=true&height=345&width=675";
+			echo "<input alt='".$url."' class='thickbox' title='".__("Insert Rating Widget", "FWTD")."' type='image' src='$src'/>";
 		}
 	}
-	else			// Created - display 'Remove' button
+	else			// Created - display 'Edit' button
 	{
-		$src = GetFeedwebUrl()."IMG/Remove.png";
-		$data = GetPostVotes($pac);
+		$src = GetFeedwebUrl()."IMG/Edit.png";
+		$data = GetPageData($pac, false);
+		
 		$votes = $data['votes'];
 		$score = $data['score'];
 		if ($score != "")
 		{
-			$format = __("Remove Widget (%s Votes. Average Score: %s)", "FWTD");
+			$format = __("Edit / Remove Rating Widget\n(%s Votes. Average Score: %s)", "FWTD");
 			$title = sprintf($format, $votes, $score);
-			if ($data['url'] != "")
-				$src = GetFeedwebUrl().$data['url'];
+			if ($data['image'] != "")
+				$src = GetFeedwebUrl().$data['image'];
 		}
 		else
-			$title = __("Remove Widget (No votes yet)", "FWTD");
+			$title = __("Edit / Remove Rating Widget\n(No votes yet)", "FWTD");
 			
-		$url = plugin_dir_url(__FILE__)."widget_remove.php?wp_post_id=".$id."&KeepThis=true&TB_iframe=true&height=125&width=575";
+		//$url = plugin_dir_url(__FILE__)."widget_remove.php?wp_post_id=".$id."&KeepThis=true&TB_iframe=true&height=125&width=575";
+		$url = plugin_dir_url(__FILE__)."widget_dialog.php?wp_post_id=".$id."&mode=edit&KeepThis=true&TB_iframe=true&height=345&width=675";
 		echo "<input alt='$url' class='thickbox' title='$title' type='image' src='$src'/>";
 	}
 }

@@ -5,36 +5,145 @@ if ( !defined('ABSPATH') )
 require_once( ABSPATH.'wp-load.php');
 require_once( ABSPATH.'wp-admin/includes/template.php');
 
+
+$edit_page_data = null;
+
+function GetEditPageData()
+{
+	global $edit_page_data;
+	if ($edit_page_data == null)
+	{
+		$id = GetPostId();
+		$pac = GetPac($id);
+		$edit_page_data = GetPageData($pac, true);
+	}
+	return $edit_page_data;
+}
+
+function GetPostTitleControl()
+{
+	$id = GetPostId();
+	$post = get_post($id);
+	$title = ConvertHtml($post->post_title);
+	
+	if ($_GET["mode"] == "edit")
+	{
+		$data = GetEditPageData();
+		if ($data != null)
+		{
+			$db_title = $data["title"];
+			if ($db_title != null && $db_title != "" && $db_title != $title)
+			{
+				echo "<select style='width: 100%;' id='TitleBox' name='TitleBox' onchange='OnChangeTitle()'>".
+					"<option>$title</option><option>$db_title</option></select>".
+					"<input type='hidden' id='TitleText' name='TitleText' value='$title'/>";
+				return;
+			}
+		}
+	}
+	echo "<input type='text' id='TitleText' name='TitleText' value='$title' style='width:100%;' readonly='readonly'/>";
+}
+
+function GetPostSubTitleControl()
+{
+	$sub_title = "";
+	if ($_GET["mode"] == "edit")
+	{
+		$data = GetEditPageData();
+		if ($data != null)
+			$sub_title = $data["brief"];
+	}
+	echo "<input type='text' id='SubTitleText' name='SubTitleText' style='width:100%;' value='$sub_title'/>"; 
+}
+
+function GetAuthorControl()
+{
+	$id = GetPostId();
+	$post = get_post($id);
+	$data = get_userdata($post->post_author);
+	
+	$names = array();
+	if ($data->user_firstname != "" || $data->user_lastname != "")
+	{
+		$name = $data->user_firstname." ".$data->user_lastname;
+		$names[$name] = "0";
+
+		$name = $data->user_lastname." ".$data->user_firstname;
+		$names[$name] = "0";
+	}
+	$names[$data->display_name] = "0";
+	$names[$data->nickname] = "0";
+		
+	if ($_GET["mode"] == "edit")
+	{
+		$data = GetEditPageData();
+		if ($data != null)
+		{
+			$name = $data["author"];
+			$id = $data["author_id"];
+			if ($name != null && $name != "" && $id != null && $id != "")
+				$names[$name] = $id;
+		}
+	}
+	
+	$default_id = null;
+	$default_name = null;
+	echo "<select style='width:100%;' name='AuthorBox' onchange='OnChangeAuthor()'>";
+	foreach ($names as $key => $value)
+	{
+		if ($default_name == null)
+		{
+			$default_id = $value;
+			$default_name = $key;
+		}
+		echo "<option value='$value'>$key</option>";
+	}
+	echo "</select><input type='hidden' name='AuthorText' value='$default_name'/><input type='hidden' name='AuthorId' value='$default_id'/>";
+}
+
+function GetUrlControl()
+{
+	$id = GetPostId();
+	$url = ConvertHtml(get_permalink($id));
+	
+	if ($_GET["mode"] == "edit")
+	{
+		$data = GetEditPageData();
+		if ($data != null)
+		{
+			$db_url = $data["url"];
+			if ($db_url != null && $db_url != "" && $db_url != $url)
+			{
+				echo "<select style='width: 100%;' id='UrlBox' name='UrlBox' onchange='OnChangeUrl()'>".
+					"<option>$url</option><option>$db_url</option></select>".
+					"<input type='hidden' id='UrlText' name='UrlText' value='$url'/>";
+				return;
+			}
+		}
+	}
+	echo "<input type='text' id='UrlText' name='UrlText' value='$url' style='width:100%;' readonly='readonly'/>";
+}
+
 function GetPostId()
 {
 	return $_GET["wp_post_id"];
 }
 
-
-function GetPostTitle()
+function GetRemoveWidgetPrompt()
 {
 	$id = GetPostId();
 	$post = get_post($id);
-	echo ConvertHtml($post->post_title);
+	$format = __("The rating widget in the post '%s' will be removed", "FWTD");
+	printf($format, ConvertHtml($post->post_title));
 }
 
-function GetPostAuthor()
+function GetFormAction()
 {
-	$id = GetPostId();
-	$post = get_post($id);
-	$data = get_userdata($post->post_author);
-	if ($data->user_firstname != "" || $data->user_lastname != "")
-		echo ConvertHtml($data->user_firstname." ".$data->user_lastname);
-	else
-		echo ConvertHtml($data->display_name);
+	$action = "widget_commit.php?wp_post_id=".GetPostId();
+	if ($_GET["mode"] == "edit")
+		$action = $action."&feedweb_cmd=UPD";
+	echo $action;
 }
-
-function GetPostUrl()
-{
-	$id = GetPostId();
-	echo ConvertHtml(get_permalink($id));
-}
-
 
 function GetQuestionList($pac)
 {
@@ -51,26 +160,7 @@ function GetQuestionList($pac)
 	$dom = new DOMDocument;
 	if ($dom->loadXML($response['body']) == true)
 		if ($dom->documentElement->tagName == "BANNER")
-		{
-			$list = $dom->documentElement->getElementsByTagName("QUESTIONS");
-			if ($list->length > 0)
-			{
-				$questions = array();
-				$list = $list->item(0)->getElementsByTagName("Q");
-				for ($item = 0; $item < $list->length; $item++)
-				{
-					$question = $list->item($item);
-					
-					$id = $question->getAttribute("id");
-					$text = $question->getAttribute("text");
-					$index = $question->getAttribute("index");
-					
-					$value = array($text, $index);
-					$questions[$id] = $value; 
-				}
-				return $questions;
-			}
-		}
+			return ReadQuestionList($dom->documentElement);
 	return null;
 }
 
@@ -81,14 +171,26 @@ function BuildQuestionsCombo()
 		return;
 	
 	$combo = "<select id='OldQuestionsList' name='OldQuestionsList' style='width:100%;'> ";
-	$keys = array_keys($questions);
-	
-	foreach ($keys as $key)
-	{
-		$item = $questions[$key];
-		$combo = $combo."<option value='".$key."'>".$item[0]."</option>";
-	}
+	foreach ($questions as $key => $value)
+		$combo .= "<option value='$key'>$value</option>";
 	return $combo."</select>";
+}
+
+function BuildQuestionsListControl()
+{
+	echo "<select size='4' id='QuestionsList' name='QuestionsList' style='width:100%;height:100px;'>";
+	if ($_GET["mode"] == "edit")
+	{
+		$data = GetEditPageData();
+		if ($data != null)
+		{
+			$questions = $data["questions"];
+			if ($questions != null)
+				foreach ($questions as $key => $value)
+					echo "<option value='$value[0]'>$value[1]</option>";
+		}
+	}
+	echo "</select>";
 }
 
 function YesNoQuestionPrompt()
@@ -104,6 +206,31 @@ function YesNoQuestionPrompt()
 <html>
 	<head>
 		<script type="text/javascript">
+			function OnChangeTitle()
+			{
+				var input = document.getElementsByName("TitleText")[0];
+				var box = document.getElementsByName("TitleBox")[0];
+				input.value = box.options[box.selectedIndex].value; 
+			}
+			
+			function OnChangeUrl()
+			{
+				var input = document.getElementsByName("UrlText")[0];
+				var box = document.getElementsByName("UrlBox")[0];
+				input.value = box.options[box.selectedIndex].value; 
+				window.alert(input.value);
+			}
+			
+			function OnChangeAuthor()
+			{
+				var name_input = document.getElementsByName("AuthorText")[0];
+				var id_input = document.getElementsByName("AuthorId")[0];
+				var box = document.getElementsByName("AuthorBox")[0];
+				
+				id_input.value = box.options[box.selectedIndex].value; 
+				name_input.value = box.options[box.selectedIndex].label; 
+			}
+		
 			function AddQuestion(text, value)
 			{
 				var list = document.getElementsByName("QuestionsList")[0];
@@ -231,7 +358,27 @@ function YesNoQuestionPrompt()
 			{ 
 				window.parent.tb_remove(); 
 			} 
-		
+					
+			function OnDeleteMouseOver()
+			{
+				var button = document.getElementsByName("DeleteButton")[0];
+				button.style.backgroundColor = '#ff0000';
+				button.style.color = '#ffffff';
+			}
+			
+			function OnDeleteMouseOut() 
+			{
+				var button = document.getElementsByName("DeleteButton")[0];
+				button.style.backgroundColor = '#ffffff';
+				button.style.color = '#000000';
+			}
+			
+			function OnDelete()
+			{
+				if (window.confirm("<?php GetRemoveWidgetPrompt()?>") == true)
+					window.location.href = "widget_commit.php?feedweb_cmd=DEL&wp_post_id=" + <?php echo GetPostId()?>;
+			}
+			
 			function OnSubmitForm()
 			{
 				var input = document.getElementsByName("WidgetQuestionsData")[0];
@@ -249,7 +396,8 @@ function YesNoQuestionPrompt()
 						input.value += "|" + item; 
 				}
 				
-				document.forms[0].action ="widget_commit.php?wp_post_id=" + <?php echo GetPostId()?>;
+				var action = "<?php GetFormAction()?>";
+				document.forms[0].action = action;
 				document.forms[0].method = "post";
 				return true;
 			}
@@ -262,7 +410,6 @@ function YesNoQuestionPrompt()
 	</head>
 	<body style="margin: 0px;">
 		<div id="WidgetDialog" >
-			<!--  method="post" action="widget_commit.php"  -->
 		 	<form id="WidgetDialogForm" onsubmit="return OnSubmitForm();">
 				<input type="hidden" name="WidgetQuestionsData" id="WidgetQuestionsData"/>
 				<div id="FirstPhaseDiv" name="FirstPhaseDiv" style="visibility: visible;">
@@ -286,7 +433,7 @@ function YesNoQuestionPrompt()
 							<tr style="height: 36px;">
 								<td/>
 								<td colspan="4"> 
-									<input type='text' id='TitleText' name='TitleText' value='<?php GetPostTitle();?>' style='width:100%;'/> 
+									<?php GetPostTitleControl() ?>
 								</td>
 								<td/>
 							</tr>
@@ -304,7 +451,7 @@ function YesNoQuestionPrompt()
 							<tr style="height: 36px;">
 								<td/>
 								<td colspan="4"> 
-									<input type='text' id='SubTitleText' name='SubTitleText' style='width:100%;'/> 
+									<?php GetPostSubTitleControl() ?>
 								</td>
 								<td/>
 							</tr>
@@ -322,7 +469,7 @@ function YesNoQuestionPrompt()
 							<tr style="height: 36px;">
 								<td/>
 								<td colspan="4"> 
-									<input type='text' id='AuthorText' name='AuthorText' value='<?php GetPostAuthor();?>' style='width:100%;'/> 
+									<?php GetAuthorControl() ?>
 								</td>
 								<td/>
 							</tr>
@@ -340,21 +487,29 @@ function YesNoQuestionPrompt()
 							<tr style="height: 36px;">
 								<td/>
 								<td colspan="4"> 
-									<input type='text' id='UrlText' name='UrlText' value='<?php GetPostUrl();?>' style='width:100%;' readonly="readonly"/> 
+									<?php GetUrlControl() ?>
 								</td>
 								<td/>
 							</tr>
 													
-							<tr height='32px'>
+							<tr height='24px'>
 								<td colspan='6'/>
 							</tr>
 							<tr>
 								<td/>
-								<td colspan="3">
-									 <input type='button' value='<?php _e("Cancel")?>' style='width: 150px;' onclick='OnCancel()'/>
+								<td>
+									<?php 
+										if($_GET["mode"] == "edit") 
+											echo "<input type='button' value='".__("Remove Widget")."' style='width: 150px;' name='DeleteButton'".
+												"onmouseover='OnDeleteMouseOver()' onmouseout='OnDeleteMouseOut()' onclick='OnDelete()'/>";
+									?>								
+								</td>
+								<td/>
+								<td style='text-align: right;'>
+									<input type='button' value='<?php _e("Next >")?>' style='width: 150px;' onclick='OnNext()'/>
 								</td>
 								<td>
-									<input type='button' value='<?php _e("Next >")?>' style='width: 100%;' onclick='OnNext()'/>
+									 <input type='button' value='<?php _e("Cancel")?>' style='width: 140px;' onclick='OnCancel()'/>
 								</td>
 								<td/>
 							</tr>
@@ -421,7 +576,7 @@ function YesNoQuestionPrompt()
 							<tr>
 								<td rowspan='3'/>
 								<td rowspan='3' colspan='2'>
-									<select size='4' id='QuestionsList' name='QuestionsList' style='width:100%;height:100px;'> </select>
+									<?php BuildQuestionsListControl() ?>
 								</td>
 								<td valign='top'>
 									<input type='button' value='<?php _e("Move Up", "FWTD")?>' onclick='OnMoveUp()' style='width: 100%;'/>
@@ -450,7 +605,7 @@ function YesNoQuestionPrompt()
 									<input type='button' value='<?php _e("< Back")?>' style='width: 150px;' onclick='OnBack()'/> 
 								</td>
 								<td>
-									<?php echo get_submit_button(__("Finish", "FWTD"), "primary", "submit", false, "style='width: 120px;'") ?>								
+									<?php echo get_submit_button(__("Done", "FWTD"), "primary", "submit", false, "style='width: 120px;'") ?>								
 								</td>
 								<td/>
 							</tr>

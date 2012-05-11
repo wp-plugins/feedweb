@@ -219,9 +219,35 @@ function GetFeedwebUrl()
 	return "http://wpblogs.feedweb.net/";
 }
 
-function GetPostVotes($pac)
+function ReadQuestionList($root)
 {
-	$query = GetFeedwebUrl()."FBanner.aspx?action=gpd&pac=".$pac;
+	$list = $root->getElementsByTagName("QUESTIONS");
+	if ($list->length == 0)
+		return null;
+		
+	$questions = array();
+	$list = $list->item(0)->getElementsByTagName("Q");
+	for ($item = 0; $item < $list->length; $item++)
+	{
+		$question = $list->item($item);
+		$id = $question->getAttribute("id");
+		$text = $question->getAttribute("text");
+		$index = $question->getAttribute("index");
+		
+		if ($index != null && $index != "")
+			$questions[$index] = array($id, $text);
+		else
+			$questions[$id] = $text;
+	}
+	return $questions;
+}
+
+function GetPageData($pac, $info_mode)
+{
+	$query = GetFeedwebUrl()."FBanner.aspx?action=gpd&icon=edit&pac=".$pac;
+	if ($info_mode == true)
+		$query .= "&mode=info";
+		
     $bac = GetBac(true);
     if ($bac != null)
 		$query = $query."&bac=".$bac;
@@ -235,9 +261,21 @@ function GetPostVotes($pac)
 		if ($dom->documentElement->tagName == "BANNER")
 		{
 			$data['id'] = $dom->documentElement->getAttribute("id");
-			$data['url'] = $dom->documentElement->getAttribute("url");
-			$data['votes'] = $dom->documentElement->getAttribute("votes");
-			$data['score'] = $dom->documentElement->getAttribute("score");
+			if ($info_mode == true)
+			{
+				$data['url'] = $dom->documentElement->getAttribute("url");
+				$data['title'] = $dom->documentElement->getAttribute("title");
+				$data['brief'] = $dom->documentElement->getAttribute("brief");
+				$data['author'] = $dom->documentElement->getAttribute("author");
+				$data['author_id'] = $dom->documentElement->getAttribute("aid");
+				$data['questions'] = ReadQuestionList($dom->documentElement);
+			}
+			else	// Votes / Score / Image
+			{
+				$data['image'] = $dom->documentElement->getAttribute("image");
+				$data['votes'] = $dom->documentElement->getAttribute("votes");
+				$data['score'] = $dom->documentElement->getAttribute("score");
+			}
 			return $data;
 		}
 	return null;

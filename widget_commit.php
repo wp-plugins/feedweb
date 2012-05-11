@@ -13,10 +13,147 @@ $alert = "";
 $cmd = $_GET["feedweb_cmd"];
 $id = intval($_GET["wp_post_id"]);
 
-if ($cmd == "DEL")
-	RemoveWidget($id);
-else
-	InsertWidget($id);
+switch ($cmd)
+{
+	case "DEL":
+		RemoveWidget($id);
+		break;
+		
+	case "UPD":
+		UpdateWidget($id);
+		break;
+		
+	default:
+		InsertWidget($id);
+		break;
+}
+
+function FormatQuestionQuery()
+{
+	$questions = explode ( "|", $_POST["WidgetQuestionsData"]);
+	$count = count($questions);
+	$query = "&qn=".$count;
+
+	for ($index = 0; $index < $count; $index++)
+	{
+		$question = $questions[$index];
+		if ($question == "")
+			break;
+		
+		if (substr($question, 0, 1) == "@")
+		{
+			$question = substr($question, 1);
+			$question = PrepareParam($question);
+		}
+		else
+			$question = "{".$question."}";
+		$query .= "&q".$index."=".$question;
+	}
+	return $query;
+}
+
+function GetQueryParams($id)
+{
+	global $alert;
+
+	$params = "";
+	$url = PrepareParam($_POST["UrlText"]);
+	if ($url == "")
+	{
+		$alert = __("Error in the Post data", "FWTD");
+		return null;
+	}
+	$params = "&page=".$url;
+		
+	$title = PrepareParam($_POST["TitleText"]);
+	if ($title == "")
+	{
+		$alert = __("Error in the Post data", "FWTD");
+		return null;
+	}
+	$params .= "&title=".$title;
+	
+	$author = PrepareParam($_POST["AuthorText"]);
+	if ($author == "")
+	{
+		$alert = __("Error in the Post data", "FWTD");
+		return null;
+	}
+	$params .= "&author=".$author;
+	
+	$author_id = GetPostAuthorId($id);
+	$author_code = GetUserCode($author_id, false);
+	if ($author_code == null)
+	{
+		$alert = __("Error in the User data", "FWTD");
+		return null;
+	}
+	$params .= "&guid=".$author_code;
+	
+	$sub_title = PrepareParam($_POST["SubTitleText"]);
+	if ($sub_title != "")
+		$params .= "&brief=".$sub_title;
+		
+	return $params;
+}
+
+function UpdateWidget($id)
+{
+	global $alert;
+	
+	$pac = GetPac($id);
+	$bac = GetBac(true);
+	if ($pac == null || $bac == null)
+	{
+		$alert = __("Wordpress cannot modify your widget", "FWTD");
+		return;
+	}
+
+	$data = GetFeedwebOptions();
+	$lang = $data["language"];
+	
+	$plugin_name = dirname(__FILE__)."/feedweb.php";
+	$plugin_data = get_plugin_data($plugin_name);
+	$version = $plugin_data['Version'];
+		
+	try
+	{
+		$query = GetFeedwebUrl()."FBanner.aspx?action=mpw&client=WP:$version&lang=$lang&pac=$pac&bac=$bac";
+		
+		if ($_POST["WidgetQuestionsData"] != "")
+			$query .= FormatQuestionQuery();
+		
+		$params = GetQueryParams($id);
+		if ($params == null)
+			return;
+		$query .= $params;
+		
+		$response = wp_remote_get ($query, array('timeout' => 60));
+		if (is_wp_error ($response))
+		{
+			$alert = __("Cannot connect Feedweb server", "FWTD");
+			return;
+		}
+		
+		$dom = new DOMDocument;
+		if ($dom->loadXML($response['body']) == true)
+		{
+			$el = $dom->documentElement;
+			if ($el->tagName == "BANNER")
+			{
+				$alert = $el->getAttribute("error");
+				if ($alert == "")
+					$alert = __("The widget has been updated", "FWTD");
+				return;
+			}
+		}
+		$alert = __("Feedweb service cannot update the widget", "FWTD");
+	}
+	catch (Exception $e)
+	{
+		$alert = $e->getMessage();
+	}
+}
 
 function InsertWidget($id)
 {
@@ -65,7 +202,7 @@ function RemoveWidget($id)
 function CreatePageWidget($id)
 {
 	global $alert;
-	
+
 	$data = GetFeedwebOptions();
 	$lang = $data["language"];
 	
@@ -80,32 +217,18 @@ function CreatePageWidget($id)
 		if ($bac != null)
 		    $query = $query."&bac=".$bac;
 		
-		if ($_POST["WidgetQuestionsData"] != "")
-		{
-			$questions = explode ( "|", $_POST["WidgetQuestionsData"]);
-			$count = count($questions);
-		
-			for ($index = 0; $index < $count; $index++)
-			{
-				$question = $questions[$index];
-				if ($question == "")
-					break;
-				
-				if (substr($question, 0, 1) == "@")
-				{
-					$question = substr($question, 1);
-					$question = PrepareParam($question);
-				}
-				else
-					$question = "{".$question."}";
-				$query = $query."&q".$index."=".$question;
-			}
-			$query = $query."&qn=".$count;
-		}
-		
 		if ($data["delay"] != "0")
 			$query = $query."&delay=".$data["delay"];
 		
+		if ($_POST["WidgetQuestionsData"] != "")
+			$query .= FormatQuestionQuery();
+		
+		$params = GetQueryParams($id);
+		if ($params == null)
+			return null;
+		$query .= $params;
+		
+		/*
 		$url = PrepareParam($_POST["UrlText"]);
 		if ($url == "")
 		{
@@ -142,8 +265,10 @@ function CreatePageWidget($id)
 		$sub_title = PrepareParam($_POST["SubTitleText"]);
 		if ($sub_title != "")
 			$query = $query."&brief=".$sub_title;
+		*/
 		
-		$response = wp_remote_get ($query, array('timeout' => 60));
+		
+		$response = wp_remote_get ($query, array('timeout' => 300));
 		if (is_wp_error ($response))
 		{
 			$alert = __("Cannot connect Feedweb server", "FWTD");

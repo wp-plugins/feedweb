@@ -210,8 +210,8 @@ function FeedwebPluginOptions()
 				<tr class="FeedwebSettingsTabs">
 					<td>
 						<a href="#" name="FeedwebSettingsTab" onclick="OnClickFeedwebSettingsTab(0)" 
-							style="text-decoration: underline; background-color: #e0e0ff;"><?php __e("Rating Widget", "FWTD")?></a>
-						<a href="#" name="FeedwebSettingsTab"onclick="OnClickFeedwebSettingsTab(1)"><?php __e("Front Widget", "FWTD")?></a>
+							style="text-decoration: underline; background-color: #e0e0ff;"><?php _e("Rating Widget", "FWTD")?></a>
+						<a href="#" name="FeedwebSettingsTab"onclick="OnClickFeedwebSettingsTab(1)"><?php _e("Front Widget", "FWTD")?></a>
 					</td>
 				</tr>
 				<tr class="FeedwebSettingsContent">
@@ -345,7 +345,7 @@ function FeedwebPluginOptions()
 				<tr class="FeedwebSettingsCommitButton">
 					<td>
 						<?php echo get_submit_button(__('Save Changes'), 'primary', 'submit', false, "style='width: 200px;'") ?>
-						<a href="http://feedweb.net/site/the-new-front-page-widget/" name="FeedwebFrontWidgetHelpLink" style="padding-left: 190px; display:none;"
+						<a href="http://feedweb.net/site/the-new-front-page-widget/" name="FeedwebFrontWidgetHelpLink" style="padding-left: 300px; display:none;"
 							target="_blank"><?php _e("Learn how to use the Front Page Widget in your blog", "FWTD")?></a>
 					</td>
 				</tr>

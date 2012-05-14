@@ -4,9 +4,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Feedweb\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/feedweb\n"
-"POT-Creation-Date: 2012-04-10 14:36:07+00:00\n"
-"PO-Revision-Date: 2012-04-10 17:44+0200\n"
-"Last-Translator: Michael Rovinsky <misha@feedweb.net>\n"
+"POT-Creation-Date: 2012-05-14 11:25:30+00:00\n"
+"PO-Revision-Date: 2012-05-14 14:34+0200\n"
+"Last-Translator: Menashè Eliezer <menashe.eliezer@gmail.com>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -14,257 +14,356 @@ msgstr ""
 "X-Poedit-Language: Russian\n"
 "X-Poedit-Country: RUSSIAN FEDERATION\n"
 
-#: feedweb.php:71
-msgid "Feedweb Widget"
-msgstr "Feedweb Виджет"
+#: feedweb.php:96
+msgid "Insert Rating Widget"
+msgstr "Вставить Виджет для Голосования"
 
-#: feedweb.php:85
-msgid "Cannot insert widget into a post published %d days ago"
-msgstr "Невозможно установить виджет на пост, опубликованный %d дн. назад"
+#: feedweb.php:108
+msgid ""
+"Edit / Remove Rating Widget\n"
+"(%s Votes. Average Score: %s)"
+msgstr ""
+"Изменить / Удалить Виджет для Голосования\n"
+"(%s Голосов. Средняя Оценка: %s)"
 
-#: feedweb.php:93
-msgid "Insert Widget"
-msgstr "Вставить Виджет"
-
-#: feedweb.php:93
-msgid "Insert"
-msgstr "Вставить"
-
-#: feedweb.php:99
-#: widget_remove.php:69
-msgid "Remove Widget"
-msgstr "Удалить Виджет"
-
-#: feedweb.php:99
-#: widget_dialog.php:438
-msgid "Remove"
-msgstr "Удалить"
+#: feedweb.php:114
+msgid ""
+"Edit / Remove Rating Widget\n"
+"(No votes yet)"
+msgstr ""
+"Изменить / Удалить Виджет для Голосования\n"
+"(Никто ещё не проголосовал)"
 
 #: feedweb.php:145
+msgid "Settings"
+msgstr "Настроечки"
+
+#: feedweb_options.php:37
+msgid "Classic"
+msgstr "Классическая"
+
+#: feedweb_options.php:37
+msgid "Monochrome"
+msgstr "Чёрно-белая"
+
+#: feedweb_options.php:37
+msgid "Light Blue"
+msgstr "Светло-синяя"
+
+#: feedweb_options.php:52
 msgid "No Delay"
 msgstr "Без задержки"
 
-#: feedweb.php:145
+#: feedweb_options.php:52
 msgid "1 Hour"
 msgstr "1 час"
 
-#: feedweb.php:145
+#: feedweb_options.php:52
 msgid "2 Hours"
 msgstr "2 часа"
 
-#: feedweb.php:145
+#: feedweb_options.php:52
 msgid "5 Hours"
 msgstr "5 часов"
 
-#: feedweb.php:162
+#: feedweb_options.php:68
 msgid "You do not have sufficient permissions to access this page."
 msgstr "У вас нет доступа на эту страницу"
 
-#: feedweb.php:170
+#: feedweb_options.php:76
 msgid "Feedweb Plugin Settings"
 msgstr "Параметры плагина Feedweb"
 
-#: feedweb.php:214
+#: feedweb_options.php:143
 msgid "Please enter a valid width"
 msgstr "Пожалуйста введите приемлемую ширину"
 
-#: feedweb.php:220
+#: feedweb_options.php:149
 msgid "Width is out of range"
 msgstr "Введенная ширина за рамками допустимого"
 
-#: feedweb.php:243
+#: feedweb_options.php:158
+msgid "Please enter a valid Front Widget height"
+msgstr "Пожалуйста введите приемлемую высоту для Виджета Главной страницы"
+
+#: feedweb_options.php:164
+msgid "Front Widget height is out of range"
+msgstr "Введенная высота за рамками допустимого"
+
+#: feedweb_options.php:224
 msgid "Widget Language:"
 msgstr "Язык Виджета:"
 
-#: feedweb.php:256
+#: feedweb_options.php:237
 msgid "Widget width (pixels):"
 msgstr "Ширина виджета:"
 
-#: feedweb.php:265
+#: feedweb_options.php:246
 msgid "Allowed width: 350 to 700 pixels. Recommended width: 400 to 450 pixels."
 msgstr "Допустимая ширина: от 350 до 700 пикселей. Рекомендованная ширина: от 400 до 450 пикселей"
 
-#: feedweb.php:271
+#: feedweb_options.php:252
 msgid "Widgets at the Home/Front Page:"
 msgstr "Виджеты на главной странице:"
 
-#: feedweb.php:276
+#: feedweb_options.php:257
 msgid "Display Widgets"
 msgstr "Показывать"
 
-#: feedweb.php:280
+#: feedweb_options.php:261
 msgid "Check to display the widgets both in the Front Page and the single post pages."
 msgstr "Подтвердите, желаете ли вы видеть виджеты на главной странице. Если нет, виджеты будут видны только на страницах постов."
 
-#: feedweb.php:289
+#: feedweb_options.php:266
 msgid "Delay displaying results:"
 msgstr "Отложить публикацию результатов:"
 
-#: feedweb.php:297
+#: feedweb_options.php:274
 msgid "Set the period of time you want to hide voting results after the widget is created."
 msgstr "Установите время, после которого можно показывать  результаты опроса."
 
-#: feedweb.php:306
+#: feedweb_options.php:279
 msgid "Feedweb Copyright Notice:"
 msgstr "Сноска об авторских правах Feedweb:"
 
-#: feedweb.php:311
+#: feedweb_options.php:284
 msgid "Allow"
 msgstr "Разрешить"
 
-#: feedweb.php:315
+#: feedweb_options.php:288
 msgid "Please check to display the following text below the widgets: "
 msgstr "Подвердите Ваше согласие на показ под виджетом следующего текста:"
 
-#: feedweb.php:325
+#: feedweb_options.php:300
+msgid "Front Page Widget Color Sceme:"
+msgstr "Цветовая схема виджета:"
+
+#: feedweb_options.php:308
+msgid "Select color scheme for the Front Page widget"
+msgstr "Выберите цвета виджета главной страницы"
+
+#: feedweb_options.php:313
+msgid "Max. Widget height (pixels):"
+msgstr "Максимальная высота виджета:"
+
+#: feedweb_options.php:322
+msgid "Allowed height: 200 to 800 pixels. Recommended height: 400 pixels."
+msgstr "Допустимая высота: от 200 до 800 пикселей. Рекомендованная высота: 400 пикселей"
+
+#: feedweb_options.php:327
+msgid "Vertical Scroll Bar:"
+msgstr "Вертикальная полоса прокрутки:"
+
+#: feedweb_options.php:333
+msgid "Hide"
+msgstr "Скрыть"
+
+#: feedweb_options.php:337
+msgid "Check to hide vertical scroll bar when the front widget exceeds max. height."
+msgstr "Не показывать вертикальную полосу прокрутки виджета."
+
+#: feedweb_options.php:347
 msgid "Save Changes"
 msgstr "Сохранить Изменения"
 
-#: feedweb.php:337
-msgid "Settings"
-msgstr "Настроечки"
+#: feedweb_options.php:349
+msgid "Learn how to use the Front Page Widget in your blog"
+msgstr "Короткая инструкция по использованию виджета для Главной страницы"
 
 #: feedweb_settings.php:10
 #: widget_commit.php:10
 msgid "You are not allowed to be here"
 msgstr "Вы не имеете доступа на эту страницу"
 
-#: feedweb_settings.php:28
+#: feedweb_settings.php:31
 msgid "Failed to update settings"
 msgstr "Ошибка при попытке обновить настройки."
 
-#: widget_commit.php:29
-msgid "Wordpress cannot insert your widget"
-msgstr "Wordpress не может создать ваш Виджет"
+#: feedweb_util.php:362
+msgid "Cannot insert widget into a post published %d days ago"
+msgstr "Невозможно установить виджет на пост, опубликованный %d дн. назад"
 
-#: widget_commit.php:70
-#: widget_commit.php:78
-#: widget_commit.php:86
+#: feedweb_util.php:370
+msgid "You have created %d widgets in the last 24 hours. The daily limit is %d new widgets"
+msgstr "Вы установили %d виджетов за последие 24 часа. Суточный лимит: %d новых виджетов"
+
+#: feedweb_util.php:377
+msgid "You have created %d widgets in the last 30 days. The monthly limit is %d new widgets"
+msgstr "Вы установили %d виджетов за последие 30 дней. Месячный лимит: %d новых виджетов"
+
+#: widget_commit.php:63
+#: widget_commit.php:71
+#: widget_commit.php:79
 msgid "Error in the Post data"
 msgstr "Ошибка в данных Поста"
 
-#: widget_commit.php:95
-#, fuzzy
+#: widget_commit.php:88
 msgid "Error in the User data"
-msgstr "Ошибка в данных Поста"
+msgstr "Ошибка в данных пользователя"
 
-#: widget_commit.php:117
+#: widget_commit.php:108
+msgid "Wordpress cannot modify your widget"
+msgstr "Wordpress не может изменить ваш Виджет"
+
+#: widget_commit.php:134
+#: widget_commit.php:184
+#: widget_commit.php:274
 msgid "Cannot connect Feedweb server"
 msgstr "Сервер Feedweb недоступен"
 
-#: widget_commit.php:133
+#: widget_commit.php:146
+msgid "The widget has been updated"
+msgstr "Виджет был обновлён"
+
+#: widget_commit.php:150
+msgid "Feedweb service cannot update the widget"
+msgstr "Служба Feedweb не может обновить виджет"
+
+#: widget_commit.php:166
+msgid "Wordpress cannot insert your widget"
+msgstr "Wordpress не может создать ваш Виджет"
+
+#: widget_commit.php:198
+msgid "Wordpress cannot remove your widget"
+msgstr "Wordpress не может удалить ваш Виджет"
+
+#: widget_commit.php:290
 msgid "Unknown server error"
 msgstr "Неизветная ошибка на сервере"
 
-#: widget_commit.php:137
+#: widget_commit.php:294
 msgid "Feedweb service cannot create a widget"
 msgstr "Служба Feedweb не может создать виджет"
 
-#: widget_dialog.php:96
+#: widget_dialog.php:136
+msgid "The rating widget in the post '%s' will be removed"
+msgstr "Виджет для голосования будет удален из поста %s"
+
+#: widget_dialog.php:198
 msgid "http://en.wikipedia.org/wiki/Yes%E2%80%93no_question"
 msgstr "http://en.wikipedia.org/wiki/Yes%E2%80%93no_question"
 
-#: widget_dialog.php:97
+#: widget_dialog.php:199
 msgid "must be a %sYES / NO%s question"
 msgstr "вопрос должен быть %sбинарным%s (Да / Нет)"
 
-#: widget_dialog.php:114
+#: widget_dialog.php:241
 msgid "Question '{0}' is already selected"
 msgstr "Вопрос  '{0}' уже выбран"
 
-#: widget_dialog.php:148
+#: widget_dialog.php:275
 msgid "Please specify a question"
 msgstr "Пожалуйста введите текст вопроса"
 
-#: widget_dialog.php:203
+#: widget_dialog.php:330
 msgid "Please select a question to remove"
 msgstr "Пожалуйста выберите вопрос для удаления"
 
-#: widget_dialog.php:207
+#: widget_dialog.php:334
 msgid "The question will be removed. Proceed?"
 msgstr "Вопрос будет удалёню Продолжать?"
 
-#: widget_dialog.php:282
+#: widget_dialog.php:429
 msgid "Title:"
 msgstr "Заголовок:"
 
-#: widget_dialog.php:300
+#: widget_dialog.php:447
 msgid "Sub-Title:"
 msgstr "Подзаголовок:"
 
-#: widget_dialog.php:318
+#: widget_dialog.php:465
 msgid "Author:"
 msgstr "Автор:"
 
-#: widget_dialog.php:336
+#: widget_dialog.php:483
 msgid "URL:"
 msgstr "Адрес страницы:"
 
-#: widget_dialog.php:354
-#: widget_dialog.php:447
-msgid "Cancel"
-msgstr "Отменить"
+#: widget_dialog.php:503
+#: widget_remove.php:69
+msgid "Remove Widget"
+msgstr "Удалить Виджет"
 
-#: widget_dialog.php:357
+#: widget_dialog.php:509
 msgid "Next >"
 msgstr "Вперед >"
 
-#: widget_dialog.php:377
+#: widget_dialog.php:512
+#: widget_dialog.php:602
+msgid "Cancel"
+msgstr "Отменить"
+
+#: widget_dialog.php:532
 msgid "Existing Questions:"
 msgstr "Существующие вопросы:"
 
-#: widget_dialog.php:387
+#: widget_dialog.php:542
 msgid "Select"
 msgstr "Выбрать"
 
-#: widget_dialog.php:397
+#: widget_dialog.php:552
 msgid "New Question"
 msgstr "Новый вопрос"
 
-#: widget_dialog.php:407
+#: widget_dialog.php:562
 msgid "Add"
 msgstr "Добавить"
 
-#: widget_dialog.php:417
+#: widget_dialog.php:572
 msgid "Selected Questions:"
 msgstr "Выбранные вопросы:"
 
-#: widget_dialog.php:427
+#: widget_dialog.php:582
 msgid "Move Up"
 msgstr "Передвинуть вверх"
 
-#: widget_dialog.php:433
+#: widget_dialog.php:588
 msgid "Move Down"
 msgstr "Передвинуть вниз"
 
-#: widget_dialog.php:450
+#: widget_dialog.php:593
+msgid "Remove"
+msgstr "Удалить"
+
+#: widget_dialog.php:605
 msgid "< Back"
 msgstr "< Назад"
 
-#: widget_dialog.php:453
-msgid "Finish"
-msgstr "Завершить"
+#: widget_dialog.php:608
+msgid "Done"
+msgstr "Готово"
 
 #: widget_remove.php:17
 msgid "The rating widget in the post %s will be removed"
 msgstr "Виджет будет удален из поста %s"
 
-#. #-#-#-#-#  plugin.pot (Feedweb 1.2.1)  #-#-#-#-#
-#. Plugin Name of the plugin/theme
-#. #-#-#-#-#  plugin.pot (Feedweb 1.2.1)  #-#-#-#-#
-#. Author of the plugin/theme
-msgid "Feedweb"
-msgstr "Feedweb"
+msgid "Rating Widget"
+msgstr "Виджет для Голосования"
 
-#. Plugin URI of the plugin/theme
-msgid "http://wordpress.org/extend/plugins/feedweb/"
-msgstr "http://wordpress.org/extend/plugins/feedweb/"
+msgid "Front Widget"
+msgstr "Виджет Главной Страницы"
 
-#. Description of the plugin/theme
-msgid "Expose your blog to the Feedweb reader's community, promote your views, get a comprehensive and detailed feedback from your readers."
-msgstr "Expose your blog to the Feedweb reader's community, promote your views, get a comprehensive and detailed feedback from your readers."
+#~ msgid "Feedweb Widget"
+#~ msgstr "Feedweb Виджет"
 
-#. Author URI of the plugin/theme
-msgid "http://feedweb.net"
-msgstr "http://feedweb.net"
+#~ msgid "Insert"
+#~ msgstr "Вставить"
 
+#~ msgid "Finish"
+#~ msgstr "Завершить"
+
+#~ msgid "Feedweb"
+#~ msgstr "Feedweb"
+
+#~ msgid "http://wordpress.org/extend/plugins/feedweb/"
+#~ msgstr "http://wordpress.org/extend/plugins/feedweb/"
+
+#~ msgid ""
+#~ "Expose your blog to the Feedweb reader's community, promote your views, "
+#~ "get a comprehensive and detailed feedback from your readers."
+#~ msgstr ""
+#~ "Expose your blog to the Feedweb reader's community, promote your views, "
+#~ "get a comprehensive and detailed feedback from your readers."
+
+#~ msgid "http://feedweb.net"
+#~ msgstr "http://feedweb.net"

@@ -1,9 +1,9 @@
 === Feedweb ===
 Contributors: Feedweb
-Tags: blog, rate, rating, network, feedback, article, content, post, public, opinion, research, flash, widget, media, press, news, politics, society, social, question, answer, survey, poll, polling, vote, voting, stats, discussion, controversy, cooperation, view, comments, statistics, syndication, marketing
+Tags: blog, rate, rating, network, feedback, article, content, post, public, opinion, research, flash, widget, media, press, news, politics, society, social, question, answer, survey, poll, polling, vote, voting, stats, discussion, controversy, cooperation, view, comments, statistics, syndication, marketing, admin, sidebar
 Requires at least: 3.0
 Tested up to: 3.3.2
-Stable Tag: 1.3.6
+Stable Tag: 1.3.7
 
 Expose your blog to the Feedweb reader's community. Promote your views. Get a comprehensive and detailed feedback from your readers.
 
@@ -52,8 +52,11 @@ More information at [Feedweb Research website](http://feedweb.net).
 
 == Changelog ==
 
+= 1.3.7 =
+* Russian l10n update.
+
 = 1.3.6 =
-* New screenshots
+* New screenshots.
 
 = 1.3.5 =
 * Rating Widgets - Edit functionality.

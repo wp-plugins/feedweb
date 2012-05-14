@@ -500,13 +500,13 @@ function YesNoQuestionPrompt()
 								<td>
 									<?php 
 										if($_GET["mode"] == "edit") 
-											echo "<input type='button' value='".__("Remove Widget")."' style='width: 150px;' name='DeleteButton'".
+											echo "<input type='button' value='".__("Remove Widget", "FWTD")."' style='width: 150px;' name='DeleteButton'".
 												"onmouseover='OnDeleteMouseOver()' onmouseout='OnDeleteMouseOut()' onclick='OnDelete()'/>";
 									?>								
 								</td>
 								<td/>
 								<td style='text-align: right;'>
-									<input type='button' value='<?php _e("Next >")?>' style='width: 150px;' onclick='OnNext()'/>
+									<input type='button' value='<?php _e("Next >", "FWTD")?>' style='width: 150px;' onclick='OnNext()'/>
 								</td>
 								<td>
 									 <input type='button' value='<?php _e("Cancel")?>' style='width: 140px;' onclick='OnCancel()'/>
@@ -602,7 +602,7 @@ function YesNoQuestionPrompt()
 									<input type='button' value='<?php _e("Cancel")?>' style='width: 150px;' onclick='OnCancel()'/>
 								</td>
 								<td style="text-align: right;">
-									<input type='button' value='<?php _e("< Back")?>' style='width: 150px;' onclick='OnBack()'/> 
+									<input type='button' value='<?php _e("< Back", "FWTD")?>' style='width: 150px;' onclick='OnBack()'/> 
 								</td>
 								<td>
 									<?php echo get_submit_button(__("Done", "FWTD"), "primary", "submit", false, "style='width: 120px;'") ?>								

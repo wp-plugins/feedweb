@@ -210,8 +210,8 @@ function FeedwebPluginOptions()
 				<tr class="FeedwebSettingsTabs">
 					<td>
 						<a href="#" name="FeedwebSettingsTab" onclick="OnClickFeedwebSettingsTab(0)" 
-							style="text-decoration: underline; background-color: #e0e0ff;">Rating Widget</a>
-						<a href="#" name="FeedwebSettingsTab"onclick="OnClickFeedwebSettingsTab(1)">Front Widget</a>
+							style="text-decoration: underline; background-color: #e0e0ff;"><?php __e("Rating Widget", "FWTD")?></a>
+						<a href="#" name="FeedwebSettingsTab"onclick="OnClickFeedwebSettingsTab(1)"><?php __e("Front Widget", "FWTD")?></a>
 					</td>
 				</tr>
 				<tr class="FeedwebSettingsContent">

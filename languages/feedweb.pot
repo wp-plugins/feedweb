@@ -338,3 +338,6 @@ msgstr ""
 
 msgid "Front Widget"
 msgstr ""
+
+msgid "Dear %s, Please configure your plugin settings before inserting the widget"
+msgstr ""

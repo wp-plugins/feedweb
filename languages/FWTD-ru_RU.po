@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: Feedweb\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/feedweb\n"
 "POT-Creation-Date: 2012-05-14 11:25:30+00:00\n"
-"PO-Revision-Date: 2012-05-14 14:34+0200\n"
+"PO-Revision-Date: 2012-05-19 13:38+0200\n"
 "Last-Translator: Menashè Eliezer <menashe.eliezer@gmail.com>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -342,6 +342,9 @@ msgstr "Виджет для Голосования"
 
 msgid "Front Widget"
 msgstr "Виджет Главной Страницы"
+
+msgid "Dear %s, Please configure your plugin settings before inserting the widget"
+msgstr "Дорогой %s, Перед использованием виджетов для голосования, пожалуйста установите настройки плагина."
 
 #~ msgid "Feedweb Widget"
 #~ msgstr "Feedweb Виджет"

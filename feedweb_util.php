@@ -144,6 +144,13 @@ function GetFeedwebOptions()
 	return $data;
 }
 
+function GetFeedwebOptionsCount()
+{
+	global $wpdb;
+	$query = "SELECT COUNT(meta_value) FROM $wpdb->usermeta WHERE meta_key LIKE 'feedweb%%'";
+	return $wpdb->get_var($query);
+}
+
 
 function GetUserCode($id, $must_exist)
 {

@@ -8,6 +8,21 @@ require_once( ABSPATH.'wp-admin/includes/template.php');
 
 $edit_page_data = null;
 
+function GetSettingsLink()
+{
+	echo get_bloginfo('url')."/wp-admin/options-general.php?page=feedweb.php";
+}
+
+function GetSettingsPrompt()
+{
+	$count = GetFeedwebOptionsCount();
+	if ($count == 0)	// Plugin settings have not been set yet
+	{
+		$format = __("Dear %s, Please configure your plugin settings before inserting the widget", "FWTD");
+		printf($format, wp_get_current_user()->display_name);
+	}
+}
+
 function GetEditPageData()
 {
 	global $edit_page_data;
@@ -401,6 +416,19 @@ function YesNoQuestionPrompt()
 				document.forms[0].method = "post";
 				return true;
 			}
+			
+			function OnLoad()
+			{
+				var message = "<?php GetSettingsPrompt()?>";
+				if (message == "")
+					return;
+					
+				if (window.confirm(message) == true)
+				{
+					window.parent.tb_remove();
+					window.parent.location.href = "<?php GetSettingsLink()?>";
+				}
+			}
 		</script>
 
 		<link rel='stylesheet' href='<?php echo get_bloginfo('url') ?>/wp-admin/load-styles.php?c=0&amp;dir=ltr&amp;load=admin-bar,wp-admin' type='text/css' media='all' />
@@ -408,7 +436,7 @@ function YesNoQuestionPrompt()
 		<link rel='stylesheet' id='colors-css'  href='<?php echo get_bloginfo('url') ?>/wp-admin/css/colors-fresh.css' type='text/css' media='all' />
 		
 	</head>
-	<body style="margin: 0px;">
+	<body style="margin: 0px;" onload="OnLoad()">
 		<div id="WidgetDialog" >
 		 	<form id="WidgetDialogForm" onsubmit="return OnSubmitForm();">
 				<input type="hidden" name="WidgetQuestionsData" id="WidgetQuestionsData"/>

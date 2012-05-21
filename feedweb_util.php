@@ -271,6 +271,7 @@ function GetPageData($pac, $info_mode)
 			if ($info_mode == true)
 			{
 				$data['url'] = $dom->documentElement->getAttribute("url");
+				$data['lang'] = $dom->documentElement->getAttribute("lang");
 				$data['title'] = $dom->documentElement->getAttribute("title");
 				$data['brief'] = $dom->documentElement->getAttribute("brief");
 				$data['author'] = $dom->documentElement->getAttribute("author");
@@ -288,9 +289,12 @@ function GetPageData($pac, $info_mode)
 	return null;
 }
 
-function GetLanguageList()
+function GetLanguageList($all)
 {
 	$query = GetFeedwebUrl()."FBanner.aspx?action=gll";
+	if ($all == true)
+		$query .= "&all=true";
+		
 	$response = wp_remote_get ($query, array('timeout' => 30));
 	if (is_wp_error ($response))
 		return null;
@@ -303,11 +307,10 @@ function GetLanguageList()
 		    if ($root != null && $root->length > 0)
 			{
 				$list = $root->item(0);
-				$items = $list->getElementsByTagName("L");
-				if ($items != null)
+				if ($list->childNodes != null && $list->childNodes->length > 0)
 				{
 				    $languages = array();
-					foreach($items as $item)
+					foreach($list->childNodes as $item)
 				    {
 						$code = $item->getAttribute("code");
 						$text = $item->getAttribute("text");

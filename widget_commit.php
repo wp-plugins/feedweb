@@ -73,6 +73,14 @@ function GetQueryParams($id)
 	}
 	$params .= "&title=".$title;
 	
+	$lang = $_POST["LanguageText"];
+	if ($lang == "")
+	{
+		$alert = __("Error in the Post data", "FWTD");
+		return null;
+	}
+	$params .= "&lang=*".$lang;
+	
 	$author = PrepareParam($_POST["AuthorText"]);
 	if ($author == "")
 	{
@@ -109,16 +117,13 @@ function UpdateWidget($id)
 		return;
 	}
 
-	$data = GetFeedwebOptions();
-	$lang = $data["language"];
-	
 	$plugin_name = dirname(__FILE__)."/feedweb.php";
 	$plugin_data = get_plugin_data($plugin_name);
 	$version = $plugin_data['Version'];
 		
 	try
 	{
-		$query = GetFeedwebUrl()."FBanner.aspx?action=mpw&client=WP:$version&lang=$lang&pac=$pac&bac=$bac";
+		$query = GetFeedwebUrl()."FBanner.aspx?action=mpw&client=WP:$version&pac=$pac&bac=$bac";
 		
 		if ($_POST["WidgetQuestionsData"] != "")
 			$query .= FormatQuestionQuery();
@@ -203,16 +208,14 @@ function CreatePageWidget($id)
 {
 	global $alert;
 
-	$data = GetFeedwebOptions();
-	$lang = $data["language"];
-	
 	$plugin_name = dirname(__FILE__)."/feedweb.php";
 	$plugin_data = get_plugin_data($plugin_name);
 	$version = $plugin_data['Version'];
+	$data = GetFeedwebOptions();
 		
 	try
 	{
-		$query = GetFeedwebUrl()."FBanner.aspx?action=cpw&client=WP:$version&lang=$lang";
+		$query = GetFeedwebUrl()."FBanner.aspx?action=cpw&client=WP:$version";
 		$bac = GetBac(true);
 		if ($bac != null)
 		    $query = $query."&bac=".$bac;

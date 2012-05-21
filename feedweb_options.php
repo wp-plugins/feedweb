@@ -4,11 +4,11 @@ if ( !defined('ABSPATH') )
 	define('ABSPATH', dirname(dirname(dirname(dirname(__FILE__)))) . '/');
 require_once( ABSPATH.'wp-load.php');
 
-function BuildLanguageBox($language, $language_set)
+function BuildLanguageBox($language, $language_set, $style, $all)
 {
-	echo "<select id='WidgetLanguageBox' name='WidgetLanguageBox' style='width: 99%;' onchange='OnChangeLanguage()'>";
+	echo "<select id='WidgetLanguageBox' name='WidgetLanguageBox' style='$style' onchange='OnChangeLanguage()'>";
     
-	$languages = GetLanguageList();
+	$languages = GetLanguageList($all);
     if ($language_set != true) // Language was not set yet by the admin. Try to set by default locale
 	{
 		$locale = get_locale();
@@ -30,6 +30,7 @@ function BuildLanguageBox($language, $language_set)
 		}
 	
 	echo "</select>";
+	return $language;
 }
 
 function BuildColorSchemeBox($sceme)
@@ -225,7 +226,7 @@ function FeedwebPluginOptions()
 										</td>
 										<td style='width: 10px;'/>
 										<td style='width: 200px;'>
-											<?php BuildLanguageBox($feedweb_data['language'], $feedweb_data['language_set']) ?>
+											<?php BuildLanguageBox($feedweb_data['language'], $feedweb_data['language_set'], 'width: 99%;', false) ?>
 										</td>
 										<td style='width: 10px;'/>
 										<td style='width: 600px;'>

@@ -71,6 +71,30 @@ function GetPostSubTitleControl()
 	echo "<input type='text' id='SubTitleText' name='SubTitleText' style='width:100%;' value='$sub_title'/>"; 
 }
 
+function GetLanguageBox()
+{
+	$lang = null;
+	$set = false;
+	if ($_GET["mode"] == "edit")
+	{
+		$data = GetEditPageData();
+		if ($data != null)
+			$lang = $data["lang"];
+	}
+	
+	if ($lang == null || $lang == "")
+	{
+		$data = GetFeedwebOptions();
+		$lang = $data['language'];
+		$set = $data['language_set'];
+	}
+	else
+		$set = true;
+	
+	$lang = BuildLanguageBox($lang, $set, 'width: 310px; height: 30px;', true);
+	echo "<input type='hidden' id='LanguageText' name='LanguageText' value='$lang'/>";
+}
+
 function GetAuthorControl()
 {
 	$id = GetPostId();
@@ -246,6 +270,14 @@ function YesNoQuestionPrompt()
 				name_input.value = box.options[box.selectedIndex].label; 
 			}
 		
+			function OnChangeLanguage()
+			{
+				var box = document.getElementsByName("WidgetLanguageBox")[0];
+				var input = document.getElementsByName("LanguageText")[0];
+				
+				input.value = box.options[box.selectedIndex].value; 
+			}
+			
 			function AddQuestion(text, value)
 			{
 				var list = document.getElementsByName("QuestionsList")[0];
@@ -445,9 +477,9 @@ function YesNoQuestionPrompt()
 						<tbody>
 							<tr height='5px'>
 								<td style='width: 10px;'/>
-								<td style='width: 150px;'/>
+								<td style='width: 180px;'/>
 								<td style='width: 10px;'/>
-								<td style='width: 150px;'/>
+								<td style='width: 120px;'/>
 								<td style='width: 100px;'/>
 								<td style='width: 10px;'/>
 							</tr>
@@ -489,19 +521,25 @@ function YesNoQuestionPrompt()
 							</tr>
 							<tr>
 								<td/>
-								<td colspan="4">
+								<td colspan="2">
 									<span id='AuthorLabel'><b><?php _e("Author:", "FWTD")?></b></span>
 								</td>
-								<td/>
-							</tr>
-							<tr style="height: 36px;">
-								<td/>
-								<td colspan="4"> 
-									<?php GetAuthorControl() ?>
+								<td colspan="2">
+									<span id='LanguageLabel' style='padding-left: 20px;'><b><?php _e("Post Language:", "FWTD")?></b></span>
 								</td>
 								<td/>
 							</tr>
-							
+							<tr style="height: 38px;">
+								<td/>
+								<td colspan="2"> 
+									<?php GetAuthorControl() ?>
+								</td>
+								<td colspan="2" style="text-align: right;"> 
+									<?php GetLanguageBox() ?>
+								</td>
+								<td/>
+							</tr>
+
 							<tr height='5px'>
 								<td colspan="6"/>
 							</tr>

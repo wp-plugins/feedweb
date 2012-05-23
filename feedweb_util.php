@@ -102,6 +102,31 @@ function GetBac($must_exist)
 	return $code;
 }
 
+function SetSingleFeedwebOption($key, $value)
+{
+	global $wpdb;
+	
+	$query = "SELECT COUNT(*) FROM $wpdb->usermeta WHERE meta_key='feedweb_$key'";
+	$count = $wpdb->get_var($query);
+	if ($count > 0)
+		$query = "UPDATE $wpdb->usermeta SET meta_value='$value' WHERE meta_key='feedweb_$key'";
+	else
+	{
+		$id = wp_get_current_user()->ID;
+		$query = "INSERT INTO $wpdb->usermeta (user_id, meta_key, meta_value) VALUES ($id, 'feedweb_$key', '$value')";
+	}
+	$result = $wpdb->query($query);
+	return $result != false;
+}
+
+function GetSingleFeedwebOption($key)
+{
+	global $wpdb;
+	
+	$query = "SELECT meta_value FROM $wpdb->usermeta WHERE meta_key='feedweb_$key'";
+	return $wpdb->get_var($query);
+}
+
 function SetFeedwebOptions($data)
 {
 	global $wpdb;
@@ -330,11 +355,11 @@ function GetLanguageList($all)
 function UpdateBlogCapabilities()
 {
     if (current_user_can('manage_options') == false) // Must be admin
-		return;
+		return null;
 
     $bac = GetBac(false);
 	if ($bac == null)
-		return;
+		return null;
 	
 	// Request blog caps by Blog Access Code
     global $feedweb_blog_caps;
@@ -347,8 +372,12 @@ function UpdateBlogCapabilities()
 	if ($dom->loadXML($response['body']) == true)
 		if ($dom->documentElement->tagName == "BANNER")
 		{
-		    $feedweb_blog_caps = array();
+			$license = $dom->documentElement->getAttribute("license");
+			if ($license != null && $license != "")
+				SetSingleFeedwebOption("license", $license);
+			
 		    $caps = $dom->documentElement->getElementsByTagName("CAP");
+		    $feedweb_blog_caps = array();
 		    
 			foreach ($caps as $cap)
 			{
@@ -361,6 +390,7 @@ function UpdateBlogCapabilities()
 				$value["limit"] = $limit;
 				$feedweb_blog_caps[$name] = $value;
 			}
+			return $license;
 		}
 }
 
@@ -390,6 +420,19 @@ function GetInsertWidgetStatus($id)
     
 	return null;
 }
+
+function GetLicenseInfo()
+{
+	$license = GetSingleFeedwebOption("license");
+	if ($license == null || $license == "")
+		$license = "*";
+		
+	$plugin_name = dirname(__FILE__)."/feedweb.php";
+	$plugin_data = get_plugin_data($plugin_name);
+	$val = $license.";".$plugin_data['Version'];
+	return "<input name='FeedwebLicenseInfo' type='hidden' value='$val'/>";
+}
+
 
 function WriteDebugLog($text)
 {

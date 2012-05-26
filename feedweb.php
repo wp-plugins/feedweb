@@ -4,7 +4,7 @@ Plugin Name: Feedweb
 Plugin URI: http://wordpress.org/extend/plugins/feedweb/
 Description: Expose your blog to the Feedweb reader's community. Promote your views. Get a comprehensive and detailed feedback from your readers.
 Author: Feedweb
-Version: 1.3.12
+Version: 1.3.13
 Author URI: http://feedweb.net
 */
 
@@ -102,9 +102,23 @@ function FillFeedwebCell($id)
 	}
 	else			// Created - display 'Edit' button
 	{
-		$src = GetFeedwebUrl()."IMG/Edit.png";
 		$data = GetPageData($pac, false);
+		if ($data == null)
+			return;
 		
+		if ($data['error'] != null && $data['error'] != "")
+		{
+			$src = GetFeedwebUrl()."IMG/Remove.png";
+			if ($data['error'] == "Bad PAC")
+				$title = __("The widget has been removed by the Feedweb administrator.", "FWTD");
+			else
+				$title = __("Unknown error.", "FWTD");
+			$title .= __("\nPlease contact Feedweb (contact@feedweb.net)", "FWTD");
+			echo "<img title='$title' src='$src' style='padding-left: 4px;'/>";
+			return;
+		}
+		
+		$src = GetFeedwebUrl()."IMG/Edit.png";
 		$votes = $data['votes'];
 		$score = $data['score'];
 		if ($score != "")
@@ -117,7 +131,6 @@ function FillFeedwebCell($id)
 		else
 			$title = __("Edit / Remove Rating Widget\n(No votes yet)", "FWTD");
 			
-		//$url = plugin_dir_url(__FILE__)."widget_remove.php?wp_post_id=".$id."&KeepThis=true&TB_iframe=true&height=125&width=575";
 		$url = plugin_dir_url(__FILE__)."widget_dialog.php?wp_post_id=".$id."&mode=edit&KeepThis=true&TB_iframe=true&height=345&width=675";
 		echo "<input alt='$url' class='thickbox' title='$title' type='image' src='$src'/>";
 	}

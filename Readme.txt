@@ -52,6 +52,9 @@ More information at [Feedweb Research website](http://feedweb.net).
 
 == Changelog ==
 
+= 1.3.13 =
+* Remove widget notification.
+
 = 1.3.12 =
 * License management.
 

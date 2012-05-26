@@ -293,6 +293,7 @@ function GetPageData($pac, $info_mode)
 		if ($dom->documentElement->tagName == "BANNER")
 		{
 			$data['id'] = $dom->documentElement->getAttribute("id");
+			$data['error'] = $dom->documentElement->getAttribute("error");
 			if ($info_mode == true)
 			{
 				$data['url'] = $dom->documentElement->getAttribute("url");

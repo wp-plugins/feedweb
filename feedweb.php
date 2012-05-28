@@ -4,7 +4,7 @@ Plugin Name: Feedweb
 Plugin URI: http://wordpress.org/extend/plugins/feedweb/
 Description: Expose your blog to the Feedweb reader's community. Promote your views. Get a comprehensive and detailed feedback from your readers.
 Author: Feedweb
-Version: 1.3.13
+Version: 1.3.14
 Author URI: http://feedweb.net
 */
 
@@ -20,6 +20,9 @@ function ContentFilter($content)
 {
 	global $post_ID;
 	global $feedweb_rw_swf;
+	
+	if (CheckServiceAvailability() == false)
+		return $content;
 	
 	$data = GetFeedwebOptions();
 	if ($data["mp_widgets"] == "0")	// Doesn't display on the Home / Front Page
@@ -75,8 +78,8 @@ function AddFeedwebColumn($columns)
 	// Check if user is admin
 	if (current_user_can('manage_options'))
 	{
-		UpdateBlogCapabilities();
-		$columns['feedweb'] = "Feedweb";
+		if (UpdateBlogCapabilities() != null)
+			$columns['feedweb'] = "Feedweb";
 	}
 	return $columns;
 }
@@ -172,6 +175,9 @@ function FeedwebSettingsLink($links)
 
 function FrontWidgetCallback($atts)
 {
+	if (CheckServiceAvailability() == false)
+		return "";
+
 	$bac = GetBac(true);
 	if ($bac == null)
 		return "";
@@ -210,6 +216,28 @@ function FrontWidgetCallback($atts)
 		"border-style: none;' $scrolling></iframe></div>";
 }
 
+function showMessage($message, $errormsg = false)
+{
+	if ($errormsg) 
+		echo '<div id="message" class="error">';
+	else 
+		echo '<div id="message" class="updated fade">';
+	echo "<p><strong>$message</strong></p></div>";
+}    
+
+function showAdminMessages()
+{
+     // Only show to admins
+    if (current_user_can('manage_options'))
+	{
+		if (CheckServiceAvailability() == false)
+		{
+			$msg = __("The Feedweb service is temporarily unavailable due to system maintenance", "FWTD");
+			showMessage($msg, true);
+		}
+    }
+}
+
 add_action('init', 'InitPlugin');
 add_filter('the_content', 'ContentFilter');
 
@@ -222,4 +250,6 @@ add_filter("plugin_action_links_$feedweb_plugin", 'FeedwebSettingsLink' );
 
 add_shortcode( 'FeedwebFrontWidget', 'FrontWidgetCallback' );
 add_filter('widget_text', 'do_shortcode');
+
+add_action('admin_notices', 'showAdminMessages');
 ?>

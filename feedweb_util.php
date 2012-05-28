@@ -434,6 +434,20 @@ function GetLicenseInfo()
 	return "<input name='FeedwebLicenseInfo' type='hidden' value='$val'/>";
 }
 
+function CheckServiceAvailability()
+{
+	$query = GetFeedwebUrl()."FBanner.aspx?action=ping";
+	$response = wp_remote_get ($query, array('timeout' => 10));
+	if (is_wp_error ($response))
+		return false;
+	
+	$dom = new DOMDocument;
+	if ($dom->loadXML($response['body']) == true)
+		if ($dom->documentElement->tagName == "BANNER")
+			return true;
+	return false;
+}
+
 
 function WriteDebugLog($text)
 {

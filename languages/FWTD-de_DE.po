@@ -4,266 +4,396 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Feedweb 1.2.1\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/feedweb\n"
-"POT-Creation-Date: 2012-04-10 14:36:07+00:00\n"
+"POT-Creation-Date: 2012-05-28 19:03:39+00:00\n"
+"PO-Revision-Date: 2012-05-28 22:13+0200\n"
+"Last-Translator: Menashè Eliezer <menashe.eliezer@gmail.com>\n"
+"Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2012-04-12 16:31+0200\n"
-"Last-Translator: Anna Davidov <anna@feedweb.net>\n"
-"Language-Team: \n"
 "X-Poedit-Language: German\n"
 "X-Poedit-Country: GERMANY\n"
 
-#: feedweb.php:71
-msgid "Feedweb Widget"
-msgstr "Feedweb Widget"
+#: feedweb.php:103
+msgid "Insert Rating Widget"
+msgstr ""
 
-#: feedweb.php:85
-msgid "Cannot insert widget into a post published %d days ago"
-msgstr "Ich kann kein Widget in einen Beitrag eingeben der vor %d Tagen veröffentlicht wurde"
+#: feedweb.php:116
+msgid "The widget has been removed by the Feedweb administrator."
+msgstr ""
 
-#: feedweb.php:93
-msgid "Insert Widget"
-msgstr "Widget eingeben"
+#: feedweb.php:118
+msgid "Unknown error."
+msgstr ""
 
-#: feedweb.php:93
-msgid "Insert"
-msgstr "Eingeben"
+#: feedweb.php:119
+msgid ""
+"\n"
+"Please contact Feedweb (contact@feedweb.net)"
+msgstr ""
 
-#: feedweb.php:99
-#: widget_remove.php:69
-msgid "Remove Widget"
-msgstr "Widget entfernen"
+#: feedweb.php:129
+msgid ""
+"Edit / Remove Rating Widget\n"
+"(%s Votes. Average Score: %s)"
+msgstr ""
 
-#: feedweb.php:99
-#: widget_dialog.php:438
-msgid "Remove"
-msgstr "Entfernen"
+#: feedweb.php:135
+msgid ""
+"Edit / Remove Rating Widget\n"
+"(No votes yet)"
+msgstr ""
 
-#: feedweb.php:145
+#: feedweb.php:165
+msgid "Settings"
+msgstr "Einstellungen"
+
+#: feedweb.php:235
+msgid "The Feedweb service is temporarily unavailable due to system maintenance"
+msgstr ""
+
+#: feedweb_options.php:38
+msgid "Classic"
+msgstr ""
+
+#: feedweb_options.php:38
+msgid "Monochrome"
+msgstr ""
+
+#: feedweb_options.php:38
+msgid "Light Blue"
+msgstr ""
+
+#: feedweb_options.php:38
+msgid "Dark Blue"
+msgstr ""
+
+#: feedweb_options.php:53
 msgid "No Delay"
 msgstr "Keine Verzögerung"
 
-#: feedweb.php:145
+#: feedweb_options.php:53
 msgid "1 Hour"
 msgstr "1 Stunde"
 
-#: feedweb.php:145
+#: feedweb_options.php:53
 msgid "2 Hours"
 msgstr "2 Stunden"
 
-#: feedweb.php:145
+#: feedweb_options.php:53
 msgid "5 Hours"
 msgstr "5 Stunden"
 
-#: feedweb.php:162
+#: feedweb_options.php:69
 msgid "You do not have sufficient permissions to access this page."
 msgstr "Sie haben keine ausreichende Erlaubnis diese Seite aufzurufen"
 
-#: feedweb.php:170
+#: feedweb_options.php:77
 msgid "Feedweb Plugin Settings"
 msgstr "Feedweb Plugin Einstellungen"
 
-#: feedweb.php:214
+#: feedweb_options.php:144
 msgid "Please enter a valid width"
 msgstr "Bitte eine gültige Breite eingeben"
 
-#: feedweb.php:220
+#: feedweb_options.php:150
 msgid "Width is out of range"
 msgstr "Breite ist außerhalb des zulässigen Bereichs"
 
-#: feedweb.php:243
+#: feedweb_options.php:159
+msgid "Please enter a valid Front Widget height"
+msgstr ""
+
+#: feedweb_options.php:165
+msgid "Front Widget height is out of range"
+msgstr ""
+
+#: feedweb_options.php:214
+msgid "Rating Widget"
+msgstr ""
+
+#: feedweb_options.php:215
+msgid "Front Widget"
+msgstr ""
+
+#: feedweb_options.php:225
 msgid "Widget Language:"
 msgstr "Widget Sprache"
 
-#: feedweb.php:256
+#: feedweb_options.php:238
 msgid "Widget width (pixels):"
 msgstr "Widget Breite (Pixel)"
 
-#: feedweb.php:265
+#: feedweb_options.php:247
 msgid "Allowed width: 350 to 700 pixels. Recommended width: 400 to 450 pixels."
 msgstr "Zulässige Breite: 350 bis 700 Pixel. Empfohlene Breite: 400 bis 450 Pixel"
 
-#: feedweb.php:271
+#: feedweb_options.php:253
 msgid "Widgets at the Home/Front Page:"
 msgstr "Widgets auf der Homepage/Titelseite"
 
-#: feedweb.php:276
+#: feedweb_options.php:258
 msgid "Display Widgets"
 msgstr "Bildschirm Widgets"
 
-#: feedweb.php:280
+#: feedweb_options.php:262
 msgid "Check to display the widgets both in the Front Page and the single post pages."
 msgstr "Prüfen um die Widgets auf der Titelseite und auf Einzelbeitragsseiten darzustellen"
 
-#: feedweb.php:289
+#: feedweb_options.php:267
 msgid "Delay displaying results:"
 msgstr "Ergebnisanzeige verzögern"
 
-#: feedweb.php:297
+#: feedweb_options.php:275
 msgid "Set the period of time you want to hide voting results after the widget is created."
 msgstr "Legen Sie die Zeitspanne fest in der Sie Wahlergebnisse verbergen möchten nachdem das Widget erstellt wurde."
 
-#: feedweb.php:306
+#: feedweb_options.php:280
 msgid "Feedweb Copyright Notice:"
 msgstr "Feedweb Urheberrecht Anzeige"
 
-#: feedweb.php:311
+#: feedweb_options.php:285
 msgid "Allow"
 msgstr "Erlauben"
 
-#: feedweb.php:315
+#: feedweb_options.php:289
 msgid "Please check to display the following text below the widgets: "
 msgstr "Bitte prüfen um den folgenden Text unter dem Widget anzuzeigen"
 
-#: feedweb.php:325
+#: feedweb_options.php:301
+msgid "Front Page Widget Color Sceme:"
+msgstr ""
+
+#: feedweb_options.php:309
+msgid "Select color scheme for the Front Page widget"
+msgstr ""
+
+#: feedweb_options.php:314
+msgid "Max. Widget height (pixels):"
+msgstr ""
+
+#: feedweb_options.php:323
+msgid "Allowed height: 200 to 800 pixels. Recommended height: 400 pixels."
+msgstr ""
+
+#: feedweb_options.php:328
+msgid "Vertical Scroll Bar:"
+msgstr ""
+
+#: feedweb_options.php:334
+msgid "Hide"
+msgstr ""
+
+#: feedweb_options.php:338
+msgid "Check to hide vertical scroll bar when the front widget exceeds max. height."
+msgstr ""
+
+#: feedweb_options.php:348
 msgid "Save Changes"
 msgstr "Änderungen speichern"
 
-#: feedweb.php:337
-msgid "Settings"
-msgstr "Einstellungen"
+#: feedweb_options.php:350
+msgid "Learn how to use the Front Page Widget in your blog"
+msgstr ""
 
 #: feedweb_settings.php:10
 #: widget_commit.php:10
 msgid "You are not allowed to be here"
 msgstr "Sie haben keine Erlaubnis hier zu sein"
 
-#: feedweb_settings.php:28
+#: feedweb_settings.php:31
 msgid "Failed to update settings"
 msgstr "Einstellungsaktualisierung fehlgeschlagen"
 
-#: widget_commit.php:29
-msgid "Wordpress cannot insert your widget"
-msgstr "Wordpress kann Ihr Widget nicht einfügen"
+#: feedweb_util.php:403
+msgid "Cannot insert widget into a post published %d days ago"
+msgstr "Ich kann kein Widget in einen Beitrag eingeben der vor %d Tagen veröffentlicht wurde"
 
-#: widget_commit.php:70
-#: widget_commit.php:78
-#: widget_commit.php:86
+#: feedweb_util.php:411
+msgid "You have created %d widgets in the last 24 hours. The daily limit is %d new widgets"
+msgstr ""
+
+#: feedweb_util.php:418
+msgid "You have created %d widgets in the last 30 days. The monthly limit is %d new widgets"
+msgstr ""
+
+#: widget_commit.php:63
+#: widget_commit.php:71
+#: widget_commit.php:79
+#: widget_commit.php:87
 msgid "Error in the Post data"
 msgstr "Fehler in den veröffentlichten Daten"
 
-#: widget_commit.php:95
+#: widget_commit.php:96
 msgid "Error in the User data"
 msgstr "Fehler in den Benutzerdaten"
 
-#: widget_commit.php:117
+#: widget_commit.php:116
+msgid "Wordpress cannot modify your widget"
+msgstr ""
+
+#: widget_commit.php:139
+#: widget_commit.php:189
+#: widget_commit.php:277
 msgid "Cannot connect Feedweb server"
 msgstr "Kann keine Verbindung zum Feedweb Server herstellen"
 
-#: widget_commit.php:133
+#: widget_commit.php:151
+msgid "The widget has been updated"
+msgstr ""
+
+#: widget_commit.php:155
+msgid "Feedweb service cannot update the widget"
+msgstr ""
+
+#: widget_commit.php:171
+msgid "Wordpress cannot insert your widget"
+msgstr "Wordpress kann Ihr Widget nicht einfügen"
+
+#: widget_commit.php:203
+msgid "Wordpress cannot remove your widget"
+msgstr ""
+
+#: widget_commit.php:293
 msgid "Unknown server error"
 msgstr "Unbekannter Server Fehler"
 
-#: widget_commit.php:137
+#: widget_commit.php:297
 msgid "Feedweb service cannot create a widget"
 msgstr "Feedweb Service kann kein Widget erstellen"
 
-#: widget_dialog.php:96
+#: widget_dialog.php:21
+msgid "Dear %s, Please configure your plugin settings before inserting the widget"
+msgstr ""
+
+#: widget_dialog.php:175
+msgid "The rating widget in the post '%s' will be removed"
+msgstr ""
+
+#: widget_dialog.php:237
 msgid "http://en.wikipedia.org/wiki/Yes%E2%80%93no_question"
 msgstr "http://de.wikipedia.org/wiki/Entscheidungsfrage"
 
-#: widget_dialog.php:97
+#: widget_dialog.php:238
 msgid "must be a %sYES / NO%s question"
 msgstr "muss eine JA / NEIN Frage sein"
 
-#: widget_dialog.php:114
+#: widget_dialog.php:288
 msgid "Question '{0}' is already selected"
 msgstr "Frage '{0}' wurde bereits ausgewählt"
 
-#: widget_dialog.php:148
+#: widget_dialog.php:322
 msgid "Please specify a question"
 msgstr "Bitte bestimmen Sie eine Frage"
 
-#: widget_dialog.php:203
+#: widget_dialog.php:377
 msgid "Please select a question to remove"
 msgstr "Bitte wählen Sie eine Frage zum entfernen"
 
-#: widget_dialog.php:207
+#: widget_dialog.php:381
 msgid "The question will be removed. Proceed?"
 msgstr "Die Frage wird entfernt. Fortfahren?"
 
-#: widget_dialog.php:282
+#: widget_dialog.php:489
 msgid "Title:"
 msgstr "Titel:"
 
-#: widget_dialog.php:300
+#: widget_dialog.php:507
 msgid "Sub-Title:"
 msgstr "Untertitel:"
 
-#: widget_dialog.php:318
+#: widget_dialog.php:525
 msgid "Author:"
 msgstr "Autor:"
 
-#: widget_dialog.php:336
+#: widget_dialog.php:528
+msgid "Post Language:"
+msgstr ""
+
+#: widget_dialog.php:549
 msgid "URL:"
 msgstr "URL:"
 
-#: widget_dialog.php:354
-#: widget_dialog.php:447
-msgid "Cancel"
-msgstr "Abbrechen"
+#: widget_dialog.php:569
+#: widget_remove.php:69
+msgid "Remove Widget"
+msgstr "Widget entfernen"
 
-#: widget_dialog.php:357
+#: widget_dialog.php:575
 msgid "Next >"
 msgstr "Nächste >"
 
-#: widget_dialog.php:377
+#: widget_dialog.php:578
+#: widget_dialog.php:668
+msgid "Cancel"
+msgstr "Abbrechen"
+
+#: widget_dialog.php:598
 msgid "Existing Questions:"
 msgstr "Bestehende Fragen:"
 
-#: widget_dialog.php:387
+#: widget_dialog.php:608
 msgid "Select"
 msgstr "Auswählen"
 
-#: widget_dialog.php:397
+#: widget_dialog.php:618
 msgid "New Question"
 msgstr "Neue Frage"
 
-#: widget_dialog.php:407
+#: widget_dialog.php:628
 msgid "Add"
 msgstr "Hinzufügen"
 
-#: widget_dialog.php:417
+#: widget_dialog.php:638
 msgid "Selected Questions:"
 msgstr "Gewählte Fragen:"
 
-#: widget_dialog.php:427
+#: widget_dialog.php:648
 msgid "Move Up"
 msgstr "Nach oben"
 
-#: widget_dialog.php:433
+#: widget_dialog.php:654
 msgid "Move Down"
 msgstr "Nach unten"
 
-#: widget_dialog.php:450
+#: widget_dialog.php:659
+msgid "Remove"
+msgstr "Entfernen"
+
+#: widget_dialog.php:671
 msgid "< Back"
 msgstr "< Zurück"
 
-#: widget_dialog.php:453
-msgid "Finish"
-msgstr "Fertig"
+#: widget_dialog.php:674
+msgid "Done"
+msgstr ""
 
 #: widget_remove.php:17
 msgid "The rating widget in the post %s will be removed"
 msgstr "Das Bewertungs-Widget in Beitrag %s  wird entfernt"
 
-#. #-#-#-#-#  plugin.pot (Feedweb 1.2.1)  #-#-#-#-#
-#. Plugin Name of the plugin/theme
-#. #-#-#-#-#  plugin.pot (Feedweb 1.2.1)  #-#-#-#-#
-#. Author of the plugin/theme
-msgid "Feedweb"
-msgstr "Feedweb"
+#~ msgid "Feedweb Widget"
+#~ msgstr "Feedweb Widget"
 
-#. Plugin URI of the plugin/theme
-msgid "http://wordpress.org/extend/plugins/feedweb/"
-msgstr "http://wordpress.org/extend/plugins/feedweb/"
+#~ msgid "Insert"
+#~ msgstr "Eingeben"
 
-#. Description of the plugin/theme
-msgid "Expose your blog to the Feedweb reader's community, promote your views, get a comprehensive and detailed feedback from your readers."
-msgstr "Geben Sie Ihren Blog der Feedweb Leser Geimeinschaft preis, fördern Sie Ihre Meinungen, erhalten Sie umfassendes und ausführliches Feedback von Ihren Lesren."
+#~ msgid "Finish"
+#~ msgstr "Fertig"
 
-#. Author URI of the plugin/theme
-msgid "http://feedweb.net"
-msgstr "http://feedweb.net"
+#~ msgid "Feedweb"
+#~ msgstr "Feedweb"
 
+#~ msgid "http://wordpress.org/extend/plugins/feedweb/"
+#~ msgstr "http://wordpress.org/extend/plugins/feedweb/"
+
+#~ msgid ""
+#~ "Expose your blog to the Feedweb reader's community, promote your views, "
+#~ "get a comprehensive and detailed feedback from your readers."
+#~ msgstr ""
+#~ "Geben Sie Ihren Blog der Feedweb Leser Geimeinschaft preis, fördern Sie "
+#~ "Ihre Meinungen, erhalten Sie umfassendes und ausführliches Feedback von "
+#~ "Ihren Lesren."
+
+#~ msgid "http://feedweb.net"
+#~ msgstr "http://feedweb.net"

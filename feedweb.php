@@ -4,7 +4,7 @@ Plugin Name: Feedweb
 Plugin URI: http://wordpress.org/extend/plugins/feedweb/
 Description: Expose your blog to the Feedweb reader's community. Promote your views. Get a comprehensive and detailed feedback from your readers.
 Author: Feedweb
-Version: 1.3.15
+Version: 1.4
 Author URI: http://feedweb.net
 */
 
@@ -86,6 +86,9 @@ function AddFeedwebColumn($columns)
 
 function FillFeedwebCell($id)
 {
+	$width = 675;
+	$height = 360;
+	
 	// First, find out if a wiget has been created already
 	$pac = GetPac($id);
 	if ($pac == null) // Not created yet - display 'Insert' button
@@ -99,7 +102,7 @@ function FillFeedwebCell($id)
 		else 
 		{
 			$src = GetFeedwebUrl()."IMG/Append.png";
-			$url = plugin_dir_url(__FILE__)."widget_dialog.php?wp_post_id=".$id."&mode=add&KeepThis=true&TB_iframe=true&height=345&width=675";
+			$url = plugin_dir_url(__FILE__)."widget_dialog.php?wp_post_id=".$id."&mode=add&KeepThis=true&TB_iframe=true&height=$height&width=$width";
 			echo "<input alt='".$url."' class='thickbox' title='".__("Insert Rating Widget", "FWTD")."' type='image' src='$src'/>";
 		}
 	}
@@ -134,7 +137,7 @@ function FillFeedwebCell($id)
 		else
 			$title = __("Edit / Remove Rating Widget\n(No votes yet)", "FWTD");
 			
-		$url = plugin_dir_url(__FILE__)."widget_dialog.php?wp_post_id=".$id."&mode=edit&KeepThis=true&TB_iframe=true&height=345&width=675";
+		$url = plugin_dir_url(__FILE__)."widget_dialog.php?wp_post_id=".$id."&mode=edit&KeepThis=true&TB_iframe=true&height=$height&width=$width";
 		echo "<input alt='$url' class='thickbox' title='$title' type='image' src='$src'/>";
 	}
 }

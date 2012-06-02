@@ -102,6 +102,14 @@ function GetQueryParams($id)
 	if ($sub_title != "")
 		$params .= "&brief=".$sub_title;
 		
+	$categories = PrepareParam($_POST["CategoryText"]);
+	if ($categories != "")
+		$params .= "&cat=".$categories;
+	
+	$tags = PrepareParam($_POST["TagText"]);
+	if ($tags != "")
+		$params .= "&tag=".$tags;
+	
 	return $params;
 }
 
@@ -230,46 +238,6 @@ function CreatePageWidget($id)
 		if ($params == null)
 			return null;
 		$query .= $params;
-		
-		/*
-		$url = PrepareParam($_POST["UrlText"]);
-		if ($url == "")
-		{
-			$alert = __("Error in the Post data", "FWTD");
-			return null;
-		}
-		$query = $query."&page=".$url;
-			
-		$title = PrepareParam($_POST["TitleText"]);
-		if ($title == "")
-		{
-			$alert = __("Error in the Post data", "FWTD");
-			return null;
-		}
-		$query = $query."&title=".$title;
-		
-		$author = PrepareParam($_POST["AuthorText"]);
-		if ($author == "")
-		{
-			$alert = __("Error in the Post data", "FWTD");
-			return null;
-		}
-		$query = $query."&author=".$author;
-		
-		$author_id = GetPostAuthorId($id);
-		$author_code = GetUserCode($author_id, false);
-		if ($author_code == null)
-		{
-			$alert = __("Error in the User data", "FWTD");
-			return null;
-		}
-		$query = $query."&guid=".$author_code;
-		
-		$sub_title = PrepareParam($_POST["SubTitleText"]);
-		if ($sub_title != "")
-			$query = $query."&brief=".$sub_title;
-		*/
-		
 		
 		$response = wp_remote_get ($query, array('timeout' => 300));
 		if (is_wp_error ($response))

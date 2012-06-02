@@ -95,6 +95,39 @@ function GetLanguageBox()
 	echo "<input type='hidden' id='LanguageText' name='LanguageText' value='$lang'/>";
 }
 
+function GetCategoryControl()
+{
+	$text = "";
+	$id = GetPostId();
+	$categories = get_the_category($id);
+	
+	foreach($categories as $category)
+		if ($category->cat_name != __("Uncategorized"))
+		{
+			if ($text != "")
+				$text .= ", ";
+			$text .= $category->cat_name;
+		}
+	
+	echo "<input type='text' id='CategoryText' name='CategoryText' value='$text' style='width:100%;'/>";
+}
+
+function GetTagControl()
+{
+	$text = "";
+	$id = GetPostId();
+	$tags = wp_get_post_tags($id);
+ 
+	foreach($tags as $tag)
+	{
+		if ($text != "")
+			$text .= ", ";
+		$text .= $tag->name;
+	}
+	
+	echo "<input type='text' id='TagText' name='TagText' value='$text' style='margin-left: 8px; width:310px;'/>";
+}
+
 function GetAuthorControl()
 {
 	$id = GetPostId();
@@ -466,6 +499,7 @@ function YesNoQuestionPrompt()
 		<link rel='stylesheet' href='<?php echo get_bloginfo('url') ?>/wp-admin/load-styles.php?c=0&amp;dir=ltr&amp;load=admin-bar,wp-admin' type='text/css' media='all' />
 		<link rel='stylesheet' id='thickbox-css'  href='<?php echo get_bloginfo('url') ?>/wp-includes/js/thickbox/thickbox.css' type='text/css' media='all' />
 		<link rel='stylesheet' id='colors-css'  href='<?php echo get_bloginfo('url') ?>/wp-admin/css/colors-fresh.css' type='text/css' media='all' />
+		<link href='<?php echo plugin_dir_url(__FILE__)?>Feedweb.css' rel='stylesheet' type='text/css' />
 		
 	</head>
 	<body style="margin: 0px;" onload="OnLoad()">
@@ -475,7 +509,7 @@ function YesNoQuestionPrompt()
 				<div id="FirstPhaseDiv" name="FirstPhaseDiv" style="visibility: visible;">
 			 		<table id="FirstPhaseTable" name="FirstPhaseTable" class="wp-list-table widefat fixed posts" cellspacing="0">
 						<tbody>
-							<tr height='5px'>
+							<tr style='height: 1px;'>
 								<td style='width: 10px;'/>
 								<td style='width: 180px;'/>
 								<td style='width: 10px;'/>
@@ -498,9 +532,6 @@ function YesNoQuestionPrompt()
 								<td/>
 							</tr>
 							
-							<tr height='5px'>
-								<td colspan="6"/>
-							</tr>
 							<tr>
 								<td/>
 								<td colspan="4">
@@ -516,9 +547,6 @@ function YesNoQuestionPrompt()
 								<td/>
 							</tr>
 							
-							<tr height='5px'>
-								<td colspan="6"/>
-							</tr>
 							<tr>
 								<td/>
 								<td colspan="2">
@@ -539,10 +567,28 @@ function YesNoQuestionPrompt()
 								</td>
 								<td/>
 							</tr>
-
-							<tr height='5px'>
-								<td colspan="6"/>
+							
+							<tr>
+								<td/>
+								<td colspan="2">
+									<span id='CategoryLabel'><b><?php _e("Categories")?></b></span>
+								</td>
+								<td colspan="2">
+									<span id='TagLabel' style='padding-left: 20px;'><b><?php _e("Tags")?></b></span>
+								</td>
+								<td/>
 							</tr>
+							<tr style="height: 38px;">
+								<td/>
+								<td colspan="2"> 
+									<?php GetCategoryControl() ?>
+								</td>
+								<td colspan="2" style="text-align: right;"> 
+									<?php GetTagControl() ?>
+								</td>
+								<td/>
+							</tr>
+							
 							<tr>
 								<td/>
 								<td colspan="4">
@@ -557,10 +603,10 @@ function YesNoQuestionPrompt()
 								</td>
 								<td/>
 							</tr>
-													
-							<tr height='24px'>
-								<td colspan='6'/>
-							</tr>
+							
+							<tr>
+								<td colspan="6"/>
+							</tr>							
 							<tr>
 								<td/>
 								<td>
@@ -641,7 +687,7 @@ function YesNoQuestionPrompt()
 							</tr>
 							<tr>
 								<td rowspan='3'/>
-								<td rowspan='3' colspan='2'>
+								<td rowspan='3' colspan='2' style='height: 116px;'>
 									<?php BuildQuestionsListControl() ?>
 								</td>
 								<td valign='top'>
@@ -659,7 +705,7 @@ function YesNoQuestionPrompt()
 									<input type='button' value='<?php _e("Remove")?>' onclick='OnRemove()' style='width: 100%;'/>
 								</td>
 							</tr>
-							<tr height='20px'>
+							<tr height='34px'>
 								<td colspan='5'/>
 							</tr>
 							<tr>

@@ -422,7 +422,7 @@ function GetInsertWidgetStatus($id)
 	return null;
 }
 
-function GetLicenseInfo()
+function GetLicenseInfo($remark)
 {
 	$license = GetSingleFeedwebOption("license");
 	if ($license == null || $license == "")
@@ -431,6 +431,8 @@ function GetLicenseInfo()
 	$plugin_name = dirname(__FILE__)."/feedweb.php";
 	$plugin_data = get_plugin_data($plugin_name);
 	$val = $license.";".$plugin_data['Version'];
+	if ($remark != null)
+		$val .= ";".$remark;
 	return "<input name='FeedwebLicenseInfo' type='hidden' value='$val'/>";
 }
 

@@ -324,6 +324,16 @@ function YesNoQuestionPrompt()
 						return;
 					}
 				}
+				
+				var limit = 3; // Obtain from capabilities
+				if (list.options.length >= limit)
+				{
+					var message = "<?php _e("A widget cannot contain more than {0} questions", "FWTD")?>";
+					var warning = message.replace("{0}", limit.toString());
+					window.alert(warning);
+					return;
+				}
+				
 				var option = document.createElement("Option");
 				option.text = text;
 				option.value = value;

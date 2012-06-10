@@ -4,7 +4,7 @@ Plugin Name: Feedweb
 Plugin URI: http://wordpress.org/extend/plugins/feedweb/
 Description: Expose your blog to the Feedweb reader's community. Promote your views. Get a comprehensive and detailed feedback from your readers.
 Author: Feedweb
-Version: 1.4.3
+Version: 1.4.4
 Author URI: http://feedweb.net
 */
 
@@ -132,7 +132,7 @@ function FillFeedwebCell($id)
 			$format = __("Edit / Remove Rating Widget\n(%s Votes. Average Score: %s)", "FWTD");
 			$title = sprintf($format, $votes, $score);
 			if ($data['image'] != "")
-				$src = GetFeedwebUrl().$data['image'];
+				$src = GetFileUrl($data['image']);
 		}
 		else
 			$title = __("Edit / Remove Rating Widget\n(No votes yet)", "FWTD");

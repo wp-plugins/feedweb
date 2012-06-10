@@ -247,8 +247,16 @@ function GetFeedwebUrl()
 	$url = get_bloginfo('url');
 	$host = parse_url($url, PHP_URL_HOST);
 	if ($host == "localhost")
-		return "http://localhost/FeedwebServer/";
+		return "http://127.0.0.1:81/"; //"http://localhost/FeedwebServer/";
 	return "http://wpblogs.feedweb.net/";
+}
+
+function GetFileUrl($file)
+{
+	// Return if already absolute URL
+    if(parse_url($file, PHP_URL_SCHEME) != '') 
+		return $file;		
+	return GetFeedwebUrl().$file;
 }
 
 function ReadQuestionList($root)
@@ -449,7 +457,6 @@ function CheckServiceAvailability()
 			return true;
 	return false;
 }
-
 
 function WriteDebugLog($text)
 {

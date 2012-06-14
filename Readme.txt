@@ -53,7 +53,7 @@ More information at [Feedweb Research website](http://feedweb.net).
 == Changelog ==
 
 = 1.4.4 =
-* URL calculation bug fix.
+* URL calculation bug fix
 
 = 1.4.3 =
 * Questions count limit.

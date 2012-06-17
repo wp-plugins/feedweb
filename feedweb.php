@@ -4,7 +4,7 @@ Plugin Name: Feedweb
 Plugin URI: http://wordpress.org/extend/plugins/feedweb/
 Description: Expose your blog to the Feedweb reader's community. Promote your views. Get a comprehensive and detailed feedback from your readers.
 Author: Feedweb
-Version: 1.4.4
+Version: 1.4.5
 Author URI: http://feedweb.net
 */
 
@@ -21,7 +21,7 @@ function ContentFilter($content)
 	global $post_ID;
 	global $feedweb_rw_swf;
 	
-	if (CheckServiceAvailability() == false)
+	if (CheckServiceAvailability() != null)
 		return $content . GetLicenseInfo('Service is not available');
 	
 	$data = GetFeedwebOptions();
@@ -178,7 +178,7 @@ function FeedwebSettingsLink($links)
 
 function FrontWidgetCallback($atts)
 {
-	if (CheckServiceAvailability() == false)
+	if (CheckServiceAvailability() != null)
 		return "";
 
 	$bac = GetBac(true);
@@ -233,9 +233,12 @@ function showAdminMessages()
      // Only show to admins
     if (current_user_can('manage_options'))
 	{
-		if (CheckServiceAvailability() == false)
+		$error = CheckServiceAvailability();
+		if ($error != null)
 		{
 			$msg = __("The Feedweb service is temporarily unavailable due to system maintenance", "FWTD");
+			if ($error != "")
+				$msg .= " (Error: $error)";
 			showMessage($msg, true);
 		}
     }

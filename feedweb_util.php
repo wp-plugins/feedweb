@@ -447,15 +447,16 @@ function GetLicenseInfo($remark)
 function CheckServiceAvailability()
 {
 	$query = GetFeedwebUrl()."FBanner.aspx?action=ping";
-	$response = wp_remote_get ($query, array('timeout' => 20));
+	$response = wp_remote_get ($query, array('timeout' => 10));
 	if (is_wp_error ($response))
-		return false;
+		return $response->get_error_message();
 	
 	$dom = new DOMDocument;
 	if ($dom->loadXML($response['body']) == true)
 		if ($dom->documentElement->tagName == "BANNER")
-			return true;
-	return false;
+			return null;
+			
+	return "";
 }
 
 function WriteDebugLog($text)

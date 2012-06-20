@@ -447,7 +447,7 @@ function GetLicenseInfo($remark)
 function CheckServiceAvailability()
 {
 	$query = GetFeedwebUrl()."FBanner.aspx?action=ping";
-	$response = wp_remote_get ($query, array('timeout' => 15));
+	$response = wp_remote_get ($query, array('timeout' => 20));
 	if (is_wp_error ($response))
 		return $response->get_error_message();
 	

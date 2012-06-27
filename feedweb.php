@@ -4,7 +4,7 @@ Plugin Name: Feedweb
 Plugin URI: http://wordpress.org/extend/plugins/feedweb/
 Description: Expose your blog to the Feedweb reader's community. Promote your views. Get a comprehensive and detailed feedback from your readers.
 Author: Feedweb
-Version: 1.4.6
+Version: 1.4.7
 Author URI: http://feedweb.net
 */
 
@@ -205,6 +205,9 @@ function FrontWidgetCallback($atts)
 			break;
 		case 'dark_blue':
 			$url = $url."&background_color=000040&title_color=ffffff&content_color=c0c0ff&title_highlight=c0ffff&selected_item_color=000060&border_color=000000";
+			break;
+		case 'dark_green':
+			$url = $url."&background_color=004000&title_color=ffffff&content_color=c0ffc0&title_highlight=c0ffff&selected_item_color=006000&border_color=000000";
 			break;
 	}
 	

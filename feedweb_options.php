@@ -35,7 +35,8 @@ function BuildLanguageBox($language, $language_set, $style, $all)
 
 function BuildColorSchemeBox($sceme)
 {
-	$values = array("classic" => __("Classic", "FWTD"), "monochrome" => __("Monochrome", "FWTD"), "light_blue" => __("Light Blue", "FWTD"), "dark_blue" => __("Dark Blue", "FWTD"));
+	$values = array("classic" => __("Classic", "FWTD"), "monochrome" => __("Monochrome", "FWTD"), "light_blue" => __("Light Blue", "FWTD"), 
+		"dark_blue" => __("Dark Blue", "FWTD"), "dark_green" => __("Dark Green", "FWTD"));
 	
 	echo "<select id='ColorSchemeBox' name='ColorSchemeBox' style='width: 99%;' onchange='OnChangeColorSceme()'>";
 	foreach ($values as $key => $value)

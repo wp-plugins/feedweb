@@ -305,6 +305,7 @@ function GetPageData($pac, $info_mode)
 			if ($info_mode == true)
 			{
 				$data['url'] = $dom->documentElement->getAttribute("url");
+				$data['img'] = $dom->documentElement->getAttribute("img");
 				$data['lang'] = $dom->documentElement->getAttribute("lang");
 				$data['title'] = $dom->documentElement->getAttribute("title");
 				$data['brief'] = $dom->documentElement->getAttribute("brief");

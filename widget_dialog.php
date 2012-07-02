@@ -71,6 +71,18 @@ function GetPostSubTitleControl()
 	echo "<input type='text' id='SubTitleText' name='SubTitleText' style='width:100%;' value='$sub_title'/>"; 
 }
 
+function GetPostImageUrlControl()
+{
+	$img = "";
+	if ($_GET["mode"] == "edit")
+	{
+		$data = GetEditPageData();
+		if ($data != null)
+			$img = $data["img"];
+	}
+	echo "<input type='text' readonly='readonly' style='width: 450px;' id='WidgetImageUrl' name='WidgetImageUrl' value='$img'/>";
+}
+
 function GetLanguageBox()
 {
 	$lang = null;
@@ -428,26 +440,96 @@ function YesNoQuestionPrompt()
 
 			function OnBack()
 			{
-				var div = document.getElementsByName("FirstPhaseDiv")[0];
-				div.style.visibility = "visible";
-
-				div = document.getElementsByName("SecondPhaseDiv")[0];
-				div.style.visibility = "hidden";
+				var question_div = document.getElementsByName("WidgetQuestionDiv")[0];
+				var picture_div = document.getElementsByName("WidgetPictureDiv")[0];
+				var data_div = document.getElementsByName("WidgetDataDiv")[0];
+				
+				if (question_div.style.visibility == "visible")
+				{
+					question_div.style.visibility = "hidden";
+					picture_div.style.visibility = "visible";
+				}
+				else
+				{
+					picture_div.style.visibility = "hidden";
+					data_div.style.visibility = "visible";
+				}
 			}
 			
 			function OnNext()
 			{
-				var div = document.getElementsByName("FirstPhaseDiv")[0];
-				div.style.visibility = "hidden";
+				var question_div = document.getElementsByName("WidgetQuestionDiv")[0];
+				var picture_div = document.getElementsByName("WidgetPictureDiv")[0];
+				var data_div = document.getElementsByName("WidgetDataDiv")[0];
 
-				div = document.getElementsByName("SecondPhaseDiv")[0];
-				div.style.visibility = "visible";
+				if (data_div.style.visibility == "visible")
+				{
+					picture_div.style.visibility = "visible";
+					data_div.style.visibility = "hidden";
+					
+					var url = document.getElementById("WidgetImageUrl").value;
+					if (url != null && url != "")
+						SetImage(url);
+				}
+				else
+				{
+					question_div.style.visibility = "visible";
+					picture_div.style.visibility = "hidden";
+				}
 			}
 		
 			function OnCancel() 
 			{ 
 				window.parent.tb_remove(); 
-			} 
+			}
+			
+			function SetImage(url)
+			{
+				var image = document.getElementById("WidgetImage");
+				try 
+				{
+					image.src = url;
+				} 
+				catch(err)
+				{
+				}
+				
+				if (image.height > 0)
+				{
+					if (image.height > 225 || image.width > 550)
+					{
+						var x_ratio = Math.floor(100.0 / image.width * 550);
+						var y_ratio = Math.floor(100.0 / image.height * 225);
+						var ratio = Math.min(x_ratio, y_ratio).toString() + "%";
+						if (x_ratio > y_ratio)
+						{
+							image.style.height = ratio;
+							image.style.width = 'auto';
+						}
+						else
+						{
+							image.style.width = ratio;
+							image.style.height = 'auto';
+						}
+					}
+					image.style.display = "block";
+					return true;
+				}
+				image.style.display = "none";
+				return false;
+			}
+
+			function OnSetImage()
+			{
+				var url = window.prompt('<?php _e("Please enter image Url", "FWTD") ?>');
+				if (url != null && url != "")
+				{
+					if (SetImage(url) == true)
+						document.getElementById("WidgetImageUrl").value = url;
+					else
+						document.getElementById("WidgetImageUrl").value = "";
+				}
+			}
 					
 			function OnDeleteMouseOver()
 			{
@@ -516,7 +598,7 @@ function YesNoQuestionPrompt()
 		<div id="WidgetDialog" >
 		 	<form id="WidgetDialogForm" onsubmit="return OnSubmitForm();">
 				<input type="hidden" name="WidgetQuestionsData" id="WidgetQuestionsData"/>
-				<div id="FirstPhaseDiv" name="FirstPhaseDiv" style="visibility: visible;">
+				<div id="WidgetDataDiv" name="WidgetDataDiv" style="visibility: visible;">
 			 		<table id="FirstPhaseTable" name="FirstPhaseTable" class="wp-list-table widefat fixed posts" cellspacing="0">
 						<tbody>
 							<tr style='height: 1px;'>
@@ -638,8 +720,65 @@ function YesNoQuestionPrompt()
 						</tbody>
 					</table>
 				</div>
-				<div id="SecondPhaseDiv" name="SecondPhaseDiv" style="visibility: hidden; position: absolute; top: 0; left: 0;">
-			 		<table id="SecondPhaseTable" name="SecondPhaseTable" class="wp-list-table widefat fixed posts" cellspacing="0">
+				<!-- overflow: hidden; -->
+				<div id="WidgetPictureDiv" name="WidgetPictureDiv" style="visibility: hidden; position: absolute; top: 0; left: 0;">
+					<table id="WidgetPictureTable" name="WidgetPictureTable" class="wp-list-table widefat fixed posts" cellspacing="0">
+						<tbody>
+							<tr style="height: 5px;">
+								<td style='width: 10px;'/>
+								<td style='width: 150px;'/>
+								<td style='width: 250px;'/>
+								<td style='width: 150px;'/>
+								<td style='width: 10px;'/>
+							</tr>
+							<tr>
+								<td/>
+								<td colspan="3">
+									<span id='ImageUrlLabel'><b><?php _e("Image Url")?></b></span>
+								</td>
+								<td/>
+							</tr>
+							<tr>
+								<td/>
+								<td colspan="2">
+									<?php GetPostImageUrlControl() ?>
+								</td>
+								<td>
+									<input type='button' value='<?php _e("Set", "FWTD")?>' style='width: 140px;' onclick='OnSetImage()'/>
+								</td>
+								<td/>
+							</tr>
+							<tr style="height: 5px;">
+								<td colspan="5"/>
+							</tr>
+							<tr style="height: 250px; min-height: 250px; max-height: 250px;" >
+								<td/>
+								<td colspan="3" style="text-align: center; max-height: 250px; overflow: hidden;">
+									<div id="WidgetImageBox" style="text-align: center; max-height: 250px; overflow: hidden;">
+										<img id="WidgetImage" style="display: none;"/>
+									</div>
+								</td>
+								<td/>
+							</tr>
+							<tr>
+								<td/>
+								<td>
+									<input type='button' value='<?php _e("< Back", "FWTD")?>' style='width: 150px;' onclick='OnBack()'/>								
+								</td>
+								<td style='text-align: right;'>
+									<input type='button' value='<?php _e("Next >", "FWTD")?>' style='width: 150px;' onclick='OnNext()'/>
+								</td>
+								<td>
+									 <input type='button' value='<?php _e("Cancel")?>' style='width: 140px;' onclick='OnCancel()'/>
+								</td>
+								<td/>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				
+				<div id="WidgetQuestionDiv" name="WidgetQuestionDiv" style="visibility: hidden; position: absolute; top: 0; left: 0;">
+			 		<table id="WidgetQuestionTable" name="WidgetQuestionTable" class="wp-list-table widefat fixed posts" cellspacing="0">
 						<tbody>
 							<tr style="height: 5px;">
 								<td style='width: 10px;'/>

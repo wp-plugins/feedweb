@@ -109,6 +109,10 @@ function GetQueryParams($id)
 	$tags = PrepareParam($_POST["TagText"]);
 	if ($tags != "")
 		$params .= "&tag=".$tags;
+		
+	$img = PrepareParam($_POST["WidgetImageUrl"]);
+	if ($img != "")
+		$params .= "&img=".$img;
 	
 	return $params;
 }

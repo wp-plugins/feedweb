@@ -2,8 +2,8 @@
 Contributors: Feedweb
 Tags: blog, rate, rating, network, feedback, article, content, post, public, opinion, research, flash, widget, media, press, news, politics, society, social, question, answer, survey, poll, polling, vote, voting, stats, discussion, controversy, cooperation, view, comments, statistics, syndication, marketing, admin, sidebar, plugin
 Requires at least: 3.0
-Tested up to: 3.4
-Stable Tag: 1.4.7
+Tested up to: 3.4.1
+Stable Tag: 1.5
 
 Expose your blog to the Feedweb reader's community. Promote your views. Get a comprehensive and detailed feedback from your readers.
 
@@ -14,7 +14,7 @@ The Blog Rating Plugin is a simple and easy way to promote your views, improve y
 
 After activating the plugin you can freely insert customized blog rating widgets in your selected posts, choose questions you want to ask your readers, and receive a comprehensive, detailed and precise feedback from them.
 
-The Blog Rating Widget is an attractive animated visual element that will improve your ratings! It is built using a cutting-edge Flash technology with the highest privacy and security standards, and enterprise-level quality.
+The Blog Rating Widget is an attractive animated visual element that will improve your ratings! It is built using a cutting-edge Flash and HTML5 technology with the highest privacy and security standards, and enterprise-level quality.
 
 Requires WordPress 3.0 and PHP 5.
 
@@ -51,6 +51,9 @@ More information at [Feedweb Research website](http://feedweb.net).
 
 
 == Changelog ==
+
+= 1.5 =
+* Rating widget picture support.
 
 = 1.4.7 =
 * New color scheme.

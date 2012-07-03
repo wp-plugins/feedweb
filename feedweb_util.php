@@ -447,6 +447,18 @@ function GetLicenseInfo($remark)
 
 function CheckServiceAvailability()
 {
+	// Check service availability once in an hour
+	global $wpdb;
+	$query = "SELECT meta_value FROM $wpdb->postmeta WHERE post_id=0 AND meta_key='feedweb_last_access'";
+	$access = $wpdb->get_var($query);
+	if ($access != null)
+	{
+		$current = time();
+		$previous = intval($access);
+		if ($current - $access < 3600)	// 60 min * 60 sec
+			return null;
+	}
+
 	$query = GetFeedwebUrl()."FBanner.aspx?action=ping";
 	$response = wp_remote_get ($query, array('timeout' => 20));
 	if (is_wp_error ($response))
@@ -455,7 +467,15 @@ function CheckServiceAvailability()
 	$dom = new DOMDocument;
 	if ($dom->loadXML($response['body']) == true)
 		if ($dom->documentElement->tagName == "BANNER")
+		{
+			$query = "DELETE FROM $wpdb->postmeta WHERE post_id=0 AND meta_key='feedweb_last_access'";
+			$wpdb->query($query);
+			
+			$access = strval(time());
+			$query = "INSERT INTO $wpdb->postmeta(post_id, meta_key, meta_value) VALUES (0, 'feedweb_last_access', '$access')";
+			$wpdb->query($query);
 			return null;
+		}
 			
 	return "";
 }

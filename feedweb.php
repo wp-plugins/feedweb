@@ -21,9 +21,6 @@ function ContentFilter($content)
 	global $post_ID;
 	global $feedweb_rw_swf;
 	
-	if (CheckServiceAvailability() != null)
-		return $content . GetLicenseInfo('Service is not available');
-	
 	$data = GetFeedwebOptions();
 	if ($data["mp_widgets"] == "0")	// Doesn't display on the Home / Front Page
 		if (is_front_page() || is_home())
@@ -32,6 +29,9 @@ function ContentFilter($content)
 	$pac = GetPac(get_the_ID($post_ID));
 	if ($pac == null)
 		return  $content;
+		
+	if (CheckServiceAvailability() != null)
+		return $content . GetLicenseInfo('Service is not available');
 	
 	$swf = GetFeedwebUrl().$feedweb_rw_swf;
 	$width = $data["widget_width"];

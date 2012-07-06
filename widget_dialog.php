@@ -464,6 +464,12 @@ function YesNoQuestionPrompt()
 
 				if (data_div.style.visibility == "visible")
 				{
+					if (TagText.value.length > 250 || CategoryText.value.length > 250)
+					{
+						window.alert('<?php _e("The tags/categories text is limited to 250 characters.", "FWTD")?>');
+						return;
+					}
+				
 					picture_div.style.visibility = "visible";
 					data_div.style.visibility = "hidden";
 					

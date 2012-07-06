@@ -455,7 +455,7 @@ function CheckServiceAvailability()
 	{
 		$current = time();
 		$previous = intval($access);
-		if ($current - $access < 3600)	// 60 min * 60 sec
+		if ($current - $access < 900)	// 15 min * 60 sec
 			return null;
 	}
 

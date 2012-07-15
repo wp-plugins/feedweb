@@ -115,6 +115,16 @@ function FeedwebPluginOptions()
 					else
 						input.value = "0";
 				}
+				
+				function OnCheckAllowEdit()
+				{
+					var box = document.getElementsByName('AllowEditBox')[0];
+					var input = document.getElementsByName('AllowEditWidgetData')[0];
+					if (box.checked == true)
+						input.value = "1";
+					else
+						input.value = "0";
+				}
 
 				function OnCheckCopyrightNotice()
 				{
@@ -204,6 +214,7 @@ function FeedwebPluginOptions()
 			<input type='hidden' id='DelayResults' name='DelayResults' value='<?php echo $feedweb_data["delay"];?>'/>
 			<input type='hidden' id='FeedwebLanguage' name='FeedwebLanguage' value='<?php echo $feedweb_data["language"];?>'/>
 			<input type='hidden' id='FeedwebMPWidgets' name='FeedwebMPWidgets' value='<?php echo $feedweb_data["mp_widgets"];?>'/>
+			<input type='hidden' id='AllowEditWidgetData' name='AllowEditWidgetData' value='<?php echo $feedweb_data["allow_edit"];?>'/>
 			<input type='hidden' id='FeedwebCopyrightNotice' name='FeedwebCopyrightNotice' value='<?php echo $feedweb_data["copyright_notice"];?>'/>
 			<input type='hidden' id='FrontWidgetHideScroll' name='FrontWidgetHideScroll' value='<?php echo $feedweb_data["front_widget_hide_scroll"];?>'/>
 			<input type='hidden' id='FrontWidgetColorScheme' name='FrontWidgetColorScheme' value='<?php echo $feedweb_data["front_widget_color_scheme"];?>'/>
@@ -218,7 +229,7 @@ function FeedwebPluginOptions()
 				</tr>
 				<tr class="FeedwebSettingsContent">
 					<td>
-						<div name="FeedwebSettingsDiv" style="display: block; height: 246px;">
+						<div name="FeedwebSettingsDiv" style="display: block; height: 284px;">
 							<table class="FeedwebSettingsTable">
 								<tbody>
 									<tr>
@@ -291,10 +302,24 @@ function FeedwebPluginOptions()
 											<?php echo GetCopyrightNotice('#ffff00')?>
 										</td>
 									</tr>
+									<tr>
+										<td>
+											<span><b><?php _e("Edit Widget Data:", "FWTD")?></b></span> 				
+										</td>
+										<td />
+										<td>
+											<input <?php if($feedweb_data['allow_edit'] == "1") echo 'checked="checked"' ?>
+											id="AllowEditBox" name="AllowEditBox" type="checkbox" onchange='OnCheckAllowEdit()'> <?php _e("Allow")?></input>				
+										</td>
+										<td />
+										<td>
+											<span><i><?php _e("Allow Feedweb community administrator to edit / correct your widget data.", "FWTD")?></i></span>
+										</td>
+									</tr>
 								</tbody>
 							</table>
 						</div>
-						<div name="FeedwebSettingsDiv" style="display: none; height: 246px;">
+						<div name="FeedwebSettingsDiv" style="display: none; height: 284px;">
 							<table class="FeedwebSettingsTable">
 								<tbody>
 									<tr>

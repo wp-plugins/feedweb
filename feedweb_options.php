@@ -33,16 +33,29 @@ function BuildLanguageBox($language, $language_set, $style, $all)
 	return $language;
 }
 
-function BuildColorSchemeBox($sceme)
+function BuildItemCountBox($number)
+{
+	echo "<select id='ItemCountBox' name='ItemCountBox' style='width: 99%;' onchange='OnChangeItemCount()'>";
+	for ($value = 3; $value <= 10; $value++)
+	{
+		echo "<option";
+		if ($value == $number)
+			echo " selected='selected'";
+		echo " value='$value'>$value</option>";
+	}
+	echo "</select>";
+}
+
+function BuildColorSchemeBox($scheme)
 {
 	$values = array("classic" => __("Classic", "FWTD"), "monochrome" => __("Monochrome", "FWTD"), "light_blue" => __("Light Blue", "FWTD"), 
 		"dark_blue" => __("Dark Blue", "FWTD"), "dark_green" => __("Dark Green", "FWTD"));
 	
-	echo "<select id='ColorSchemeBox' name='ColorSchemeBox' style='width: 99%;' onchange='OnChangeColorSceme()'>";
+	echo "<select id='ColorSchemeBox' name='ColorSchemeBox' style='width: 99%;' onchange='OnChangeColorScheme()'>";
 	foreach ($values as $key => $value)
 	{
 		echo "<option";
-		if ($key == $sceme)
+		if ($key == $scheme)
 			echo " selected='selected'";
 		echo " value='".$key."'>".$value."</option>";
 	}
@@ -93,7 +106,14 @@ function FeedwebPluginOptions()
 					input.value = list.options[list.selectedIndex].value;
 				}
 				
-				function OnChangeColorSceme()
+				function OnChangeItemCount()
+				{
+					var input = document.getElementsByName('FrontWidgetItemCount')[0];
+					var list = document.getElementsByName('ItemCountBox')[0];
+					input.value = list.options[list.selectedIndex].value;
+				}
+				
+				function OnChangeColorScheme()
 				{
 					var input = document.getElementsByName('FrontWidgetColorScheme')[0];
 					var list = document.getElementsByName('ColorSchemeBox')[0];
@@ -215,6 +235,7 @@ function FeedwebPluginOptions()
 			<input type='hidden' id='FeedwebLanguage' name='FeedwebLanguage' value='<?php echo $feedweb_data["language"];?>'/>
 			<input type='hidden' id='FeedwebMPWidgets' name='FeedwebMPWidgets' value='<?php echo $feedweb_data["mp_widgets"];?>'/>
 			<input type='hidden' id='AllowEditWidgetData' name='AllowEditWidgetData' value='<?php echo $feedweb_data["allow_edit"];?>'/>
+			<input type='hidden' id='FrontWidgetItemCount' name='FrontWidgetItemCount' value='<?php echo $feedweb_data["front_widget_items"];?>'/>
 			<input type='hidden' id='FeedwebCopyrightNotice' name='FeedwebCopyrightNotice' value='<?php echo $feedweb_data["copyright_notice"];?>'/>
 			<input type='hidden' id='FrontWidgetHideScroll' name='FrontWidgetHideScroll' value='<?php echo $feedweb_data["front_widget_hide_scroll"];?>'/>
 			<input type='hidden' id='FrontWidgetColorScheme' name='FrontWidgetColorScheme' value='<?php echo $feedweb_data["front_widget_color_scheme"];?>'/>
@@ -349,6 +370,7 @@ function FeedwebPluginOptions()
 											<span><i><?php _e("Allowed height: 200 to 800 pixels. Recommended height: 400 pixels.", "FWTD")?></i></span>
 										</td>
 									</tr>
+									
 									<tr>
 										<td>
 											<span><b><?php _e("Vertical Scroll Bar:", "FWTD")?></b></span> 				
@@ -362,6 +384,19 @@ function FeedwebPluginOptions()
 										<td />
 										<td>
 											<span><i><?php _e("Check to hide vertical scroll bar when the front widget exceeds max. height.", "FWTD")?></i></span>
+										</td>
+									</tr>
+									<tr>
+										<td style="width: 255px;">
+											<span><b><?php _e("Number of list items:", "FWTD")?></b></span> 				
+										</td>
+										<td style='width: 10px;'/>
+										<td style="width: 200px;">
+											<?php BuildItemCountBox(intval($feedweb_data['front_widget_items'])) ?>				
+										</td>
+										<td style='width: 10px;'/>
+										<td style="width: 600px;">
+											<span><i><?php _e("Number of items in the Front Widget list", "FWTD")?></i></span>
 										</td>
 									</tr>
 								</tbody>

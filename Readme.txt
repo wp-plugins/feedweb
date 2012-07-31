@@ -53,7 +53,7 @@ More information at [Feedweb Research website](http://feedweb.net).
 == Changelog ==
 
 = 1.5.4 =
-* Front Widget setting (number of items).
+* Front Widget setting: Number of items.
 
 = 1.5.3 =
 * 'Allow edit widget data' option.

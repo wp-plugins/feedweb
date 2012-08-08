@@ -28,6 +28,31 @@ switch ($cmd)
 		break;
 }
 
+function GetQuestionParams($params)
+{
+	$questions = explode ( "|", $_POST["WidgetQuestionsData"]);
+	$count = count($questions);
+	$params['qn'] = strval($count);
+
+	for ($index = 0; $index < $count; $index++)
+	{
+		$question = $questions[$index];
+		if ($question == "")
+			break;
+		
+		if (substr($question, 0, 1) == "@")
+		{
+			$question = substr($question, 1);
+			$question = PrepareParam($question);
+		}
+		else
+			$question = "{".$question."}";
+		$name = 'q'.$index;
+		$params[$name] = $question;
+	}
+	return $params;
+}
+
 function FormatQuestionQuery()
 {
 	$questions = explode ( "|", $_POST["WidgetQuestionsData"]);
@@ -50,6 +75,70 @@ function FormatQuestionQuery()
 		$query .= "&q".$index."=".$question;
 	}
 	return $query;
+}
+
+function GetPostQueryParams($id, $params)
+{
+	global $alert;
+
+	$url = PrepareParam($_POST["UrlText"]);
+	if ($url == "")
+	{
+		$alert = __("Error in the Post data", "FWTD");
+		return null;
+	}
+	$params['page'] = $url;
+		
+	$title = PrepareParam($_POST["TitleText"]);
+	if ($title == "")
+	{
+		$alert = __("Error in the Post data", "FWTD");
+		return null;
+	}
+	$params['title'] = $title;
+	
+	$lang = $_POST["LanguageText"];
+	if ($lang == "")
+	{
+		$alert = __("Error in the Post data", "FWTD");
+		return null;
+	}
+	$params['lang'] = $lang;
+	
+	$author = PrepareParam($_POST["AuthorText"]);
+	if ($author == "")
+	{
+		$alert = __("Error in the Post data", "FWTD");
+		return null;
+	}
+	$params['author'] = $author;
+	
+	$author_id = GetPostAuthorId($id);
+	$author_code = GetUserCode($author_id, false);
+	if ($author_code == null)
+	{
+		$alert = __("Error in the User data", "FWTD");
+		return null;
+	}
+	$params['guid'] = $author_code;
+	
+	$sub_title = PrepareParam($_POST["SubTitleText"]);
+	if ($sub_title != "")
+		$params['brief'] = $sub_title;
+		
+	$categories = PrepareParam($_POST["CategoryText"]);
+	if ($categories != "")
+		$params['cat'] = $categories;
+	
+	$tags = PrepareParam($_POST["TagText"]);
+	if ($tags != "")
+		$params['tag'] = $tags;
+		
+	$img = PrepareParam($_POST["WidgetImageUrl"]);
+	if ($img != "")
+		$params['img'] = $img;
+		
+	return $params;
 }
 
 function GetQueryParams($id)
@@ -137,15 +226,15 @@ function UpdateWidget($id)
 	{
 		$query = GetFeedwebUrl()."FBanner.aspx?action=mpw&client=WP:$version&pac=$pac&bac=$bac";
 		
-		if ($_POST["WidgetQuestionsData"] != "")
-			$query .= FormatQuestionQuery();
-		
-		$params = GetQueryParams($id);
+		$params = GetPostQueryParams($id, array());
 		if ($params == null)
 			return;
-		$query .= $params;
 		
-		$response = wp_remote_get ($query, array('timeout' => 60));
+		if ($_POST["WidgetQuestionsData"] != "")
+			$params = GetQuestionParams($params);
+		
+		//$response = wp_remote_get ($query, array('timeout' => 60));
+		$response = wp_remote_post ($query, array('method' => 'POST', 'timeout' => 300, 'body' => $params));		
 		if (is_wp_error ($response))
 		{
 			$alert = __("Cannot connect Feedweb server", "FWTD");
@@ -235,15 +324,15 @@ function CreatePageWidget($id)
 		if ($data["delay"] != "0")
 			$query = $query."&delay=".$data["delay"];
 		
-		if ($_POST["WidgetQuestionsData"] != "")
-			$query .= FormatQuestionQuery();
-		
-		$params = GetQueryParams($id);
+		$params = GetPostQueryParams($id, array());
 		if ($params == null)
-			return null;
-		$query .= $params;
+			return;
 		
-		$response = wp_remote_get ($query, array('timeout' => 300));
+		if ($_POST["WidgetQuestionsData"] != "")
+			$params = GetQuestionParams($params);
+		
+		//$response = wp_remote_get ($query, array('timeout' => 300));
+		$response = wp_remote_post ($query, array('method' => 'POST', 'timeout' => 300, 'body' => $params));		
 		if (is_wp_error ($response))
 		{
 			$alert = __("Cannot connect Feedweb server", "FWTD");

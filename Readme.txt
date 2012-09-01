@@ -1,11 +1,11 @@
-﻿=== Feedweb ===
+=== Feedweb ===
 Contributors: Feedweb
 Tags: blog, rate, rating, network, feedback, article, content, post, public, opinion, research, flash, widget, media, press, news, politics, society, social, question, answer, survey, poll, polling, vote, voting, stats, discussion, controversy, cooperation, view, comments, statistics, syndication, marketing, admin, sidebar, plugin
 Requires at least: 3.0
 Tested up to: 3.4.1
 Stable Tag: 1.5.5
 
-IMPORTANT: The service is temporarily unavailable due to system maintenance. Please try again later.
+Expose your blog to the Feedweb reader's community. Promote your views. Get a comprehensive and detailed feedback from your readers.
 
 
 == Description ==
@@ -47,7 +47,7 @@ More information at [Feedweb Research website](http://feedweb.net).
 4. Insert Widget Wizard: Step 2.
 5. The Rating Widget: Voting panels.
 6. The Rating Widget: Results panels.
-7. The Front Page Widget. Use shortcode [FeedwebFrontWidget] to display the widget in your blog.
+7. The Front Page Widget (beta version). Use shortcode [FeedwebFrontWidget] to display the widget in your blog.
 
 
 == Changelog ==

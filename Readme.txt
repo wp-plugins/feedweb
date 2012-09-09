@@ -36,7 +36,7 @@ More information at [Feedweb Research website](http://feedweb.net).
 3. In the Posts table choose a post and click 'Insert' button. 
 4. Choose the questions you want to ask your readers and commit the widget. You can insert up to 50 widgets in a month and 5 widgets a day.
 5. View your post and see the widget in the bottom of the post's content.
-6. The Front Page Widget: Use shortcode [FeedwebFrontWidget] to display the list of Most Voted / Best Rated posts in the front page of your blog.
+6. The Front Page Widget (beta): Use shortcode [FeedwebFrontWidget] to display the list of Most Voted / Best Rated posts in the front page of your blog.
 
 
 == Screenshots ==

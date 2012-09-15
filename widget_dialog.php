@@ -412,8 +412,7 @@ function YesNoQuestionPrompt()
 
 				MoveCurrentItem(list, list.selectedIndex - 1);
 			}
-			
-			
+						
 			function OnMoveDown()
 			{
 				var list = document.getElementsByName("QuestionsList")[0];
@@ -422,7 +421,6 @@ function YesNoQuestionPrompt()
 
 				MoveCurrentItem(list, list.selectedIndex + 1);
 			}
-
 			
 			function OnRemove()
 			{
@@ -475,7 +473,7 @@ function YesNoQuestionPrompt()
 					
 					var url = document.getElementById("WidgetImageUrl").value;
 					if (url != null && url != "")
-						SetImage(url);
+						document.getElementById("WidgetImage").src = url;
 				}
 				else
 				{
@@ -489,52 +487,32 @@ function YesNoQuestionPrompt()
 				window.parent.tb_remove(); 
 			}
 			
-			function SetImage(url)
-			{
-				var image = document.getElementById("WidgetImage");
-				try 
-				{
-					image.src = url;
-				} 
-				catch(err)
-				{
-				}
-				
-				if (image.height > 0)
-				{
-					if (image.height > 225 || image.width > 550)
-					{
-						var x_ratio = Math.floor(100.0 / image.width * 550);
-						var y_ratio = Math.floor(100.0 / image.height * 225);
-						var ratio = Math.min(x_ratio, y_ratio).toString() + "%";
-						if (x_ratio > y_ratio)
-						{
-							image.style.height = ratio;
-							image.style.width = 'auto';
-						}
-						else
-						{
-							image.style.width = ratio;
-							image.style.height = 'auto';
-						}
-					}
-					image.style.display = "block";
-					return true;
-				}
-				image.style.display = "none";
-				return false;
-			}
-
 			function OnSetImage()
 			{
 				var url = window.prompt('<?php _e("Please enter image Url", "FWTD") ?>');
 				if (url != null && url != "")
 				{
-					if (SetImage(url) == true)
-						document.getElementById("WidgetImageUrl").value = url;
-					else
-						document.getElementById("WidgetImageUrl").value = "";
+					document.getElementById("WidgetImage").src = url;
+					document.getElementById("WidgetImageUrl").value = url;
 				}
+			}
+			
+			function OnLoadWidgetImage()
+			{
+				var box = document.getElementById("WidgetImageBox");
+				var img = document.getElementById("WidgetImage");
+				var max_height = box.clientHeight - 10;
+				var max_width = box.clientWidth - 10;
+				
+				var scale_y = max_height / img.clientHeight;
+				var scale_x = max_width / img.clientWidth;
+				var scale = Math.min(scale_x, scale_y);
+				
+				var img_height = Math.floor(img.clientHeight * scale);
+				img.style.height = img_height.toString() + "px";
+
+				var top = (box.clientHeight - img_height) / 2;
+				img.style.marginTop = top.toString() + "px";
 			}
 					
 			function OnDeleteMouseOver()
@@ -759,9 +737,9 @@ function YesNoQuestionPrompt()
 							</tr>
 							<tr style="height: 250px; min-height: 250px; max-height: 250px;" >
 								<td/>
-								<td colspan="3" style="text-align: center; max-height: 250px; overflow: hidden;">
-									<div id="WidgetImageBox" style="text-align: center; max-height: 250px; overflow: hidden;">
-										<img id="WidgetImage" style="display: none;"/>
+								<td colspan="3" style="text-align: center;">
+									<div id="WidgetImageBox" style="text-align: center; height: 250px; overflow: hidden; border: 1px solid #C0C0C0; margin-right: 24px;">
+										<img id="WidgetImage" onload="OnLoadWidgetImage()" style="position: relative;"/>
 									</div>
 								</td>
 								<td/>

@@ -247,7 +247,7 @@ function GetFeedwebUrl()
 	$url = get_bloginfo('url');
 	$host = parse_url($url, PHP_URL_HOST);
 	if ($host == "localhost")
-		return "http://localhost:49170/"; //"http://localhost/FeedwebServer/";
+		return "http://localhost:49170/";
 	return "http://wpblogs.feedweb.net/";
 }
 

@@ -47,7 +47,7 @@ More information at [Feedweb Research website](http://feedweb.net).
 4. Insert Widget Wizard: Step 2.
 5. The Rating Widget: Voting panels.
 6. The Rating Widget: Results panels.
-7. The Front Page Widget (beta version). Use shortcode [FeedwebFrontWidget] to display the widget in your blog.
+7. The Front Page Widget (beta). Use shortcode [FeedwebFrontWidget] to display the widget in your blog.
 
 
 == Changelog ==

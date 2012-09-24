@@ -23,7 +23,12 @@ switch ($cmd)
 		UpdateWidget($id);
 		break;
 		
+	case "REM":
+		RemovePac($id);
+		break;
+		
 	default:
+		$cmd="INS";
 		InsertWidget($id);
 		break;
 }
@@ -364,7 +369,6 @@ function CreatePageWidget($id)
 	return null;
 }
 
-
 function GetAlertText()
 {
 	global $alert;
@@ -377,13 +381,23 @@ function GetAlertText()
 		<script language="javascript" type="text/javascript">
 			function OnInit()
 			{
-				window.parent.tb_remove();
-				
-				var text = "<?php GetAlertText() ?>";
-				if (text != "")
-					window.alert(text);
-				
-				window.parent.location.href = window.parent.location.href;
+				<?php
+				global $cmd;
+				if ($cmd == "REM")
+					echo "window.location.href='".get_admin_url()."/edit.php'";
+				else
+				{
+					?>
+					window.parent.tb_remove();
+					
+					var text = "<?php GetAlertText() ?>";
+					if (text != "")
+						window.alert(text);
+					
+					window.parent.location.href = window.parent.location.href;
+					<?php
+				}
+				?>
 			}
 		</script>
 	</head>

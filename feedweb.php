@@ -115,10 +115,14 @@ function FillFeedwebCell($id)
 		{
 			$src = GetFeedwebUrl()."IMG/Remove.png";
 			if ($data['error'] == "Bad PAC")
-				$title = __("The widget has been removed by the Feedweb administrator.", "FWTD");
-			else
-				$title = __("Unknown error.", "FWTD");
-			$title .= __("\nPlease contact Feedweb (contact@feedweb.net)", "FWTD");
+			{
+				$title = __("The widget data is invalid and cannot be used.", "FWTD");
+				echo "<script>function OnInvalidPAC() { if (window.confirm ('".__("Remove Invalid Widget?", "FWTD")."') == true) ".
+					"window.location.href='".plugin_dir_url(__FILE__)."/widget_commit.php?feedweb_cmd=REM&wp_post_id=".$id."'; } ".
+					"</script><a href='#' onclick='OnInvalidPAC()'><img title='$title' src='$src' style='padding-left: 4px;'/></a>";
+				return;
+			}
+			$title = __("Unknown error.", "FWTD").__("\nPlease contact Feedweb (contact@feedweb.net)", "FWTD");
 			echo "<img title='$title' src='$src' style='padding-left: 4px;'/>";
 			return;
 		}

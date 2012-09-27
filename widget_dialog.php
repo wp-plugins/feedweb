@@ -110,33 +110,47 @@ function GetLanguageBox()
 function GetCategoryControl()
 {
 	$text = "";
-	$id = GetPostId();
-	$categories = get_the_category($id);
-	
-	foreach($categories as $category)
-		if ($category->cat_name != __("Uncategorized"))
-		{
-			if ($text != "")
-				$text .= ", ";
-			$text .= $category->cat_name;
-		}
-	
+	if ($_GET["mode"] == "edit")
+	{
+		$data = GetEditPageData();
+		if ($data != null)
+			$text = $data["categories"];
+	}
+	else
+	{
+		$id = GetPostId();
+		$categories = get_the_category($id);
+		foreach($categories as $category)
+			if ($category->cat_name != __("Uncategorized"))
+			{
+				if ($text != "")
+					$text .= ", ";
+				$text .= $category->cat_name;
+			}
+	}
 	echo "<input type='text' id='CategoryText' name='CategoryText' value='$text' style='width:100%;'/>";
 }
 
 function GetTagControl()
 {
 	$text = "";
-	$id = GetPostId();
-	$tags = wp_get_post_tags($id);
- 
-	foreach($tags as $tag)
+	if ($_GET["mode"] == "edit")
 	{
-		if ($text != "")
-			$text .= ", ";
-		$text .= $tag->name;
+		$data = GetEditPageData();
+		if ($data != null)
+			$text = $data["tags"];
 	}
-	
+	else
+	{
+		$id = GetPostId();
+		$tags = wp_get_post_tags($id);
+		foreach($tags as $tag)
+		{
+			if ($text != "")
+				$text .= ", ";
+			$text .= $tag->name;
+		}
+	}
 	echo "<input type='text' id='TagText' name='TagText' value='$text' style='margin-left: 8px; width:310px;'/>";
 }
 
@@ -158,6 +172,8 @@ function GetAuthorControl()
 	$names[$data->display_name] = "0";
 	$names[$data->nickname] = "0";
 		
+	$default_id = null;
+	$default_name = null;
 	if ($_GET["mode"] == "edit")
 	{
 		$data = GetEditPageData();
@@ -166,23 +182,30 @@ function GetAuthorControl()
 			$name = $data["author"];
 			$id = $data["author_id"];
 			if ($name != null && $name != "" && $id != null && $id != "")
+			{
 				$names[$name] = $id;
+				$default_id = $id;
+				$default_name = $name;
+			}
 		}
 	}
 	
-	$default_id = null;
-	$default_name = null;
-	echo "<select style='width:100%;' name='AuthorBox' onchange='OnChangeAuthor()'>";
+	echo "<select style='width:100%;' id='AuthorBox' name='AuthorBox' onchange='OnChangeAuthor()'>";
 	foreach ($names as $key => $value)
 	{
+		$selected = "";
 		if ($default_name == null)
 		{
 			$default_id = $value;
 			$default_name = $key;
 		}
-		echo "<option value='$value'>$key</option>";
+		else
+			if ($key == $default_name)
+				$selected = "selected='selected'";
+				
+		echo "<option value='$value' $selected>$key</option>";
 	}
-	echo "</select><input type='hidden' name='AuthorText' value='$default_name'/><input type='hidden' name='AuthorId' value='$default_id'/>";
+	echo "</select><input type='hidden' id='AuthorText' name='AuthorText' value='$default_name'/><input type='hidden' id='AuthorId' name='AuthorId' value='$default_id'/>";
 }
 
 function GetUrlControl()
@@ -293,24 +316,24 @@ function YesNoQuestionPrompt()
 		<script type="text/javascript">
 			function OnChangeTitle()
 			{
-				var input = document.getElementsByName("TitleText")[0];
-				var box = document.getElementsByName("TitleBox")[0];
+				var input = document.getElementById("TitleText");
+				var box = document.getElementById("TitleBox");
 				input.value = box.options[box.selectedIndex].value; 
 			}
 			
 			function OnChangeUrl()
 			{
-				var input = document.getElementsByName("UrlText")[0];
-				var box = document.getElementsByName("UrlBox")[0];
+				var input = document.getElementById("UrlText");
+				var box = document.getElementById("UrlBox");
 				input.value = box.options[box.selectedIndex].value; 
 				window.alert(input.value);
 			}
 			
 			function OnChangeAuthor()
 			{
-				var name_input = document.getElementsByName("AuthorText")[0];
-				var id_input = document.getElementsByName("AuthorId")[0];
-				var box = document.getElementsByName("AuthorBox")[0];
+				var name_input = document.getElementById("AuthorText");
+				var id_input = document.getElementById("AuthorId");
+				var box = document.getElementById("AuthorBox");
 				
 				id_input.value = box.options[box.selectedIndex].value; 
 				name_input.value = box.options[box.selectedIndex].label; 
@@ -318,15 +341,15 @@ function YesNoQuestionPrompt()
 		
 			function OnChangeLanguage()
 			{
-				var box = document.getElementsByName("WidgetLanguageBox")[0];
-				var input = document.getElementsByName("LanguageText")[0];
+				var box = document.getElementById("WidgetLanguageBox");
+				var input = document.getElementById("LanguageText");
 				
 				input.value = box.options[box.selectedIndex].value; 
 			}
 			
 			function AddQuestion(text, value)
 			{
-				var list = document.getElementsByName("QuestionsList")[0];
+				var list = document.getElementById("QuestionsList");
 				for (var index = 0; index < list.options.length; index++)
 				{
 					if (text == list.options[index].text)
@@ -355,7 +378,7 @@ function YesNoQuestionPrompt()
 		
 			function OnSelect() 
 			{ 
-				var combo = document.getElementsByName("OldQuestionsList")[0];
+				var combo = document.getElementById("OldQuestionsList");
 				var value = combo.options[combo.selectedIndex].value;
 				var text = combo.options[combo.selectedIndex].text;
 				AddQuestion(text, value);
@@ -372,7 +395,7 @@ function YesNoQuestionPrompt()
 					echo " var rtl=false; ";
 				?>
 
-				var edit = document.getElementsByName("NewQuestionText")[0];
+				var edit = document.getElementById("NewQuestionText");
 				if (edit.value.length == 0)
 				{
 					var text = "<?php _e("Please specify a question", "FWTD")?>";
@@ -407,7 +430,7 @@ function YesNoQuestionPrompt()
 			
 			function OnMoveUp()
 			{
-				var list = document.getElementsByName("QuestionsList")[0];
+				var list = document.getElementById("QuestionsList");
 				if (list.selectedIndex <= 0)
 					return;
 
@@ -416,7 +439,7 @@ function YesNoQuestionPrompt()
 						
 			function OnMoveDown()
 			{
-				var list = document.getElementsByName("QuestionsList")[0];
+				var list = document.getElementById("QuestionsList");
 				if (list.selectedIndex < 0 || list.selectedIndex >= list.options.length - 1)
 					return;
 
@@ -425,7 +448,7 @@ function YesNoQuestionPrompt()
 			
 			function OnRemove()
 			{
-				var list = document.getElementsByName("QuestionsList")[0];
+				var list = document.getElementById("QuestionsList");
 				if (list.selectedIndex < 0)
 				{
 					window.alert ('<?php _e("Please select a question to remove", "FWTD")?>');
@@ -439,9 +462,9 @@ function YesNoQuestionPrompt()
 
 			function OnBack()
 			{
-				var question_div = document.getElementsByName("WidgetQuestionDiv")[0];
-				var picture_div = document.getElementsByName("WidgetPictureDiv")[0];
-				var data_div = document.getElementsByName("WidgetDataDiv")[0];
+				var question_div = document.getElementById("WidgetQuestionDiv");
+				var picture_div = document.getElementById("WidgetPictureDiv");
+				var data_div = document.getElementById("WidgetDataDiv");
 				
 				if (question_div.style.visibility == "visible")
 				{
@@ -457,13 +480,15 @@ function YesNoQuestionPrompt()
 			
 			function OnNext()
 			{
-				var question_div = document.getElementsByName("WidgetQuestionDiv")[0];
-				var picture_div = document.getElementsByName("WidgetPictureDiv")[0];
-				var data_div = document.getElementsByName("WidgetDataDiv")[0];
+				var question_div = document.getElementById("WidgetQuestionDiv");
+				var picture_div = document.getElementById("WidgetPictureDiv");
+				var data_div = document.getElementById("WidgetDataDiv");
 
 				if (data_div.style.visibility == "visible")
 				{
-					if (TagText.value.length > 250 || CategoryText.value.length > 250)
+					var tag = document.getElementById("TagText");
+					var category = document.getElementById("CategoryText");
+					if (tag.value.length > 250 || category.value.length > 250)
 					{
 						window.alert('<?php _e("The tags/categories text is limited to 250 characters.", "FWTD")?>');
 						return;
@@ -518,14 +543,14 @@ function YesNoQuestionPrompt()
 					
 			function OnDeleteMouseOver()
 			{
-				var button = document.getElementsByName("DeleteButton")[0];
+				var button = document.getElementById("DeleteButton");
 				button.style.backgroundColor = '#ff0000';
 				button.style.color = '#ffffff';
 			}
 			
 			function OnDeleteMouseOut() 
 			{
-				var button = document.getElementsByName("DeleteButton")[0];
+				var button = document.getElementById("DeleteButton");
 				button.style.backgroundColor = '#ffffff';
 				button.style.color = '#000000';
 			}
@@ -538,10 +563,10 @@ function YesNoQuestionPrompt()
 			
 			function OnSubmitForm()
 			{
-				var input = document.getElementsByName("WidgetQuestionsData")[0];
+				var input = document.getElementById("WidgetQuestionsData");
 				input.value = "";
 					
-				var list = document.getElementsByName("QuestionsList")[0];
+				var list = document.getElementById("QuestionsList");
 				for (var index = 0; index < list.options.length; index++)
 				{
 					var item = list.options[index].value;
@@ -689,7 +714,7 @@ function YesNoQuestionPrompt()
 								<td>
 									<?php 
 										if($_GET["mode"] == "edit") 
-											echo "<input type='button' value='".__("Remove Widget", "FWTD")."' style='width: 150px;' name='DeleteButton'".
+											echo "<input type='button' value='".__("Remove Widget", "FWTD")."' style='width: 150px;' id='DeleteButton' name='DeleteButton'".
 												"onmouseover='OnDeleteMouseOver()' onmouseout='OnDeleteMouseOut()' onclick='OnDelete()'/>";
 									?>								
 								</td>

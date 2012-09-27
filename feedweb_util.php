@@ -248,7 +248,7 @@ function GetFeedwebUrl()
 	$host = parse_url($url, PHP_URL_HOST);
 	if ($host == "localhost")
 		return "http://localhost:49170/";
-	return "http://wpblogs.feedweb.net/";
+	return "http://feedweb.net/";
 }
 
 function GetFileUrl($file)
@@ -306,11 +306,14 @@ function GetPageData($pac, $info_mode)
 			{
 				$data['url'] = $dom->documentElement->getAttribute("url");
 				$data['img'] = $dom->documentElement->getAttribute("img");
+				$data['tags'] = $dom->documentElement->getAttribute("tags");
 				$data['lang'] = $dom->documentElement->getAttribute("lang");
 				$data['title'] = $dom->documentElement->getAttribute("title");
 				$data['brief'] = $dom->documentElement->getAttribute("brief");
 				$data['author'] = $dom->documentElement->getAttribute("author");
 				$data['author_id'] = $dom->documentElement->getAttribute("aid");
+				$data['categories'] = $dom->documentElement->getAttribute("categories");
+				
 				$data['questions'] = ReadQuestionList($dom->documentElement);
 			}
 			else	// Votes / Score / Image
@@ -442,7 +445,7 @@ function GetLicenseInfo($remark)
 	$val = $license.";".$plugin_data['Version'];
 	if ($remark != null)
 		$val .= ";".$remark;
-	return "<input name='FeedwebLicenseInfo' type='hidden' value='$val'/>";
+	return "<input name='FeedwebLicenseInfo' id='FeedwebLicenseInfo' type='hidden' value='$val'/>";
 }
 
 function CheckServiceAvailability()

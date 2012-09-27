@@ -90,46 +90,40 @@ function FeedwebPluginOptions()
 		<div id="icon-options-general" class="icon32"><br /></div>
 		<h2><?php _e("Feedweb Plugin Settings", "FWTD");?></h2>
 
-		<form name="FeedwebSettingsForm" onsubmit="return OnSubmitFeedwebSettingsForm();">
+		<form name="FeedwebSettingsForm" id="FeedwebSettingsForm" onsubmit="return OnSubmitFeedwebSettingsForm();">
 			<script type="text/javascript">
 				function OnChangeLanguage()
 				{
-					var list = document.getElementsByName('WidgetLanguageBox')[0];
-					var input = document.getElementsByName('FeedwebLanguage')[0];
+					var list = document.getElementById('WidgetLanguageBox');
+					var input = document.getElementById('FeedwebLanguage');
 					input.value = list.options[list.selectedIndex].value;
 				}
 
 				function OnChangeDelay()
 				{
-					var list = document.getElementsByName('DelayResultsBox')[0];
-					var input = document.getElementsByName('DelayResults')[0];
+					var list = document.getElementById('DelayResultsBox');
+					var input = document.getElementById('DelayResults');
 					input.value = list.options[list.selectedIndex].value;
 				}
 				
 				function OnChangeItemCount()
 				{
-					var input = document.getElementsByName('FrontWidgetItemCount')[0];
-					var list = document.getElementsByName('ItemCountBox')[0];
+					var input = document.getElementById('FrontWidgetItemCount');
+					var list = document.getElementById('ItemCountBox');
 					input.value = list.options[list.selectedIndex].value;
 				}
 				
 				function OnChangeColorScheme()
 				{
-					var input = document.getElementsByName('FrontWidgetColorScheme')[0];
-					var list = document.getElementsByName('ColorSchemeBox')[0];
+					var input = document.getElementById('FrontWidgetColorScheme');
+					var list = document.getElementById('ColorSchemeBox');
 					input.value = list.options[list.selectedIndex].value;
-					
-					/*
-					var img = document.getElementsByName('FrontPageWidgetColorSchemePreview')[0];
-					var src = "<?php echo GetFeedwebUrl()?>Img/" + input.value + ".jpg";
-					img.setAttribute('src', src);
-					*/
 				}
 				
 				function OnCheckMPWidgets()
 				{
-					var box = document.getElementsByName('MPWidgetsBox')[0];
-					var input = document.getElementsByName('FeedwebMPWidgets')[0];
+					var box = document.getElementById('MPWidgetsBox');
+					var input = document.getElementById('FeedwebMPWidgets');
 					if (box.checked == true)
 						input.value = "1";
 					else
@@ -138,8 +132,8 @@ function FeedwebPluginOptions()
 				
 				function OnCheckAllowEdit()
 				{
-					var box = document.getElementsByName('AllowEditBox')[0];
-					var input = document.getElementsByName('AllowEditWidgetData')[0];
+					var box = document.getElementById('AllowEditBox');
+					var input = document.getElementById('AllowEditWidgetData');
 					if (box.checked == true)
 						input.value = "1";
 					else
@@ -148,8 +142,8 @@ function FeedwebPluginOptions()
 
 				function OnCheckCopyrightNotice()
 				{
-					var box = document.getElementsByName('CopyrightNoticeBox')[0];
-					var input = document.getElementsByName('FeedwebCopyrightNotice')[0];
+					var box = document.getElementById('CopyrightNoticeBox');
+					var input = document.getElementById('FeedwebCopyrightNotice');
 					if (box.checked == true)
 						input.value = "1";
 					else
@@ -158,8 +152,8 @@ function FeedwebPluginOptions()
 				
 				function OnCheckHideScroll()
 				{
-					var box = document.getElementsByName('FrontWidgetHideScrollBox')[0];
-					var input = document.getElementsByName('FrontWidgetHideScroll')[0];
+					var box = document.getElementById('FrontWidgetHideScrollBox');
+					var input = document.getElementById('FrontWidgetHideScroll');
 					if (box.checked == true)
 						input.value = "1";
 					else
@@ -168,7 +162,7 @@ function FeedwebPluginOptions()
 
 				function OnSubmitFeedwebSettingsForm()
 				{
-					var input = document.getElementsByName("WidgetWidthEdit")[0];
+					var input = document.getElementById("WidgetWidthEdit");
 					var width = parseInt(input.value);
 					if (isNaN(width))
 					{
@@ -183,7 +177,7 @@ function FeedwebPluginOptions()
 					}
 					input.value = width.toString();
 					
-					input = document.getElementsByName("FrontWidgetHeightEdit")[0];
+					input = document.getElementById("FrontWidgetHeightEdit");
 					var height = parseInt(input.value);
 					if (isNaN(height))
 					{
@@ -198,7 +192,7 @@ function FeedwebPluginOptions()
 					}
 					input.value = height.toString();
 					
-					var form = document.getElementsByName("FeedwebSettingsForm")[0];
+					var form = document.getElementById("FeedwebSettingsForm");
 					form.action ="<?php echo plugin_dir_url(__FILE__)?>feedweb_settings.php";
 					form.method = "post";
 					return true;
@@ -206,8 +200,8 @@ function FeedwebPluginOptions()
 				
 				function OnClickFeedwebSettingsTab(tab)
 				{
-					var divs = document.getElementsByName("FeedwebSettingsDiv");
-					var tabs = document.getElementsByName("FeedwebSettingsTab");
+					var divs = document.getElementsByClassName("FeedwebSettingsDiv");
+					var tabs = document.getElementsByClassName("FeedwebSettingsTab");
 					for (var index = 0; index < divs.length; index++)
 						if (index.toString() == tab)
 						{
@@ -221,12 +215,6 @@ function FeedwebPluginOptions()
 							tabs[index].style.textDecoration = "none";
 							tabs[index].style.backgroundColor = "#ffffff";
 						}
-						
-					var link = document.getElementsByName("FeedwebFrontWidgetHelpLink")[0];
-					if (tab == "1")
-						link.style.display = "inline";
-					else
-						link.style.display = "none";
 				}
 			</script>
 			<?php wp_referer_field(true)?>
@@ -243,14 +231,14 @@ function FeedwebPluginOptions()
 			<table cellpadding="0" cellspacing="0">
 				<tr class="FeedwebSettingsTabs">
 					<td>
-						<a href="#" name="FeedwebSettingsTab" onclick="OnClickFeedwebSettingsTab(0)" 
+						<a href="#" class="FeedwebSettingsTab" onclick="OnClickFeedwebSettingsTab(0)" 
 							style="text-decoration: underline; background-color: #e0e0ff;"><?php _e("Rating Widget", "FWTD")?></a>
-						<a href="#" name="FeedwebSettingsTab"onclick="OnClickFeedwebSettingsTab(1)"><?php _e("Front Widget", "FWTD")?></a>
+						<a href="#" class="FeedwebSettingsTab" onclick="OnClickFeedwebSettingsTab(1)"><?php _e("Front Widget", "FWTD")?></a>
 					</td>
 				</tr>
 				<tr class="FeedwebSettingsContent">
 					<td>
-						<div name="FeedwebSettingsDiv" style="display: block; height: 284px;">
+						<div class="FeedwebSettingsDiv" style="display: block; height: 350px;">
 							<table class="FeedwebSettingsTable">
 								<tbody>
 									<tr>
@@ -340,7 +328,7 @@ function FeedwebPluginOptions()
 								</tbody>
 							</table>
 						</div>
-						<div name="FeedwebSettingsDiv" style="display: none; height: 284px;">
+						<div class="FeedwebSettingsDiv" style="display: none; height: 350px;">
 							<table class="FeedwebSettingsTable">
 								<tbody>
 									<tr>
@@ -407,8 +395,6 @@ function FeedwebPluginOptions()
 				<tr class="FeedwebSettingsCommitButton">
 					<td>
 						<?php echo get_submit_button(__('Save Changes'), 'primary', 'submit', false, "style='width: 200px;'") ?>
-						<a href="http://feedweb.net/site/the-new-front-page-widget/" name="FeedwebFrontWidgetHelpLink" style="padding-left: 300px; display:none;"
-							target="_blank"><?php _e("Learn how to use the Front Page Widget in your blog", "FWTD")?></a>
 					</td>
 				</tr>
 			</table>

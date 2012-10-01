@@ -142,7 +142,14 @@ function GetPostQueryParams($id, $params)
 	$img = PrepareParam($_POST["WidgetImageUrl"]);
 	if ($img != "")
 		$params['img'] = $img;
-		
+	
+	$user_data = get_userdata($author_id);
+	if ($user_data != null)
+	{
+		$mail = PrepareParam($user_data->user_email);
+		if ($mail != "")
+			$params['mail'] = $mail;
+	}
 	return $params;
 }
 

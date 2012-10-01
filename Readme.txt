@@ -55,7 +55,7 @@ NOTE: The plugin works perfectly with Firefox, Chrome and Opera browsers. We str
 == Changelog ==
 
 = 1.5.8 =
-* Internet Explorer Compatibility issue.
+* IE (Internet Explorer) Compatibility issue.
 
 = 1.5.7 =
 * Encoding bug fix.

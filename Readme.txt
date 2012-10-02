@@ -1,4 +1,4 @@
-=== Feedweb ===
+﻿=== Feedweb ===
 Contributors: Feedweb
 Tags: blog, rate, rating, network, feedback, article, content, post, public, opinion, research, flash, widget, media, press, news, politics, society, social, question, answer, survey, poll, polling, vote, voting, stats, discussion, controversy, cooperation, view, comments, statistics, syndication, marketing, admin, sidebar, plugin
 Requires at least: 3.0
@@ -21,7 +21,7 @@ Requires WordPress 3.0 and PHP 5.
 More information at [Feedweb Readers Community website](http://feedweb.net).
 
 NOTE: The plugin works perfectly with Firefox, Chrome and Opera browsers. We strongly recommend not to use IE.
-Feedweb may be incompatible with the 'Digg Digg' and 'Widget Builder' plugins. [Please contact us](conact@feedweb.net) if you experience any problems with the plugin.
+Feedweb may be incompatible with the 'Digg Digg' and 'Widget Builder' plugins. Please [contact us](mailto://contact@feedweb.net) if you experience any problems with the plugin.
 
 
 = Translators =

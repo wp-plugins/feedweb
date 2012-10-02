@@ -1,4 +1,4 @@
-=== Feedweb ===
+﻿=== Feedweb ===
 Contributors: Feedweb
 Tags: blog, rate, rating, network, feedback, article, content, post, public, opinion, research, flash, widget, media, press, news, politics, society, social, question, answer, survey, poll, polling, vote, voting, stats, discussion, controversy, cooperation, view, comments, statistics, syndication, marketing, admin, sidebar, plugin
 Requires at least: 3.0
@@ -58,7 +58,7 @@ NOTE: The plugin works perfectly with Firefox, Chrome and Opera browsers. We str
 * Author info correction.
 
 = 1.5.8 =
-* IE Compatibility issue.
+* IE (Internet Explorer) Compatibility issue.
 
 = 1.5.7 =
 * Encoding bug fix.

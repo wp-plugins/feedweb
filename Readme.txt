@@ -21,7 +21,7 @@ Requires WordPress 3.0 and PHP 5.
 More information at [Feedweb Readers Community website](http://feedweb.net).
 
 NOTE: The plugin works perfectly with Firefox, Chrome and Opera browsers. We strongly recommend not to use IE.
-Feedweb may be incompatible with the 'Digg Digg' and 'Widget Builder' plugins. [Please contact us](mailto://conact@feedweb.net) if you experience any problems with the plugin.
+Feedweb may be incompatible with the 'Digg Digg' and 'Widget Builder' plugins. Please [contact us](mailto://contact@feedweb.net) if you experience any problems with the plugin.
 
 
 = Translators =

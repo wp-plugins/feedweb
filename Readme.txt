@@ -18,7 +18,7 @@ The Blog Rating Widget is an attractive animated visual element that will improv
 
 Requires WordPress 3.0 and PHP 5.
 
-More information at [Feedweb Readers Community website](http://feedweb.net).
+More information at [Feedweb Readers Community](http://feedweb.net) website.
 
 NOTE: The plugin works perfectly with Firefox, Chrome and Opera browsers. We strongly recommend not to use IE.
 Feedweb may be incompatible with the 'Digg Digg' and 'Widget Builder' plugins. Please [contact us](mailto://contact@feedweb.net) if you experience any problems with our plugin.

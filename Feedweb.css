@@ -1,0 +1,103 @@
+.FeedwebPostDataTable 
+{
+	border-collapse: collapse;
+	border-style: none;
+}
+
+.FeedwebPostDataTable tbody 
+{
+	border-top: 0px; 
+	border-left: 0px; 
+	border-style: none;
+}
+
+.FeedwebPostDataTable tbody tr 
+{
+	border-top: 0px; 
+	border-left: 0px; 
+	border-style: none;
+}
+
+.FeedwebPostDataTable tbody tr td 
+{
+	vertical-align: middle;
+	text-align: center;
+	border-bottom-style: none; 
+	border-top-style: solid; 
+	padding: 0 0 0 0;
+}
+
+.FeedwebSettingsTabs a
+{
+	width: 270px;
+	color: #000000;
+	font-size: 12px;
+	font-weight: bold;
+	background-color: #ffffff;
+	
+    border: 1px solid #C0C0C0;
+	border-bottom-style: none;
+    
+	display: block;
+    float: left;
+    height: 18px;
+    margin: 0 10px 0 0;
+    padding: 6px 8px;
+    text-decoration: none;	
+}
+
+.FeedwebSettingsTabs a:hover
+{
+	width: 270px;
+	color: #ffffff;
+	font-size: 12px;
+	font-weight: bold;
+	background: url("../../../wp-admin/images/button-grad.png");
+	
+    border: 1px solid #0000FF;
+	border-bottom-style: none;
+	
+    display: block;
+    float: left;
+    height: 18px;
+    margin: 0 10px 0 0;
+    padding: 6px 8px;
+    text-decoration: none;	
+}
+
+.FeedwebSettingsContent td
+{
+	border: 1px solid #C0C0C0;
+	border-bottom-style: none;
+}
+
+.FeedwebSettingsCommitButton td
+{
+	background-color: #E0E0FF;
+	border: 1px solid #C0C0C0;
+	border-top-style: none;
+	padding: 8px 8px 8px 8px;
+}
+
+.FeedwebSettingsTable tbody tr td
+{
+	border-color: #C0C0C0;
+	border-top-style: none;
+	border-left-style: none;
+	border-right-style: none;
+	border-bottom-style: dotted;
+	padding-left: 8px;
+	padding-top: 8px;
+	padding-bottom: 8px;
+}
+
+#PurgeInactiveWidgetsButton
+{
+	background-color: #ff0000;
+	border-radius: 12px;
+	padding-right: 20px;
+	padding-left: 20px;
+	font-weight: bold;
+	color: #ffffff;
+	float: right;
+}

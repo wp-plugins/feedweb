@@ -11,25 +11,28 @@ if (!current_user_can('manage_options'))
 
 $alert = "";
 $cmd = $_GET["feedweb_cmd"];
-$id = intval($_GET["wp_post_id"]);
 
 switch ($cmd)
 {
 	case "DEL":
-		RemoveWidget($id);
+		RemoveWidget(intval($_GET["wp_post_id"]));
 		break;
 		
 	case "UPD":
-		UpdateWidget($id);
+		UpdateWidget(intval($_GET["wp_post_id"]));
 		break;
 		
 	case "REM":
-		RemovePac($id);
+		RemovePac(intval($_GET["wp_post_id"]));
+		break;
+		
+	case "RMW":
+		RemoveMultipleWidgets($_GET["wp_post_ids"]);
 		break;
 		
 	default:
 		$cmd="INS";
-		InsertWidget($id);
+		InsertWidget(intval($_GET["wp_post_id"]));
 		break;
 }
 
@@ -284,6 +287,13 @@ function InsertWidget($id)
 		$alert = __("Wordpress cannot insert your widget", "FWTD");
 }
 
+function RemoveMultipleWidgets($ids_str)
+{
+	$ids = explode (";", $ids_str);
+	foreach ($ids as $id)
+		RemoveWidget(intval($id));
+}
+
 function RemoveWidget($id)
 {
 	global $alert;
@@ -390,19 +400,28 @@ function GetAlertText()
 			{
 				<?php
 				global $cmd;
-				if ($cmd == "REM")
-					echo "window.location.href='".get_admin_url()."/edit.php'";
-				else
+				
+				switch ($cmd)
 				{
-					?>
-					window.parent.tb_remove();
-					
-					var text = "<?php GetAlertText() ?>";
-					if (text != "")
-						window.alert(text);
-					
-					window.parent.location.href = window.parent.location.href;
-					<?php
+					case "REM":
+						echo "window.location.href='".get_admin_url()."/edit.php'";
+						break;
+						
+					case "RMW":
+						echo "window.location.href='".get_admin_url()."/options-general.php?page=feedweb.php'";
+						break;
+						
+					default:
+						?>
+						window.parent.tb_remove();
+						
+						var text = "<?php GetAlertText() ?>";
+						if (text != "")
+							window.alert(text);
+						
+						window.parent.location.href = window.parent.location.href;
+						<?php
+						break;
 				}
 				?>
 			}

@@ -3,7 +3,7 @@ Contributors: Feedweb
 Tags: blog, rate, rating, network, feedback, article, content, post, public, opinion, research, flash, widget, media, press, news, politics, society, social, question, answer, survey, poll, polling, vote, voting, stats, discussion, controversy, cooperation, view, comments, statistics, syndication, marketing, admin, sidebar, plugin
 Requires at least: 3.0
 Tested up to: 3.4.2
-Stable Tag: 1.5.9
+Stable Tag: 1.5.10
 
 Expose your blog to the Feedweb readers community. Promote your views. Get a comprehensive and detailed feedback from your readers.
 
@@ -18,7 +18,7 @@ The Blog Rating Widget is an attractive animated visual element that will improv
 
 Requires WordPress 3.0 and PHP 5.
 
-More information at [Feedweb Readers Community website](http://feedweb.net).
+More information at [Feedweb Readers Community](http://feedweb.net) website.
 
 NOTE: The plugin works perfectly with Firefox, Chrome and Opera browsers. We strongly recommend not to use IE.
 Feedweb may be incompatible with the 'Digg Digg' and 'Widget Builder' plugins. Please [contact us](mailto://contact@feedweb.net) if you experience any problems with our plugin.
@@ -55,6 +55,9 @@ Feedweb may be incompatible with the 'Digg Digg' and 'Widget Builder' plugins. P
 
 
 == Changelog ==
+
+= 1.5.10 =
+* Option to remove inactive widgets.
 
 = 1.5.9 =
 * Author info correction.

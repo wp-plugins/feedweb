@@ -483,6 +483,14 @@ function CheckServiceAvailability()
 	return "";
 }
 
+function GetOrfanedIDs()
+{
+	global $wpdb;
+	$query = "SELECT post_id FROM $wpdb->postmeta WHERE meta_key='feedweb_pac' AND post_id NOT IN".
+		" (SELECT DISTINCT ID FROM $wpdb->posts where post_type='post' and post_status='publish')";
+	return $wpdb->get_col($query);
+}
+
 function WriteDebugLog($text)
 {
     global $wpdb;

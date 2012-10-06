@@ -77,6 +77,28 @@ function BuildDelayBox($delay)
 	echo "</select>";
 }
 
+function GetPurgeInactiveWidgets()
+{
+	$ids = GetOrfanedIDs();
+	if ($ids == null)
+		return;
+	if (count($ids) == 0)
+		return;
+			
+	echo "<input id='InactiveWidgetIds' type='hidden' value='";
+	$first = true;
+	foreach ($ids as $id)
+	{
+		if ($first == true)
+			$first = false;
+		else
+			echo ";";
+		echo $id;
+	}
+	echo "'/><input id='PurgeInactiveWidgetsButton' type='button' onclick='OnPurgeInactiveWidgets()' value='".__("Remove Inactive Widgets", "FWTD")."' ".
+		"title='".__("Click to remove widgets from the deleted posts", "FWTD")."' />";
+}
+
 function FeedwebPluginOptions()
 {
 	if (!current_user_can("manage_options"))
@@ -92,6 +114,15 @@ function FeedwebPluginOptions()
 
 		<form name="FeedwebSettingsForm" id="FeedwebSettingsForm" onsubmit="return OnSubmitFeedwebSettingsForm();">
 			<script type="text/javascript">
+				function OnPurgeInactiveWidgets()
+				{
+					if (window.confirm('<?php _e("Remove Widgets?", "FWTD") ?>') == true)
+					{
+						var ids = document.getElementById('InactiveWidgetIds');
+						window.location.href = "<?php echo plugin_dir_url(__FILE__)?>widget_commit.php?feedweb_cmd=RMW&wp_post_ids=" + ids.value;
+					}
+				}
+			
 				function OnChangeLanguage()
 				{
 					var list = document.getElementById('WidgetLanguageBox');
@@ -393,9 +424,7 @@ function FeedwebPluginOptions()
 					</td>
 				</tr>
 				<tr class="FeedwebSettingsCommitButton">
-					<td>
-						<?php echo get_submit_button(__('Save Changes'), 'primary', 'submit', false, "style='width: 200px;'") ?>
-					</td>
+					<td><?php echo get_submit_button(__('Save Changes'), 'primary', 'submit', false, "style='width: 200px;'"); GetPurgeInactiveWidgets(); ?></td>
 				</tr>
 			</table>
 		</form>

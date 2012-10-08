@@ -57,7 +57,7 @@ Feedweb may be incompatible with the 'Digg Digg' and 'Widget Builder' plugins. P
 == Changelog ==
 
 = 1.5.10 =
-* Option to remove inactive widgets. L10n updates.
+* Option to remove inactive widgets.
 
 = 1.5.9 =
 * Author info correction.

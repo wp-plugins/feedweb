@@ -57,7 +57,7 @@ Feedweb may be incompatible with the 'Digg Digg' and 'Widget Builder' plugins. P
 == Changelog ==
 
 = 1.5.11 =
-* L10n updates (German, Russian, Spanish).
+* I18n updates (German, Russian, Spanish).
 
 = 1.5.10 =
 * Option to remove inactive widgets.

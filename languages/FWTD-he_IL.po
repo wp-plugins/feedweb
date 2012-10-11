@@ -12,7 +12,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Poedit-Language: Hebrew\n"
 "X-Poedit-Country: ISRAEL\n"
-"Last-Translator: Anna Davidov <anna@feedweb.net>\n"
 
 #: feedweb.php:103
 msgid "Insert Rating Widget"

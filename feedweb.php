@@ -67,7 +67,7 @@ function GetCopyrightNotice($highlight)
 	$text = "<p><span style='font-size: x-small;";
 	if ($highlight != null)
 		$text .= "background-color: $highlight;";
-	$text .= "'><i><a href='http://wordpress.org/extend/plugins/feedweb'>Feedweb plugin for Wordpress</a>. ".
+	$text .= "'><i><a href='http://wordpress.org/extend/plugins/feedweb'>Feedweb plugin for WordPress</a>. ".
 		"v$version</i>  &copy; <a href='http://feedweb.net'>Feedweb Research</a>, 2012</span></p>";
 	return $text;
 }

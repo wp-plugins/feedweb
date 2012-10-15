@@ -13,7 +13,6 @@ require_once('feedweb_options.php');
 require_once(ABSPATH.'wp-admin/includes/plugin.php');
 
 $feedweb_blog_caps = null;
-$feedweb_fw_swf = "FL/FrontWidget.swf";
 $feedweb_rw_swf = "FL/RatingWidget.swf";
 
 function ContentFilter($content)

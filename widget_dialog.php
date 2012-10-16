@@ -499,7 +499,11 @@ function YesNoQuestionPrompt()
 					
 					var url = document.getElementById("WidgetImageUrl").value;
 					if (url != null && url != "")
-						document.getElementById("WidgetImage").src = url;
+					{
+						var image = document.getElementById("WidgetImage");
+						image.style.display = "inline";
+						image.src = url;
+					}
 				}
 				else
 				{
@@ -518,7 +522,10 @@ function YesNoQuestionPrompt()
 				var url = window.prompt('<?php _e("Please enter image Url", "FWTD") ?>');
 				if (url != null && url != "")
 				{
-					document.getElementById("WidgetImage").src = url;
+					var image = document.getElementById("WidgetImage");
+					image.style.display = "inline";
+					image.src = url;
+				
 					document.getElementById("WidgetImageUrl").value = url;
 				}
 			}
@@ -527,6 +534,8 @@ function YesNoQuestionPrompt()
 			{
 				var box = document.getElementById("WidgetImageBox");
 				var img = document.getElementById("WidgetImage");
+				img.style.display = "inline";
+				
 				var max_height = box.clientHeight - 10;
 				var max_width = box.clientWidth - 10;
 				
@@ -765,7 +774,7 @@ function YesNoQuestionPrompt()
 								<td/>
 								<td colspan="3" style="text-align: center;">
 									<div id="WidgetImageBox" style="text-align: center; height: 250px; overflow: hidden; border: 1px solid #C0C0C0; margin-right: 24px;">
-										<img id="WidgetImage" onload="OnLoadWidgetImage()" style="position: relative;"/>
+										<img id="WidgetImage" onload="OnLoadWidgetImage()" style="position: relative; display: none;"/>
 									</div>
 								</td>
 								<td/>

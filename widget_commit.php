@@ -338,7 +338,7 @@ function CreatePageWidget($id)
 		
 	try
 	{
-		$query = GetFeedwebUrl()."FBanner.aspx?action=cpw&client=WP:$version&allow_edit=".$data["allow_edit"];
+		$query = GetFeedwebUrl()."FBanner.aspx?action=cpw&client=WP:$version";
 		$bac = GetBac(true);
 		if ($bac != null)
 		    $query = $query."&bac=".$bac;

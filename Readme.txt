@@ -3,7 +3,7 @@ Contributors: Feedweb
 Tags: blog, rate, rating, network, feedback, article, content, post, public, opinion, research, flash, widget, media, press, news, politics, society, social, question, answer, survey, poll, polling, vote, voting, stats, discussion, controversy, cooperation, view, comments, statistics, syndication, marketing, admin, sidebar, plugin
 Requires at least: 3.0
 Tested up to: 3.4.2
-Stable Tag: 1.5.12
+Stable Tag: 1.6
 
 Expose your blog to the Feedweb readers community. Promote your views. Get a comprehensive and detailed feedback from your readers.
 
@@ -55,6 +55,9 @@ Feedweb may be incompatible with the 'Digg Digg' and 'Widget Builder' plugins. P
 
 
 == Changelog ==
+
+= 1.6 =
+* Reduntant option removed.
 
 = 1.5.12 =
 * Image display bug fix.

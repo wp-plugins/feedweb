@@ -20,7 +20,6 @@ function UpdateSettings()
 	$data["language"] = $_POST["FeedwebLanguage"];
 	$data["mp_widgets"] = $_POST["FeedwebMPWidgets"];
 	$data["widget_width"] = $_POST["WidgetWidthEdit"];
-	$data["allow_edit"] = $_POST["AllowEditWidgetData"];
 	$data["front_widget_items"] = $_POST["FrontWidgetItemCount"];
 	$data["copyright_notice"] = $_POST["FeedwebCopyrightNotice"];
 	$data["front_widget_height"] = $_POST["FrontWidgetHeightEdit"];

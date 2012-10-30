@@ -5,7 +5,7 @@ Requires at least: 3.0
 Tested up to: 3.4.2
 Stable Tag: 1.6
 
-IMPORTANT: The service is temporarily unavailable due to system maintenance. Please try again later.
+Expose your blog to the Feedweb readers community. Promote your views. Get a comprehensive and detailed feedback from your readers.
 
 
 == Description ==

@@ -271,18 +271,6 @@ function GetQuestionList($pac)
 	return null;
 }
 
-function BuildQuestionsCombo()
-{
-	$questions = GetQuestionList(null);
-	if ($questions == null)
-		return;
-	
-	$combo = "<select id='OldQuestionsList' name='OldQuestionsList' style='width:100%;'> ";
-	foreach ($questions as $key => $value)
-		$combo .= "<option value='$key'>$value</option>";
-	return $combo."</select>";
-}
-
 function BuildQuestionsListControl()
 {
 	echo "<select size='4' id='QuestionsList' name='QuestionsList' style='width:100%;height:100px;'>";
@@ -478,6 +466,19 @@ function YesNoQuestionPrompt()
 				}
 			}
 			
+			function FillQuestionList()
+			{
+				var list = document.getElementById("OldQuestionsList");
+				var box = document.getElementById("WidgetLanguageBox");
+				var lang = box.options[box.selectedIndex].value;
+				var url = "./question_query.php?lang=" + lang;
+				var request = new XMLHttpRequest();
+				
+				request.open("GET", url, false);
+				request.send();
+				list.innerHTML = request.responseText;
+			}
+			
 			function OnNext()
 			{
 				var question_div = document.getElementById("WidgetQuestionDiv");
@@ -493,6 +494,8 @@ function YesNoQuestionPrompt()
 						window.alert('<?php _e("The tags/categories text is limited to 250 characters.", "FWTD")?>');
 						return;
 					}
+					
+					FillQuestionList();
 				
 					picture_div.style.visibility = "visible";
 					data_div.style.visibility = "hidden";
@@ -816,7 +819,8 @@ function YesNoQuestionPrompt()
 							<tr style="height: 36px;">
 								<td/>
 								<td colspan="2"> 
-									<?php echo BuildQuestionsCombo() ?> 
+									<select id='OldQuestionsList' name='OldQuestionsList' style='width:100%;'>
+									</select>
 								</td>
 								<td>
 									<input type="button" value='<?php _e("Select")?>' style='width: 100%;' onclick='OnSelect()'/>

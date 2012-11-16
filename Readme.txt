@@ -3,7 +3,7 @@ Contributors: Feedweb
 Tags: blog, rate, rating, network, feedback, article, aggregator, aggregation, content management, post, page, public, opinion, research, flash, widget, media, press, news, politics, society, social, question, answer, survey, poll, polling, vote, voting, stats, discussion, controversy, cooperation, view, comments, community, statistics, syndication, marketing, admin, sidebar, plugin, publishing
 Requires at least: 3.0
 Tested up to: 3.4.2
-Stable Tag: 1.6.1
+Stable Tag: 1.6.2
 
 Expose your blog to the Feedweb readers community. Promote your views. Get a comprehensive and detailed feedback from your readers.
 
@@ -28,6 +28,7 @@ Feedweb may be incompatible with the 'Digg Digg' and 'Widget Builder' plugins. P
 * German (de_DE)     - Anna Davidov
 * Hebrew (he_IL)     - Dana Rovinsky
 * Italian (it_IT)    - Menashè Eliezer
+* Norwegian (nb_NO)  - Stian Iversen
 * Portuguese (pt_PT) - Tomé Mendes
 * Russian (ru_RU)    - Misha
 * Spanish (es_ES)    - Javier Sanz
@@ -55,6 +56,9 @@ Feedweb may be incompatible with the 'Digg Digg' and 'Widget Builder' plugins. P
 
 
 == Changelog ==
+
+= 1.6.2 =
+* L10n update (Norwegian Bokmål).
 
 = 1.6.1 =
 * Bug fix: Load question list according to the page language.

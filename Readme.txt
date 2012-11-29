@@ -1,6 +1,6 @@
 ﻿=== Feedweb ===
 Contributors: Feedweb
-Tags: blog, rate, rating, network, feed, feedback, article, aggregator, aggregation, content management, post, page, public, opinion, research, flash, widget, media, press, news, politics, society, social, ads, question, answer, survey, poll, polling, vote, voting, stats, discussion, controversy, cooperation, view, comments, community, statistics, syndication, marketing, admin, sidebar, plugin, publishing
+Tags: blog, rate, rating, network, feedback, article, aggregator, aggregation, content management, post, page, public, opinion, research, flash, widget, media, press, news, politics, society, social, question, answer, survey, poll, polling, vote, voting, stats, discussion, controversy, cooperation, view, comments, community, statistics, syndication, marketing, admin, sidebar, plugin, publishing
 Requires at least: 3.0
 Tested up to: 3.4.2
 Stable Tag: 1.6.2
@@ -46,13 +46,14 @@ Feedweb may be incompatible with the 'Digg Digg' and 'Widget Builder' plugins. P
 
 == Screenshots ==
 
-1. Feedweb plugin settings.
-2. Managing widgets in the posts' table.
-3. Insert Widget Wizard: Step 1.
-4. Insert Widget Wizard: Step 2.
-5. The Rating Widget: Voting panels.
-6. The Rating Widget: Results panels.
-7. The Front Page Widget (beta version). Use shortcode [FeedwebFrontWidget] to display the widget in your blog.
+1. Feedweb plugin settings (Rating Widget).
+2. Feedweb plugin settings (Front Widget).
+3. Managing widgets in the posts' table.
+4. Insert Widget Wizard: Step 1.
+5. Insert Widget Wizard: Step 2.
+6. The Rating Widget: Voting panels.
+7. The Rating Widget: Results panels.
+8. The Front Page Widget (beta version). Use shortcode [FeedwebFrontWidget] to display the widget in your blog.
 
 
 == Changelog ==

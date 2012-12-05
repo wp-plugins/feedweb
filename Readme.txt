@@ -39,9 +39,9 @@ Please [contact us](mailto://contact@feedweb.net) if you experience any problems
 
 1.	Install the Feedweb plugin on your blog and activate it. 
 2.	Go to the plugin settings page and set the following options:
-	a.	Widget interface language
-	b.	Widget size
-	c.	Widget appearance settings
+	* Widget interface language
+	* Widget size
+	* Widget appearance settings
 3.	Go to your posts' table, choose a post and click on the PLUS icon. 
 4.	Set the new widget's parameters and publish it.
 5.	Now you can browse to your post and see the widget at the bottom.

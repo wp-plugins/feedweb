@@ -1,27 +1,28 @@
 ﻿=== Feedweb ===
 Contributors: Feedweb
-Tags: blog, rate, rating, network, feedback, article, aggregator, aggregation, content management, post, page, public, opinion, research, flash, widget, media, press, news, politics, society, social, question, answer, survey, poll, polling, vote, voting, stats, discussion, controversy, cooperation, view, comments, community, statistics, syndication, marketing, admin, sidebar, plugin, publishing
+Tags: blog, rate, rating, network, feed, feedback, article, aggregator, aggregation, content management, post, page, public, opinion, research, flash, widget, media, press, news, politics, society, social, question, answer, survey, poll, polling, vote, voting, stats, discussion, controversy, cooperation, view, comments, community, statistics, syndication, marketing, admin, sidebar, plugin, publishing
 Requires at least: 3.0
 Tested up to: 3.4.2
 Stable Tag: 1.6.2
 
-Expose your blog to the Feedweb readers community. Promote your views. Get a comprehensive and detailed feedback from your readers.
+Expose your blog to the Feedweb readers’ community. Promote your views. Get a comprehensive and detailed feedback from your readers.
 
 
 == Description ==
 
-The Blog Rating Plugin is a simple and easy way to promote your views, improve your blog and to contribute to the Feedweb Research Network. The plugin helps you expose your blog to the Feedweb Readers' Community, and participate in various public opinion research projects.
+The Feedweb Plugin is a simple and easy way to promote your blog, improve it and to contribute to the Feedweb Research Network. The plugin helps you expose your blog to the Feedweb Readers' Community, and participate in various public opinion research projects.
 
-After activating the plugin you can freely insert customized blog rating widgets in your selected posts, choose questions you want to ask your readers, and receive a comprehensive, detailed and precise feedback from them.
+After activating the plugin you can freely insert customized widgets in your selected posts for blog ratings, choose questions you want to ask your readers and receive a comprehensive, detailed and precise feedback about your blog!
 
-The Blog Rating Widget is an attractive animated visual element that will improve your ratings! It is built using a cutting-edge Flash and HTML5 technology with the highest privacy and security standards, and enterprise-level quality.
+The Blog Rating Widget is an attractive animated visual element that will improve your ratings! It is built using cutting-edge Flash and HTML5 technology, meets the highest privacy and security standards and enterprise-level quality.
 
 Requires WordPress 3.0 and PHP 5.
 
-More information at [Feedweb Readers Community](http://feedweb.net) website.
+For more information go to [Feedweb Readers Community](http://feedweb.net) website.
 
-NOTE: The plugin works perfectly with Firefox, Chrome and Opera browsers. We strongly recommend not to use IE.
-Feedweb may be incompatible with the 'Digg Digg' and 'Widget Builder' plugins. Please [contact us](mailto://contact@feedweb.net) if you experience any problems with our plugin.
+NOTE: The plugin is compatible with Firefox, Chrome and Opera browsers. We strongly recommend not using Internet Explorer. 
+
+Please [contact us](mailto://contact@feedweb.net) if you experience any problems with our plugin.
 
 
 = Translators =
@@ -36,12 +37,15 @@ Feedweb may be incompatible with the 'Digg Digg' and 'Widget Builder' plugins. P
 
 == Installation ==
 
-1. Upload the Feedweb plugin to your blog and activate it. 
-2. Choose your preffered language, widget width and other options in the Feedweb Settings page. 
-3. In the Posts table choose a post and click 'Insert' button. 
-4. Choose the questions you want to ask your readers and commit the widget. You can insert up to 50 widgets in a month and 5 widgets a day.
-5. View your post and see the widget in the bottom of the post's content.
-6. The Front Page Widget: Use shortcode [FeedwebFrontWidget] to display the list of Most Voted / Best Rated / Latest posts in the front page of your blog.
+1.	Install the Feedweb plugin on your blog and activate it. 
+2.	Go to the plugin settings page and set the following options:
+	a.	Widget interface language
+	b.	Widget size
+	c.	Widget appearance settings
+3.	Go to your posts' table, choose a post and click on the PLUS icon. 
+4.	Set the new widget's parameters and publish it.
+5.	Now you can browse to your post and see the widget at the bottom.
+6.	For the Front Page Widget: Use short-code [FeedwebFrontWidget] to display the list of Most Voted / Best Rated / Latest posts at the front page of your blog.
 
 
 == Screenshots ==

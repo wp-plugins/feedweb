@@ -42,7 +42,7 @@ Please [contact us](mailto://contact@feedweb.net) if you experience any problems
 	* Widget interface language
 	* Widget size
 	* Widget appearance settings
-3.	Go to your posts' table, choose a post and click on the PLUS icon. 
+3.	Go to your posts' table, choose a post and click on the ![Insert Widget](http://feedweb.net/IMG/Append.png) icon. 
 4.	Set the new widget's parameters and publish it.
 5.	Now you can browse to your post and see the widget at the bottom.
 6.	For the Front Page Widget: Use short-code [FeedwebFrontWidget] to display the list of Most Voted / Best Rated / Latest posts at the front page of your blog.

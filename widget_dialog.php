@@ -71,6 +71,29 @@ function GetPostSubTitleControl()
 	echo "<input type='text' id='SubTitleText' name='SubTitleText' style='width:100%;' value='$sub_title'/>"; 
 }
 
+function ExtractPostImages($id)
+{
+	$post = get_post($id);
+	$dom = new DOMDocument;
+	if ($dom->loadHTML($post->post_content) == false)
+		return null;
+	
+	$nodes = $dom->getElementsByTagName('img');
+	if ($nodes == null)
+		return null;
+	if ($nodes->length == 0)
+		return null;
+		
+	$images = array();
+	foreach($nodes as $node)
+	{
+		$src = $node->getAttribute("src");
+		$alt = $node->getAttribute("alt");
+		$images[$src] = $alt;
+	}
+	return $images;
+}
+
 function GetPostImageUrlControl()
 {
 	$img = "";
@@ -80,7 +103,22 @@ function GetPostImageUrlControl()
 		if ($data != null)
 			$img = $data["img"];
 	}
-	echo "<input type='text' readonly='readonly' style='width: 450px;' id='WidgetImageUrl' name='WidgetImageUrl' value='$img'/>";
+	
+	$id = GetPostId();
+	$images = ExtractPostImages($id);
+	if ($images != null)
+	{
+		echo "<input type='hidden' id='WidgetImageUrl' name='WidgetImageUrl' value='$img'/>";
+		echo "<select id='WidgetImageList' name='WidgetImageList' onchange='OnChangeImage()' style='width: 450px;' >";
+		foreach( $images as $key => $value )
+			if ($key == $img)
+				echo "<option selected='selected'>$key</option>";
+			else
+				echo "<option>$key</option>";
+		echo "</select>";
+	} 
+	else
+		echo "<input type='text' readonly='readonly' style='width: 450px;' id='WidgetImageUrl' name='WidgetImageUrl' value='$img'/>";
 }
 
 function GetLanguageBox()
@@ -335,6 +373,21 @@ function YesNoQuestionPrompt()
 				input.value = box.options[box.selectedIndex].value; 
 			}
 			
+			function OnChangeImage()
+			{
+				var list = document.getElementById("WidgetImageList");
+				var url = list.options[list.selectedIndex].value;
+				
+				if (url != null && url != "")
+				{
+					var image = document.getElementById("WidgetImage");
+					image.style.display = "inline";
+					image.src = url;
+					
+					document.getElementById("WidgetImageUrl").value = url;
+				}
+			}
+			
 			function AddQuestion(text, value)
 			{
 				var list = document.getElementById("QuestionsList");
@@ -507,6 +560,18 @@ function YesNoQuestionPrompt()
 						image.style.display = "inline";
 						image.src = url;
 					}
+					
+					var list = document.getElementById("WidgetImageList");
+					if (list != null)
+					{
+						list.selectedIndex = -1;
+						for (var index = 0; index < list.options.length; index++)
+							if (list.options[index].value == url)
+							{
+								list.selectedIndex = index;
+								break;
+							}
+					}
 				}
 				else
 				{
@@ -515,7 +580,7 @@ function YesNoQuestionPrompt()
 				}
 			}
 		
-			function OnCancel() 
+			function OnCancel()
 			{ 
 				window.parent.tb_remove(); 
 			}
@@ -529,6 +594,19 @@ function YesNoQuestionPrompt()
 					image.style.display = "inline";
 					image.src = url;
 				
+					var control = document.getElementById("WidgetImageList");
+					if (control != null)
+					{
+						for (var index = 0; index < control.options.length; index++)
+							if (control.options[index].value == url)
+							{
+								control.selectedIndex = index;
+								return;
+							}
+							
+						control.innerHTML = "<option>" + url + "</option>" + control.innerHTML;
+						control.selectedIndex = 0;
+					}
 					document.getElementById("WidgetImageUrl").value = url;
 				}
 			}
@@ -776,7 +854,7 @@ function YesNoQuestionPrompt()
 							<tr style="height: 250px; min-height: 250px; max-height: 250px;" >
 								<td/>
 								<td colspan="3" style="text-align: center;">
-									<div id="WidgetImageBox" style="text-align: center; height: 250px; overflow: hidden; border: 1px solid #C0C0C0; margin-right: 24px;">
+									<div id="WidgetImageBox" style="text-align: center; height: 240px; overflow: hidden; border: 1px solid #C0C0C0; margin-right: 24px;">
 										<img id="WidgetImage" onload="OnLoadWidgetImage()" style="position: relative; display: none;"/>
 									</div>
 								</td>

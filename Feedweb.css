@@ -27,7 +27,7 @@
 	padding: 0 0 0 0;
 }
 
-.FeedwebSettingsTabs a
+.FeedwebSettingsTab
 {
 	width: 270px;
 	color: #000000;
@@ -39,25 +39,6 @@
 	border-bottom-style: none;
     
 	display: block;
-    float: left;
-    height: 18px;
-    margin: 0 10px 0 0;
-    padding: 6px 8px;
-    text-decoration: none;	
-}
-
-.FeedwebSettingsTabs a:hover
-{
-	width: 270px;
-	color: #ffffff;
-	font-size: 12px;
-	font-weight: bold;
-	background: url("../../../wp-admin/images/button-grad.png");
-	
-    border: 1px solid #0000FF;
-	border-bottom-style: none;
-	
-    display: block;
     float: left;
     height: 18px;
     margin: 0 10px 0 0;

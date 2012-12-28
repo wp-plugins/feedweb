@@ -22,7 +22,7 @@ For more information go to [**Feedweb Readers Community**](http://feedweb.net) w
 
 NOTE: The plugin is compatible with Firefox, Chrome and Opera browsers. We strongly recommend not using Internet Explorer. 
 
-Please [contact us](mailto://contact@feedweb.net) if you experience any problems with our plugin.
+Please [**contact us**](mailto://contact@feedweb.net) if you experience any problems with our plugin.
 
 
 = Translators =

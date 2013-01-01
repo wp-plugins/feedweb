@@ -630,19 +630,24 @@ function YesNoQuestionPrompt()
 				var top = (box.clientHeight - img_height) / 2;
 				img.style.marginTop = top.toString() + "px";
 			}
-					
-			function OnDeleteMouseOver()
-			{
-				var button = document.getElementById("DeleteButton");
-				button.style.backgroundColor = '#ff0000';
-				button.style.color = '#ffffff';
-			}
 			
-			function OnDeleteMouseOut() 
+			function OnDeleteMouseOver($state)
 			{
-				var button = document.getElementById("DeleteButton");
-				button.style.backgroundColor = '#ffffff';
-				button.style.color = '#000000';
+				var version = '<?php echo $wp_version ?>';
+				if (version != "3.5")
+				{
+					var button = document.getElementById("DeleteButton");
+					if ($state == true)
+					{
+						button.style.backgroundColor = '#ff0000';
+						button.style.color = '#ffffff';
+					}
+					else
+					{
+						button.style.backgroundColor = '#ffffff';
+						button.style.color = '#000000';
+					}
+				}
 			}
 			
 			function OnDelete()
@@ -805,7 +810,7 @@ function YesNoQuestionPrompt()
 									<?php 
 										if($_GET["mode"] == "edit") 
 											echo "<input type='button' value='".__("Remove Widget", "FWTD")."' style='width: 150px;' id='DeleteButton' name='DeleteButton'".
-												"onmouseover='OnDeleteMouseOver()' onmouseout='OnDeleteMouseOut()' onclick='OnDelete()'/>";
+												"onmouseover='OnDeleteMouseOver(true)' onmouseout='OnDeleteMouseOver(false)' onclick='OnDelete()'/>";
 									?>								
 								</td>
 								<td/>
@@ -967,7 +972,13 @@ function YesNoQuestionPrompt()
 									<input type='button' value='<?php _e("< Back", "FWTD")?>' style='width: 150px;' onclick='OnBack()'/> 
 								</td>
 								<td>
-									<?php echo get_submit_button(__("Done", "FWTD"), "primary", "submit", false, "style='width: 120px;'") ?>								
+									<?php 
+										if ($wp_version == 3.5)
+											$width = 135;
+										else
+											$width = 120;
+										echo get_submit_button(__("Done", "FWTD"), "primary", "submit", false, "style='width: ".$width."px;'");
+									?>								
 								</td>
 								<td/>
 							</tr>

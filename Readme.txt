@@ -64,7 +64,7 @@ Please [**contact us**](mailto://contact@feedweb.net) if you experience any prob
 == Changelog ==
 
 = 1.7 =
-* WP 3.5 related fixes.
+* WP-3.5 related fixes.
 
 = 1.6.4 =
 * Settings bug fix.

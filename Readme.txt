@@ -3,7 +3,7 @@ Contributors: Feedweb
 Tags: blog, rate, rating, network, feed, feedback, article, aggregator, aggregation, content management, post, page, public, opinion, research, flash, widget, media, press, news, politics, society, social, question, answer, survey, poll, polling, vote, voting, stats, discussion, controversy, cooperation, view, comments, community, statistics, syndication, marketing, admin, sidebar, plugin, publishing
 Requires at least: 3.0
 Tested up to: 3.5
-Stable Tag: 1.7
+Stable Tag: 1.7.1
 
 Expose your blog to the Feedweb readers’ community. Promote your views. Get a comprehensive and detailed feedback from your readers.
 
@@ -63,8 +63,11 @@ Please [**contact us**](mailto://contact@feedweb.net) if you experience any prob
 
 == Changelog ==
 
+= 1.7.1 =
+* Prompt to insert a widget when a new post is published.
+
 = 1.7 =
-* WP-3.5 related fixes.
+* WP 3.5 related fixes.
 
 = 1.6.4 =
 * Settings bug fix.

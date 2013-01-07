@@ -399,7 +399,9 @@ function FeedwebPluginOptions()
 					</td>
 				</tr>
 				<tr class="FeedwebSettingsCommitButton">
-					<td><?php echo get_submit_button(__('Save Changes'), 'primary', 'submit', false, "style='width: 200px;'"); GetPurgeInactiveWidgets(); ?></td>
+					<td>
+						<?php echo get_submit_button(__('Save Changes'), 'primary', 'submit', false, "style='width: 200px;'"); GetPurgeInactiveWidgets(); ?>
+					</td>
 				</tr>
 			</table>
 		</form>

@@ -4,7 +4,7 @@ Plugin Name: Feedweb
 Plugin URI: http://wordpress.org/extend/plugins/feedweb/
 Description: Expose your blog to the Feedweb reader's community. Promote your views. Get a comprehensive and detailed feedback from your readers.
 Author: Feedweb
-Version: 1.7
+Version: 1.7.1
 Author URI: http://feedweb.net
 */
 
@@ -251,6 +251,78 @@ function showAdminMessages()
     }
 }
 
+function EnqueueAdminScript() 
+{
+	global $wpdb;
+	$query = "SELECT post_id FROM $wpdb->postmeta WHERE meta_key='feedweb_post_status' AND meta_value='0'";
+	$id = $wpdb->get_var($query);
+	if ($id == null)
+		return;
+	
+	$query = "UPDATE $wpdb->postmeta SET meta_value='1' WHERE post_id=$id AND meta_key='feedweb_post_status'";
+	$wpdb->query($query);
+	
+	$post = get_post($id);
+	$title = __("Insert Rating Widget", "FWTD");
+	$prompt = __("Do you wish to insert a Feedweb rating widget into your new post?", "FWTD");
+	$url = plugin_dir_url(__FILE__)."widget_dialog.php?wp_post_id=$id&mode=add&KeepThis=true&TB_iframe=true";
+	
+	?>
+	<script type="text/javascript">
+		var readyStateCheckInterval = setInterval( function() 
+		{
+			if (document.readyState === "complete") 
+			{
+				DisplayFeedwebPrompt();
+				clearInterval(readyStateCheckInterval);
+			}
+		}, 1000);
+	
+		function DisplayFeedwebPrompt()
+		{
+			if (window.confirm('<?php echo $prompt ?>') == true)
+			{
+				tb_show('<?php echo $title?>', '<?php echo $url?>');
+				
+				var tb = document.getElementById("TB_window");
+				if (tb != null)
+				{
+					var frames = tb.getElementsByTagName("iframe");
+					frames[0].style.height = "370px";
+					frames[0].style.width = "700px";
+					tb.style.height = "370px";
+					tb.style.width = "700px";
+				}
+			}
+		}
+	</script>
+	<?php
+}    
+
+function PublishPostHook($deprecated = '')
+{
+	if (current_user_can('manage_options') == false)
+		return;
+		
+	// Get current post id (for newly published post)
+	global $wpdb;
+	global $post_ID;
+	
+	$id = get_the_ID($post_ID);
+	$pac = GetPac($id);
+	if ($pac != null) // Already exists
+		return;
+		
+	$query = "SELECT meta_value FROM $wpdb->postmeta WHERE meta_key='feedweb_post_status' AND post_id=$id";
+	$status = $wpdb->get_var($query);
+	
+	if ($status == null)
+	{
+		$query = "INSERT INTO $wpdb->postmeta (post_id, meta_key, meta_value) VALUES ($id, 'feedweb_post_status', '0')";
+		$wpdb->query($query);
+	}
+}
+
 add_action('init', 'InitPlugin');
 add_filter('the_content', 'ContentFilter');
 
@@ -265,4 +337,8 @@ add_shortcode( 'FeedwebFrontWidget', 'FrontWidgetCallback' );
 add_filter('widget_text', 'do_shortcode');
 
 add_action('admin_notices', 'showAdminMessages');
+
+add_action('publish_post', 'PublishPostHook');
+
+add_action( 'admin_enqueue_scripts', 'EnqueueAdminScript' );
 ?>

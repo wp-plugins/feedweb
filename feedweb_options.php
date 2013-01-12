@@ -171,6 +171,16 @@ function FeedwebPluginOptions()
 						input.value = "0";
 				}
 				
+				function OnCheckWidgetPrompt()
+				{
+					var box = document.getElementById('WidgetPromptBox');
+					var input = document.getElementById('InsertWidgetPrompt');
+					if (box.checked == true)
+						input.value = "1";
+					else
+						input.value = "0";
+				}
+				
 				function OnCheckHideScroll()
 				{
 					var box = document.getElementById('FrontWidgetHideScrollBox');
@@ -243,6 +253,7 @@ function FeedwebPluginOptions()
 			<input type='hidden' id='DelayResults' name='DelayResults' value='<?php echo $feedweb_data["delay"];?>'/>
 			<input type='hidden' id='FeedwebLanguage' name='FeedwebLanguage' value='<?php echo $feedweb_data["language"];?>'/>
 			<input type='hidden' id='FeedwebMPWidgets' name='FeedwebMPWidgets' value='<?php echo $feedweb_data["mp_widgets"];?>'/>
+			<input type='hidden' id='InsertWidgetPrompt' name='InsertWidgetPrompt' value='<?php echo $feedweb_data["widget_prompt"];?>'/>
 			<input type='hidden' id='FrontWidgetItemCount' name='FrontWidgetItemCount' value='<?php echo $feedweb_data["front_widget_items"];?>'/>
 			<input type='hidden' id='FeedwebCopyrightNotice' name='FeedwebCopyrightNotice' value='<?php echo $feedweb_data["copyright_notice"];?>'/>
 			<input type='hidden' id='FrontWidgetHideScroll' name='FrontWidgetHideScroll' value='<?php echo $feedweb_data["front_widget_hide_scroll"];?>'/>
@@ -316,6 +327,7 @@ function FeedwebPluginOptions()
 											<span><i><?php _e("Set the period of time you want to hide voting results after the widget is created.", "FWTD")?></i></span>
 										</td>
 									</tr>
+									
 									<tr>
 										<td>
 											<span><b><?php _e("Feedweb Copyright Notice:", "FWTD")?></b></span> 				
@@ -331,6 +343,22 @@ function FeedwebPluginOptions()
 											<?php echo GetCopyrightNotice('#ffff00')?>
 										</td>
 									</tr>
+									
+									<tr>
+										<td>
+											<span><b><?php _e("Prompt to insert widgets:", "FWTD")?></b></span> 				
+										</td>
+										<td />
+										<td>
+											<input <?php if($feedweb_data['widget_prompt'] == "1") echo 'checked="checked"' ?>
+											id="WidgetPromptBox" name="WidgetPromptBox" type="checkbox" onchange='OnCheckWidgetPrompt()'> <?php _e("Show")?></input>				
+										</td>
+										<td />
+										<td>
+											<span><i><?php _e("Display a prompt to insert a rating widget when a post is published", "FWTD")?></i></span>
+										</td>
+									</tr>
+									
 								</tbody>
 							</table>
 						</div>

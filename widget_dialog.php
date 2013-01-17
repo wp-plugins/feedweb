@@ -617,6 +617,25 @@ function YesNoQuestionPrompt()
 				var img = document.getElementById("WidgetImage");
 				img.style.display = "inline";
 				
+				if (img.clientWidth < 100 || img.clientHeight < 100)
+				{
+					window.alert ('<?php _e("The image width or height should be at least 100 pixels", "FWTD") ?>');
+					document.getElementById("WidgetImageUrl").value = "";
+					img.style.display = "none";
+					img.src = "";
+					return;
+				}
+				
+				var ratio = img.clientWidth / img.clientHeight;
+				if (ratio > 2.5 || ratio < 0.4)
+				{
+					window.alert ('<?php _e("The image ratio is invalid. The proportion between image width and height cannot be greater than 250%", "FWTD") ?>');
+					document.getElementById("WidgetImageUrl").value = "";
+					img.style.display = "none";
+					img.src = "";
+					return;
+				}
+				
 				var max_height = box.clientHeight - 10;
 				var max_width = box.clientWidth - 10;
 				

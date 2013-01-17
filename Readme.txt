@@ -3,7 +3,7 @@ Contributors: Feedweb
 Tags: blog, rate, rating, network, feed, feedback, article, aggregator, aggregation, content management, post, page, public, opinion, research, flash, html5, widget, media, press, news, politics, society, social, question, answer, survey, poll, polling, vote, voting, stats, discussion, controversy, cooperation, view, comments, community, statistics, syndication, marketing, admin, sidebar, plugin, publishing
 Requires at least: 3.0
 Tested up to: 3.5
-Stable Tag: 1.7.2
+Stable Tag: 1.7.3
 
 Expose your blog to the Feedweb readers’ community. Promote your views. Get a comprehensive and detailed feedback from your readers.
 
@@ -62,6 +62,9 @@ Please [**contact us**](mailto://contact@feedweb.net) if you experience any prob
 
 
 == Changelog ==
+
+= 1.7.3 =
+* Widget image size and ratio filter.
 
 = 1.7.2 =
 * Option to show insert widget prompt in the plugin settings.

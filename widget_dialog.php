@@ -5,6 +5,8 @@ if ( !defined('ABSPATH') )
 require_once( ABSPATH.'wp-load.php');
 require_once( ABSPATH.'wp-admin/includes/template.php');
 
+if (!current_user_can('manage_options'))
+	wp_die(__("You are not allowed to be here"));
 
 $edit_page_data = null;
 

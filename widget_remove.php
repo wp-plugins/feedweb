@@ -5,6 +5,9 @@ if ( !defined('ABSPATH') )
 require_once( ABSPATH.'wp-load.php');
 require_once( ABSPATH.'wp-admin/includes/template.php');
 
+if (!current_user_can('manage_options'))
+	wp_die(__("You are not allowed to be here"));
+
 function GetAction()
 {
 	echo "widget_commit.php?wp_post_id=".$_GET["wp_post_id"]."&feedweb_cmd=DEL";

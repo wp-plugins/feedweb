@@ -16,7 +16,7 @@ After activating the plugin you can freely insert customized widgets in your sel
 
 The Blog Rating Widget is an attractive animated visual element that will improve your ratings! It is built using cutting-edge Flash and HTML5 technology, meets the highest privacy and security standards and enterprise-level quality.
 
-Requires WordPress **3.0** and **PHP 5**.
+Requires **WordPress 3.0** and **PHP 5**.
 
 For more information go to [**Feedweb Readers Community**](http://feedweb.net) website.
 

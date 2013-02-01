@@ -404,7 +404,7 @@ function YesNoQuestionPrompt()
 					}
 				}
 				
-				var limit = 3; // Obtain from capabilities
+				var limit = <?php echo GetQuestionCountLimit() ?>;
 				if (list.options.length >= limit)
 				{
 					var message = "<?php _e("A widget cannot contain more than {0} questions", "FWTD")?>";
@@ -442,6 +442,15 @@ function YesNoQuestionPrompt()
 				if (edit.value.length == 0)
 				{
 					var text = "<?php _e("Please specify a question", "FWTD")?>";
+					window.alert(text);
+					return;
+				}
+				
+				var limit = <?php echo GetQuestionLengthLimit() ?>;
+				if (edit.value.length > limit)
+				{
+					var text = "<?php $format = __("The question text must not exceed %d characters", "FWTD");
+						echo sprintf ($format, GetQuestionLengthLimit()); ?>";
 					window.alert(text);
 					return;
 				}

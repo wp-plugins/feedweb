@@ -497,4 +497,14 @@ function WriteDebugLog($text)
 	$wpdb->query($query);
 }
 
+function GetQuestionLengthLimit()
+{
+	return 64;
+}
+
+function GetQuestionCountLimit()
+{
+	return 4;
+}
+
 ?>

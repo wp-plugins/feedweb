@@ -150,7 +150,7 @@ function SetFeedwebOptions($data)
 function GetFeedwebOptions()
 {
 	$data = array("language" => "en", "mp_widgets" => "0", "widget_width" => "400", "delay" => "2", "copyright_notice" => "0", "widget_prompt" => "1",
-		"front_widget_color_scheme" => "classic", "front_widget_height" => "400", "front_widget_hide_scroll" => "0");	
+		"front_widget_color_scheme" => "classic", "front_widget_height" => "400", "front_widget_hide_scroll" => "0", "widget_type" => "F");	
 	
 	global $wpdb;
 	$query = "SELECT meta_key, meta_value FROM $wpdb->usermeta WHERE meta_key LIKE 'feedweb%%'";

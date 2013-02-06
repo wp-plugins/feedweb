@@ -4,7 +4,7 @@ Plugin Name: Feedweb
 Plugin URI: http://wordpress.org/extend/plugins/feedweb/
 Description: Expose your blog to the Feedweb reader's community. Promote your views. Get a comprehensive and detailed feedback from your readers.
 Author: Feedweb
-Version: 1.7.5
+Version: 1.8
 Author URI: http://feedweb.net
 */
 
@@ -36,28 +36,43 @@ function ContentFilter($content)
 	$swf = GetFeedwebUrl().$feedweb_rw_swf;
 	$width = $data["widget_width"];
 
-	$obj = "<object width='".$width."' height='150' ". 
-		"type='application/x-shockwave-flash' ". 
-    	"classid='clsid:D27CDB6E-AE6D-11cf-96B8-444553540000' ". 
-    	"codebase='http://fpdownload.macromedia.com/get/flashplayer/current/swflash.cab' ".
-        "pluginspage='http://www.adobe.com/go/getflashplayer'>". 
-        "<param name='PluginsPage' value='http://www.adobe.com/go/getflashplayer'/>".
-        "<param name='FlashVars' value='PAC=" .$pac. "&amp;lang=" .$data["language"]. "'/>".
-        "<param name='Movie' value='" . $swf. "'/>".
-        "<param name='allowScriptAccess' value='always'/>".
-        "<param name='allowFullScreen' value='true'/>".
-        "<embed src='" .$swf. "' width='".$width."' height='150' ".
-        "flashvars='PAC=" .$pac. "&amp;lang=" .$data["language"]. "' ". 
-        "allowfullscreen='true' allowScriptAccess='always' ".
-        "type='application/x-shockwave-flash' ".
-        "pluginspage='http://www.adobe.com/go/getflashplayer'>".
-		"</embed></object>";
-	    
+	switch ($data["widget_type"])
+	{
+		case "F": // Flash Widget
+			$code = "<object width='".$width."' height='150' ". 
+				"type='application/x-shockwave-flash' ". 
+				"classid='clsid:D27CDB6E-AE6D-11cf-96B8-444553540000' ". 
+				"codebase='http://fpdownload.macromedia.com/get/flashplayer/current/swflash.cab' ".
+				"pluginspage='http://www.adobe.com/go/getflashplayer'>". 
+				"<param name='PluginsPage' value='http://www.adobe.com/go/getflashplayer'/>".
+				"<param name='FlashVars' value='PAC=" .$pac. "&amp;lang=" .$data["language"]. "'/>".
+				"<param name='Movie' value='" . $swf. "'/>".
+				"<param name='allowScriptAccess' value='always'/>".
+				"<param name='allowFullScreen' value='true'/>".
+				"<embed src='" .$swf. "' width='".$width."' height='150' ".
+				"flashvars='PAC=" .$pac. "&amp;lang=" .$data["language"]. "' ". 
+				"allowfullscreen='true' allowScriptAccess='always' ".
+				"type='application/x-shockwave-flash' ".
+				"pluginspage='http://www.adobe.com/go/getflashplayer'>".
+				"</embed></object>";
+			break;
+				
+		case "H": // HTML5 Widget
+			$frame_width = intval($width) + 5;
+			$src = GetFeedwebUrl()."BRW/BlogRatingWidget.aspx?cs=gray&amp;width=$width&amp;height=120&amp;lang=".$data["language"]."&amp;pac=$pac";
+			$code = "<iframe id='FeedwebRatingWidget_$id' style='width: ".$frame_width."px; height: 125px; border-style: none;' scrolling='no' src='$src'></iframe>";
+			break;
+				
+		default:
+			//$_SERVER['HTTP_USER_AGENT'];
+			return $content.GetLicenseInfo("Invalid Widget Type: " + $data["widget_type"]);
+	}
+		
 	$content .= GetLicenseInfo(null);
 	if ($data["copyright_notice"] == "1")
-		return $content."<br/>".$obj.GetCopyrightNotice(null);
+		return $content."<br/>".$code.GetCopyrightNotice(null);
 	
-	return $content."<br/>".$obj;
+	return $content."<br/>".$code;
 }
 
 

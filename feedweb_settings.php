@@ -19,6 +19,7 @@ function UpdateSettings()
 	$data["delay"] = $_POST["DelayResults"];
 	$data["language"] = $_POST["FeedwebLanguage"];
 	$data["mp_widgets"] = $_POST["FeedwebMPWidgets"];
+	$data["widget_type"] = $_POST["RatingWidgetType"];
 	$data["widget_width"] = $_POST["WidgetWidthEdit"];
 	$data["widget_prompt"] = $_POST["InsertWidgetPrompt"];
 	$data["front_widget_items"] = $_POST["FrontWidgetItemCount"];

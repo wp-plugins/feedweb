@@ -151,6 +151,11 @@ function FeedwebPluginOptions()
 					input.value = list.options[list.selectedIndex].value;
 				}
 				
+				function OnWidgetType(type)
+				{
+					document.getElementById('RatingWidgetType').value = type;
+				}
+				
 				function OnCheckMPWidgets()
 				{
 					var box = document.getElementById('MPWidgetsBox');
@@ -253,6 +258,7 @@ function FeedwebPluginOptions()
 			<input type='hidden' id='DelayResults' name='DelayResults' value='<?php echo $feedweb_data["delay"];?>'/>
 			<input type='hidden' id='FeedwebLanguage' name='FeedwebLanguage' value='<?php echo $feedweb_data["language"];?>'/>
 			<input type='hidden' id='FeedwebMPWidgets' name='FeedwebMPWidgets' value='<?php echo $feedweb_data["mp_widgets"];?>'/>
+			<input type='hidden' id='RatingWidgetType' name='RatingWidgetType' value='<?php echo $feedweb_data["widget_type"];?>'/>
 			<input type='hidden' id='InsertWidgetPrompt' name='InsertWidgetPrompt' value='<?php echo $feedweb_data["widget_prompt"];?>'/>
 			<input type='hidden' id='FrontWidgetItemCount' name='FrontWidgetItemCount' value='<?php echo $feedweb_data["front_widget_items"];?>'/>
 			<input type='hidden' id='FeedwebCopyrightNotice' name='FeedwebCopyrightNotice' value='<?php echo $feedweb_data["copyright_notice"];?>'/>
@@ -269,9 +275,26 @@ function FeedwebPluginOptions()
 				</tr>
 				<tr class="FeedwebSettingsContent">
 					<td>
-						<div class="FeedwebSettingsDiv" style="display: block; height: 350px;">
+						<div class="FeedwebSettingsDiv" style="display: block; height: 400px;">
 							<table class="FeedwebSettingsTable">
 								<tbody>
+									<tr>
+										<td style='width: 255px;'>
+											<span><b><?php _e("Widget Type:", "FWTD")?></b></span>
+										</td>
+										<td style='width: 10px;'/>
+										<td style='width: 200px;'>
+											<input type="radio" <?php if ($feedweb_data['widget_type']=='F') echo 'checked="checked"'; ?> 
+												name="WidgetTypeRadio" id="WidgetTypeFlashRadio" onclick="OnWidgetType('F')"> Flash</input><br/>
+											<input type="radio" <?php if ($feedweb_data['widget_type']=='H') echo 'checked="checked"'; ?> 
+												name="WidgetTypeRadio" id="WidgetTypeHTML5Radio" onclick="OnWidgetType('H')"> HTML5 (beta)</input>
+										</td>
+										<td style='width: 10px;'/>
+										<td style='width: 600px;'>
+											<span><i><?php _e("Please choose the type of rating widget", "FWTD")?></i></span>
+										</td>
+									</tr>
+									
 									<tr>
 										<td style='width: 255px;'>
 											<span><b><?php _e("Widget Language:", "FWTD")?></b></span>
@@ -362,7 +385,7 @@ function FeedwebPluginOptions()
 								</tbody>
 							</table>
 						</div>
-						<div class="FeedwebSettingsDiv" style="display: none; height: 350px;">
+						<div class="FeedwebSettingsDiv" style="display: none; height: 400px;">
 							<table class="FeedwebSettingsTable">
 								<tbody>
 									<tr>

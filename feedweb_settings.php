@@ -22,6 +22,7 @@ function UpdateSettings()
 	$data["widget_type"] = $_POST["RatingWidgetType"];
 	$data["widget_width"] = $_POST["WidgetWidthEdit"];
 	$data["widget_prompt"] = $_POST["InsertWidgetPrompt"];
+	$data["widget_cs"] = $_POST["RatingWidgetColorScheme"];
 	$data["front_widget_items"] = $_POST["FrontWidgetItemCount"];
 	$data["copyright_notice"] = $_POST["FeedwebCopyrightNotice"];
 	$data["front_widget_height"] = $_POST["FrontWidgetHeightEdit"];

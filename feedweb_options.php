@@ -46,12 +46,20 @@ function BuildItemCountBox($number)
 	echo "</select>";
 }
 
-function BuildColorSchemeBox($scheme)
+function BuildColorSchemeBox($scheme, $is_rating_widget)
 {
-	$values = array("classic" => __("Classic", "FWTD"), "monochrome" => __("Monochrome", "FWTD"), "light_blue" => __("Light Blue", "FWTD"), 
-		"dark_blue" => __("Dark Blue", "FWTD"), "dark_green" => __("Dark Green", "FWTD"));
-	
-	echo "<select id='ColorSchemeBox' name='ColorSchemeBox' style='width: 99%;' onchange='OnChangeColorScheme()'>";
+	if ($is_rating_widget)
+	{
+		echo "<select id='RatingWidgetColorSchemeBox' name='RatingWidgetColorSchemeBox' style='width: 99%;' onchange='OnChangeRatingWidgetColorScheme()'>";
+		$values = array("blue" => __("Blue", "FWTD"), "gray" => __("Gray", "FWTD"));
+	}
+	else
+	{
+		echo "<select id='FrontWidgetColorSchemeBox' name='FrontWidgetColorSchemeBox' style='width: 99%;' onchange='OnChangeFrontWidgetColorScheme()'>";
+		$values = array("classic" => __("Classic", "FWTD"), "monochrome" => __("Monochrome", "FWTD"), "light_blue" => __("Light Blue", "FWTD"), 
+			"dark_blue" => __("Dark Blue", "FWTD"), "dark_green" => __("Dark Green", "FWTD"));
+	}
+			
 	foreach ($values as $key => $value)
 	{
 		echo "<option";
@@ -144,15 +152,34 @@ function FeedwebPluginOptions()
 					input.value = list.options[list.selectedIndex].value;
 				}
 				
-				function OnChangeColorScheme()
+				function OnChangeFrontWidgetColorScheme()
 				{
+					var list = document.getElementById('FrontWidgetColorSchemeBox');
 					var input = document.getElementById('FrontWidgetColorScheme');
-					var list = document.getElementById('ColorSchemeBox');
+					input.value = list.options[list.selectedIndex].value;
+				}
+				
+				function OnChangeRatingWidgetColorScheme()
+				{
+					var list = document.getElementById('RatingWidgetColorSchemeBox');
+					var input = document.getElementById('RatingWidgetColorScheme');
 					input.value = list.options[list.selectedIndex].value;
 				}
 				
 				function OnWidgetType(type)
 				{
+					if (type == "H")
+					{
+						document.getElementById('RatingWidgetColorSchemeBox').disabled = "";
+						document.getElementById('RatingWidgetColorSchemeRow').style.color = "#000000";
+						//document.getElementById('RatingWidgetColorSchemeRow').style.display = "table-row";
+					}
+					else
+					{
+						document.getElementById('RatingWidgetColorSchemeBox').disabled = "disabled";
+						document.getElementById('RatingWidgetColorSchemeRow').style.color = "#808080";
+						//document.getElementById('RatingWidgetColorSchemeRow').style.display = "none";
+					}
 					document.getElementById('RatingWidgetType').value = type;
 				}
 				
@@ -260,6 +287,7 @@ function FeedwebPluginOptions()
 			<input type='hidden' id='FeedwebMPWidgets' name='FeedwebMPWidgets' value='<?php echo $feedweb_data["mp_widgets"];?>'/>
 			<input type='hidden' id='RatingWidgetType' name='RatingWidgetType' value='<?php echo $feedweb_data["widget_type"];?>'/>
 			<input type='hidden' id='InsertWidgetPrompt' name='InsertWidgetPrompt' value='<?php echo $feedweb_data["widget_prompt"];?>'/>
+			<input type='hidden' id='RatingWidgetColorScheme' name='RatingWidgetColorScheme' value='<?php echo $feedweb_data["widget_cs"];?>'/>
 			<input type='hidden' id='FrontWidgetItemCount' name='FrontWidgetItemCount' value='<?php echo $feedweb_data["front_widget_items"];?>'/>
 			<input type='hidden' id='FeedwebCopyrightNotice' name='FeedwebCopyrightNotice' value='<?php echo $feedweb_data["copyright_notice"];?>'/>
 			<input type='hidden' id='FrontWidgetHideScroll' name='FrontWidgetHideScroll' value='<?php echo $feedweb_data["front_widget_hide_scroll"];?>'/>
@@ -295,6 +323,20 @@ function FeedwebPluginOptions()
 										</td>
 									</tr>
 									
+									<tr id="RatingWidgetColorSchemeRow">
+										<td style='width: 255px;'>
+											<span><b><?php _e("Widget Color Scheme:", "FWTD")?></b></span>
+										</td>
+										<td style='width: 10px;'/>
+										<td style='width: 200px;'>
+											<?php BuildColorSchemeBox($feedweb_data['widget_cs'], true) ?>				
+										</td>
+										<td style='width: 10px;'/>
+										<td style='width: 600px;'>
+											<span><i><?php _e("Please choose the color scheme of your HTML rating widgets", "FWTD")?></i></span>
+										</td>
+									</tr>
+																		
 									<tr>
 										<td style='width: 255px;'>
 											<span><b><?php _e("Widget Language:", "FWTD")?></b></span>
@@ -390,11 +432,11 @@ function FeedwebPluginOptions()
 								<tbody>
 									<tr>
 										<td style="width: 255px;">
-											<span><b><?php _e("Front Page Widget Color Sceme:", "FWTD")?></b></span> 				
+											<span><b><?php _e("Front Page Widget Color Scheme:", "FWTD")?></b></span> 				
 										</td>
 										<td style='width: 10px;'/>
 										<td style="width: 200px;">
-											<?php BuildColorSchemeBox($feedweb_data['front_widget_color_scheme']) ?>				
+											<?php BuildColorSchemeBox($feedweb_data['front_widget_color_scheme'], false) ?>				
 										</td>
 										<td style='width: 10px;'/>
 										<td style="width: 600px;">
@@ -457,6 +499,9 @@ function FeedwebPluginOptions()
 			</table>
 		</form>
 	</div>
+	<script>
+		OnWidgetType('<?php echo $feedweb_data['widget_type']?>');
+	</script>
 	<?php 
 }
 ?>

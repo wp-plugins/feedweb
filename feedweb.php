@@ -4,7 +4,7 @@ Plugin Name: Feedweb
 Plugin URI: http://wordpress.org/extend/plugins/feedweb/
 Description: Expose your blog to the Feedweb reader's community. Promote your views. Get a comprehensive and detailed feedback from your readers.
 Author: Feedweb
-Version: 1.8.1
+Version: 1.8.2
 Author URI: http://feedweb.net
 */
 
@@ -64,15 +64,18 @@ function ContentFilter($content)
 			break;
 				
 		default:
-			//$_SERVER['HTTP_USER_AGENT'];
 			return $content.GetLicenseInfo("Invalid Widget Type: " + $data["widget_type"]);
 	}
-		
-	$content .= GetLicenseInfo(null);
-	if ($data["copyright_notice"] == "1")
-		return $content."<br/>".$code.GetCopyrightNotice(null);
 	
-	return $content."<br/>".$code;
+	$signature = GetLicenseInfo(null);
+	if (strstr($content, $signature) != false) // The signature is already exists
+		return $content;
+			
+	$content .= $signature."<br/>".$code;
+	if ($data["copyright_notice"] == "1")
+		$content .= GetCopyrightNotice(null);
+	
+	return $content;
 }
 
 

@@ -1,6 +1,6 @@
 ﻿=== Feedweb ===
 Contributors: Feedweb
-Tags: blog, rate, rating, network, feed, feedback, article, aggregator, aggregation, content management, post, page, public, opinion, research, flash, html5, widget, media, press, news, politics, society, social, question, answer, survey, poll, polling, vote, voting, stats, discussion, controversy, cooperation, view, comments, community, statistics, syndication, marketing, admin, sidebar, plugin, publishing
+Tags: blog, rate, rating, network, feed, feedback, article, aggregator, aggregation, content management, post, page, public, opinion, research, flash, html5, widget, media, press, news, politics, society, social, question, answer, survey, score, poll, polling, vote, voting, stats, discussion, controversy, cooperation, view, comments, community, statistics, syndication, marketing, admin, sidebar, plugin, publishing
 Requires at least: 3.0
 Tested up to: 3.5.1
 Stable Tag: 1.8.2

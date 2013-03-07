@@ -156,6 +156,7 @@ function GetFeedwebOptions()
 		"delay" => "2", 
 		"copyright_notice" => "0", 
 		"widget_prompt" => "1", 
+		"add_paragraphs" => "0",
 		"front_widget_color_scheme" => "classic", 
 		"front_widget_height" => "400", 
 		"front_widget_hide_scroll" => "0", 

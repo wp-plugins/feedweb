@@ -60,7 +60,12 @@
 	padding: 8px 8px 8px 8px;
 }
 
-.FeedwebSettingsTable tbody tr td
+.FeedwebSettingsTable tr
+{
+	height: 32px;
+}
+
+.FeedwebSettingsTable td
 {
 	border-color: #C0C0C0;
 	border-top-style: none;
@@ -68,8 +73,8 @@
 	border-right-style: none;
 	border-bottom-style: dotted;
 	padding-left: 8px;
-	padding-top: 8px;
-	padding-bottom: 8px;
+	padding-top: 2px;
+	padding-bottom: 2px;
 }
 
 #PurgeInactiveWidgetsButton

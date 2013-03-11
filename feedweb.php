@@ -4,7 +4,7 @@ Plugin Name: Feedweb
 Plugin URI: http://wordpress.org/extend/plugins/feedweb/
 Description: Expose your blog to the Feedweb reader's community. Promote your views. Get a comprehensive and detailed feedback from your readers.
 Author: Feedweb
-Version: 1.8.4
+Version: 1.8.5
 Author URI: http://feedweb.net
 */
 
@@ -15,6 +15,35 @@ require_once(ABSPATH.'wp-admin/includes/plugin.php');
 $feedweb_blog_caps = null;
 $feedweb_rw_swf = "FL/RatingWidget.swf";
 
+function CheckAtContentWidget($content)
+{
+	try
+	{
+		if (is_plugin_active("atcontent/atcontent.php") != true)
+			return false;
+	
+		$dom = new DOMDocument;
+		if ($dom->loadHTML($content) != true)
+			return false;
+			
+		$divs = $dom->getElementsByTagName("div");
+		if ($divs == null)
+			return false;
+			
+		for ($index = 0; $index < $divs->length; $index++)
+		{
+			$div = $divs->item($index);
+			$class = $div->getAttribute("class");
+			if ($class == "atcontent_widget")
+				return true;
+		}
+	}
+	catch (Exception $e)
+	{
+	}
+	return false;
+}
+
 function ContentFilter($content)
 {
 	global $post_ID;
@@ -24,7 +53,11 @@ function ContentFilter($content)
 	if ($data["mp_widgets"] == "0")	// Doesn't display on the Home / Front Page
 		if (is_front_page() || is_home())
 			return  $content;
-	
+			
+	if ($data["atcontent_widget_check"] == "1")	// Prevent double widget appearance...
+		if (CheckAtContentWidget($content) == true)
+			return $content . GetLicenseInfo('AtContentPatch');
+		
 	$id = get_the_ID($post_ID);
 	$pac = GetPac($id);
 	if ($pac == null)

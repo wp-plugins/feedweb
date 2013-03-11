@@ -3,6 +3,7 @@
 if ( !defined('ABSPATH') )
 	define('ABSPATH', dirname(dirname(dirname(dirname(__FILE__)))) . '/');
 require_once( ABSPATH.'wp-load.php');
+include_once( ABSPATH.'wp-admin/includes/plugin.php' );
 
 function BuildLanguageBox($language, $language_set, $style, $all)
 {
@@ -223,6 +224,16 @@ function FeedwebPluginOptions()
 						input.value = "0";
 				}
 				
+				function OnCheckAtContentWidget()
+				{
+					var box = document.getElementById('AtContentWidgetBox');
+					var input = document.getElementById('AtContentWidgetCheck');
+					if (box.checked == true)
+						input.value = "1";
+					else
+						input.value = "0";
+				}
+				
 				function OnCheckHideScroll()
 				{
 					var box = document.getElementById('FrontWidgetHideScrollBox');
@@ -301,6 +312,7 @@ function FeedwebPluginOptions()
 			<input type='hidden' id='RatingWidgetColorScheme' name='RatingWidgetColorScheme' value='<?php echo $feedweb_data["widget_cs"];?>'/>
 			<input type='hidden' id='FrontWidgetItemCount' name='FrontWidgetItemCount' value='<?php echo $feedweb_data["front_widget_items"];?>'/>
 			<input type='hidden' id='FeedwebCopyrightNotice' name='FeedwebCopyrightNotice' value='<?php echo $feedweb_data["copyright_notice"];?>'/>
+			<input type='hidden' id='AtContentWidgetCheck' name='AtContentWidgetCheck' value='<?php echo $feedweb_data["atcontent_widget_check"];?>'/>
 			<input type='hidden' id='FrontWidgetHideScroll' name='FrontWidgetHideScroll' value='<?php echo $feedweb_data["front_widget_hide_scroll"];?>'/>
 			<input type='hidden' id='FrontWidgetColorScheme' name='FrontWidgetColorScheme' value='<?php echo $feedweb_data["front_widget_color_scheme"];?>'/>
 			<br/>
@@ -450,6 +462,27 @@ function FeedwebPluginOptions()
 										</td>
 									</tr>
 									
+									<tr style="visibility: 
+										<?php 
+											if (is_plugin_active("atcontent/atcontent.php") == true) 
+												echo "visible";
+											else
+												echo "hidden";
+										?>;">
+										<td>
+											<span><b><?php _e("Disable double widget appearance:", "FWTD")?></b></span> 				
+										</td>
+										<td />
+										<td>
+											<input <?php if($feedweb_data['atcontent_widget_check'] == "1") echo 'checked="checked"' ?>
+											id="AtContentWidgetBox" name="AtContentWidgetBox" type="checkbox" onchange='OnCheckAtContentWidget()'> <?php _e("Disable")?></input>				
+										</td>
+										<td />
+										<td>
+											<span style="color: Red;"><b><?php _e("IMPORTANT!", "FWTD")?></b></span>
+											<span><i>Please check if the rating widgets appear twice in your posts.</i></span>
+										</td>
+									</tr>
 									
 								</tbody>
 							</table>

@@ -3,7 +3,7 @@ Contributors: Feedweb
 Tags: blog, rate, rating, network, feed, feedback, article, aggregator, aggregation, content management, post, page, public, opinion, research, flash, html5, widget, media, press, news, politics, society, social, question, answer, survey, poll, polling, vote, voting, stats, discussion, controversy, cooperation, view, comments, community, statistics, syndication, marketing, admin, sidebar, plugin, publishing
 Requires at least: 3.0
 Tested up to: 3.5.1
-Stable Tag: 1.8.4
+Stable Tag: 1.8.5
 
 Expose your blog to the Feedweb readers’ community. Promote your views. Get a comprehensive and detailed feedback from your readers.
 
@@ -63,6 +63,9 @@ Please [**contact us**](mailto://contact@feedweb.net) if you experience any prob
 
 
 == Changelog ==
+
+= 1.8.5 =
+* IMPORTANT fix for the **AtContent** plugin users: Option to disable a rating widget appearance when it's already embedded by the AtContent service.
 
 = 1.8.4 =
 * Automatically add paragraphs option.

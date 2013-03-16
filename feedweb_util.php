@@ -459,6 +459,14 @@ function GetLicenseInfo($remark)
 	return "<input name='FeedwebLicenseInfo' id='FeedwebLicenseInfo' type='hidden' value='$val'/>";
 }
 
+function CheckIncompatiblePlugin()
+{
+	if (is_plugin_active("atcontent/atcontent.php") == true) 
+		return "AtContent";
+		
+	return null;
+}
+
 function CheckServiceAvailability()
 {
 	// Check service availability once in an hour

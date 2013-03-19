@@ -459,11 +459,25 @@ function GetLicenseInfo($remark)
 	return "<input name='FeedwebLicenseInfo' id='FeedwebLicenseInfo' type='hidden' value='$val'/>";
 }
 
+function AtContentIncompatibleVersion()
+{
+	$name = "atcontent/atcontent.php";
+	if (is_plugin_active($name) == true) 
+	{
+		$full_name = dirname(dirname(__FILE__))."/".$name;
+		$plugin_data = get_plugin_data($full_name);
+		$version = $plugin_data['Version'];
+		if ($version < "2.0.3")
+			return $version;
+	}
+	return null;
+}
+
 function CheckIncompatiblePlugin()
 {
-	if (is_plugin_active("atcontent/atcontent.php") == true) 
-		return "AtContent";
-		
+	$version = AtContentIncompatibleVersion();
+	if ($version != null)
+		return "Feedweb may have compatibility problems with plugin AtContent (ver. $version). Please update AtContent to the latest version.";
 	return null;
 }
 

@@ -464,7 +464,7 @@ function FeedwebPluginOptions()
 									
 									<tr style="visibility: 
 										<?php 
-											if (is_plugin_active("atcontent/atcontent.php") == true) 
+											if (AtContentIncompatibleVersion() != null)
 												echo "visible";
 											else
 												echo "hidden";

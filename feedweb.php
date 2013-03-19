@@ -4,7 +4,7 @@ Plugin Name: Feedweb
 Plugin URI: http://wordpress.org/extend/plugins/feedweb/
 Description: Expose your blog to the Feedweb reader's community. Promote your views. Get a comprehensive and detailed feedback from your readers.
 Author: Feedweb
-Version: 1.8.6
+Version: 1.8.7
 Author URI: http://feedweb.net
 */
 
@@ -19,7 +19,7 @@ function CheckAtContentWidget($content)
 {
 	try
 	{
-		if (is_plugin_active("atcontent/atcontent.php") != true)
+		if (AtContentIncompatibleVersion() == null)
 			return false;
 	
 		$dom = new DOMDocument;
@@ -304,13 +304,10 @@ function showAdminMessages()
 			return;
 		}
 		
-		$plugin = CheckIncompatiblePlugin();
-		if ($plugin != null)
+		$error = CheckIncompatiblePlugin();
+		if ($error != null)
 		{
-			$msg = __("Feedweb may have compatibility problems with another plugin", "FWTD");
-			$msg .= " ($plugin). ";
-			$msg .= __("Please check the visual appearance of the Feedweb widgets in your posts.", "FWTD");
-			showMessage($msg, true);
+			showMessage($error, true);
 			return;
 		}
     }

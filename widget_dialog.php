@@ -73,6 +73,23 @@ function GetPostSubTitleControl()
 	echo "<input type='text' id='SubTitleText' name='SubTitleText' style='width:100%;' value='$sub_title'/>"; 
 }
 
+function GetDefaultPostImage($id)
+{
+	$image = get_the_post_thumbnail($id, 'full');  
+	if ($image != null)
+	{
+		$dom = new DOMDocument;
+		if ($dom->loadHTML($image) == true)
+		{
+			$nodes = $dom->getElementsByTagName('img');
+			if ($nodes != null)
+				foreach($nodes as $node)
+					return $node->getAttribute("src");
+		}
+	}
+	return null;
+}
+
 function ExtractPostImages($id)
 {
 	$post = get_post($id);
@@ -108,16 +125,31 @@ function GetPostImageUrlControl()
 	
 	$id = GetPostId();
 	$images = ExtractPostImages($id);
-	if ($images != null)
+	$default_image = GetDefaultPostImage($id);
+	if ($images != null || $default_image != null)
 	{
-		echo "<input type='hidden' id='WidgetImageUrl' name='WidgetImageUrl' value='$img'/>";
 		echo "<select id='WidgetImageList' name='WidgetImageList' onchange='OnChangeImage()' style='width: 450px;' >";
-		foreach( $images as $key => $value )
-			if ($key == $img)
-				echo "<option selected='selected'>$key</option>";
+		
+		if ($default_image != null)
+		{
+			if ($img == null || $img == "")
+				$img = $default_image;
+			
+			if ($img == $default_image)
+				echo "<option selected='selected'>$default_image</option>";
 			else
-				echo "<option>$key</option>";
+				echo "<option>$default_image</option>";
+		}
+		
+		if ($images != null)
+			foreach( $images as $key => $value )
+				if ($key == $img)
+					echo "<option selected='selected'>$key</option>";
+				else
+					echo "<option>$key</option>";
+		
 		echo "</select>";
+		echo "<input type='hidden' id='WidgetImageUrl' name='WidgetImageUrl' value='$img'/>";
 	} 
 	else
 		echo "<input type='text' readonly='readonly' style='width: 450px;' id='WidgetImageUrl' name='WidgetImageUrl' value='$img'/>";

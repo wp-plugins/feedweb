@@ -24,7 +24,6 @@ NOTE: The plugin is compatible with Firefox, Chrome and Opera browsers. We stron
 
 Please [**contact us**](mailto://contact@feedweb.net) if you experience any problems with our plugin.
 
-![Widget](http://testblog.feedweb.net/widget.gif)
 
 
 = Translators =

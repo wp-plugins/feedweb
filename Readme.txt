@@ -64,7 +64,7 @@ Please [**contact us**](mailto://contact@feedweb.net) if you experience any prob
 
 == Changelog ==
 
-= 1.9.1 =
+= 1.9.2 =
 * Screenshots moved to the assets directory.
 
 = 1.9 =

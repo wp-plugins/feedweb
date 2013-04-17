@@ -14,7 +14,7 @@ The Feedweb Plugin is a simple and easy way to promote your blog, improve it and
 
 After activating the plugin you can freely insert customized widgets in your selected posts for blog ratings, choose questions you want to ask your readers and receive a comprehensive, detailed and precise feedback about your blog!
 
-The Blog Rating Widget is an attractive animated visual element that will improve your ratings! It is built using cutting-edge Flash and HTML5 technology, meets the highest privacy and security standards and enterprise-level quality.
+The Blog Rating Widget is an attractive animated visual element that will improve your ratings! It is built using cutting-edge **Flash** and **HTML5** technology, meets the highest privacy and security standards and enterprise-level quality.
 
 Requires **WordPress 3.0** and **PHP 5**.
 

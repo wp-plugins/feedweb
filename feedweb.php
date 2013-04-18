@@ -4,7 +4,7 @@ Plugin Name: Feedweb
 Plugin URI: http://wordpress.org/extend/plugins/feedweb/
 Description: Expose your blog to the Feedweb reader's community. Promote your views. Get a comprehensive and detailed feedback from your readers.
 Author: Feedweb
-Version: 1.9.2
+Version: 1.10
 Author URI: http://feedweb.net
 */
 
@@ -159,7 +159,7 @@ function FillFeedwebCell($id)
 			echo "<input alt='".$url."' class='thickbox' title='".__("Insert Rating Widget", "FWTD")."' type='image' src='$src'/>";
 		}
 	}
-	else			// Created - display 'Edit' button
+	else	// Created - display 'Edit' button
 	{
 		$data = GetPageData($pac, false);
 		if ($data == null)
@@ -359,7 +359,7 @@ function EnqueueAdminScript()
 		}
 	</script>
 	<?php
-}    
+}   
 
 function PublishPostHook($deprecated = '')
 {

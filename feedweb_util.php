@@ -420,7 +420,17 @@ function UpdateBlogCapabilities()
 
 function GetInsertWidgetStatus($id)
 {
-    $days = GetPostAge($id);
+	$status = get_post_status($id);
+	if ($status == false)
+		return __("Cannot insert widget into a post with undefined status", "FWTD");
+		
+	if ($status == 'private')
+		return __("Cannot insert widget into a private post (must be public)", "FWTD");
+		
+	if ($status == 'trash')
+		return __("Cannot insert widget into a trashed post", "FWTD");
+	
+	$days = GetPostAge($id);
     if ($days > GetMaxPostAge())
     {
 	    $format = __("Cannot insert widget into a post published %d days ago", "FWTD");
@@ -441,7 +451,6 @@ function GetInsertWidgetStatus($id)
 		$format = __("You have created %d widgets in the last 30 days. The monthly limit is %d new widgets", "FWTD");
 		return sprintf ($format, $cap["used"], $cap["limit"]);
 	}
-    
 	return null;
 }
 

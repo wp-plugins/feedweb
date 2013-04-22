@@ -525,6 +525,24 @@ function CheckServiceAvailability()
 	return "";
 }
 
+function SetPageVisibilityStatus($id, $visible)
+{
+	$pac = GetPac($id);
+	if ($pac == null)
+		return false;
+		
+	$bac = GetBac(true);
+	if ($bac == null)
+		return false;
+		
+	$query = GetFeedwebUrl()."FBanner.aspx?action=spv&pac=$pac&bac=$bac&vs=$visible";
+	$response = wp_remote_get ($query, array('timeout' => 30));
+	if (is_wp_error ($response))
+		return false;
+	
+	return true;
+}
+
 function GetOrfanedIDs()
 {
 	global $wpdb;

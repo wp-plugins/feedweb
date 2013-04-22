@@ -4,7 +4,7 @@ Plugin Name: Feedweb
 Plugin URI: http://wordpress.org/extend/plugins/feedweb/
 Description: Expose your blog to the Feedweb reader's community. Promote your views. Get a comprehensive and detailed feedback from your readers.
 Author: Feedweb
-Version: 1.10
+Version: 1.10.1
 Author URI: http://feedweb.net
 */
 
@@ -361,6 +361,23 @@ function EnqueueAdminScript()
 	<?php
 }   
 
+
+function DeletePostHook($pid)
+{
+	// Delete Widget Entry
+}
+
+function TrashPostHook($pid)
+{
+	//Set widget 'Invisible' 
+	SetPageVisibilityStatus($pid, 0);
+}
+
+function TrashedPostHook($pid)
+{
+}
+
+
 function PublishPostHook($deprecated = '')
 {
 	if (current_user_can('manage_options') == false)
@@ -408,6 +425,10 @@ add_filter('widget_text', 'do_shortcode');
 add_action('admin_notices', 'showAdminMessages');
 
 add_action('publish_post', 'PublishPostHook');
+
+add_action('delete_post', 'DeletePostHook');
+add_action('trashed_post', 'TrashedPostHook');
+add_action('trash_post', 'TrashPostHook');
 
 add_action( 'admin_enqueue_scripts', 'EnqueueAdminScript' );
 ?>

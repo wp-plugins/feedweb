@@ -429,6 +429,9 @@ function GetInsertWidgetStatus($id)
 		
 	if ($status == 'trash')
 		return __("Cannot insert widget into a trashed post", "FWTD");
+		
+	if (post_password_required($id) == true)
+		return __("Cannot insert widget into a password-protected post", "FWTD");
 	
 	$days = GetPostAge($id);
     if ($days > GetMaxPostAge())

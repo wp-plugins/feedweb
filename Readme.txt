@@ -20,7 +20,7 @@ Requires WordPress 3.0 and PHP 5.
 
 For more information go to [**Feedweb Readers Community**](http://feedweb.net) website.
 
-NOTE: The plugin is compatible with Firefox, Chrome and Opera browsers. We strongly recommend not using Internet Explorer. 
+**NOTE**: The plugin is compatible with Firefox, Chrome and Opera browsers. We strongly recommend not using Internet Explorer. 
 
 Please [**contact us**](mailto://contact@feedweb.net) if you experience any problems with our plugin.
 
@@ -33,7 +33,7 @@ Follow us on [**Facebook**](https://www.facebook.com/feedwebresearch) and [**Twi
 * Hebrew (he_IL)     - Dana Rovinsky
 * Italian (it_IT)    - Menashè Eliezer
 * Norwegian (nb_NO)  - Stian Iversen
-* Polish (pl_PL)	 - FRENCHGREY
+* Polish (pl_PL)	 - Frenchgrey
 * Portuguese (pt_PT) - Tomé Mendes
 * Russian (ru_RU)    - Misha
 * Spanish (es_ES)    - Javier Sanz

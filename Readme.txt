@@ -3,7 +3,7 @@ Contributors: Feedweb
 Tags: blog, rate, rating, network, feed, feedback, article, aggregator, aggregation, content, content management, post, page, public, opinion, research, flash, html5, widget, media, press, news, politics, society, social, question, answer, survey, poll, polling, vote, voting, stats, discussion, controversy, cooperation, view, comments, community, statistics, syndication, marketing, admin, sidebar, plugin, publishing
 Requires at least: 3.0
 Tested up to: 3.5.1
-Stable Tag: 1.10.2
+Stable Tag: 1.10.3
 
 Expose your blog to the Feedweb readers’ community. Promote your views. Get a comprehensive and detailed feedback from your readers.
 
@@ -24,6 +24,8 @@ NOTE: The plugin is compatible with Firefox, Chrome and Opera browsers. We stron
 
 Please [**contact us**](mailto://contact@feedweb.net) if you experience any problems with our plugin.
 
+Follow us on [**Facebook**](https://www.facebook.com/feedwebresearch) and [**Twitter**](https://twitter.com/feedwebresearch).
+
 
 = Translators =
 * Arabic (ar)		 - Abdullah Alshehri ([**Create33.com**](http://Create33.com))
@@ -31,6 +33,7 @@ Please [**contact us**](mailto://contact@feedweb.net) if you experience any prob
 * Hebrew (he_IL)     - Dana Rovinsky
 * Italian (it_IT)    - Menashè Eliezer
 * Norwegian (nb_NO)  - Stian Iversen
+* Polish (pl_PL)	 - FRENCHGREY
 * Portuguese (pt_PT) - Tomé Mendes
 * Russian (ru_RU)    - Misha
 * Spanish (es_ES)    - Javier Sanz
@@ -63,6 +66,9 @@ Please [**contact us**](mailto://contact@feedweb.net) if you experience any prob
 
 
 == Changelog ==
+
+= 1.10.3 =
+* L10n update (Polish).
 
 = 1.10.2 =
 * Prevent inserting widgets into password-protected posts.

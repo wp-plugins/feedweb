@@ -33,7 +33,7 @@ Follow us on [**Facebook**](https://www.facebook.com/feedwebresearch) and [**Twi
 * Hebrew (he_IL)     - Dana Rovinsky
 * Italian (it_IT)    - Menashè Eliezer
 * Norwegian (nb_NO)  - Stian Iversen
-* Polish (pl_PL)	 - ([Frenchgrey](mailto://frenchgrey@live.co.uk))
+* Polish (pl_PL)	 - [Frenchgrey](mailto://frenchgrey@live.co.uk)
 * Portuguese (pt_PT) - Tomé Mendes
 * Russian (ru_RU)    - Misha
 * Spanish (es_ES)    - Javier Sanz

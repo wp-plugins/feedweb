@@ -70,7 +70,7 @@ function GetPostSubTitleControl()
 		if ($data != null)
 			$sub_title = $data["brief"];
 	}
-	echo "<input type='text' id='SubTitleText' name='SubTitleText' style='width:100%;' value='$sub_title'/>"; 
+	echo "<textarea id='SubTitleText' name='SubTitleText'>$sub_title</textarea>"; 
 }
 
 function GetDefaultPostImage($id)
@@ -88,6 +88,16 @@ function GetDefaultPostImage($id)
 		}
 	}
 	return null;
+}
+
+function LoadTermsOfService()
+{
+	$url = GetFeedwebUrl()."FeedwebPluginTermsOfService.txt";
+	$response = wp_remote_get ($url, array('timeout' => 30));
+	if (is_wp_error ($response))
+		return;
+	
+	echo $response['body'];
 }
 
 function ExtractPostImages($id)
@@ -178,6 +188,68 @@ function GetLanguageBox()
 	$lang = BuildLanguageBox($lang, $set, 'width: 310px; height: 30px;', true);
 	echo "<input type='hidden' id='LanguageText' name='LanguageText' value='$lang'/>";
 }
+
+
+function GetPublishWidgetCheckBox()
+{
+	$checked = "";
+	if ($_GET["mode"] == "edit")
+	{
+		$data = GetEditPageData();
+		if ($data != null)
+			$checked = ($data["visible"] ? "checked" : "");
+	}
+	echo "<input id='PublishWidgetCheckBox' type='checkbox' onclick='OnClickPublishWidgetBox()' $checked />";
+	echo "<span id='PublishWidgetLabel'>".__("Publish your post in the Feedweb's Readers Community Portal", "FWTD")."</span>";
+	
+	$placeholders = array("[", "]", "{", "}");
+	$text = __("By clicking ['Next'] you agree to our {Terms of service}", "FWTD");
+	$markup = array("<b>", "</b>", "<a href='#' onclick='OnShowTermsOfService()'>", "</a>");
+	echo "<span id='TermsOfServiceDisclaimer'>".str_replace($placeholders, $markup, $text)."</span>";
+}
+
+function GetSensorshipBox()
+{
+	$selected = "G";
+	if ($_GET["mode"] == "edit")
+	{
+		$data = GetEditPageData();
+		if ($data != null)
+			$selected = $data["sensorship"];
+	}
+	
+	echo "<select id='SensorshipBox' onchange='OnSelectSensorship()'>";
+	
+	$types = array(
+		"G"  => __("Suitable for any audience type", "FWTD"), 
+		"PG" => __("May contain rude gestures, provocatively dressed individuals; the lesser swear words, or mild violence", "FWTD"), 
+		"R"  => __("May contain such things as harsh profanity, intense violence, nudity, or hard drug use", "FWTD"), 
+		"X"  => __("May contain hardcore sexual imagery or extremely disturbing violence", "FWTD") );
+	
+	foreach ($types as $type => $text)
+		if ($type == $selected)
+			echo "<option selected='selected'>$type</option>";
+		else
+			echo "<option>$type</option>";
+	echo "</select>";
+	
+	foreach ($types as $type => $text)
+		echo "<span class='SensorshipText' id='$type_SensorshipText'>$text</span>";
+}
+
+function GetAdContentCheckBox()
+{
+	$checked = "";
+	if ($_GET["mode"] == "edit")
+	{
+		$data = GetEditPageData();
+		if ($data != null)
+			$checked = ($data["ad_content"] ? "checked" : "");
+	}
+	echo "<input id='AdContentCheckBox' type='checkbox' $checked />";
+	echo "<span id='AdContentLabel'>".__("The post contains advertising material", "FWTD")."</span>";
+}
+
 
 function GetCategoryControl()
 {
@@ -345,7 +417,7 @@ function GetQuestionList($pac)
 
 function BuildQuestionsListControl()
 {
-	echo "<select size='4' id='QuestionsList' name='QuestionsList' style='width:100%;height:100px;'>";
+	echo "<select size='4' id='QuestionsList' style='width: 460px; height:100px;'>";
 	if ($_GET["mode"] == "edit")
 	{
 		$data = GetEditPageData();
@@ -407,6 +479,45 @@ function YesNoQuestionPrompt()
 				input.value = box.options[box.selectedIndex].value; 
 			}
 			
+			function OnClickPublishWidgetBox()
+			{
+				var span = document.getElementById("TermsOfServiceDisclaimer");
+				var box = document.getElementById("PublishWidgetCheckBox");
+				if (span == null || box == null)
+					return;
+				
+				if (box.checked == true)
+					span.style.display = "block";
+				else
+					span.style.display = "none";
+			}
+			
+			function OnShowTermsOfService()
+			{
+				document.getElementById("WidgetTitleDiv").style.visibility = "hidden";
+				document.getElementById("TermsOfServiceDiv").style.display = "block";
+				document.getElementById("WizardNavigatorDiv").style.display = "none";
+				document.getElementById('TermsOfServiceText').focus();
+				
+			}
+			
+			function OnCloseTermsOfService()
+			{
+				document.getElementById("TermsOfServiceDiv").style.display = "none";
+				document.getElementById("WizardNavigatorDiv").style.display = "block";
+				document.getElementById("WidgetTitleDiv").style.visibility = "visible";
+			}
+			
+			function OnSelectSensorship()
+			{
+				var spans = document.getElementsByClassName("SensorshipText");
+				for (var index = 0; index < spans.length; index++)
+					spans[index].style.display = "none";
+					
+				var box = document.getElementById("SensorshipBox");
+				spans[box.selectedIndex].style.display = "block";
+			}
+						
 			function OnChangeImage()
 			{
 				var list = document.getElementById("WidgetImageList");
@@ -543,24 +654,6 @@ function YesNoQuestionPrompt()
 	            if (result == true)
 	            	list.remove(list.selectedIndex);
 			}
-
-			function OnBack()
-			{
-				var question_div = document.getElementById("WidgetQuestionDiv");
-				var picture_div = document.getElementById("WidgetPictureDiv");
-				var data_div = document.getElementById("WidgetDataDiv");
-				
-				if (question_div.style.visibility == "visible")
-				{
-					question_div.style.visibility = "hidden";
-					picture_div.style.visibility = "visible";
-				}
-				else
-				{
-					picture_div.style.visibility = "hidden";
-					data_div.style.visibility = "visible";
-				}
-			}
 			
 			function FillQuestionList()
 			{
@@ -575,51 +668,128 @@ function YesNoQuestionPrompt()
 				list.innerHTML = request.responseText;
 			}
 			
+			function GetCurrentWizardPage()
+			{
+				var divs = document.getElementsByClassName("WidgetWizardPage");
+				for (var index = 0; index < divs.length; index++)
+					if (divs[index].style.visibility == "visible")
+						return index;
+						
+				return -1;
+			}
+			
+			function ValidateTopics()
+			{
+				var tag = document.getElementById("TagText");
+				var category = document.getElementById("CategoryText");
+				if (tag.value.length > 250 || category.value.length > 250)
+				{
+					window.alert('<?php _e("The tags/categories text is limited to 250 characters.", "FWTD")?>');
+					return;
+				}
+			}
+			
+			function InitImageDiv()
+			{
+				var url = document.getElementById("WidgetImageUrl").value;
+				if (url != null && url != "")
+				{
+					var image = document.getElementById("WidgetImage");
+					image.style.display = "inline";
+					image.src = url;
+				}
+				
+				var list = document.getElementById("WidgetImageList");
+				if (list != null)
+				{
+					list.selectedIndex = -1;
+					for (var index = 0; index < list.options.length; index++)
+						if (list.options[index].value == url)
+						{
+							list.selectedIndex = index;
+							break;
+						}
+				}
+			}
+			
+			function OnBack()
+			{
+				var old_page = GetCurrentWizardPage();
+				if (old_page < 1)
+					return;
+					
+				var box = document.getElementById("PublishWidgetCheckBox");
+				var new_page = 0;
+				if (box.checked == true)
+					new_page = old_page - 1;
+					
+				var del_button = document.getElementById("DeleteButton");
+				var next_button = document.getElementById("NextButton");
+				var back_button = document.getElementById("BackButton");
+				var ok_button = document.getElementById("OkButton");
+				
+				if (new_page == 0)
+				{
+					if (del_button != null)
+						del_button.style.visibility = "visible";
+					back_button.style.visibility = "hidden";
+				}
+				next_button.style.visibility = "visible";
+				ok_button.style.visibility = "hidden";
+				
+				var divs = document.getElementsByClassName("WidgetWizardPage");
+				divs[new_page].style.visibility = "visible";
+				divs[old_page].style.visibility = "hidden";
+			}
+			
 			function OnNext()
 			{
-				var question_div = document.getElementById("WidgetQuestionDiv");
-				var picture_div = document.getElementById("WidgetPictureDiv");
-				var data_div = document.getElementById("WidgetDataDiv");
-
-				if (data_div.style.visibility == "visible")
-				{
-					var tag = document.getElementById("TagText");
-					var category = document.getElementById("CategoryText");
-					if (tag.value.length > 250 || category.value.length > 250)
-					{
-						window.alert('<?php _e("The tags/categories text is limited to 250 characters.", "FWTD")?>');
-						return;
-					}
+				var page = GetCurrentWizardPage();
+				if (page < 0)
+					return;
 					
-					FillQuestionList();
+				var divs = document.getElementsByClassName("WidgetWizardPage");
+				var box = document.getElementById("PublishWidgetCheckBox");
+				var del_button = document.getElementById("DeleteButton");
+				var back_button = document.getElementById("BackButton");
+				var next_button = document.getElementById("NextButton");
+				var ok_button = document.getElementById("OkButton");
+				switch(page)
+				{
+					case 0: // Title Div
+						if (del_button != null)
+							del_button.style.visibility = "hidden";
+						back_button.style.visibility = "visible";
+					
+						FillQuestionList();
 				
-					picture_div.style.visibility = "visible";
-					data_div.style.visibility = "hidden";
+						if (box.checked == true)
+						{
+							divs[1].style.visibility = "visible";
+							OnSelectSensorship();
+							InitImageDiv();
+						}
+						else
+						{
+							next_button.style.visibility = "hidden";
+							ok_button.style.visibility = "visible";
+							divs[3].style.visibility = "visible";
+						}
+						divs[0].style.visibility = "hidden";
+						break;
+						
+					case 1:	// Brief Div
+						ValidateTopics();
+						divs[2].style.visibility = "visible";
+						divs[1].style.visibility = "hidden";
+						break;
 					
-					var url = document.getElementById("WidgetImageUrl").value;
-					if (url != null && url != "")
-					{
-						var image = document.getElementById("WidgetImage");
-						image.style.display = "inline";
-						image.src = url;
-					}
-					
-					var list = document.getElementById("WidgetImageList");
-					if (list != null)
-					{
-						list.selectedIndex = -1;
-						for (var index = 0; index < list.options.length; index++)
-							if (list.options[index].value == url)
-							{
-								list.selectedIndex = index;
-								break;
-							}
-					}
-				}
-				else
-				{
-					question_div.style.visibility = "visible";
-					picture_div.style.visibility = "hidden";
+					case 2: // Image Div
+						next_button.style.visibility = "hidden";
+						ok_button.style.visibility = "visible";
+						divs[3].style.visibility = "visible";
+						divs[2].style.visibility = "hidden";
+						break;
 				}
 			}
 		
@@ -718,7 +888,7 @@ function YesNoQuestionPrompt()
 					window.location.href = "widget_commit.php?feedweb_cmd=DEL&wp_post_id=" + <?php echo GetPostId()?>;
 			}
 			
-			function OnSubmitForm()
+			function BuildQuestionData()
 			{
 				var input = document.getElementById("WidgetQuestionsData");
 				input.value = "";
@@ -734,7 +904,34 @@ function YesNoQuestionPrompt()
 					else
 						input.value += "|" + item; 
 				}
-				
+			}
+			
+			function BuildVisibilityData()
+			{
+				var data = "";
+				var box = document.getElementById("PublishWidgetCheckBox");
+				if (box.checked == true)
+				{
+					data = "+";
+					
+					box = document.getElementById("SensorshipBox");
+					data += ";" + box.options[box.selectedIndex].text;
+					
+					box = document.getElementById("AdContentCheckBox");
+					if (box.checked == true)
+						data += ";*"
+				}
+				else
+					data = "-";
+
+				document.getElementById("WidgetVisibilityData").value = data;
+			}
+			
+			function OnSubmitForm()
+			{
+				BuildQuestionData();
+				BuildVisibilityData();
+								
 				var action = "<?php GetFormAction()?>";
 				document.forms[0].action = action;
 				document.forms[0].method = "post";
@@ -743,6 +940,8 @@ function YesNoQuestionPrompt()
 			
 			function OnLoad()
 			{
+				OnClickPublishWidgetBox();
+			
 				var message = "<?php GetSettingsPrompt()?>";
 				if (message == "")
 					return;
@@ -758,15 +957,21 @@ function YesNoQuestionPrompt()
 		<link rel='stylesheet' href='<?php echo get_bloginfo('url') ?>/wp-admin/load-styles.php?c=0&amp;dir=ltr&amp;load=admin-bar,wp-admin' type='text/css' media='all' />
 		<link rel='stylesheet' id='thickbox-css'  href='<?php echo get_bloginfo('url') ?>/wp-includes/js/thickbox/thickbox.css' type='text/css' media='all' />
 		<link rel='stylesheet' id='colors-css'  href='<?php echo get_bloginfo('url') ?>/wp-admin/css/colors-fresh.css' type='text/css' media='all' />
-		<link href='<?php echo plugin_dir_url(__FILE__)?>Feedweb.css' rel='stylesheet' type='text/css' />
+		<link href='<?php echo plugin_dir_url(__FILE__)?>Feedweb_2_0.css' rel='stylesheet' type='text/css' />
 		
 	</head>
-	<body style="margin: 0px;" onload="OnLoad()">
+	<body style="margin: 0px; overflow: hidden;" onload="OnLoad()">
 		<div id="WidgetDialog" >
 		 	<form id="WidgetDialogForm" onsubmit="return OnSubmitForm();">
 				<input type="hidden" name="WidgetQuestionsData" id="WidgetQuestionsData"/>
-				<div id="WidgetDataDiv" name="WidgetDataDiv" style="visibility: visible;">
-			 		<table id="FirstPhaseTable" name="FirstPhaseTable" class="wp-list-table widefat fixed posts" cellspacing="0">
+				<input type='hidden' name="WidgetVisibilityData" id="WidgetVisibilityData"/>
+				<div id="TermsOfServiceDiv">
+					<span id="TermsOfServiceTitle"><?php _e("Feedweb Plugin Terms of Service", "FWTD");?></span>
+					<textarea id="TermsOfServiceText" value="Here are the terms of service, people." readonly><?php LoadTermsOfService(); ?></textarea>
+					<input type="button" id="TermsOfServiceCloseButton" value='<?php _e("Close")?>' onclick='OnCloseTermsOfService()'/>
+				</div>
+				<div id="WidgetTitleDiv" class="WidgetWizardPage" style="visibility: visible;">
+			 		<table id="WidgetTitlePage" class="wp-list-table widefat fixed posts" cellspacing="0">
 						<tbody>
 							<tr style='height: 1px;'>
 								<td style='width: 10px;'/>
@@ -776,6 +981,7 @@ function YesNoQuestionPrompt()
 								<td style='width: 100px;'/>
 								<td style='width: 10px;'/>
 							</tr>
+							
 							<tr>
 								<td/>
 								<td colspan="4">
@@ -783,7 +989,7 @@ function YesNoQuestionPrompt()
 								</td>
 								<td/>
 							</tr>
-							<tr style="height: 36px;">
+							<tr class="WizardContentRow">
 								<td/>
 								<td colspan="4"> 
 									<?php GetPostTitleControl() ?>
@@ -794,14 +1000,14 @@ function YesNoQuestionPrompt()
 							<tr>
 								<td/>
 								<td colspan="4">
-									<span id='SubTitleLabel'><b><?php _e("Sub-Title:", "FWTD")?></b></span>
+									<span id='UrlLabel'><b><?php _e("URL:", "FWTD")?></b></span>
 								</td>
 								<td/>
-							</tr>
-							<tr style="height: 36px;">
+							</tr >
+							<tr class="WizardContentRow">
 								<td/>
 								<td colspan="4"> 
-									<?php GetPostSubTitleControl() ?>
+									<?php GetUrlControl() ?>
 								</td>
 								<td/>
 							</tr>
@@ -816,7 +1022,7 @@ function YesNoQuestionPrompt()
 								</td>
 								<td/>
 							</tr>
-							<tr style="height: 38px;">
+							<tr class="WizardContentRow">
 								<td/>
 								<td colspan="2"> 
 									<?php GetAuthorControl() ?>
@@ -829,7 +1035,46 @@ function YesNoQuestionPrompt()
 							
 							<tr>
 								<td/>
-								<td colspan="2">
+								<td colspan="4">
+									<div id="PublishWidgetDiv">
+										<?php GetPublishWidgetCheckBox() ?>
+									</div>
+								</td>
+								<td/>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				
+				<div id="WidgetBriefDiv" class="WidgetWizardPage" style="visibility: hidden; position: absolute; top: 0; left: 0;">
+					<table id="WidgetBriefTable" class="wp-list-table widefat fixed posts" cellspacing="0">
+						<tbody>
+							<tr style="height: 5px;">
+								<td style='width: 10px;'/>
+								<td style='width: 300px;'/>
+								<td style='width: 150px;'/>
+								<td style='width: 150px;'/>
+								<td style='width: 10px;'/>
+							</tr>
+							
+							<tr>
+								<td/>
+								<td colspan="3">
+									<span id='SubTitleLabel'><b><?php _e("Sub-Title:", "FWTD")?></b></span>
+								</td>
+								<td/>
+							</tr>
+							<tr id="SubTitleTextRow">
+								<td/>
+								<td colspan="3"> 
+									<?php GetPostSubTitleControl() ?>
+								</td>
+								<td/>
+							</tr>
+
+							<tr>
+								<td/>
+								<td>
 									<span id='CategoryLabel'><b><?php _e("Categories")?></b></span>
 								</td>
 								<td colspan="2">
@@ -837,12 +1082,12 @@ function YesNoQuestionPrompt()
 								</td>
 								<td/>
 							</tr>
-							<tr style="height: 38px;">
+							<tr id="TopicRow">
 								<td/>
-								<td colspan="2"> 
+								<td> 
 									<?php GetCategoryControl() ?>
 								</td>
-								<td colspan="2" style="text-align: right;"> 
+								<td colspan="2"> 
 									<?php GetTagControl() ?>
 								</td>
 								<td/>
@@ -850,46 +1095,32 @@ function YesNoQuestionPrompt()
 							
 							<tr>
 								<td/>
-								<td colspan="4">
-									<span id='UrlLabel'><b><?php _e("URL:", "FWTD")?></b></span>
+								<td colspan="3">
+									<span id="SensorshipLabel"><b><?php _e("Sensorship", "FWTD")?></b></span>
 								</td>
 								<td/>
 							</tr>
-							<tr style="height: 36px;">
+							<tr id="SensorshipRow">
 								<td/>
-								<td colspan="4"> 
-									<?php GetUrlControl() ?>
+								<td colspan="3">
+									<?php GetSensorshipBox() ?>
 								</td>
 								<td/>
 							</tr>
 							
-							<tr>
-								<td colspan="6"/>
-							</tr>							
-							<tr>
+							<tr id="AdContentRow">
 								<td/>
-								<td>
-									<?php 
-										if($_GET["mode"] == "edit") 
-											echo "<input type='button' value='".__("Remove Widget", "FWTD")."' style='width: 150px;' id='DeleteButton' name='DeleteButton'".
-												"onmouseover='OnDeleteMouseOver(true)' onmouseout='OnDeleteMouseOver(false)' onclick='OnDelete()'/>";
-									?>								
-								</td>
-								<td/>
-								<td style='text-align: right;'>
-									<input type='button' value='<?php _e("Next >", "FWTD")?>' style='width: 150px;' onclick='OnNext()'/>
-								</td>
-								<td>
-									 <input type='button' value='<?php _e("Cancel")?>' style='width: 140px;' onclick='OnCancel()'/>
+								<td colspan="3">
+									<?php GetAdContentCheckBox() ?>
 								</td>
 								<td/>
 							</tr>
 						</tbody>
 					</table>
 				</div>
-				<!-- overflow: hidden; -->
-				<div id="WidgetPictureDiv" name="WidgetPictureDiv" style="visibility: hidden; position: absolute; top: 0; left: 0;">
-					<table id="WidgetPictureTable" name="WidgetPictureTable" class="wp-list-table widefat fixed posts" cellspacing="0">
+				
+				<div id="WidgetImageDiv" class="WidgetWizardPage" style="visibility: hidden; position: absolute; top: 0; left: 0;">
+					<table id="WidgetImageTable" class="wp-list-table widefat fixed posts" cellspacing="0">
 						<tbody>
 							<tr style="height: 5px;">
 								<td style='width: 10px;'/>
@@ -927,125 +1158,111 @@ function YesNoQuestionPrompt()
 								</td>
 								<td/>
 							</tr>
-							<tr>
-								<td/>
-								<td>
-									<input type='button' value='<?php _e("< Back", "FWTD")?>' style='width: 150px;' onclick='OnBack()'/>								
-								</td>
-								<td style='text-align: right;'>
-									<input type='button' value='<?php _e("Next >", "FWTD")?>' style='width: 150px;' onclick='OnNext()'/>
-								</td>
-								<td>
-									 <input type='button' value='<?php _e("Cancel")?>' style='width: 140px;' onclick='OnCancel()'/>
-								</td>
-								<td/>
-							</tr>
 						</tbody>
 					</table>
 				</div>
 				
-				<div id="WidgetQuestionDiv" name="WidgetQuestionDiv" style="visibility: hidden; position: absolute; top: 0; left: 0;">
-			 		<table id="WidgetQuestionTable" name="WidgetQuestionTable" class="wp-list-table widefat fixed posts" cellspacing="0">
+				<div id="WidgetQuestionDiv" class="WidgetWizardPage" style="visibility: hidden; position: absolute; top: 0; left: 0;">
+			 		<table id="WidgetQuestionTable" class="wp-list-table widefat fixed posts" cellspacing="0">
 						<tbody>
 							<tr style="height: 5px;">
 								<td style='width: 10px;'/>
-								<td style='width: 175px;'/>
-								<td style='width: 175px;'/>
-								<td style='width: 100px;'/>
+								<td style='width: 350px;'/>
+								<td style='width: 120px;'/>
 								<td style='width: 10px;'/>
 							</tr>
 							<tr>
 								<td/>
-								<td colspan="3">
+								<td colspan="2">
 									<span id='OldQuestionsLabel'><b><?php _e("Existing Questions:", "FWTD")?></b></span>
 								</td>
 								<td/>
 							</tr>
 							<tr style="height: 36px;">
 								<td/>
-								<td colspan="2"> 
-									<select id='OldQuestionsList' name='OldQuestionsList' style='width:100%;'>
+								<td> 
+									<select id='OldQuestionsList' name='OldQuestionsList' style='width:460px;'>
 									</select>
 								</td>
 								<td>
-									<input type="button" value='<?php _e("Select")?>' style='width: 100%;' onclick='OnSelect()'/>
+									<input type="button" value='<?php _e("Select")?>' style='width: 150px; margin-left: 8px;' onclick='OnSelect()'/>
 								</td>
 								<td/>
 							</tr>
 							<tr height='5px'>
-								<td colspan='5'/>
+								<td colspan='4'/>
 							</tr>
 							<tr>
 								<td/>
-								<td colspan="3">
+								<td colspan="2">
 									<span id='NewQuestionLabel'><b><?php _e("New Question", "FWTD")?></b> (<i><?php YesNoQuestionPrompt()?></i>)<b>:</b></span>
 								</td>
 								<td/>
 							</tr>
 							<tr>
 								<td/>
-								<td colspan="2">
-									<input type='text' id='NewQuestionText' name='NewQuestionText' style='width:100%;'/>
+								<td>
+									<input type='text' id='NewQuestionText' name='NewQuestionText' style='width: 460px;'/>
 								</td>
 								<td>
-									<input type='button' value='<?php _e("Add")?>' onclick="OnAddNew()" style='width: 100%;'/>
+									<input type='button' value='<?php _e("Add")?>' onclick="OnAddNew()" style='width: 150px; margin-left: 8px;'/>
 								</td>
 								<td/>
 							</tr>
 							<tr height='5px'>
-								<td colspan='5'/>
+								<td colspan='4'/>
 							</tr>
 							<tr>
 								<td/>
-								<td colspan="3">
+								<td colspan="2">
 									<span id='QuestionsLabel'><b><?php _e("Selected Questions:", "FWTD")?></b></span>
 								</td>
 								<td/>
 							</tr>
 							<tr>
 								<td rowspan='3'/>
-								<td rowspan='3' colspan='2' style='height: 116px;'>
+								<td rowspan='3' style='height: 116px;'>
 									<?php BuildQuestionsListControl() ?>
 								</td>
 								<td valign='top'>
-									<input type='button' value='<?php _e("Move Up", "FWTD")?>' onclick='OnMoveUp()' style='width: 100%;'/>
+									<input type='button' value='<?php _e("Move Up", "FWTD")?>' onclick='OnMoveUp()' style='width: 150px; margin-left: 8px;'/>
 								</td>
 								<td rowspan='3'/>
 							</tr>
 							<tr>
 								<td>
-									<input type='button' value='<?php _e("Move Down", "FWTD")?>' onclick='OnMoveDown()' style='width: 100%;'/>
+									<input type='button' value='<?php _e("Move Down", "FWTD")?>' onclick='OnMoveDown()' style='width: 150px; margin-left: 8px;'/>
 								</td>
 							</tr>
 							<tr>
 								<td valign='bottom'>
-									<input type='button' value='<?php _e("Remove")?>' onclick='OnRemove()' style='width: 100%;'/>
+									<input type='button' value='<?php _e("Remove")?>' onclick='OnRemove()' style='width: 150px; margin-left: 8px;'/>
 								</td>
 							</tr>
-							<tr height='34px'>
-								<td colspan='5'/>
-							</tr>
-							<tr>
-								<td/>
-								<td>
-									<input type='button' value='<?php _e("Cancel")?>' style='width: 150px;' onclick='OnCancel()'/>
-								</td>
-								<td style="text-align: right;">
-									<input type='button' value='<?php _e("< Back", "FWTD")?>' style='width: 150px;' onclick='OnBack()'/> 
-								</td>
-								<td>
-									<?php 
-										if ($wp_version == 3.5)
-											$width = 135;
-										else
-											$width = 120;
-										echo get_submit_button(__("Done", "FWTD"), "primary", "submit", false, "style='width: ".$width."px;'");
-									?>								
-								</td>
-								<td/>
-							</tr>
+							
 						</tbody>
 					</table>
+				</div>
+				
+				<div id="WizardNavigatorDiv" style="position: absolute; top: 320px; width: 100%; height: 50px;">
+					<!-- Remove -->
+					<?php 
+						if($_GET["mode"] == "edit") 
+							echo "<input type='button' value='".__("Remove Widget", "FWTD")."' style='width: 150px; position: absolute; left: 35px; top: 10px;'". 
+								" id='DeleteButton' onmouseover='OnDeleteMouseOver(true)' onmouseout='OnDeleteMouseOver(false)' onclick='OnDelete()'/>";
+					?>								
+					
+					<!-- Back -->
+					<input type='button' id='BackButton' value='<?php _e("< Back", "FWTD")?>' style='width: 150px; position: absolute; left: 35px; top: 10px; visibility: hidden;' onclick='OnBack()'/> 
+					
+					<!-- Next -->
+					<input type='button' id='NextButton' value='<?php _e("Next >", "FWTD")?>' style='width: 150px; position: absolute; left: 350px; top: 10px;' onclick='OnNext()'/>
+					
+					<!-- Done -->
+					<input type='submit' id='OkButton' value='<?php _e("Done", "FWTD")?>' style='width: 150px; position: absolute; left: 350px; top: 10px; visibility: hidden;'/>
+					
+					<!-- Cancel -->
+					<input type='button' id='CancelButton' value='<?php _e("Cancel")?>' style='width: 150px; position: absolute; left: 510px; top: 10px;' onclick='OnCancel()'/>
 				</div>
 			</form>
 		</div>

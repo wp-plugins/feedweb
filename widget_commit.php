@@ -145,6 +145,14 @@ function GetPostQueryParams($id, $params)
 	$img = PrepareParam($_POST["WidgetImageUrl"]);
 	if ($img != "")
 		$params['img'] = $img;
+		
+	$v_data = $_POST["WidgetVisibilityData"];
+	if ($v_data == null || $v_data == "")
+	{
+		$alert = __("Error in the Widget data", "FWTD");
+		return null;
+	}
+	$params['vd'] = $v_data;
 	
 	$user_data = get_userdata($author_id);
 	if ($user_data != null)
@@ -156,6 +164,7 @@ function GetPostQueryParams($id, $params)
 	return $params;
 }
 
+/*
 function GetQueryParams($id)
 {
 	global $alert;
@@ -220,6 +229,7 @@ function GetQueryParams($id)
 	
 	return $params;
 }
+*/
 
 function UpdateWidget($id)
 {
@@ -353,7 +363,6 @@ function CreatePageWidget($id)
 		if ($_POST["WidgetQuestionsData"] != "")
 			$params = GetQuestionParams($params);
 		
-		//$response = wp_remote_get ($query, array('timeout' => 300));
 		$response = wp_remote_post ($query, array('method' => 'POST', 'timeout' => 300, 'body' => $params));		
 		if (is_wp_error ($response))
 		{

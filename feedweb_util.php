@@ -293,6 +293,11 @@ function ReadQuestionList($root)
 	return $questions;
 }
 
+function Str2Bool($str)
+{
+	return $str == "True";
+}
+
 function GetPageData($pac, $info_mode)
 {
 	$query = GetFeedwebUrl()."FBanner.aspx?action=gpd&icon=edit&pac=".$pac;
@@ -316,15 +321,21 @@ function GetPageData($pac, $info_mode)
 			if ($info_mode == true)
 			{
 				$data['url'] = $dom->documentElement->getAttribute("url");
-				$data['img'] = $dom->documentElement->getAttribute("img");
-				$data['tags'] = $dom->documentElement->getAttribute("tags");
 				$data['lang'] = $dom->documentElement->getAttribute("lang");
 				$data['title'] = $dom->documentElement->getAttribute("title");
-				$data['brief'] = $dom->documentElement->getAttribute("brief");
 				$data['author'] = $dom->documentElement->getAttribute("author");
 				$data['author_id'] = $dom->documentElement->getAttribute("aid");
-				$data['categories'] = $dom->documentElement->getAttribute("categories");
 				
+				$data['visible'] = Str2Bool($dom->documentElement->getAttribute("visible"));
+				if ($data['visible'] == "true")
+				{
+					$data['img'] = $dom->documentElement->getAttribute("img");
+					$data['tags'] = $dom->documentElement->getAttribute("tags");
+					$data['brief'] = $dom->documentElement->getAttribute("brief");
+					$data['categories'] = $dom->documentElement->getAttribute("categories");
+					$data['sensorship'] = $dom->documentElement->getAttribute("sensorship");
+					$data['ad_content'] = Str2Bool($dom->documentElement->getAttribute("ad_content"));
+				}
 				$data['questions'] = ReadQuestionList($dom->documentElement);
 			}
 			else	// Votes / Score / Image

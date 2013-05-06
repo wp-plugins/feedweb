@@ -4,7 +4,7 @@ Plugin Name: Feedweb
 Plugin URI: http://wordpress.org/extend/plugins/feedweb/
 Description: Expose your blog to the Feedweb reader's community. Promote your views. Get a comprehensive and detailed feedback from your readers.
 Author: Feedweb
-Version: 2.0
+Version: 2.0.1
 Author URI: http://feedweb.net
 */
 
@@ -224,12 +224,6 @@ function FeedwebSettingsLink($links)
 {
 	$settings_link = "<a href='options-general.php?page=".basename(__FILE__)."'>".__("Settings")."</a>";
 	array_unshift($links, $settings_link);
-	/*
-	$title = __("Quick Tour", "FWTD");
-	$url = plugin_dir_url(__FILE__)."feedweb_tour.php?Mode=QT&KeepThis=true&TB_iframe=true&height=200&width=200";
-	$quick_tour_link = "<a class='thickbox' title='$title' href='$url'>$title</a>";
-	array_unshift($links, $quick_tour_link);
-	*/
 	return $links;
 }
 
@@ -409,6 +403,14 @@ function PublishPostHook($deprecated = '')
 	}
 }
 
+function AddFeedwebAdminMenu() 
+{
+	$url = GetFeedwebUrl()."IMG/Logo_16x16_Transparent.png";
+	add_utility_page( 'Settings', 'Feedweb', 'manage_options', 'feedweb/feedweb_menu.php', '', $url );
+	//add_submenu_page( );
+}
+
+
 add_action('init', 'InitPlugin');
 add_filter('the_content', 'ContentFilter');
 
@@ -431,5 +433,9 @@ add_action('trashed_post', 'TrashedPostHook');
 add_action('trash_post', 'TrashPostHook');
 
 add_action( 'admin_enqueue_scripts', 'EnqueueAdminScript' );
+
+add_action( 'admin_menu', 'AddFeedwebAdminMenu' );
+
+
 
 ?>

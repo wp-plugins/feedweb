@@ -338,7 +338,7 @@ function FeedwebPluginOptions()
 											<input type="radio" <?php if ($feedweb_data['widget_type']=='F') echo 'checked="checked"'; ?> 
 												name="WidgetTypeRadio" id="WidgetTypeFlashRadio" onclick="OnWidgetType('F')"> Flash</input><br/>
 											<input type="radio" <?php if ($feedweb_data['widget_type']=='H') echo 'checked="checked"'; ?> 
-												name="WidgetTypeRadio" id="WidgetTypeHTML5Radio" onclick="OnWidgetType('H')"> HTML5 (beta)</input>
+												name="WidgetTypeRadio" id="WidgetTypeHTML5Radio" onclick="OnWidgetType('H')"> HTML5</input>
 										</td>
 										<td style='width: 10px;'/>
 										<td style='width: 600px;'>

@@ -246,7 +246,11 @@ function GetAdContentCheckBox()
 		if ($data != null)
 			$checked = ($data["ad_content"] ? "checked" : "");
 	}
-	echo "<input id='AdContentCheckBox' type='checkbox' $checked />";
+	
+	$text = __("If this posts main purpose is to advertise a certain item or product and not to give information please check here.", "FWTD");
+	$warning = __("If your post is for advertising and you do not check the box you are violating the license agreement.", "FWTD");
+
+	echo "<input id='AdContentCheckBox' title='$text' type='checkbox' $checked />";
 	echo "<span id='AdContentLabel'>".__("The post contains advertising material", "FWTD")."</span>";
 }
 
@@ -1060,7 +1064,7 @@ function YesNoQuestionPrompt()
 							<tr>
 								<td/>
 								<td colspan="3">
-									<span id='SubTitleLabel'><b><?php _e("Sub-Title:", "FWTD")?></b></span>
+									<span id='SubTitleLabel'><b><?php _e("Summary:", "FWTD")?></b></span>
 								</td>
 								<td/>
 							</tr>
@@ -1075,10 +1079,10 @@ function YesNoQuestionPrompt()
 							<tr>
 								<td/>
 								<td>
-									<span id='CategoryLabel'><b><?php _e("Categories")?></b></span>
+									<span id='CategoryLabel'><b><?php _e("Categories:")?></b></span>
 								</td>
 								<td colspan="2">
-									<span id='TagLabel' style='padding-left: 20px;'><b><?php _e("Tags")?></b></span>
+									<span id='TagLabel' style='padding-left: 20px;'><b><?php _e("Tags:")?></b></span>
 								</td>
 								<td/>
 							</tr>
@@ -1096,7 +1100,7 @@ function YesNoQuestionPrompt()
 							<tr>
 								<td/>
 								<td colspan="3">
-									<span id="SensorshipLabel"><b><?php _e("Sensorship", "FWTD")?></b></span>
+									<span id="SensorshipLabel"><b><?php _e("Sensorship:", "FWTD")?></b></span>
 								</td>
 								<td/>
 							</tr>

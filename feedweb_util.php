@@ -161,7 +161,7 @@ function GetFeedwebOptions()
 		"front_widget_color_scheme" => "classic", 
 		"front_widget_height" => "400", 
 		"front_widget_hide_scroll" => "0", 
-		"widget_type" => "F", 
+		"widget_type" => "H", 
 		"widget_cs" => "gray");	
 	
 	global $wpdb;

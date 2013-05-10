@@ -56,15 +56,15 @@ Follow us on [**Facebook**](https://www.facebook.com/feedwebresearch) and [**Twi
 
 == Screenshots ==
 
-1. Feedweb plugin settings (Rating Widget).
-2. Feedweb plugin settings (Front Widget).
-3. Managing widgets in the posts' table.
-4. Insert Widget Wizard: Step 1 (Page info).
-5. Insert Widget Wizard: Step 2 (Image).
-6. Insert Widget Wizard: Step 3 (Questions).
+1. Dashboard: Go to the Posts table.
+2. Choose a post and click the Feedweb icon.
+3. Insert Widget Wizard: Step 1 (Page info).
+4. Insert Widget Wizard: Step 2 (Summary and Content Status).
+5. Insert Widget Wizard: Step 3 (Image).
+6. Insert Widget Wizard: Step 4 (Questions).
 7. The Rating Widget: Voting panels.
 8. The Rating Widget: Results panels.
-9. The Front Page Widget (beta version). Use shortcode [FeedwebFrontWidget] to display the widget in your blog.
+9. A blog post in the Feedweb Readers' Community feed.
 
 
 == Changelog ==

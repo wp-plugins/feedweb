@@ -208,17 +208,17 @@ function GetPublishWidgetCheckBox()
 	echo "<span id='TermsOfServiceDisclaimer'>".str_replace($placeholders, $markup, $text)."</span>";
 }
 
-function GetSensorshipBox()
+function GetCensorshipBox()
 {
 	$selected = "G";
 	if ($_GET["mode"] == "edit")
 	{
 		$data = GetEditPageData();
 		if ($data != null)
-			$selected = $data["sensorship"];
+			$selected = $data["censorship"];
 	}
 	
-	echo "<select id='SensorshipBox' onchange='OnSelectSensorship()'>";
+	echo "<select id='CensorshipBox' onchange='OnSelectCensorship()'>";
 	
 	$types = array(
 		"G"  => __("Suitable for any audience type", "FWTD"), 
@@ -234,7 +234,7 @@ function GetSensorshipBox()
 	echo "</select>";
 	
 	foreach ($types as $type => $text)
-		echo "<span class='SensorshipText' id='$type_SensorshipText'>$text</span>";
+		echo "<span class='CensorshipText' id='$type_CensorshipText'>$text</span>";
 }
 
 function GetAdContentCheckBox()
@@ -512,13 +512,13 @@ function YesNoQuestionPrompt()
 				document.getElementById("WidgetTitleDiv").style.visibility = "visible";
 			}
 			
-			function OnSelectSensorship()
+			function OnSelectCensorship()
 			{
-				var spans = document.getElementsByClassName("SensorshipText");
+				var spans = document.getElementsByClassName("CensorshipText");
 				for (var index = 0; index < spans.length; index++)
 					spans[index].style.display = "none";
 					
-				var box = document.getElementById("SensorshipBox");
+				var box = document.getElementById("CensorshipBox");
 				spans[box.selectedIndex].style.display = "block";
 			}
 						
@@ -770,7 +770,7 @@ function YesNoQuestionPrompt()
 						if (box.checked == true)
 						{
 							divs[1].style.visibility = "visible";
-							OnSelectSensorship();
+							OnSelectCensorship();
 							InitImageDiv();
 						}
 						else
@@ -918,7 +918,7 @@ function YesNoQuestionPrompt()
 				{
 					data = "+";
 					
-					box = document.getElementById("SensorshipBox");
+					box = document.getElementById("CensorshipBox");
 					data += ";" + box.options[box.selectedIndex].text;
 					
 					box = document.getElementById("AdContentCheckBox");
@@ -1100,14 +1100,14 @@ function YesNoQuestionPrompt()
 							<tr>
 								<td/>
 								<td colspan="3">
-									<span id="SensorshipLabel"><b><?php _e("Sensorship:", "FWTD")?></b></span>
+									<span id="CensorshipLabel"><b><?php _e("Censorship:", "FWTD")?></b></span>
 								</td>
 								<td/>
 							</tr>
-							<tr id="SensorshipRow">
+							<tr id="CensorshipRow">
 								<td/>
 								<td colspan="3">
-									<?php GetSensorshipBox() ?>
+									<?php GetCensorshipBox() ?>
 								</td>
 								<td/>
 							</tr>

@@ -333,7 +333,7 @@ function GetPageData($pac, $info_mode)
 					$data['tags'] = $dom->documentElement->getAttribute("tags");
 					$data['brief'] = $dom->documentElement->getAttribute("brief");
 					$data['categories'] = $dom->documentElement->getAttribute("categories");
-					$data['sensorship'] = $dom->documentElement->getAttribute("sensorship");
+					$data['censorship'] = $dom->documentElement->getAttribute("censorship");
 					$data['ad_content'] = Str2Bool($dom->documentElement->getAttribute("ad_content"));
 				}
 				$data['questions'] = ReadQuestionList($dom->documentElement);

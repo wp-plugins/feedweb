@@ -211,18 +211,18 @@ Widget Wizard
 	padding-left: 5px;
 }
 
-#SensorshipRow td
+#CensorshipRow td
 {
 	height: 60px;
 	overflow: hidden;
 }
 
-#SensorshipBox
+#CensorshipBox
 {
 	width: 150px;
 }
 
-.SensorshipText
+.CensorshipText
 {
 	font-style: italic;	
 	margin-left: 170px;

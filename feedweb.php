@@ -407,8 +407,8 @@ function AddFeedwebAdminMenu()
 {
 	$url = GetFeedwebUrl()."IMG/Logo_16x16_Transparent.png";
 	add_menu_page ( 'Feedweb', 'Feedweb', 'manage_options', 'feedweb/feedweb_menu.php', '', $url, 90 );
-	add_submenu_page( 'feedweb/feedweb_menu.php', __('Settings'), __('Settings'), 'manage_options', 'feedweb/feedweb_menu.php', '');
-	//add_submenu_page( 'feedweb/feedweb_menu.php', __('Tutorial', 'FWTD'), __('Tutorial', 'FWTD'), 'manage_options', 'feedweb/feedweb_help.php', '');
+	add_submenu_page( 'feedweb/feedweb_menu.php', __('Settings'), __('Settings'), 'manage_options', 'feedweb/feedweb_menu.php');
+	//add_submenu_page( 'feedweb/feedweb_menu.php', __('Help'), __('Help'), 'manage_options', 'feedweb/feedweb_help.php');
 }
 
 

@@ -961,7 +961,7 @@ function YesNoQuestionPrompt()
 		<link rel='stylesheet' href='<?php echo get_bloginfo('url') ?>/wp-admin/load-styles.php?c=0&amp;dir=ltr&amp;load=admin-bar,wp-admin' type='text/css' media='all' />
 		<link rel='stylesheet' id='thickbox-css'  href='<?php echo get_bloginfo('url') ?>/wp-includes/js/thickbox/thickbox.css' type='text/css' media='all' />
 		<link rel='stylesheet' id='colors-css'  href='<?php echo get_bloginfo('url') ?>/wp-admin/css/colors-fresh.css' type='text/css' media='all' />
-		<link href='<?php echo plugin_dir_url(__FILE__)?>Feedweb_2_0.css' rel='stylesheet' type='text/css' />
+		<link href='<?php echo plugin_dir_url(__FILE__)?>Feedweb.css?v=2.0.2' rel='stylesheet' type='text/css' />
 		
 	</head>
 	<body style="margin: 0px; overflow: hidden;" onload="OnLoad()">

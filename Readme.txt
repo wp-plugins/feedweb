@@ -101,7 +101,7 @@ Follow us on [**Facebook**](https://www.facebook.com/feedwebresearch) and [**Twi
 * Using post 'featured image' as the default.
 
 = 1.8.7 =
-* **AtContent** compatibility issue finally resolved (Requires upgrading of the **AtContent** plugin to version **2.0.3** or later).
+* AtContent compatibility issue finally resolved (Requires upgrading of the **AtContent** plugin to version **2.0.3** or later).
 
 = 1.8.6 =
 * Plugin compatibility warning.

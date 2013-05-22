@@ -58,19 +58,19 @@ function GetPostTitleControl()
 			}
 		}
 	}
-	echo "<input type='text' id='TitleText' name='TitleText' value='$title' style='width:100%;' readonly='readonly'/>";
+	echo "<input type='text' id='TitleText' name='TitleText' value='$title' style='width:100%;'/>";
 }
 
-function GetPostSubTitleControl()
+function GetPostSummaryControl()
 {
-	$sub_title = "";
+	$summary = "";
 	if ($_GET["mode"] == "edit")
 	{
 		$data = GetEditPageData();
 		if ($data != null)
-			$sub_title = $data["brief"];
+			$summary = $data["brief"];
 	}
-	echo "<textarea id='SubTitleText' name='SubTitleText'>$sub_title</textarea>"; 
+	echo "<textarea id='SummaryText' name='SummaryText'>$summary</textarea>"; 
 }
 
 function GetDefaultPostImage($id)
@@ -722,8 +722,24 @@ function YesNoQuestionPrompt()
 				if (tag.value.length > 250 || category.value.length > 250)
 				{
 					window.alert('<?php _e("The tags/categories text is limited to 250 characters.", "FWTD")?>');
-					return;
+					return false;
 				}
+				
+				var tags = tag.value.split(",");
+				if (tags.length > 10)
+				{
+					window.alert('<?php _e("The number of tags is limited to 10", "FWTD")?>');
+					return false;
+				}
+				
+				var categories = category.value.split(",");
+				if (categories.length > 10)
+				{
+					window.alert('<?php _e("The number of categories is limited to 10", "FWTD")?>');
+					return false;
+				}
+				
+				return true;
 			}
 			
 			function InitImageDiv()
@@ -779,6 +795,28 @@ function YesNoQuestionPrompt()
 				divs[old_page].style.visibility = "hidden";
 			}
 			
+			function CheckTitle()
+			{
+				var title = document.getElementById("TitleText");
+				if (title.value.length > 100)
+				{
+					alert('<?php _e("Page Title cannot exceed 100 characters", "FWTD") ?>');
+					return false;
+				}
+				return true;
+			}
+			
+			function CheckSummary()
+			{
+				var summary = document.getElementById("SummaryText");
+				if (summary.value.length > 250)
+				{
+					alert('<?php _e("Page Summary cannot exceed 250 characters", "FWTD") ?>');
+					return false;
+				}
+				return true;
+			}
+			
 			function OnNext()
 			{
 				var page = GetCurrentWizardPage();
@@ -794,6 +832,9 @@ function YesNoQuestionPrompt()
 				switch(page)
 				{
 					case 0: // Title Div
+						if (CheckTitle() == false)
+							return;
+					
 						if (del_button != null)
 							del_button.style.visibility = "hidden";
 						back_button.style.visibility = "visible";
@@ -815,8 +856,13 @@ function YesNoQuestionPrompt()
 						divs[0].style.visibility = "hidden";
 						break;
 						
-					case 1:	// Brief Div
-						ValidateTopics();
+					case 1:	// Summary Div
+						if (CheckSummary() == false)
+							return;
+						
+						if (ValidateTopics() == false)
+							return;
+							
 						divs[2].style.visibility = "visible";
 						divs[1].style.visibility = "hidden";
 						break;
@@ -994,7 +1040,7 @@ function YesNoQuestionPrompt()
 		<link rel='stylesheet' href='<?php echo get_bloginfo('url') ?>/wp-admin/load-styles.php?c=0&amp;dir=ltr&amp;load=admin-bar,wp-admin' type='text/css' media='all' />
 		<link rel='stylesheet' id='thickbox-css'  href='<?php echo get_bloginfo('url') ?>/wp-includes/js/thickbox/thickbox.css' type='text/css' media='all' />
 		<link rel='stylesheet' id='colors-css'  href='<?php echo get_bloginfo('url') ?>/wp-admin/css/colors-fresh.css' type='text/css' media='all' />
-		<link href='<?php echo plugin_dir_url(__FILE__)?>Feedweb.css?v=2.0.2' rel='stylesheet' type='text/css' />
+		<link href='<?php echo plugin_dir_url(__FILE__)?>Feedweb.css?v=2.0.5' rel='stylesheet' type='text/css' />
 		
 	</head>
 	<body style="margin: 0px; overflow: hidden;" onload="OnLoad()">
@@ -1097,14 +1143,14 @@ function YesNoQuestionPrompt()
 							<tr>
 								<td/>
 								<td colspan="3">
-									<span id='SubTitleLabel'><b><?php _e("Summary:", "FWTD")?></b></span>
+									<span id='SummaryLabel'><b><?php _e("Summary:", "FWTD")?></b></span>
 								</td>
 								<td/>
 							</tr>
-							<tr id="SubTitleTextRow">
+							<tr id="SummaryTextRow">
 								<td/>
 								<td colspan="3"> 
-									<?php GetPostSubTitleControl() ?>
+									<?php GetPostSummaryControl() ?>
 								</td>
 								<td/>
 							</tr>

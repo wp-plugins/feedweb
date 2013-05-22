@@ -177,16 +177,16 @@ Widget Wizard
 	position: absolute;
 }
 
-#SubTitleTextRow td
+#SummaryTextRow td
 {
 	height: 80px;
 }
 
-#SubTitleText
+#SummaryText
 {
 	resize: none;
 	height: 50px;
-	width:100%;
+	width: 100%;
 }
 
 #TopicRow td

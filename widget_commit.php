@@ -130,9 +130,9 @@ function GetPostQueryParams($id, $params)
 	}
 	$params['guid'] = $author_code;
 	
-	$sub_title = PrepareParam($_POST["SubTitleText"]);
-	if ($sub_title != "")
-		$params['brief'] = $sub_title;
+	$summary = PrepareParam($_POST["SummaryText"]);
+	if ($summary != "")
+		$params['brief'] = $summary;
 		
 	$categories = PrepareParam($_POST["CategoryText"]);
 	if ($categories != "")
@@ -211,9 +211,9 @@ function GetQueryParams($id)
 	}
 	$params .= "&guid=".$author_code;
 	
-	$sub_title = PrepareParam($_POST["SubTitleText"]);
-	if ($sub_title != "")
-		$params .= "&brief=".$sub_title;
+	$summary = PrepareParam($_POST["SummaryText"]);
+	if ($summary != "")
+		$params .= "&brief=".$summary;
 		
 	$categories = PrepareParam($_POST["CategoryText"]);
 	if ($categories != "")

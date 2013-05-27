@@ -10,7 +10,7 @@ Expose your blog to the Feedweb readers’ community. Promote your views. Get a 
 
 == Description ==
 
-The Feedweb Plugin is a simple and easy way to promote your blog, improve it and to contribute to the Feedweb Research Network. The plugin helps you expose your blog to the Feedweb Readers' Community, and participate in various public opinion research projects.
+The **Feedweb** Plugin is a simple and easy way to promote your blog, improve it and to contribute to the Feedweb Research Network. The plugin helps you expose your blog to the Feedweb Readers' Community, and participate in various public opinion research projects.
 
 After activating the plugin you can freely insert customized widgets in your selected posts for blog ratings, choose questions you want to ask your readers and receive a comprehensive, detailed and precise feedback about your blog!
 

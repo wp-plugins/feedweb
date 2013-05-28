@@ -123,6 +123,67 @@ function FeedwebPluginOptions()
 
 		<form name="FeedwebSettingsForm" id="FeedwebSettingsForm" onsubmit="return OnSubmitFeedwebSettingsForm();">
 			<script type="text/javascript">
+				function OnShowWidgetPreview()
+				{
+					var settings = document.getElementsByClassName("FeedwebSettingsDiv");
+					var title = document.getElementById("WidgetPreviewTitle");
+					var row = document.getElementById("WidgetPreviewRow");
+					var div = document.getElementById("WidgetPreview");
+					if (div.style.display == "block") // Hide
+					{
+						title.innerHTML = "<?php _e("Show Widget Preview >>>", "FWTD") ?>";
+						settings[0].style.height = "450px";
+						div.style.display = "none";
+						row.style.height = "35px";
+					}
+					else
+					{
+						title.innerHTML = "<?php _e("<<< Hide Widget Preview", "FWTD") ?>";
+						settings[0].style.height = "570px";
+						div.style.display = "block";
+						row.style.height = "155px";
+					}
+				}
+				
+				function ResetWidgetPreview()
+				{
+					var lang = document.getElementById('FeedwebLanguage').value;
+					var div = document.getElementById("WidgetPreview");
+					var pac = "e5615caa-cc14-4c9d-9a5b-069f41c2e802";
+					var width = ValidateRatingWidgetWidth();
+					if (width == 0)
+						return;
+						
+					var url = 'http://feedweb.net/';
+					if (document.getElementById('RatingWidgetType').value == "H")
+					{
+						var box = document.getElementById("RatingWidgetColorSchemeBox");
+						var cs = box.options[box.selectedIndex].value;
+						var src = url + "BRW/BlogRatingWidget.aspx?cs=" + cs + "&amp;width=" + width.toString() + "&amp;height=120&amp;lang=" + lang + "&amp;pac=" + pac;
+						div.innerHTML = "<iframe style='width: " + (width + 5).toString() + "px; height: 125px; border-style: none;' scrolling='no' src='" + src + "'></iframe>";
+					}
+					else
+					{
+						var swf = url + "FL/RatingWidget.swf";
+						div.innerHTML = "<object width='" + width.toString() + "' height='150' " + 
+							"type='application/x-shockwave-flash' " + 
+							"classid='clsid:D27CDB6E-AE6D-11cf-96B8-444553540000' " + 
+							"codebase='http://fpdownload.macromedia.com/get/flashplayer/current/swflash.cab' " +
+							"pluginspage='http://www.adobe.com/go/getflashplayer'>" +
+							"<param name='PluginsPage' value='http://www.adobe.com/go/getflashplayer'/>" +
+							"<param name='FlashVars' value='PAC=" + pac + "&amp;lang=" + lang + "'/>" +
+							"<param name='Movie' value='" + swf + "'/>" +
+							"<param name='allowScriptAccess' value='always'/>" +
+							"<param name='allowFullScreen' value='true'/>" +
+							"<embed src='" + swf + "' width='" + width.toString() + "' height='150' " +
+							"flashvars='PAC=" + pac + "&amp;lang=" + lang + "' " +
+							"allowfullscreen='true' allowScriptAccess='always' " +
+							"type='application/x-shockwave-flash' " +
+							"pluginspage='http://www.adobe.com/go/getflashplayer'>" +
+							"</embed></object>";
+					}
+				}
+								
 				function OnPurgeInactiveWidgets()
 				{
 					if (window.confirm('<?php _e("Remove Widgets?", "FWTD") ?>') == true)
@@ -137,6 +198,7 @@ function FeedwebPluginOptions()
 					var list = document.getElementById('WidgetLanguageBox');
 					var input = document.getElementById('FeedwebLanguage');
 					input.value = list.options[list.selectedIndex].value;
+					ResetWidgetPreview();
 				}
 
 				function OnChangeDelay()
@@ -165,6 +227,7 @@ function FeedwebPluginOptions()
 					var list = document.getElementById('RatingWidgetColorSchemeBox');
 					var input = document.getElementById('RatingWidgetColorScheme');
 					input.value = list.options[list.selectedIndex].value;
+					ResetWidgetPreview();
 				}
 				
 				function OnWidgetType(type)
@@ -173,15 +236,15 @@ function FeedwebPluginOptions()
 					{
 						document.getElementById('RatingWidgetColorSchemeBox').disabled = "";
 						document.getElementById('RatingWidgetColorSchemeRow').style.color = "#000000";
-						//document.getElementById('RatingWidgetColorSchemeRow').style.display = "table-row";
 					}
 					else
 					{
 						document.getElementById('RatingWidgetColorSchemeBox').disabled = "disabled";
 						document.getElementById('RatingWidgetColorSchemeRow').style.color = "#808080";
-						//document.getElementById('RatingWidgetColorSchemeRow').style.display = "none";
 					}
 					document.getElementById('RatingWidgetType').value = type;
+					
+					ResetWidgetPreview();
 				}
 				
 				function OnCheckMPWidgets()
@@ -243,23 +306,30 @@ function FeedwebPluginOptions()
 					else
 						input.value = "0";
 				}
-
-				function OnSubmitFeedwebSettingsForm()
+				
+				function ValidateRatingWidgetWidth()
 				{
 					var input = document.getElementById("WidgetWidthEdit");
 					var width = parseInt(input.value);
 					if (isNaN(width))
 					{
 						window.alert ('<?php _e("Please enter a valid width", "FWTD")?>');
-						return false;
+						return 0;
 					}
 
 					if (width < 350 || width > 700)
 					{
 						window.alert ('<?php _e("Width is out of range", "FWTD")?>');
-						return false;
+						return 0;
 					}
 					input.value = width.toString();
+					return width;
+				}
+
+				function OnSubmitFeedwebSettingsForm()
+				{
+					if (ValidateRatingWidgetWidth() == 0)
+						return false;
 					
 					input = document.getElementById("FrontWidgetHeightEdit");
 					var height = parseInt(input.value);
@@ -302,7 +372,7 @@ function FeedwebPluginOptions()
 				}
 			</script>
 			<?php wp_referer_field(true)?>
-			<link href='<?php echo plugin_dir_url(__FILE__)?>Feedweb.css?v=2.0.5' rel='stylesheet' type='text/css' />
+			<link href='<?php echo plugin_dir_url(__FILE__)?>Feedweb.css?v=2.0.6' rel='stylesheet' type='text/css' />
 			<input type='hidden' id='DelayResults' name='DelayResults' value='<?php echo $feedweb_data["delay"];?>'/>
 			<input type='hidden' id='FeedwebLanguage' name='FeedwebLanguage' value='<?php echo $feedweb_data["language"];?>'/>
 			<input type='hidden' id='FeedwebMPWidgets' name='FeedwebMPWidgets' value='<?php echo $feedweb_data["mp_widgets"];?>'/>
@@ -324,30 +394,31 @@ function FeedwebPluginOptions()
 						<a href="#" class="FeedwebSettingsTab" onclick="OnClickFeedwebSettingsTab(1)"><?php _e("Front Widget", "FWTD")?></a>
 					</td>
 				</tr>
-				<tr class="FeedwebSettingsContent">
+				<tr class="FeedwebSettingsContent" style="overflow: hidden;">
 					<td>
 						<div class="FeedwebSettingsDiv" style="display: block; height: 450px;">
 							<table class="FeedwebSettingsTable">
 								<tbody>
 									<tr>
-										<td style='width: 255px;'>
+										<td style='width: 200px;'>
 											<span><b><?php _e("Widget Type:", "FWTD")?></b></span>
 										</td>
 										<td style='width: 10px;'/>
 										<td style='width: 200px;'>
-											<input type="radio" <?php if ($feedweb_data['widget_type']=='F') echo 'checked="checked"'; ?> 
-												name="WidgetTypeRadio" id="WidgetTypeFlashRadio" onclick="OnWidgetType('F')"> Flash</input><br/>
 											<input type="radio" <?php if ($feedweb_data['widget_type']=='H') echo 'checked="checked"'; ?> 
 												name="WidgetTypeRadio" id="WidgetTypeHTML5Radio" onclick="OnWidgetType('H')"> HTML5</input>
+											<input type="radio" <?php if ($feedweb_data['widget_type']=='F') echo 'checked="checked"'; ?> 
+												name="WidgetTypeRadio" id="WidgetTypeFlashRadio" onclick="OnWidgetType('F')"> Flash</input>
 										</td>
 										<td style='width: 10px;'/>
-										<td style='width: 600px;'>
-											<span><i><?php _e("Please choose the type of rating widget", "FWTD")?></i></span>
+										<td style='width: 600px;' >
+											<span><i><?php _e("Please choose the type of rating widget", "FWTD")?></i></span><br/>
+											<span style="font-size: 8pt; color: #ff0000;"><?php _e("Note that Flash is not supported in devices like iPad or iPhone", "FWTD")?></span>
 										</td>
 									</tr>
 									
 									<tr id="RatingWidgetColorSchemeRow">
-										<td style='width: 255px;'>
+										<td>
 											<span><b><?php _e("Widget Color Scheme:", "FWTD")?></b></span>
 										</td>
 										<td style='width: 10px;'/>
@@ -361,7 +432,7 @@ function FeedwebPluginOptions()
 									</tr>
 																		
 									<tr>
-										<td style='width: 255px;'>
+										<td>
 											<span><b><?php _e("Widget Language:", "FWTD")?></b></span>
 										</td>
 										<td style='width: 10px;'/>
@@ -379,12 +450,23 @@ function FeedwebPluginOptions()
 										</td>
 										<td/>
 										<td>
-											<input id='WidgetWidthEdit' name='WidgetWidthEdit' type='text' style='width: 100%;' 
+											<input id='WidgetWidthEdit' name='WidgetWidthEdit' type='text' style='width: 80px;' 
 												value="<?php echo $feedweb_data['widget_width']?>"/>
+											<input type='button' id='WidgetWidthResetButton' onclick='ResetWidgetPreview()' style='position: relative; left: 10px; top: 0px; width: 100px;' value='Reset Preview'/> 
 										</td>
 										<td/>
 										<td>
 											<span><i><?php _e("Allowed width: 350 to 700 pixels. Recommended width: 400 to 450 pixels.", "FWTD")?></i></span>
+										</td>
+									</tr>
+									
+									<tr id="WidgetPreviewRow">
+										<td>
+											<span id="WidgetPreviewTitle" onclick="OnShowWidgetPreview()" style="cursor: pointer;"><?php _e("Show Widget Preview >>>", "FWTD")?></span>
+										</td>
+										<td/>
+										<td colspan="3">
+											<div id="WidgetPreview" style="display: none;"></div>
 										</td>
 									</tr>
 									

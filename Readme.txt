@@ -10,17 +10,20 @@ Expose your blog to the Feedweb readers’ community. Promote your views. Get a 
 
 == Description ==
 
+[vimeo http://vimeo.com/67342764]
+
 The Feedweb Plugin is a simple and easy way to promote your blog, improve it and to contribute to the Feedweb Research Network. The plugin helps you expose your blog to the Feedweb Readers' Community, and participate in various public opinion research projects.
 
 After activating the plugin you can freely insert customized widgets in your selected posts for blog ratings, choose questions you want to ask your readers and receive a comprehensive, detailed and precise feedback about your blog!
 
 The Blog Rating Widget is an attractive animated visual element that will improve your ratings! It is built using cutting-edge Flash and HTML5 technology, meets the highest privacy and security standards and enterprise-level quality.
 
-Requires WordPress **3.0** and PHP **5**.
+Requires WordPress 3.0 and PHP 5.
 
 For more information go to [**Feedweb Readers Community**](http://feedweb.net) website.
 Welcome blogs, blogs, and more blogs!
 [vimeo http://vimeo.com/65323163]
+
 
 **NOTE**: The plugin is compatible with Firefox, Chrome and Opera browsers. We strongly recommend not using Internet Explorer. 
 

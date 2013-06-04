@@ -1,13 +1,12 @@
 <?php
-
 if ( !defined('ABSPATH') )
 	define('ABSPATH', dirname(dirname(dirname(dirname(__FILE__)))) . '/');
 require_once( ABSPATH.'wp-load.php');
 include_once( ABSPATH.'wp-admin/includes/plugin.php' );
 
-function BuildLanguageBox($language, $language_set, $style, $all)
+function BuildLanguageBox($language, $language_set, $all)
 {
-	echo "<select id='WidgetLanguageBox' name='WidgetLanguageBox' style='$style' onchange='OnChangeLanguage()'>";
+	echo "<select id='WidgetLanguageBox' name='WidgetLanguageBox' onchange='OnChangeLanguage()'>";
     
 	$languages = GetLanguageList($all);
     if ($language_set != true) // Language was not set yet by the admin. Try to set by default locale
@@ -36,7 +35,7 @@ function BuildLanguageBox($language, $language_set, $style, $all)
 
 function BuildItemCountBox($number)
 {
-	echo "<select id='ItemCountBox' name='ItemCountBox' style='width: 99%;' onchange='OnChangeItemCount()'>";
+	echo "<select id='ItemCountBox' name='ItemCountBox' onchange='OnChangeItemCount()'>";
 	for ($value = 3; $value <= 10; $value++)
 	{
 		echo "<option";
@@ -51,7 +50,7 @@ function BuildColorSchemeBox($scheme, $is_rating_widget)
 {
 	if ($is_rating_widget)
 	{
-		echo "<select id='RatingWidgetColorSchemeBox' name='RatingWidgetColorSchemeBox' style='width: 99%;' onchange='OnChangeRatingWidgetColorScheme()'>";
+		echo "<select id='RatingWidgetColorSchemeBox' name='RatingWidgetColorSchemeBox' onchange='OnChangeRatingWidgetColorScheme()'>";
 		$values = array("blue" => __("Blue", "FWTD"), "gray" => __("Gray", "FWTD"));
 	}
 	else
@@ -71,11 +70,24 @@ function BuildColorSchemeBox($scheme, $is_rating_widget)
 	echo "</select>";
 }
 
+function BuildExternalBackgroundControl($color)
+{
+	echo "<input id='ExternalBackgroundBox' name='ExternalBackgroundBox' class='color' value='$color'>";
+	BuildResetPreviewButton('ExternalBackgroundResetButton');
+}
+
+function BuildResetPreviewButton($id)
+{
+	$title = __("Reset Preview", "FWTD");
+	$button_url = GetFeedwebUrl()."Img/Gray/Refresh.png";
+	echo "<img id='$id' src='$button_url' title='$title' onclick='ResetWidgetPreview()'/>";
+}
+
 function BuildDelayBox($delay)
 {
 	$values = array("0"=>__("No Delay", "FWTD"), "1"=>__("1 Hour", "FWTD"), "2"=>__("2 Hours", "FWTD"), "5"=>__("5 Hours", "FWTD"));
 
-	echo "<select id='DelayResultsBox' name='DelayResultsBox' style='width: 99%;' onchange='OnChangeDelay()'>";
+	echo "<select id='DelayResultsBox' name='DelayResultsBox' onchange='OnChangeDelay()'>";
 	foreach ($values as $key => $value)
 	{
 		echo "<option";
@@ -116,12 +128,15 @@ function FeedwebPluginOptions()
 	// Read options 
 	$feedweb_data = GetFeedwebOptions();
 	?>
-	
 	<div class="wrap">
 		<div id="icon-options-general" class="icon32"><br /></div>
 		<h2><?php _e("Feedweb Plugin Settings", "FWTD");?></h2>
 
 		<form name="FeedwebSettingsForm" id="FeedwebSettingsForm" onsubmit="return OnSubmitFeedwebSettingsForm();">
+			<?php
+				$script_url = GetFeedwebUrl()."Base/jscolor/jscolor.js";
+				echo "<script type='text/javascript' src='$script_url'></script>";
+			?>
 			<script type="text/javascript">
 				function OnShowWidgetPreview()
 				{
@@ -154,13 +169,17 @@ function FeedwebPluginOptions()
 					if (width == 0)
 						return;
 						
-					var url = 'http://feedweb.net/';
+					var url = '<?php echo GetFeedwebUrl()?>';
 					if (document.getElementById('RatingWidgetType').value == "H")
 					{
+						var ext_bg = document.getElementById("ExternalBackgroundBox").value;
 						var box = document.getElementById("RatingWidgetColorSchemeBox");
 						var cs = box.options[box.selectedIndex].value;
-						var src = url + "BRW/BlogRatingWidget.aspx?cs=" + cs + "&amp;width=" + width.toString() + "&amp;height=120&amp;lang=" + lang + "&amp;pac=" + pac;
-						div.innerHTML = "<iframe style='width: " + (width + 5).toString() + "px; height: 125px; border-style: none;' scrolling='no' src='" + src + "'></iframe>";
+						
+						var src = url + "BRW/BlogRatingWidget.aspx?cs=" + cs + "&amp;width=" + width.toString() + 
+							"&amp;height=120&amp;lang=" + lang + "&amp;pac=" + pac + "&amp;ext_bg=" + ext_bg;
+						var style = "width: " + (width + 5).toString() + "px; height: 125px; border-style: none;";
+						div.innerHTML = "<iframe style='" + style + "' scrolling='no' src='" + src + "'></iframe>";
 					}
 					else
 					{
@@ -234,13 +253,17 @@ function FeedwebPluginOptions()
 				{
 					if (type == "H")
 					{
+						document.getElementById('ExternalBackgroundBox').disabled = "";
 						document.getElementById('RatingWidgetColorSchemeBox').disabled = "";
 						document.getElementById('RatingWidgetColorSchemeRow').style.color = "#000000";
+						document.getElementById('ExternalBackgroundResetButton').style.visibility = "visible";
 					}
 					else
 					{
+						document.getElementById('ExternalBackgroundBox').disabled = "disabled";
 						document.getElementById('RatingWidgetColorSchemeBox').disabled = "disabled";
 						document.getElementById('RatingWidgetColorSchemeRow').style.color = "#808080";
+						document.getElementById('ExternalBackgroundResetButton').style.visibility = "hidden";
 					}
 					document.getElementById('RatingWidgetType').value = type;
 					
@@ -372,7 +395,7 @@ function FeedwebPluginOptions()
 				}
 			</script>
 			<?php wp_referer_field(true)?>
-			<link href='<?php echo plugin_dir_url(__FILE__)?>Feedweb.css?v=2.0.6' rel='stylesheet' type='text/css' />
+			<link href='<?php echo plugin_dir_url(__FILE__)?>Feedweb.css?v=2.0.7' rel='stylesheet' type='text/css' />
 			<input type='hidden' id='DelayResults' name='DelayResults' value='<?php echo $feedweb_data["delay"];?>'/>
 			<input type='hidden' id='FeedwebLanguage' name='FeedwebLanguage' value='<?php echo $feedweb_data["language"];?>'/>
 			<input type='hidden' id='FeedwebMPWidgets' name='FeedwebMPWidgets' value='<?php echo $feedweb_data["mp_widgets"];?>'/>
@@ -400,46 +423,45 @@ function FeedwebPluginOptions()
 							<table class="FeedwebSettingsTable">
 								<tbody>
 									<tr>
-										<td style='width: 200px;'>
+										<td>
 											<span><b><?php _e("Widget Type:", "FWTD")?></b></span>
 										</td>
-										<td style='width: 10px;'/>
-										<td style='width: 200px;'>
+										<td>
 											<input type="radio" <?php if ($feedweb_data['widget_type']=='H') echo 'checked="checked"'; ?> 
-												name="WidgetTypeRadio" id="WidgetTypeHTML5Radio" onclick="OnWidgetType('H')"> HTML5</input>
+												name="WidgetTypeRadio" id="WidgetTypeHTML5Radio" onclick="OnWidgetType('H')"/>
+											<label id="WidgetTypeHTML5Label" for="WidgetTypeHTML5Radio">HTML5</label>
+											
 											<input type="radio" <?php if ($feedweb_data['widget_type']=='F') echo 'checked="checked"'; ?> 
-												name="WidgetTypeRadio" id="WidgetTypeFlashRadio" onclick="OnWidgetType('F')"> Flash</input>
+												name="WidgetTypeRadio" id="WidgetTypeFlashRadio" onclick="OnWidgetType('F')"/>
+											<label id="WidgetTypeFlashLabel" for="WidgetTypeFlashRadio">Flash</label>
 										</td>
-										<td style='width: 10px;'/>
-										<td style='width: 600px;' >
+										<td class="DescriptionColumn">
 											<span><i><?php _e("Please choose the type of rating widget", "FWTD")?></i></span><br/>
-											<span style="font-size: 8pt; color: #ff0000;"><?php _e("Note that Flash is not supported in devices like iPad or iPhone", "FWTD")?></span>
+											<span class="DescriptionWarningText"><?php _e("Note that Flash is not supported in devices like iPad or iPhone", "FWTD")?></span>
 										</td>
 									</tr>
 									
-									<tr id="RatingWidgetColorSchemeRow">
+									<tr id="RatingWidgetColorSchemeRow" style="height: 64px; vertical-align: top;">
 										<td>
-											<span><b><?php _e("Widget Color Scheme:", "FWTD")?></b></span>
+											<span style="position: relative; top: 5px;"><b><?php _e("Widget Color Scheme:", "FWTD")?></b></span><br/>
+											<span style="position: relative; top: 20px;"><b><?php _e("Widget External Background:", "FWTD")?></b></span>
 										</td>
-										<td style='width: 10px;'/>
-										<td style='width: 200px;'>
-											<?php BuildColorSchemeBox($feedweb_data['widget_cs'], true) ?>				
+										<td>
+											<?php BuildColorSchemeBox($feedweb_data['widget_cs'], true) ?><br/>
+											<?php BuildExternalBackgroundControl($feedweb_data['widget_ext_bg']) ?>
 										</td>
-										<td style='width: 10px;'/>
-										<td style='width: 600px;'>
+										<td class="DescriptionColumn">
 											<span><i><?php _e("Please choose the color scheme of your HTML rating widgets", "FWTD")?></i></span>
 										</td>
-									</tr>
+									</tr>	
 																		
 									<tr>
 										<td>
 											<span><b><?php _e("Widget Language:", "FWTD")?></b></span>
 										</td>
-										<td style='width: 10px;'/>
 										<td style='width: 200px;'>
-											<?php BuildLanguageBox($feedweb_data['language'], $feedweb_data['language_set'], 'width: 99%;', false) ?>
+											<?php BuildLanguageBox($feedweb_data['language'], $feedweb_data['language_set'], false) ?>
 										</td>
-										<td style='width: 10px;'/>
 										<td style='width: 600px;'>
 											<span><i>Don't find your language? <a href="mailto://contact@feedweb.net">Help us translate the widget for you!</a></i></span>
 										</td>
@@ -448,13 +470,10 @@ function FeedwebPluginOptions()
 										<td>
 											<span><b><?php _e("Widget width (pixels):", "FWTD")?></b></span>
 										</td>
-										<td/>
 										<td>
-											<input id='WidgetWidthEdit' name='WidgetWidthEdit' type='text' style='width: 80px;' 
-												value="<?php echo $feedweb_data['widget_width']?>"/>
-											<input type='button' id='WidgetWidthResetButton' onclick='ResetWidgetPreview()' style='position: relative; left: 10px; top: 0px; width: 100px;' value='Reset Preview'/> 
+											<input id='WidgetWidthEdit' name='WidgetWidthEdit' type='text' value="<?php echo $feedweb_data['widget_width']?>"/>
+											<?php BuildResetPreviewButton('WidgetWidthResetButton') ?>
 										</td>
-										<td/>
 										<td>
 											<span><i><?php _e("Allowed width: 350 to 700 pixels. Recommended width: 400 to 450 pixels.", "FWTD")?></i></span>
 										</td>
@@ -464,8 +483,7 @@ function FeedwebPluginOptions()
 										<td>
 											<span id="WidgetPreviewTitle" onclick="OnShowWidgetPreview()" style="cursor: pointer;"><?php _e("Show Widget Preview >>>", "FWTD")?></span>
 										</td>
-										<td/>
-										<td colspan="3">
+										<td colspan="2">
 											<div id="WidgetPreview" style="display: none;"></div>
 										</td>
 									</tr>
@@ -474,12 +492,10 @@ function FeedwebPluginOptions()
 										<td>
 											<span><b><?php _e("Widgets at the Home/Front Page:", "FWTD")?></b></span> 				
 										</td>
-										<td />
 										<td>
 											<input <?php if($feedweb_data['mp_widgets'] == "1") echo 'checked="checked"' ?>
 											id="MPWidgetsBox" name="MPWidgetsBox" type="checkbox" onchange='OnCheckMPWidgets()'> <?php _e("Display Widgets", "FWTD")?></input>				
 										</td>
-										<td />
 										<td>
 											<span><i><?php _e("Check to display the widgets both in the Front Page and the single post pages.", "FWTD")?></i></span>
 										</td>
@@ -488,11 +504,9 @@ function FeedwebPluginOptions()
 										<td>
 											<span><b><?php _e("Delay displaying results:", "FWTD")?></b></span> 				
 										</td>
-										<td />
 										<td>
 											<?php BuildDelayBox($feedweb_data['delay']) ?>				
 										</td>
-										<td />
 										<td>
 											<span><i><?php _e("Set the period of time you want to hide voting results after the widget is created.", "FWTD")?></i></span>
 										</td>
@@ -502,12 +516,10 @@ function FeedwebPluginOptions()
 										<td>
 											<span><b><?php _e("Feedweb Copyright Notice:", "FWTD")?></b></span> 				
 										</td>
-										<td />
 										<td>
 											<input <?php if($feedweb_data['copyright_notice'] == "1") echo 'checked="checked"' ?>
 											id="CopyrightNoticeBox" name="CopyrightNoticeBox" type="checkbox" onchange='OnCheckCopyrightNotice()'> <?php _e("Allow")?></input>				
 										</td>
-										<td />
 										<td>
 											<span><i><?php _e("Please check to display the following text below the widgets: ", "FWTD")?></i></span>
 											<?php echo GetCopyrightNotice('#ffff00')?>
@@ -518,12 +530,10 @@ function FeedwebPluginOptions()
 										<td>
 											<span><b><?php _e("Prompt to insert widgets:", "FWTD")?></b></span> 				
 										</td>
-										<td />
 										<td>
 											<input <?php if($feedweb_data['widget_prompt'] == "1") echo 'checked="checked"' ?>
 											id="WidgetPromptBox" name="WidgetPromptBox" type="checkbox" onchange='OnCheckWidgetPrompt()'> <?php _e("Show")?></input>				
 										</td>
-										<td />
 										<td>
 											<span><i><?php _e("Display a prompt to insert a rating widget when a post is published", "FWTD")?></i></span>
 										</td>
@@ -533,12 +543,10 @@ function FeedwebPluginOptions()
 										<td>
 											<span><b><?php _e("Automatically add paragraphs:", "FWTD")?></b></span> 				
 										</td>
-										<td />
 										<td>
 											<input <?php if($feedweb_data['add_paragraphs'] == "1") echo 'checked="checked"' ?>
 											id="AddParagraphsBox" name="AddParagraphsBox" type="checkbox" onchange='OnCheckAddParagraphs()'> <?php _e("Add")?></input>				
 										</td>
-										<td />
 										<td>
 											<span><i><?php _e("Surround widgets with paragraph tags:", "FWTD")?></i><b> &lt;P&gt;...&lt;/P&gt;</b></span>
 										</td>
@@ -554,12 +562,10 @@ function FeedwebPluginOptions()
 										<td>
 											<span><b><?php _e("Disable double widget appearance:", "FWTD")?></b></span> 				
 										</td>
-										<td />
 										<td>
 											<input <?php if($feedweb_data['atcontent_widget_check'] == "1") echo 'checked="checked"' ?>
 											id="AtContentWidgetBox" name="AtContentWidgetBox" type="checkbox" onchange='OnCheckAtContentWidget()'> <?php _e("Disable")?></input>				
 										</td>
-										<td />
 										<td>
 											<span style="color: Red;"><b><?php _e("IMPORTANT!", "FWTD")?></b></span>
 											<span><i>Please check if the rating widgets appear twice in your posts.</i></span>

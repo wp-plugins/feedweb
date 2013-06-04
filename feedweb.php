@@ -4,7 +4,7 @@ Plugin Name: Feedweb
 Plugin URI: http://wordpress.org/extend/plugins/feedweb/
 Description: Expose your blog to the Feedweb reader's community. Promote your views. Get a comprehensive and detailed feedback from your readers.
 Author: Feedweb
-Version: 2.0.6
+Version: 2.0.7
 Author URI: http://feedweb.net
 */
 
@@ -66,12 +66,11 @@ function ContentFilter($content)
 	if (CheckServiceAvailability() != null)
 		return $content . GetLicenseInfo('Service is not available');
 	
-	$swf = GetFeedwebUrl().$feedweb_rw_swf;
 	$width = $data["widget_width"];
-
 	switch ($data["widget_type"])
 	{
 		case "F": // Flash Widget
+			$swf = GetFeedwebUrl().$feedweb_rw_swf;
 			$code = "<object width='".$width."' height='150' ". 
 				"type='application/x-shockwave-flash' ". 
 				"classid='clsid:D27CDB6E-AE6D-11cf-96B8-444553540000' ". 
@@ -92,7 +91,8 @@ function ContentFilter($content)
 				
 		case "H": // HTML5 Widget
 			$frame_width = intval($width) + 5;
-			$src = GetFeedwebUrl()."BRW/BlogRatingWidget.aspx?cs=".$data["widget_cs"]."&amp;width=$width&amp;height=120&amp;lang=".$data["language"]."&amp;pac=$pac";
+			$src = GetFeedwebUrl()."BRW/BlogRatingWidget.aspx?cs=".$data["widget_cs"]."&amp;width=$width&amp;height=120&amp;".
+				"lang=".$data["language"]."&amp;pac=$pac&amp;ext_bg=".$data["widget_ext_bg"];
 			$code = "<iframe id='FeedwebRatingWidget_$id' style='width: ".$frame_width."px; height: 125px; border-style: none;' scrolling='no' src='$src'></iframe>";
 			break;
 				
@@ -436,7 +436,5 @@ add_action('trash_post', 'TrashPostHook');
 add_action( 'admin_enqueue_scripts', 'EnqueueAdminScript' );
 
 add_action( 'admin_menu', 'AddFeedwebAdminMenu' );
-
-
 
 ?>

@@ -24,6 +24,7 @@ function UpdateSettings()
 	$data["add_paragraphs"] = $_POST["AutoAddParagraphs"];
 	$data["widget_prompt"] = $_POST["InsertWidgetPrompt"];
 	$data["widget_cs"] = $_POST["RatingWidgetColorScheme"];
+	$data["widget_ext_bg"] = $_POST["ExternalBackgroundBox"];
 	$data["front_widget_items"] = $_POST["FrontWidgetItemCount"];
 	$data["copyright_notice"] = $_POST["FeedwebCopyrightNotice"];
 	$data["front_widget_height"] = $_POST["FrontWidgetHeightEdit"];

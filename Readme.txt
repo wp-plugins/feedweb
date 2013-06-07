@@ -10,7 +10,7 @@ Expose your blog to the Feedweb readers’ community. Promote your views. Get a 
 
 == Description ==
 
-[vimeo http://vimeo.com/67342764]
+[vimeo http://vimeo.com/67915433]
 
 The Feedweb Plugin is a simple and easy way to promote your blog, improve it and to contribute to the Feedweb Research Network. The plugin helps you expose your blog to the Feedweb Readers' Community, and participate in various public opinion research projects.
 

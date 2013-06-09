@@ -12,11 +12,9 @@ Feedweb is a simple way to get to know your audience. Find out what readers thin
 
 [vimeo http://vimeo.com/67915433]
 
-The Feedweb Plugin is a simple and easy way to promote your blog, improve it and to contribute to the Feedweb Research Network. The plugin helps you expose your blog to the Feedweb Readers' Community, and participate in various public opinion research projects.
+The Feedweb Plugin is a simple and easy way to promote and improve your blog. By activating the plugin you can freely insert a customized widget into your selected posts. Choose questions you want to ask your readers and get comprehensive and precise feedback about your blog.
 
-After activating the plugin you can freely insert customized widgets in your selected posts for blog ratings, choose questions you want to ask your readers and receive a comprehensive, detailed and precise feedback about your blog!
-
-The Blog Rating Widget is an attractive animated visual element that will improve your ratings! It is built using cutting-edge Flash and HTML5 technology, meets the highest privacy and security standards and enterprise-level quality.
+The Blog Rating Widget is an attractive animated visual element that will improve your ratings! It is built using cutting-edge HTML5 technology, meets the highest privacy and security standards and enterprise-level quality.
 
 Requires WordPress 3.0 and PHP 5.
 

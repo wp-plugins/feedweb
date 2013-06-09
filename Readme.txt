@@ -5,12 +5,12 @@ Requires at least: 3.0
 Tested up to: 3.5.1
 Stable Tag: 2.0.7
 
-Expose your blog to the Feedweb readers’ community. Promote your views. Get a comprehensive and detailed feedback from your readers.
+Feedweb is a simple way to get to know your audience. Find out what readers think about your blog. Ask any question and get feedback. 
 
 
 == Description ==
 
-[vimeo http://vimeo.com/67342764]
+[vimeo http://vimeo.com/67915433]
 
 The Feedweb Plugin is a simple and easy way to promote your blog, improve it and to contribute to the Feedweb Research Network. The plugin helps you expose your blog to the Feedweb Readers' Community, and participate in various public opinion research projects.
 

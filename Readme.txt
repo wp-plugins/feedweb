@@ -5,7 +5,7 @@ Requires at least: 3.0
 Tested up to: 3.5.1
 Stable Tag: 2.0.7
 
-Expose your blog to the Feedweb readers’ community. Promote your views. Get a comprehensive and detailed feedback from your readers.
+Feedweb is a simple way to get to know your audience. Find out what readers think about your blog. Ask any question and get feedback. 
 
 
 == Description ==
@@ -18,7 +18,7 @@ After activating the plugin you can freely insert customized widgets in your sel
 
 The Blog Rating Widget is an attractive animated visual element that will improve your ratings! It is built using cutting-edge Flash and HTML5 technology, meets the highest privacy and security standards and enterprise-level quality.
 
-Requires **WordPress 3.0** and **PHP 5**.
+Requires WordPress 3.0 and PHP 5.
 
 For more information go to [**Feedweb Readers Community**](http://feedweb.net) website.
 Welcome blogs, blogs, and more blogs!

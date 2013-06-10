@@ -3,7 +3,7 @@ Contributors: Feedweb
 Tags: blog, rate, rating, network, feed, feedback, article, aggregator, aggregation, content, content management, post, page, public, opinion, research, flash, html5, widget, media, press, news, politics, society, social, question, answer, survey, poll, polling, vote, voting, stats, discussion, controversy, cooperation, view, comments, community, statistics, syndication, marketing, admin, sidebar, plugin, publishing
 Requires at least: 3.0
 Tested up to: 3.5.1
-Stable Tag: 2.0.7
+Stable Tag: 2.1
 
 Feedweb is a simple way to get to know your audience. Find out what readers think about your blog. Ask any question and get feedback. 
 
@@ -69,6 +69,9 @@ Follow us on [**Facebook**](https://www.facebook.com/feedwebresearch) and [**Twi
 
 
 == Changelog ==
+
+= 2.1 =
+* Tutorial added.
 
 = 2.0.7 =
 * Rating Widget external background color option.

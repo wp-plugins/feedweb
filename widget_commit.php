@@ -11,19 +11,25 @@ if (!current_user_can('manage_options'))
 
 $alert = "";
 $cmd = $_GET["feedweb_cmd"];
+$post_id = $_GET["wp_post_id"];
 
 switch ($cmd)
 {
 	case "DEL":
-		RemoveWidget(intval($_GET["wp_post_id"]));
+		RemoveWidget(intval($post_id));
 		break;
 		
 	case "UPD":
-		UpdateWidget(intval($_GET["wp_post_id"]));
+		UpdateWidget(intval($post_id));
+		break;
+		
+	case "NPW":
+		UpdateWidgetTitleAndUrl(intval($post_id));
 		break;
 		
 	case "REM":
-		RemovePac(intval($_GET["wp_post_id"]));
+		RemovePac(intval($post_id));
+		$alert = __("The widget has been removed", "FWTD");
 		break;
 		
 	case "RMW":
@@ -32,7 +38,7 @@ switch ($cmd)
 		
 	default:
 		$cmd="INS";
-		InsertWidget(intval($_GET["wp_post_id"]));
+		InsertWidget(intval($post_id));
 		break;
 }
 
@@ -231,6 +237,67 @@ function GetQueryParams($id)
 }
 */
 
+function UpdateWidgetTitleAndUrl($id)
+{
+	global $alert;
+	
+	$pac = GetPac($id);
+	$bac = GetBac(true);
+	if ($pac == null || $bac == null)
+	{
+		$alert = __("Wordpress cannot modify your widget", "FWTD");
+		return;
+	}
+	
+	$url = PrepareParam(get_permalink($id));
+	if ($url == "")
+	{
+		$alert = __("Error in the Post data", "FWTD");
+		return;
+	}
+	
+	$post = get_post($id);
+	$title = PrepareParam(ConvertHtml($post->post_title));
+	if ($title == "")
+	{
+		$alert = __("Error in the Post data", "FWTD");
+		return;
+	}
+
+	try
+	{
+		$params = array();
+		$params['page'] = $url;
+		$params['title'] = $title;
+		$query = GetFeedwebUrl()."FBanner.aspx?action=npw&pac=$pac&bac=$bac";
+		
+		$response = wp_remote_post ($query, array('method' => 'POST', 'timeout' => 300, 'body' => $params));		
+		if (is_wp_error ($response))
+		{
+			$alert = __("Cannot connect Feedweb server", "FWTD");
+			return;
+		}
+		
+		$dom = new DOMDocument;
+		if ($dom->loadXML($response['body']) == true)
+		{
+			$el = $dom->documentElement;
+			if ($el->tagName == "BANNER")
+			{
+				$alert = $el->getAttribute("error");
+				if ($alert == "")
+					$alert = __("The widget Title/Url have been updated", "FWTD");
+				return;
+			}
+		}
+		$alert = __("Feedweb service cannot update the widget", "FWTD");
+	}
+	catch (Exception $e)
+	{
+		$alert = $e->getMessage();
+	}
+}
+
 function UpdateWidget($id)
 {
 	global $alert;
@@ -293,20 +360,32 @@ function InsertWidget($id)
 		return;
 	
 	global $alert;
-	if (InsertPac($pac, $id) == false)
+	if (InsertPac($pac, $id) == true)
+		$alert = __("The widget has been inserted", "FWTD");
+	else
 		$alert = __("Wordpress cannot insert your widget", "FWTD");
 }
 
 function RemoveMultipleWidgets($ids_str)
 {
+	$count = 0;
 	$ids = explode (";", $ids_str);
 	foreach ($ids as $id)
-		RemoveWidget(intval($id));
+		if (RemoveWidget(intval($id)))
+			$count++;
+	
+	if ($count > 0)
+	{
+		global $alert;	
+		$format = __("%d out of %d widgets have been removed", "FWTD");
+		$alert = sprintf($format, $count, count($ids));
+	}
 }
 
 function RemoveWidget($id)
 {
 	global $alert;
+	
 	$pac = GetPac($id);
 	if ($pac != null)
 	{
@@ -320,7 +399,7 @@ function RemoveWidget($id)
 			if (is_wp_error ($response))
 			{
 				$alert = __("Cannot connect Feedweb server", "FWTD");
-				return;
+				return false;
 			}
 		
 			$dom = new DOMDocument;
@@ -329,11 +408,18 @@ function RemoveWidget($id)
 				$el = $dom->documentElement;
 				if ($el->tagName == "BANNER")
 					$alert = $el->getAttribute("error");
-				return;
+					
+				if ($alert == "")
+				{
+					$alert = __("The widget has been removed", "FWTD");
+					return true;
+				}
+				return false;
 			}
 		}
 	}
 	$alert = __("Wordpress cannot remove your widget", "FWTD");
+	return false;
 }
 
 
@@ -395,10 +481,10 @@ function CreatePageWidget($id)
 	return null;
 }
 
-function GetAlertText()
+function DisplayAlert($message)
 {
-	global $alert;
-	echo $alert;
+	if ($message != null)
+		echo "alert('$message');";
 }
 ?>
 
@@ -408,28 +494,24 @@ function GetAlertText()
 			function OnInit()
 			{
 				<?php
-				global $cmd;
-				
+				DisplayAlert($alert);
 				switch ($cmd)
 				{
 					case "REM":
-						echo "window.location.href='".get_admin_url()."/edit.php'";
+						echo "window.location.href='".get_admin_url()."edit.php'";
 						break;
 						
 					case "RMW":
-						echo "window.location.href='".get_admin_url()."/options-general.php?page=feedweb.php'";
+						echo "window.location.href='".get_admin_url()."options-general.php?page=feedweb.php'";
+						break;
+						
+					case "NPW":
+						echo "window.location.href='".get_admin_url()."post.php?post=$post_id&action=edit'";
 						break;
 						
 					default:
-						?>
-						window.parent.tb_remove();
-						
-						var text = "<?php GetAlertText() ?>";
-						if (text != "")
-							window.alert(text);
-						
-						window.parent.location.href = window.parent.location.href;
-						<?php
+						echo "window.parent.tb_remove();";
+						echo "window.parent.location.href = window.parent.location.href;";
 						break;
 				}
 				?>

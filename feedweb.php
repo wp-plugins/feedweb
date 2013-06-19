@@ -4,7 +4,7 @@ Plugin Name: Feedweb
 Plugin URI: http://wordpress.org/extend/plugins/feedweb/
 Description: Expose your blog to the Feedweb reader's community. Promote your views. Get a comprehensive and detailed feedback from your readers.
 Author: Feedweb
-Version: 2.1
+Version: 2.1.1
 Author URI: http://feedweb.net
 */
 
@@ -307,21 +307,66 @@ function showAdminMessages()
     }
 }
 
-function EnqueueAdminScript() 
+function FeedwebSavePost($pid) 
 {
-	global $wpdb;
-	$query = "SELECT post_id FROM $wpdb->postmeta WHERE meta_key='feedweb_post_status' AND meta_value='0'";
-	$id = $wpdb->get_var($query);
-	if ($id == null)
+	if (current_user_can('manage_options') == false)
 		return;
 	
-	$query = "UPDATE $wpdb->postmeta SET meta_value='1' WHERE post_id=$id AND meta_key='feedweb_post_status'";
-	$wpdb->query($query);
-	
-	$post = get_post($id);
-	$title = __("Insert Rating Widget", "FWTD");
-	$prompt = __("Do you wish to insert a Feedweb rating widget into your new post?", "FWTD");
-	$url = plugin_dir_url(__FILE__)."widget_dialog.php?wp_post_id=$id&mode=add&KeepThis=true&TB_iframe=true";
+	//verify post is not a revision
+	if (wp_is_post_revision($pid))
+		return;
+		
+	//verify post is not trashed
+	$status = get_post_status($pid);
+	if ($status == 'trash')
+		return;
+			
+	//verify post has a widget
+	$pac = GetPac($pid);
+	if ($pac == null)
+		return;
+		
+	SetPostStatus($pid, 2); // Set status 2 - check post Title/Url
+}
+
+
+function EnqueueAdminScript() 
+{
+	$result = QueryPostStatus();
+	if ($result == null)
+		return;
+		
+	$id = $result->post_id;
+	switch ($result->meta_value)
+	{
+		case '0':	// New Post
+			$function = "DisplayInsertWidgetPrompt();";
+			$title = __("Insert Rating Widget", "FWTD");
+			$prompt = __("Do you wish to insert a Feedweb rating widget into your new post?", "FWTD");
+			$url = plugin_dir_url(__FILE__)."widget_dialog.php?wp_post_id=$id&mode=add&KeepThis=true&TB_iframe=true";
+			break;
+			
+		case '2':	// Edited Post
+			$pac = GetPac($id);
+			$post = get_post($id);
+			$data = GetPageData($pac, true);
+			
+			$server_url = $data["url"];
+			$server_title = $data["title"];
+			$local_url = get_permalink($id);
+			$local_title = ConvertHtml($post->post_title);
+				
+			if ($server_url == $local_url && $server_title == $local_title)
+				return;
+				
+			$prompt = __("The Title or Permalink of the post has been changed. Do you with to update the Rating Widget with new data?", "FWTD");
+			$action = "window.location.href='".plugin_dir_url(__FILE__)."widget_commit.php?wp_post_id=$id&feedweb_cmd=NPW';";
+			$function = "DisplayUpdateWidgetPrompt();";
+			break;
+			
+		default:
+			return;
+	}
 	
 	?>
 	<script type="text/javascript">
@@ -329,12 +374,20 @@ function EnqueueAdminScript()
 		{
 			if (document.readyState === "complete") 
 			{
-				DisplayFeedwebPrompt();
+				<?php echo $function?>
 				clearInterval(readyStateCheckInterval);
 			}
 		}, 1000);
+		
+		function DisplayUpdateWidgetPrompt()
+		{
+			if (window.confirm('<?php echo $prompt ?>') == true)
+			{
+				<?php echo $action?>
+			}
+		}
 	
-		function DisplayFeedwebPrompt()
+		function DisplayInsertWidgetPrompt()
 		{
 			if (window.confirm('<?php echo $prompt ?>') == true)
 			{
@@ -371,7 +424,6 @@ function TrashedPostHook($pid)
 {
 }
 
-
 function PublishPostHook($deprecated = '')
 {
 	if (current_user_can('manage_options') == false)
@@ -385,22 +437,50 @@ function PublishPostHook($deprecated = '')
 		return;
 	
 	// Get current post id (for newly published post)
-	global $wpdb;
 	global $post_ID;
-	
 	$id = get_the_ID($post_ID);
 	$pac = GetPac($id);
 	if ($pac != null) // Already exists
 		return;
 		
-	$query = "SELECT meta_value FROM $wpdb->postmeta WHERE meta_key='feedweb_post_status' AND post_id=$id";
-	$status = $wpdb->get_var($query);
-	
-	if ($status == null)
+	SetPostStatus($id, 0);
+}
+
+// Checks if the current post status differs from 1. If yes, return it and reset status to 1.
+function QueryPostStatus()
+{
+	global $wpdb;
+	$query = "SELECT post_id, meta_value FROM $wpdb->postmeta WHERE meta_key = 'feedweb_post_status' AND meta_value != '1'";
+	$results = $wpdb->get_results($query);
+	if ($results == null)
+		return null;
+		
+	foreach($results as $result)
 	{
-		$query = "INSERT INTO $wpdb->postmeta (post_id, meta_key, meta_value) VALUES ($id, 'feedweb_post_status', '0')";
+		$id = $result->post_id;
+		$query = "UPDATE $wpdb->postmeta SET meta_value='1' WHERE post_id=$id AND meta_key='feedweb_post_status'";
 		$wpdb->query($query);
+		return $result;
 	}
+}
+
+function SetPostStatus($id, $new_status)
+{
+	global $wpdb;
+	// Get Previous Status
+	$query = "SELECT meta_value FROM $wpdb->postmeta WHERE meta_key='feedweb_post_status' AND post_id=$id";
+	$old_status = $wpdb->get_var($query);
+
+	if ($old_status == null) // No previous status
+		$query = "INSERT INTO $wpdb->postmeta (post_id, meta_key, meta_value) VALUES ($id, 'feedweb_post_status', '$new_status')";
+	else	// Update existing status
+	{
+		if ($new_status == 0) // Initial status; Old status MUST NOT exist
+			return;
+		
+		$query = "UPDATE $wpdb->postmeta SET meta_value='$new_status' WHERE post_id=$id AND meta_key='feedweb_post_status'";
+	}
+	$wpdb->query($query);
 }
 
 function AddFeedwebAdminMenu() 
@@ -409,6 +489,7 @@ function AddFeedwebAdminMenu()
 	add_menu_page ( 'Feedweb', 'Feedweb', 'manage_options', 'feedweb/feedweb_menu.php', '', $url, 123 );
 	add_submenu_page( 'feedweb/feedweb_menu.php', __('Settings'), __('Settings'), 'manage_options', 'feedweb/feedweb_menu.php');
 	add_submenu_page( 'feedweb/feedweb_menu.php', __('Tutorial'), __('Tutorial'), 'manage_options', 'feedweb/feedweb_help.php');
+	//add_submenu_page( 'feedweb/feedweb_menu.php', __('Our Friends'), __('Our Friends'), 'manage_options', 'feedweb/feedweb_friends.php');
 }
 
 
@@ -434,7 +515,8 @@ add_action('trashed_post', 'TrashedPostHook');
 add_action('trash_post', 'TrashPostHook');
 
 add_action( 'admin_enqueue_scripts', 'EnqueueAdminScript' );
-
 add_action( 'admin_menu', 'AddFeedwebAdminMenu' );
+add_action( 'save_post', 'FeedwebSavePost' );
+
 
 ?>

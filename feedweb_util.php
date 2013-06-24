@@ -397,10 +397,14 @@ function UpdateBlogCapabilities()
 	if ($bac == null)
 		return null;
 	
+	$params = array();
+	$params['bac'] = $bac;
+	$params['title'] = PrepareParam(get_bloginfo('name'));
+	
 	// Request blog caps by Blog Access Code
-    global $feedweb_blog_caps;
-	$query = GetFeedwebUrl()."FBanner.aspx?action=cap&bac=$bac";
-	$response = wp_remote_get ($query, array('timeout' => 30));
+	$query = GetFeedwebUrl()."FBanner.aspx?action=cap";
+	$response = wp_remote_post ($query, array('method' => 'POST', 'timeout' => 30, 'body' => $params));
+	//$response = wp_remote_get ($query, array('timeout' => 30));
 	if (is_wp_error ($response))
 		return null;
 	
@@ -412,8 +416,9 @@ function UpdateBlogCapabilities()
 			if ($license != null && $license != "")
 				SetSingleFeedwebOption("license", $license);
 			
-		    $caps = $dom->documentElement->getElementsByTagName("CAP");
+			global $feedweb_blog_caps;
 		    $feedweb_blog_caps = array();
+		    $caps = $dom->documentElement->getElementsByTagName("CAP");
 		    
 			foreach ($caps as $cap)
 			{
@@ -515,7 +520,7 @@ function CheckServiceAvailability()
 	{
 		$current = time();
 		$previous = intval($access);
-		if ($current - $access < 900)	// 15 min * 60 sec
+		if ($current - $access < 14400)	// 4hours * 60 min * 60 sec
 			return null;
 	}
 

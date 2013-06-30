@@ -4,7 +4,7 @@ Plugin Name: Feedweb
 Plugin URI: http://wordpress.org/extend/plugins/feedweb/
 Description: Expose your blog to the Feedweb reader's community. Promote your views. Get a comprehensive and detailed feedback from your readers.
 Author: Feedweb
-Version: 2.1.2
+Version: 2.1.3
 Author URI: http://feedweb.net
 */
 
@@ -137,6 +137,39 @@ function AddFeedwebColumn($columns)
 	return $columns;
 }
 
+function AddFeedwebColumnSort($columns) 
+{
+	if (current_user_can('manage_options'))
+		$columns['feedweb'] = "feedweb";
+	
+	return $columns;
+}
+
+function FeedwebColumnOrderby($vars) 
+{
+    if ( isset( $vars['orderby'] ) && 'feedweb' == $vars['orderby'] ) 
+	{
+        $vars = array_merge ( $vars, array('meta_key' => 'feedweb_post_sort_value', 'orderby' => 'meta_value_num') );
+    }
+    return $vars;
+}
+
+function SetSortValue($id, $sort_value)
+{
+	global $wpdb;
+	
+	// Get Previous Value
+	$query = "SELECT meta_value FROM $wpdb->postmeta WHERE meta_key='feedweb_post_sort_value' AND post_id=$id";
+	$old_value = $wpdb->get_var($query);
+
+	if ($old_value == null) // No Previous Value
+		$query = "INSERT INTO $wpdb->postmeta (post_id, meta_key, meta_value) VALUES ($id, 'feedweb_post_sort_value', '$sort_value')";
+	else					// Update existing Value
+		$query = "UPDATE $wpdb->postmeta SET meta_value='$sort_value' WHERE post_id=$id AND meta_key='feedweb_post_sort_value'";
+	
+	$wpdb->query($query);
+}
+
 function FillFeedwebCell($id)
 {
 	$width = 675;
@@ -149,11 +182,13 @@ function FillFeedwebCell($id)
 		$status = GetInsertWidgetStatus($id);
 		if ($status != null)
 		{
+			SetSortValue($id, -2);
 			$src = GetFeedwebUrl()."IMG/Warning.png";
 			echo "<img src='$src' title='$status'/>";
 		}
 		else 
 		{
+			SetSortValue($id, -1);
 			$src = GetFeedwebUrl()."IMG/Append.png";
 			$url = plugin_dir_url(__FILE__)."widget_dialog.php?wp_post_id=$id&mode=add&KeepThis=true&TB_iframe=true&height=$height&width=$width";
 			echo "<input alt='".$url."' class='thickbox' title='".__("Insert Rating Widget", "FWTD")."' type='image' src='$src'/>";
@@ -167,6 +202,7 @@ function FillFeedwebCell($id)
 		
 		if ($data['error'] != null && $data['error'] != "")
 		{
+			SetSortValue($id, -3);
 			$src = GetFeedwebUrl()."IMG/Remove.png";
 			if ($data['error'] == "Bad PAC")
 			{
@@ -186,13 +222,17 @@ function FillFeedwebCell($id)
 		$score = $data['score'];
 		if ($score != "")
 		{
+			SetSortValue($id, intval($votes));
 			$format = __("Edit / Remove Rating Widget\n(%s Votes. Average Score: %s)", "FWTD");
 			$title = sprintf($format, $votes, $score);
 			if ($data['image'] != "")
 				$src = GetFileUrl($data['image']);
 		}
 		else
+		{
+			SetSortValue($id, 0);
 			$title = __("Edit / Remove Rating Widget\n(No votes yet)", "FWTD");
+		}
 			
 		$url = plugin_dir_url(__FILE__)."widget_dialog.php?wp_post_id=".$id."&mode=edit&KeepThis=true&TB_iframe=true&height=$height&width=$width";
 		echo "<input alt='$url' class='thickbox' title='$title' type='image' src='$src'/>";
@@ -492,12 +532,14 @@ function AddFeedwebAdminMenu()
 	//add_submenu_page( 'feedweb/feedweb_menu.php', __('Our Friends'), __('Our Friends'), 'manage_options', 'feedweb/feedweb_friends.php');
 }
 
-
 add_action('init', 'InitPlugin');
 add_filter('the_content', 'ContentFilter');
 
 add_filter( 'manage_posts_columns', 'AddFeedwebColumn');
 add_action( 'manage_posts_custom_column', 'FillFeedwebColumn', 10, 2 );
+
+add_filter( 'manage_edit-post_sortable_columns', 'AddFeedwebColumnSort');
+add_filter( 'request', 'FeedwebColumnOrderby' );
 
 $feedweb_plugin = plugin_basename(__FILE__);
 add_action('admin_menu', 'FeedwebPluginMenu');

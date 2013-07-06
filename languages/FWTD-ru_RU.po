@@ -4,33 +4,33 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Feedweb\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/feedweb\n"
-"POT-Creation-Date: 2012-10-06 00:39:41+00:00\n"
-"PO-Revision-Date: 2012-10-06 23:36+0200\n"
+"POT-Creation-Date: 2013-07-06 10:43:24+00:00\n"
+"PO-Revision-Date: 2013-07-06 23:00+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ru_RU\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.5.3\n"
+"X-Generator: Poedit 1.5.7\n"
 
-#: feedweb.php:105
+#: feedweb.php:194 feedweb.php:384
 msgid "Insert Rating Widget"
 msgstr "Вставить Виджет для Голосования"
 
-#: feedweb.php:119
+#: feedweb.php:209
 msgid "The widget data is invalid and cannot be used."
 msgstr "Данные виджета содержат ошибку и не могут быть использованы."
 
-#: feedweb.php:120
+#: feedweb.php:210
 msgid "Remove Invalid Widget?"
 msgstr "Удалить ошибочный виджет?"
 
-#: feedweb.php:125
+#: feedweb.php:215
 msgid "Unknown error."
 msgstr "Неизвестная ошибка"
 
-#: feedweb.php:125
+#: feedweb.php:215
 msgid ""
 "\n"
 "Please contact Feedweb (contact@feedweb.net)"
@@ -38,7 +38,7 @@ msgstr ""
 "\n"
 "Пожалуйста, обратитесь в службу поддержки Feedweb (contact@feedweb.net)"
 
-#: feedweb.php:135
+#: feedweb.php:226
 msgid ""
 "Edit / Remove Rating Widget\n"
 "(%s Votes. Average Score: %s)"
@@ -46,7 +46,7 @@ msgstr ""
 "Изменить / Удалить Виджет для Голосования\n"
 "(%s Голосов. Средняя Оценка: %s)"
 
-#: feedweb.php:141
+#: feedweb.php:234
 msgid ""
 "Edit / Remove Rating Widget\n"
 "(No votes yet)"
@@ -54,118 +54,184 @@ msgstr ""
 "Изменить / Удалить Виджет для Голосования\n"
 "(Никто ещё не проголосовал)"
 
-#: feedweb.php:171
+#: feedweb.php:265 feedweb.php:530
 msgid "Settings"
 msgstr "Настроечки"
 
-#: feedweb.php:246
+#: feedweb.php:334
 msgid ""
 "The Feedweb service is temporarily unavailable due to system maintenance"
 msgstr "Сервер Feedweb временно недоступен по техническим причинам"
 
-#: feedweb_options.php:51
-msgid "Classic"
-msgstr "Классическая"
+#: feedweb.php:385
+msgid "Do you wish to insert a Feedweb rating widget into your new post?"
+msgstr "Желаете ли вы вставить виджет Feedweb в ваш новый пост?"
 
-#: feedweb_options.php:51
-msgid "Monochrome"
-msgstr "Чёрно-белая"
+#: feedweb.php:402
+msgid ""
+"The Title or Permalink of the post has been changed. Do you with to update "
+"the Rating Widget with new data?"
+msgstr ""
+"Заголовок или адрес поста были изменены. Желаете ли вы обновить данные "
+"виджета Feedweb?"
 
-#: feedweb_options.php:51
-msgid "Light Blue"
-msgstr "Светло-синяя"
+#: feedweb.php:531
+msgid "Tutorial"
+msgstr "Руководство"
 
-#: feedweb_options.php:52
-msgid "Dark Blue"
-msgstr "Темно-синяя"
+#: feedweb_help.php:4
+msgid "Feedweb Plugin Tutorial"
+msgstr "Руководство по использованию плагина Feedweb"
 
-#: feedweb_options.php:52
-msgid "Dark Green"
-msgstr "Тёмно-зелёная"
-
-#: feedweb_options.php:67
-msgid "No Delay"
-msgstr "Без задержки"
-
-#: feedweb_options.php:67
-msgid "1 Hour"
-msgstr "1 час"
-
-#: feedweb_options.php:67
-msgid "2 Hours"
-msgstr "2 часа"
-
-#: feedweb_options.php:67
-msgid "5 Hours"
-msgstr "5 часов"
-
-#: feedweb_options.php:98
-msgid "Remove Inactive Widgets"
-msgstr "Удалить виджеты несуществующих страниц"
-
-#: feedweb_options.php:99
-msgid "Click to remove widgets from the deleted posts"
-msgstr "Удалить виджеты из несуществующих страниц."
-
-#: feedweb_options.php:105
+#: feedweb_menu.php:3 feedweb_options.php:126
 msgid "You do not have sufficient permissions to access this page."
 msgstr "У вас нет доступа на эту страницу"
 
-#: feedweb_options.php:113
+#: feedweb_options.php:54
+msgid "Blue"
+msgstr "Синяя"
+
+#: feedweb_options.php:54
+msgid "Gray"
+msgstr "Серая"
+
+#: feedweb_options.php:59
+msgid "Classic"
+msgstr "Классическая"
+
+#: feedweb_options.php:59
+msgid "Monochrome"
+msgstr "Чёрно-белая"
+
+#: feedweb_options.php:59
+msgid "Light Blue"
+msgstr "Светло-синяя"
+
+#: feedweb_options.php:60
+msgid "Dark Blue"
+msgstr "Темно-синяя"
+
+#: feedweb_options.php:60
+msgid "Dark Green"
+msgstr "Тёмно-зелёная"
+
+#: feedweb_options.php:81
+msgid "Reset Preview"
+msgstr "Обновить пример виджета"
+
+#: feedweb_options.php:88
+msgid "No Delay"
+msgstr "Без задержки"
+
+#: feedweb_options.php:88
+msgid "1 Hour"
+msgstr "1 час"
+
+#: feedweb_options.php:88
+msgid "2 Hours"
+msgstr "2 часа"
+
+#: feedweb_options.php:88
+msgid "5 Hours"
+msgstr "5 часов"
+
+#: feedweb_options.php:119
+msgid "Remove Inactive Widgets"
+msgstr "Удалить виджеты несуществующих страниц"
+
+#: feedweb_options.php:120
+msgid "Click to remove widgets from the deleted posts"
+msgstr "Удалить виджеты из несуществующих страниц."
+
+#: feedweb_options.php:133
 msgid "Feedweb Plugin Settings"
 msgstr "Параметры плагина Feedweb"
 
-#: feedweb_options.php:119
+#: feedweb_options.php:149 feedweb_options.php:484
+msgid "Show Widget Preview >>>"
+msgstr "Показать пример виджета >>>"
+
+#: feedweb_options.php:156
+msgid "<<< Hide Widget Preview"
+msgstr "<<< Скрыть пример виджета"
+
+#: feedweb_options.php:208
 msgid "Remove Widgets?"
 msgstr "Удалить Виджеты?"
 
-#: feedweb_options.php:200
+#: feedweb_options.php:339
 msgid "Please enter a valid width"
 msgstr "Пожалуйста введите приемлемую ширину"
 
-#: feedweb_options.php:206
+#: feedweb_options.php:345
 msgid "Width is out of range"
 msgstr "Введенная ширина за рамками допустимого"
 
-#: feedweb_options.php:215
+#: feedweb_options.php:361
 msgid "Please enter a valid Front Widget height"
 msgstr "Пожалуйста введите приемлемую высоту для Виджета Главной страницы"
 
-#: feedweb_options.php:221
+#: feedweb_options.php:367
 msgid "Front Widget height is out of range"
 msgstr "Введенная высота за рамками допустимого"
 
-#: feedweb_options.php:266
+#: feedweb_options.php:416
 msgid "Rating Widget"
 msgstr "Виджет для Голосования"
 
-#: feedweb_options.php:267
+#: feedweb_options.php:417
 msgid "Front Widget"
 msgstr "Виджет Главной Страницы"
 
-#: feedweb_options.php:277
+#: feedweb_options.php:427
+msgid "Widget Type:"
+msgstr "Тип Виджета:"
+
+#: feedweb_options.php:439
+msgid "Please choose the type of rating widget"
+msgstr "Выберите тип виджета"
+
+#: feedweb_options.php:440
+msgid "Note that Flash is not supported in devices like iPad or iPhone"
+msgstr ""
+"Напоминаем, что Flash не поддерживается на iPad, iPhone и многих других "
+"устройствах"
+
+#: feedweb_options.php:446
+msgid "Widget Color Scheme:"
+msgstr "Цветовая схема виджета:"
+
+#: feedweb_options.php:447
+msgid "Widget External Background:"
+msgstr "Внешний фон Виджета:"
+
+#: feedweb_options.php:454
+msgid "Please choose the color scheme of your HTML rating widgets"
+msgstr "Выберите цветовую схему виджета HTML"
+
+#: feedweb_options.php:460
 msgid "Widget Language:"
 msgstr "Язык Виджета:"
 
-#: feedweb_options.php:290
+#: feedweb_options.php:471
 msgid "Widget width (pixels):"
 msgstr "Ширина виджета:"
 
-#: feedweb_options.php:299
+#: feedweb_options.php:478
 msgid "Allowed width: 350 to 700 pixels. Recommended width: 400 to 450 pixels."
 msgstr ""
 "Допустимая ширина: от 350 до 700 пикселей. Рекомендованная ширина: от 400 до "
 "450 пикселей"
 
-#: feedweb_options.php:305
+#: feedweb_options.php:493
 msgid "Widgets at the Home/Front Page:"
 msgstr "Виджеты на главной странице:"
 
-#: feedweb_options.php:310
+#: feedweb_options.php:497
 msgid "Display Widgets"
 msgstr "Показывать"
 
-#: feedweb_options.php:314
+#: feedweb_options.php:500
 msgid ""
 "Check to display the widgets both in the Front Page and the single post "
 "pages."
@@ -173,93 +239,139 @@ msgstr ""
 "Подтвердите, желаете ли вы видеть виджеты на главной странице. Если нет, "
 "виджеты будут видны только на страницах постов."
 
-#: feedweb_options.php:319
+#: feedweb_options.php:505
 msgid "Delay displaying results:"
 msgstr "Отложить публикацию результатов:"
 
-#: feedweb_options.php:327
+#: feedweb_options.php:511
 msgid ""
 "Set the period of time you want to hide voting results after the widget is "
 "created."
 msgstr "Установите время, после которого можно показывать  результаты опроса."
 
-#: feedweb_options.php:332
+#: feedweb_options.php:517
 msgid "Feedweb Copyright Notice:"
 msgstr "Сноска об авторских правах Feedweb:"
 
-#: feedweb_options.php:337 feedweb_options.php:352
+#: feedweb_options.php:521
 msgid "Allow"
 msgstr "Разрешить"
 
-#: feedweb_options.php:341
+#: feedweb_options.php:524
 msgid "Please check to display the following text below the widgets: "
 msgstr "Подвердите Ваше согласие на показ под виджетом следующего текста:"
 
-#: feedweb_options.php:347
-msgid "Edit Widget Data:"
-msgstr "Редактировать Виджет:"
+#: feedweb_options.php:531
+msgid "Prompt to insert widgets:"
+msgstr "Напомнить об установке Виджета"
 
-#: feedweb_options.php:356
-msgid ""
-"Allow Feedweb community administrator to edit / correct your widget data."
-msgstr ""
+#: feedweb_options.php:535
+msgid "Show"
+msgstr "Показать"
 
-#: feedweb_options.php:367
-msgid "Front Page Widget Color Sceme:"
-msgstr "Цветовая схема виджета:"
+#: feedweb_options.php:538
+msgid "Display a prompt to insert a rating widget when a post is published"
+msgstr "Автоматически предлагать вставить виджет во вновь опубликованный пост"
 
-#: feedweb_options.php:375
+#: feedweb_options.php:544
+msgid "Automatically add paragraphs:"
+msgstr "Автоматически добавлять параграфы:"
+
+#: feedweb_options.php:548 widget_dialog.php:1291
+msgid "Add"
+msgstr "Добавить"
+
+#: feedweb_options.php:551
+msgid "Surround widgets with paragraph tags:"
+msgstr "Заключить HTML-код виджета внутри тага параграфа:"
+
+#: feedweb_options.php:563
+msgid "Disable double widget appearance:"
+msgstr "Предотвратить двойное появление виджета в посте:"
+
+#: feedweb_options.php:567
+msgid "Disable"
+msgstr "Предотвратить"
+
+#: feedweb_options.php:570
+msgid "IMPORTANT!"
+msgstr "ВАЖНО!"
+
+#: feedweb_options.php:583
+msgid "Front Page Widget Color Scheme:"
+msgstr "Цветовая схема виджета главной страницы:"
+
+#: feedweb_options.php:591
 msgid "Select color scheme for the Front Page widget"
 msgstr "Выберите цвета виджета главной страницы"
 
-#: feedweb_options.php:380
+#: feedweb_options.php:596
 msgid "Max. Widget height (pixels):"
 msgstr "Максимальная высота виджета:"
 
-#: feedweb_options.php:389
+#: feedweb_options.php:605
 msgid "Allowed height: 200 to 800 pixels. Recommended height: 400 pixels."
 msgstr ""
 "Допустимая высота: от 200 до 800 пикселей. Рекомендованная высота: 400 "
 "пикселей"
 
-#: feedweb_options.php:395
+#: feedweb_options.php:611
 msgid "Vertical Scroll Bar:"
 msgstr "Вертикальная полоса прокрутки:"
 
-#: feedweb_options.php:401
+#: feedweb_options.php:617
 msgid "Hide"
 msgstr "Скрыть"
 
-#: feedweb_options.php:405
+#: feedweb_options.php:621
 msgid ""
 "Check to hide vertical scroll bar when the front widget exceeds max. height."
 msgstr "Не показывать вертикальную полосу прокрутки виджета."
 
-#: feedweb_options.php:410
+#: feedweb_options.php:626
 msgid "Number of list items:"
 msgstr "Количество строк в списке:"
 
-#: feedweb_options.php:418
+#: feedweb_options.php:634
 msgid "Number of items in the Front Widget list"
 msgstr "Количество строк в Виджете Главной Страницы:"
 
-#: feedweb_options.php:427
+#: feedweb_options.php:644
 msgid "Save Changes"
 msgstr "Сохранить Изменения"
 
-#: feedweb_settings.php:10 widget_commit.php:10
+#: feedweb_settings.php:10 question_query.php:10 widget_commit.php:10
+#: widget_dialog.php:9
 msgid "You are not allowed to be here"
 msgstr "Вы не имеете доступа на эту страницу"
 
-#: feedweb_settings.php:33
+#: feedweb_settings.php:38
 msgid "Failed to update settings"
 msgstr "Ошибка при попытке обновить настройки."
 
-#: feedweb_util.php:415
+#: feedweb_util.php:442
+msgid "Cannot insert widget into a post with undefined status"
+msgstr "Невозможно установить виджет на пост, с неопределённым статусом"
+
+#: feedweb_util.php:445
+msgid "Cannot insert widget into a private post (must be public)"
+msgstr ""
+"Невозможно установить виджет на личный пост (пост должен быть доступен для "
+"всех)"
+
+#: feedweb_util.php:448
+msgid "Cannot insert widget into a trashed post"
+msgstr "Невозможно установить виджет на удалённый пост"
+
+#: feedweb_util.php:451
+msgid "Cannot insert widget into a password-protected post"
+msgstr "Невозможно установить виджет на пост защищенный паролем"
+
+#: feedweb_util.php:456
 msgid "Cannot insert widget into a post published %d days ago"
 msgstr "Невозможно установить виджет на пост, опубликованный %d дн. назад"
 
-#: feedweb_util.php:423
+#: feedweb_util.php:464
 msgid ""
 "You have created %d widgets in the last 24 hours. The daily limit is %d new "
 "widgets"
@@ -267,7 +379,7 @@ msgstr ""
 "Вы установили %d виджетов за последие 24 часа. Суточный лимит: %d новых "
 "виджетов"
 
-#: feedweb_util.php:430
+#: feedweb_util.php:471
 msgid ""
 "You have created %d widgets in the last 30 days. The monthly limit is %d new "
 "widgets"
@@ -275,190 +387,305 @@ msgstr ""
 "Вы установили %d виджетов за последие 30 дней. Месячный лимит: %d новых "
 "виджетов"
 
-#: widget_commit.php:95 widget_commit.php:103 widget_commit.php:111
-#: widget_commit.php:119 widget_commit.php:167 widget_commit.php:175
-#: widget_commit.php:183 widget_commit.php:191
+#: widget_commit.php:32 widget_commit.php:414
+msgid "The widget has been removed"
+msgstr "Виджет был удалён"
+
+#: widget_commit.php:101 widget_commit.php:109 widget_commit.php:117
+#: widget_commit.php:125 widget_commit.php:255 widget_commit.php:263
 msgid "Error in the Post data"
 msgstr "Ошибка в данных Поста"
 
-#: widget_commit.php:128 widget_commit.php:200
+#: widget_commit.php:134
 msgid "Error in the User data"
 msgstr "Ошибка в данных пользователя"
 
-#: widget_commit.php:232
+#: widget_commit.php:158
+msgid "Error in the Widget data"
+msgstr "Ошибка в данных Виджета"
+
+#: widget_commit.php:248 widget_commit.php:309
 msgid "Wordpress cannot modify your widget"
 msgstr "Wordpress не может изменить ваш Виджет"
 
-#: widget_commit.php:255 widget_commit.php:312 widget_commit.php:360
+#: widget_commit.php:277 widget_commit.php:332 widget_commit.php:401
+#: widget_commit.php:455
 msgid "Cannot connect Feedweb server"
 msgstr "Сервер Feedweb недоступен"
 
-#: widget_commit.php:267
-msgid "The widget has been updated"
-msgstr "Виджет был обновлён"
+#: widget_commit.php:289
+msgid "The widget Title/Url have been updated"
+msgstr "Заголовок / Адрес Виджета были обновлёны"
 
-#: widget_commit.php:271
+#: widget_commit.php:293 widget_commit.php:348
 msgid "Feedweb service cannot update the widget"
 msgstr "Служба Feedweb не может обновить виджет"
 
-#: widget_commit.php:287
+#: widget_commit.php:344
+msgid "The widget has been updated"
+msgstr "Виджет был обновлён"
+
+#: widget_commit.php:364
+msgid "The widget has been inserted"
+msgstr "Виджет был вставлен в пост"
+
+#: widget_commit.php:366
 msgid "Wordpress cannot insert your widget"
 msgstr "Wordpress не может создать ваш Виджет"
 
-#: widget_commit.php:326
+#: widget_commit.php:380
+msgid "%d out of %d widgets have been removed"
+msgstr "%d из of %d виджетов были удалены"
+
+#: widget_commit.php:421
 msgid "Wordpress cannot remove your widget"
 msgstr "Wordpress не может удалить ваш Виджет"
 
-#: widget_commit.php:376
+#: widget_commit.php:471
 msgid "Unknown server error"
 msgstr "Неизветная ошибка на сервере"
 
-#: widget_commit.php:380
+#: widget_commit.php:475
 msgid "Feedweb service cannot create a widget"
 msgstr "Служба Feedweb не может создать виджет"
 
-#: widget_dialog.php:21
+#: widget_dialog.php:23
 msgid ""
 "Dear %s, Please configure your plugin settings before inserting the widget"
 msgstr ""
 "Дорогой %s, Перед использованием виджетов для голосования, пожалуйста "
 "установите настройки плагина."
 
-#: widget_dialog.php:124
+#: widget_dialog.php:236
+msgid "Publish your post in the Feedweb's Readers Community Portal"
+msgstr "Опубликовать пост в сообществе читателей Feedweb"
+
+#: widget_dialog.php:239
+msgid "By clicking ['Next'] you agree to our {Terms of service}"
+msgstr "Нажимая на ['Вперед'] вы соглашаетесь на {Условия пользования Feedweb}"
+
+#: widget_dialog.php:257
+msgid "Suitable for any audience type"
+msgstr "Suitable for any audience type"
+
+#: widget_dialog.php:258
+msgid ""
+"May contain rude gestures, provocatively dressed individuals; the lesser "
+"swear words, or mild violence"
+msgstr ""
+"May contain rude gestures, provocatively dressed individuals; the lesser "
+"swear words, or mild violence"
+
+#: widget_dialog.php:259
+msgid ""
+"May contain such things as harsh profanity, intense violence, nudity, or "
+"hard drug use"
+msgstr ""
+"May contain such things as harsh profanity, intense violence, nudity, or "
+"hard drug use"
+
+#: widget_dialog.php:260
+msgid "May contain hardcore sexual imagery or extremely disturbing violence"
+msgstr "May contain hardcore sexual imagery or extremely disturbing violence"
+
+#: widget_dialog.php:283
+msgid ""
+"If this posts main purpose is to advertise a certain item or product and not "
+"to give information please check here."
+msgstr ""
+"Необходимо отметить когда основной целью поста является реклама "
+"определенного продукта или услуги."
+
+#: widget_dialog.php:284
+msgid ""
+"If your post is for advertising and you do not check the box you are "
+"violating the license agreement."
+msgstr ""
+"Публикация рекламного поста не помеченного как таковой, является нарушением "
+"условий."
+
+#: widget_dialog.php:287
+msgid "The post contains advertising material"
+msgstr "Пост является рекламным"
+
+#: widget_dialog.php:305
 msgid "Uncategorized"
 msgstr "Без рубрики"
 
-#: widget_dialog.php:243
+#: widget_dialog.php:424
 msgid "The rating widget in the post '%s' will be removed"
 msgstr "Виджет для голосования будет удален из поста %s"
 
-#: widget_dialog.php:305
+#: widget_dialog.php:474
 msgid "http://en.wikipedia.org/wiki/Yes%E2%80%93no_question"
 msgstr "http://en.wikipedia.org/wiki/Yes%E2%80%93no_question"
 
-#: widget_dialog.php:306
+#: widget_dialog.php:475
 msgid "must be a %sYES / NO%s question"
 msgstr "вопрос должен быть %sбинарным%s (Да / Нет)"
 
-#: widget_dialog.php:357
+#: widget_dialog.php:580
 msgid "Question '{0}' is already selected"
 msgstr "Вопрос  '{0}' уже выбран"
 
-#: widget_dialog.php:367
+#: widget_dialog.php:590
 msgid "A widget cannot contain more than {0} questions"
 msgstr "Виджет не может иметь более {0} вопросов"
 
-#: widget_dialog.php:401
+#: widget_dialog.php:624
 msgid "Please specify a question"
 msgstr "Пожалуйста введите текст вопроса"
 
-#: widget_dialog.php:454
+#: widget_dialog.php:632
+msgid "The question text must not exceed %d characters"
+msgstr "Длина вопроса не должна превышать %d знаков"
+
+#: widget_dialog.php:686
 msgid "Please select a question to remove"
 msgstr "Пожалуйста выберите вопрос для удаления"
 
-#: widget_dialog.php:458
+#: widget_dialog.php:690
 msgid "The question will be removed. Proceed?"
 msgstr "Вопрос будет удалёню Продолжать?"
 
-#: widget_dialog.php:493
+#: widget_dialog.php:724
 msgid "The tags/categories text is limited to 250 characters."
 msgstr "Поля рубрик и меток могут содержать не более 250 символов."
 
-#: widget_dialog.php:518
+#: widget_dialog.php:731
+msgid "The number of tags is limited to 10"
+msgstr "Количество меток не должно превышать 10"
+
+#: widget_dialog.php:738
+msgid "The number of categories is limited to 10"
+msgstr "Количество рубрик не может превышать 10"
+
+#: widget_dialog.php:803
+msgid "Page Title cannot exceed 100 characters"
+msgstr "Длина заголовка не должна превышать 100 знаков"
+
+#: widget_dialog.php:814
+msgid "Page Summary cannot exceed 250 characters"
+msgstr "Длина подзаголовка не должна превышать 250 знаков"
+
+#: widget_dialog.php:886
 msgid "Please enter image Url"
 msgstr "Введите адрес (URL) изображения"
 
-#: widget_dialog.php:625
+#: widget_dialog.php:918
+msgid "The image width or height should be at least 100 pixels"
+msgstr "Длина и ширина изображения должна быть не меньше 100 пикселей"
+
+#: widget_dialog.php:928
+msgid ""
+"The image ratio is invalid. The proportion between image width and height "
+"cannot be greater than 250%"
+msgstr "Соотношение длины и ширины изображения не может быть больше 250%"
+
+#: widget_dialog.php:1052
+msgid "Feedweb Plugin Terms of Service"
+msgstr "Условия пользования плагином Feedweb"
+
+#: widget_dialog.php:1054
+msgid "Close"
+msgstr "Закрыть"
+
+#: widget_dialog.php:1071
 msgid "Title:"
 msgstr "Заголовок:"
 
-#: widget_dialog.php:640
-msgid "Sub-Title:"
-msgstr "Подзаголовок:"
-
-#: widget_dialog.php:655
-msgid "Author:"
-msgstr "Автор:"
-
-#: widget_dialog.php:658
-msgid "Post Language:"
-msgstr "Язык Поста:"
-
-#: widget_dialog.php:676
-msgid "Categories"
-msgstr "Рубрики"
-
-#: widget_dialog.php:679
-msgid "Tags"
-msgstr "Метки"
-
-#: widget_dialog.php:697
+#: widget_dialog.php:1086
 msgid "URL:"
 msgstr "Адрес страницы:"
 
-#: widget_dialog.php:717 widget_remove.php:69
-msgid "Remove Widget"
-msgstr "Удалить Виджет"
+#: widget_dialog.php:1101
+msgid "Author:"
+msgstr "Автор:"
 
-#: widget_dialog.php:723 widget_dialog.php:779
-msgid "Next >"
-msgstr "Вперед >"
+#: widget_dialog.php:1104
+msgid "Post Language:"
+msgstr "Язык Поста:"
 
-#: widget_dialog.php:726 widget_dialog.php:782 widget_dialog.php:873
-msgid "Cancel"
-msgstr "Отменить"
+#: widget_dialog.php:1146
+msgid "Summary:"
+msgstr "Подзаголовок:"
 
-#: widget_dialog.php:747
+#: widget_dialog.php:1161
+msgid "Categories:"
+msgstr "Рубрики:"
+
+#: widget_dialog.php:1164
+msgid "Tags:"
+msgstr "Метки:"
+
+#: widget_dialog.php:1182
+msgid "Censorship:"
+msgstr "Ограничение аудитории:"
+
+#: widget_dialog.php:1218
 msgid "Image Url"
 msgstr "Адрес Изображения (URL)"
 
-#: widget_dialog.php:757
+#: widget_dialog.php:1228
 msgid "Set"
 msgstr "Установить"
 
-#: widget_dialog.php:776 widget_dialog.php:876
-msgid "< Back"
-msgstr "< Назад"
-
-#: widget_dialog.php:803
+#: widget_dialog.php:1260
 msgid "Existing Questions:"
 msgstr "Существующие вопросы:"
 
-#: widget_dialog.php:813
+#: widget_dialog.php:1271
 msgid "Select"
 msgstr "Выбрать"
 
-#: widget_dialog.php:823
+#: widget_dialog.php:1281
 msgid "New Question"
 msgstr "Новый вопрос"
 
-#: widget_dialog.php:833
-msgid "Add"
-msgstr "Добавить"
-
-#: widget_dialog.php:843
+#: widget_dialog.php:1301
 msgid "Selected Questions:"
 msgstr "Выбранные вопросы:"
 
-#: widget_dialog.php:853
+#: widget_dialog.php:1311
 msgid "Move Up"
 msgstr "Передвинуть вверх"
 
-#: widget_dialog.php:859
+#: widget_dialog.php:1317
 msgid "Move Down"
 msgstr "Передвинуть вниз"
 
-#: widget_dialog.php:864
+#: widget_dialog.php:1322
 msgid "Remove"
 msgstr "Удалить"
 
-#: widget_dialog.php:879
+#: widget_dialog.php:1334
+msgid "Remove Widget"
+msgstr "Удалить Виджет"
+
+#: widget_dialog.php:1339
+msgid "< Back"
+msgstr "< Назад"
+
+#: widget_dialog.php:1342
+msgid "Next >"
+msgstr "Вперед >"
+
+#: widget_dialog.php:1345
 msgid "Done"
 msgstr "Готово"
 
-#: widget_remove.php:17
-msgid "The rating widget in the post %s will be removed"
-msgstr "Виджет будет удален из поста %s"
+#: widget_dialog.php:1348
+msgid "Cancel"
+msgstr "Отменить"
+
+#~ msgid "Edit Widget Data:"
+#~ msgstr "Редактировать Виджет:"
+
+#~ msgid "Sub-Title:"
+#~ msgstr "Подзаголовок:"
+
+#~ msgid "The rating widget in the post %s will be removed"
+#~ msgstr "Виджет будет удален из поста %s"
 
 #~ msgid "The widget has been removed by the Feedweb administrator."
 #~ msgstr "Виджет был удалён администратором Feedweb."

@@ -5,10 +5,10 @@ Requires at least: 3.0
 Tested up to: 3.5.1
 Stable Tag: 2.1.4
 
-Feedweb is a simple way to get to know your audience. Find out what readers think about your blog. Ask any question and get feedback. 
-
+Expose your blog to the brand new audience. Find out what readers think about your blog. Ask any question and get feedback. Join the community of 1000+ websites now!
 
 == Description ==
+**Latest update: More than 200.000 votes collected by 10.000 blog post rating widgets published in 1.400 websites**
 
 [vimeo http://vimeo.com/67915433][**Please click here to see the video**](http://vimeo.com/67915433)
 
@@ -22,13 +22,11 @@ For more information go to [**Feedweb Readers Community**](http://feedweb.net) w
 Welcome blogs, blogs, and more blogs!
 [vimeo http://vimeo.com/65323163][**Please click here to see the video**](http://vimeo.com/65323163)
 
-
 **NOTE**: The plugin is compatible with Firefox, Chrome and Opera browsers. We strongly recommend not using Internet Explorer. 
 
 Please [**contact us**](mailto://contact@feedweb.net) if you experience any problems with our plugin.
 
 Follow us on [**Facebook**](https://www.facebook.com/feedwebresearch) and [**Twitter**](https://twitter.com/feedwebresearch).
-
 
 = Translators =
 * Arabic (ar)		 - Abdullah Alshehri ([**Create33.com**](http://Create33.com))

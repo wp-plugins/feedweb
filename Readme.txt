@@ -10,7 +10,7 @@ Feedweb is a simple way to get to know your audience. Find out what readers thin
 
 == Description ==
 
-[vimeo http://vimeo.com/67915433]
+[vimeo http://vimeo.com/67915433][**Please click here to see the video**](http://vimeo.com/67915433)
 
 The Feedweb Plugin is a simple and easy way to promote and improve your blog. By activating the plugin you can freely insert a customized widget into your selected posts. Choose questions you want to ask your readers and get comprehensive and precise feedback about your blog.
 
@@ -20,7 +20,7 @@ Requires WordPress 3.0 and PHP 5.
 
 For more information go to [**Feedweb Readers Community**](http://feedweb.net) website.
 Welcome blogs, blogs, and more blogs!
-[vimeo http://vimeo.com/65323163]
+[vimeo http://vimeo.com/65323163][**Please click here to see the video**](http://vimeo.com/65323163)
 
 
 **NOTE**: The plugin is compatible with Firefox, Chrome and Opera browsers. We strongly recommend not using Internet Explorer. 

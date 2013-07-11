@@ -806,6 +806,45 @@ function YesNoQuestionPrompt()
 				return true;
 			}
 			
+			function CheckAuthor()
+			{
+				var bad_names = ["admin", "webmaster", "editor", "publisher"];
+				var author = document.getElementById("AuthorText").value;
+				if (author == "")
+				{
+					alert('<?php _e("Author name is empty", "FWTD") ?>');
+					return false;
+				}
+				
+				for (var index = 0; index < bad_names.length; index++)
+				{
+					if (author.toLowerCase().indexOf(bad_names[index]) != -1)
+					{
+						var text = '<?php _e("A name like {0} is not recommended for Feedweb Readers Community authors.", "FWTD") ?>';
+						text = text.replace("{0}", bad_names[index]);
+						
+						text += '\n\n' + '<?php _e("You can set another display name in your WordPress profile.", "FWTD") ?>';
+						text += '\n\n' + '<?php _e("Do you wish to continue?", "FWTD") ?>';
+						
+						if (confirm(text) == false)
+							return false;
+					}
+				}
+				
+				// Check "email-like" names
+				var pos = author.indexOf('@');
+				if (pos > 0)
+				{
+					var next_pos = author.indexOf('.');
+					if (next_pos > pos)
+					{
+						alert('<?php _e("Email-like author names are not allowed due to security considerations. Please change the name", "FWTD") ?>');
+						return false;
+					}
+				}
+				return true;
+			}
+			
 			function CheckSummary()
 			{
 				var summary = document.getElementById("SummaryText");
@@ -843,6 +882,9 @@ function YesNoQuestionPrompt()
 				
 						if (box.checked == true)
 						{
+							if (CheckAuthor() == false)
+								return;
+							
 							divs[1].style.visibility = "visible";
 							OnSelectCensorship();
 							InitImageDiv();

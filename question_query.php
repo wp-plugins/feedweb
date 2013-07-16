@@ -15,8 +15,13 @@ function GetQuestionList()
 {
 	// Get Language
 	$lang = $_GET["lang"];
-	$site = PrepareParam(site_url());
-	$url = GetFeedwebUrl()."FBanner.aspx?action=gql&lang=$lang&site=$site";
+	
+	// Get BAC instead of site URL (from 2.1.6)
+	$bac = GetBac(true);
+	if ($bac == null)
+		return;
+		
+	$url = GetFeedwebUrl()."FBanner.aspx?action=gql&lang=$lang&bac=$bac";
 	
 	$response = wp_remote_get ($url, array('timeout' => 60));
 	if (is_wp_error ($response))

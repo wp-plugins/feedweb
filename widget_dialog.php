@@ -435,9 +435,13 @@ function GetFormAction()
 
 function GetQuestionList($pac)
 {
+	// Get BAC instead of site URL (from 2.1.6)
+	$bac = GetBac(true);
+	if ($bac == null)
+		return null;
+
 	$data = GetFeedwebOptions();
-	$site = PrepareParam(site_url());
-	$query = GetFeedwebUrl()."FBanner.aspx?action=gql&lang=".$data["language"]."&site=".$site;
+	$query = GetFeedwebUrl()."FBanner.aspx?action=gql&lang=".$data["language"]."&bac=".$bac;
 	if ($pac != null) 
 		$query = $query."&pac=".$pac;
 
@@ -835,8 +839,8 @@ function YesNoQuestionPrompt()
 				var pos = author.indexOf('@');
 				if (pos > 0)
 				{
-					var next_pos = author.indexOf('.');
-					if (next_pos > pos)
+					pos = author.indexOf('.', pos + 1);
+					if (pos > 0)
 					{
 						alert('<?php _e("Email-like author names are not allowed due to security considerations. Please change the name", "FWTD") ?>');
 						return false;

@@ -437,7 +437,10 @@ function FeedwebPluginOptions()
 										</td>
 										<td class="DescriptionColumn">
 											<span><i><?php _e("Please choose the type of rating widget", "FWTD")?></i></span><br/>
-											<span class="DescriptionWarningText"><?php _e("Note that Flash is not supported in devices like iPad or iPhone", "FWTD")?></span>
+											<span class="DescriptionWarningText">
+												<?php _e("Note that Flash is not supported in devices like iPad or iPhone.", "FWTD")?>
+												<?php _e("Flash widget will be discontinued after December 31, 2013.", "FWTD")?>
+											</span>
 										</td>
 									</tr>
 									

@@ -5,10 +5,10 @@ Requires at least: 3.0
 Tested up to: 3.5.1
 Stable Tag: 2.1.6
 
-Expose your blog to the brand new audience. Find out what your readers think. Ask any question and get feedback. Join the community of 1000+ blogs!
+Expose your blog to the brand new audience. Find out what your readers think. Ask any question and get feedback. Join the community of 1500+ blogs!
 
 == Description ==
-**Latest update**: More than **200.000** votes collected by **10.000** blog post rating widgets published in **1.400** websites.
+**Latest update**: More than **210.000** votes collected by **11.000** blog post rating widgets published in **1.500** websites.
 
 [vimeo http://vimeo.com/67915433][**Please click here to see the video**](http://vimeo.com/67915433)
 

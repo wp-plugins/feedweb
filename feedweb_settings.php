@@ -24,11 +24,11 @@ function UpdateSettings()
 	$data["add_paragraphs"] = $_POST["AutoAddParagraphs"];
 	$data["widget_prompt"] = $_POST["InsertWidgetPrompt"];
 	$data["widget_cs"] = $_POST["RatingWidgetColorScheme"];
+	$data["widget_place"] = $_POST["RatingWidgetPlacement"];
 	$data["widget_ext_bg"] = $_POST["ExternalBackgroundBox"];
 	$data["front_widget_items"] = $_POST["FrontWidgetItemCount"];
-	$data["copyright_notice"] = $_POST["FeedwebCopyrightNotice"];
 	$data["front_widget_height"] = $_POST["FrontWidgetHeightEdit"];
-	$data["atcontent_widget_check"]= $_POST["AtContentWidgetCheck"];
+	$data["copyright_notice_ex"] = $_POST["FeedwebCopyrightNotice"];
 	$data["front_widget_hide_scroll"] = $_POST["FrontWidgetHideScroll"];
 	$data["front_widget_color_scheme"] = $_POST["FrontWidgetColorScheme"];
 	

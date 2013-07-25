@@ -154,14 +154,14 @@ function GetFeedwebOptions()
 		"mp_widgets" => "0", 
 		"widget_width" => "400", 
 		"delay" => "2", 
-		"copyright_notice" => "0", 
+		"copyright_notice_ex" => "0", 
 		"widget_prompt" => "1", 
 		"add_paragraphs" => "0",
-		"atcontent_widget_check" => "0",
 		"front_widget_color_scheme" => "classic", 
 		"front_widget_height" => "400", 
 		"front_widget_hide_scroll" => "0", 
 		"widget_type" => "H", 
+		"widget_place" => "0", 
 		"widget_cs" => "gray",
 		"widget_ext_bg" => "FFFFFF" );	
 	
@@ -486,28 +486,6 @@ function GetLicenseInfo($remark)
 	if ($remark != null)
 		$val .= ";".$remark;
 	return "<input name='FeedwebLicenseInfo' id='FeedwebLicenseInfo' type='hidden' value='$val'/>";
-}
-
-function AtContentIncompatibleVersion()
-{
-	$name = "atcontent/atcontent.php";
-	if (is_plugin_active($name) == true) 
-	{
-		$full_name = dirname(dirname(__FILE__))."/".$name;
-		$plugin_data = get_plugin_data($full_name);
-		$version = $plugin_data['Version'];
-		if ($version < "2.0.3")
-			return $version;
-	}
-	return null;
-}
-
-function CheckIncompatiblePlugin()
-{
-	$version = AtContentIncompatibleVersion();
-	if ($version != null)
-		return "Feedweb may have compatibility problems with plugin AtContent (ver. $version). Please update AtContent to the latest version.";
-	return null;
 }
 
 function CheckServiceAvailability()

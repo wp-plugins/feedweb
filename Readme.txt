@@ -1,22 +1,22 @@
 ﻿=== Feedweb ===
 Contributors: Feedweb
-Tags: blog, rate, rating, network, feed, feedback, article, aggregator, aggregation, content, content management, post, page, public, opinion, research, flash, html5, widget, media, press, news, politics, society, social, question, answer, survey, poll, polling, vote, voting, stats, discussion, controversy, cooperation, view, comments, community, statistics, syndication, marketing, admin, sidebar, plugin, publishing
+Tags: blog, rate, rating, widget, rating widget, network, feed, feedback, article, aggregator, aggregation, content, content management, post, page, public, opinion, research, flash, html5, media, press, news, politics, society, social, question, answer, survey, poll, polling, vote, voting, stats, discussion, controversy, cooperation, view, comments, community, statistics, syndication, marketing, admin, sidebar, plugin, publishing
 Requires at least: 3.0
 Tested up to: 3.5.1
-Stable Tag: 2.1.6
+Stable Tag: 2.1.7
 
-Expose your blog to the brand new audience. Find out what your readers think. Ask any question and get feedback. Join the community of 1500+ blogs!
+Expose your blog to the brand new audience. Use our Rating Widget and find out what your readers think. Ask any question. Join our growing community!
 
 == Description ==
 **Latest update**: More than **210.000** votes collected by **11.000** blog post rating widgets published in **1.500** websites.
 
 [vimeo http://vimeo.com/67915433][**Please click here to see the video**](http://vimeo.com/67915433)
 
-The Feedweb Plugin is a simple and easy way to promote and improve your blog. By activating the plugin you can freely insert a customized widget into your selected posts. Choose questions you want to ask your readers and get comprehensive and precise feedback about your blog.
+The Feedweb Plugin is a simple and easy way to promote and improve your blog. By activating the plugin you can freely insert customized rating widgets into your selected posts. Choose questions you want to ask your readers and get comprehensive and precise feedback about your blog.
 
 The Blog Rating Widget is an attractive animated visual element that will improve your ratings! It is built using cutting-edge HTML5 technology, meets the highest privacy and security standards and enterprise-level quality.
 
-Requires WordPress 3.0 and PHP **5**.
+Requires WordPress 3.0 and PHP 5.
 
 For more information go to [**Feedweb Readers Community**](http://feedweb.net) website.
 Welcome blogs, blogs, and more blogs!
@@ -67,6 +67,12 @@ Follow us on [**Facebook**](https://www.facebook.com/feedwebresearch) and [**Twi
 
 
 == Changelog ==
+
+= 2.1.7 =
+* Widget placement option.
+* Copyright notice changed.
+* Friend plugin page updated.
+* Redundant functionality removed.
 
 = 2.1.6 =
 * Introducing our friends: Live Chat - Casengo.

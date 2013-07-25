@@ -4,7 +4,7 @@ Plugin Name: Feedweb
 Plugin URI: http://wordpress.org/extend/plugins/feedweb/
 Description: Expose your blog to the Feedweb reader's community. Promote your views. Get a comprehensive and detailed feedback from your readers.
 Author: Feedweb
-Version: 2.1.6
+Version: 2.1.7
 Author URI: http://feedweb.net
 */
 
@@ -14,35 +14,6 @@ require_once(ABSPATH.'wp-admin/includes/plugin.php');
 
 $feedweb_blog_caps = null;
 $feedweb_rw_swf = "FL/RatingWidget.swf";
-
-function CheckAtContentWidget($content)
-{
-	try
-	{
-		if (AtContentIncompatibleVersion() == null)
-			return false;
-	
-		$dom = new DOMDocument;
-		if ($dom->loadHTML($content) != true)
-			return false;
-			
-		$divs = $dom->getElementsByTagName("div");
-		if ($divs == null)
-			return false;
-			
-		for ($index = 0; $index < $divs->length; $index++)
-		{
-			$div = $divs->item($index);
-			$class = $div->getAttribute("class");
-			if ($class == "atcontent_widget")
-				return true;
-		}
-	}
-	catch (Exception $e)
-	{
-	}
-	return false;
-}
 
 function ContentFilter($content)
 {
@@ -54,10 +25,6 @@ function ContentFilter($content)
 		if (is_front_page() || is_home())
 			return  $content;
 			
-	if ($data["atcontent_widget_check"] == "1")	// Prevent double widget appearance...
-		if (CheckAtContentWidget($content) == true)
-			return $content . GetLicenseInfo('AtContentPatch');
-		
 	$id = get_the_ID($post_ID);
 	$pac = GetPac($id);
 	if ($pac == null)
@@ -103,28 +70,37 @@ function ContentFilter($content)
 	$signature = GetLicenseInfo(null);
 	if (strstr($content, $signature) != false) // The signature is already exists
 		return $content;
-		
+	
+	$code = $signature."<br/>".$code;
+	if ($data["copyright_notice_ex"] == "1")
+		$code .= GetCopyrightNotice();
+	
 	if ($data["add_paragraphs"] == "1")
 		$code = "<p>".$code."</p>";
-			
-	$content .= $signature."<br/>".$code;
-	if ($data["copyright_notice"] == "1")
-		$content .= GetCopyrightNotice(null);
 	
-	return $content;
+	if ($data["widget_place"] == '1') // Place on top
+		return $code.$content;
+	return $content.$code;
 }
 
 
-function GetCopyrightNotice($highlight)
+function GetCopyrightNotice()
 {
 	$data = get_plugin_data( __FILE__ );
 	$version = $data['Version'];
-	$text = "<p><span style='font-size: x-small;";
+	$text = "<br/><span style='font-size: 8pt; font-family: Ubuntu, Verdana, sans-serif;'>".
+		"<a href='http://wordpress.org/extend/plugins/feedweb'>Feedweb for Wordpress</a>. v$version".
+		"<iframe src='//www.facebook.com/plugins/like.php?href=https%3A%2F%2Fwww.facebook.com%2Ffeedwebresearch".
+		"&amp;send=false&amp;layout=button_count&amp;width=25&amp;show_faces=false&amp;font&amp;colorscheme=light".
+		"&amp;action=like&amp;height=21&amp;appId=240492672692711' scrolling='no' frameborder='0' allowTransparency='true' ".
+		"style='border:none; overflow:hidden; width:88px; height:21px; position: relative; left: 10px; top: 8px;'></iframe>".
+		"&copy; <a href='http://feedweb.net'>Feedweb</a>, 2012-13</span>";
+	return $text;
+
+	/*
 	if ($highlight != null)
 		$text .= "background-color: $highlight;";
-	$text .= "'><i><a href='http://wordpress.org/extend/plugins/feedweb'>Feedweb plugin for Wordpress</a>. ".
-		"v$version</i>  &copy; <a href='http://feedweb.net'>Feedweb Research</a>, 2012</span></p>";
-	return $text;
+	*/
 }
 
 function AddFeedwebColumn($columns) 
@@ -335,13 +311,6 @@ function showAdminMessages()
 			if ($error != "")
 				$msg .= " (Error: $error)";
 			showMessage($msg, true);
-			return;
-		}
-		
-		$error = CheckIncompatiblePlugin();
-		if ($error != null)
-		{
-			showMessage($error, true);
 			return;
 		}
     }

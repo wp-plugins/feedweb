@@ -249,6 +249,11 @@ function FeedwebPluginOptions()
 					ResetWidgetPreview();
 				}
 				
+				function OnWidgetPlacement(placement)
+				{
+					document.getElementById('RatingWidgetPlacement').value = placement;
+				}
+				
 				function OnWidgetType(type)
 				{
 					if (type == "H")
@@ -304,16 +309,6 @@ function FeedwebPluginOptions()
 				{
 					var box = document.getElementById('AddParagraphsBox');
 					var input = document.getElementById('AutoAddParagraphs');
-					if (box.checked == true)
-						input.value = "1";
-					else
-						input.value = "0";
-				}
-				
-				function OnCheckAtContentWidget()
-				{
-					var box = document.getElementById('AtContentWidgetBox');
-					var input = document.getElementById('AtContentWidgetCheck');
 					if (box.checked == true)
 						input.value = "1";
 					else
@@ -402,10 +397,10 @@ function FeedwebPluginOptions()
 			<input type='hidden' id='RatingWidgetType' name='RatingWidgetType' value='<?php echo $feedweb_data["widget_type"];?>'/>
 			<input type='hidden' id='AutoAddParagraphs' name='AutoAddParagraphs' value='<?php echo $feedweb_data["add_paragraphs"];?>'/>
 			<input type='hidden' id='InsertWidgetPrompt' name='InsertWidgetPrompt' value='<?php echo $feedweb_data["widget_prompt"];?>'/>
+			<input type='hidden' id='RatingWidgetPlacement' name='RatingWidgetPlacement' value='<?php echo $feedweb_data["widget_place"];?>'/>
 			<input type='hidden' id='RatingWidgetColorScheme' name='RatingWidgetColorScheme' value='<?php echo $feedweb_data["widget_cs"];?>'/>
 			<input type='hidden' id='FrontWidgetItemCount' name='FrontWidgetItemCount' value='<?php echo $feedweb_data["front_widget_items"];?>'/>
-			<input type='hidden' id='FeedwebCopyrightNotice' name='FeedwebCopyrightNotice' value='<?php echo $feedweb_data["copyright_notice"];?>'/>
-			<input type='hidden' id='AtContentWidgetCheck' name='AtContentWidgetCheck' value='<?php echo $feedweb_data["atcontent_widget_check"];?>'/>
+			<input type='hidden' id='FeedwebCopyrightNotice' name='FeedwebCopyrightNotice' value='<?php echo $feedweb_data["copyright_notice_ex"];?>'/>
 			<input type='hidden' id='FrontWidgetHideScroll' name='FrontWidgetHideScroll' value='<?php echo $feedweb_data["front_widget_hide_scroll"];?>'/>
 			<input type='hidden' id='FrontWidgetColorScheme' name='FrontWidgetColorScheme' value='<?php echo $feedweb_data["front_widget_color_scheme"];?>'/>
 			<br/>
@@ -424,16 +419,38 @@ function FeedwebPluginOptions()
 								<tbody>
 									<tr>
 										<td>
+											<span><b><?php _e("Widget Placement:", "FWTD")?></b></span>
+										</td>
+										<td>
+											<div class="RadioDiv">
+												<input type="radio" <?php if ($feedweb_data['widget_place']=='1') echo 'checked="checked"'; ?> 
+													name="WidgetPlaceRadio" id="WidgetPlaceTopRadio" onclick="OnWidgetPlacement('1')"/>
+												<label id="WidgetPlaceTopLabel" for="WidgetPlaceTopRadio">Top</label>
+												
+												<input type="radio" <?php if ($feedweb_data['widget_place']!='1') echo 'checked="checked"'; ?> 
+													name="WidgetPlaceRadio" id="WidgetPlaceBottomRadio" onclick="OnWidgetPlacement('0')"/>
+												<label id="WidgetPlaceBottomLabel" for="WidgetPlaceBottomRadio">Bottom</label>
+											</div>
+										</td>
+										<td class="DescriptionColumn">
+											<span><i><?php _e("Please choose the placement of the rating widget within a post", "FWTD")?></i></span><br/>
+										</td>
+									</tr>
+									
+									<tr>
+										<td>
 											<span><b><?php _e("Widget Type:", "FWTD")?></b></span>
 										</td>
 										<td>
-											<input type="radio" <?php if ($feedweb_data['widget_type']=='H') echo 'checked="checked"'; ?> 
-												name="WidgetTypeRadio" id="WidgetTypeHTML5Radio" onclick="OnWidgetType('H')"/>
-											<label id="WidgetTypeHTML5Label" for="WidgetTypeHTML5Radio">HTML5</label>
-											
-											<input type="radio" <?php if ($feedweb_data['widget_type']=='F') echo 'checked="checked"'; ?> 
-												name="WidgetTypeRadio" id="WidgetTypeFlashRadio" onclick="OnWidgetType('F')"/>
-											<label id="WidgetTypeFlashLabel" for="WidgetTypeFlashRadio">Flash</label>
+											<div class="RadioDiv">
+												<input type="radio" <?php if ($feedweb_data['widget_type']=='H') echo 'checked="checked"'; ?> 
+													name="WidgetTypeRadio" id="WidgetTypeHTML5Radio" onclick="OnWidgetType('H')"/>
+												<label id="WidgetTypeHTML5Label" for="WidgetTypeHTML5Radio">HTML5</label>
+												
+												<input type="radio" <?php if ($feedweb_data['widget_type']=='F') echo 'checked="checked"'; ?> 
+													name="WidgetTypeRadio" id="WidgetTypeFlashRadio" onclick="OnWidgetType('F')"/>
+												<label id="WidgetTypeFlashLabel" for="WidgetTypeFlashRadio">Flash</label>
+											</div>
 										</td>
 										<td class="DescriptionColumn">
 											<span><i><?php _e("Please choose the type of rating widget", "FWTD")?></i></span><br/>
@@ -520,12 +537,12 @@ function FeedwebPluginOptions()
 											<span><b><?php _e("Feedweb Copyright Notice:", "FWTD")?></b></span> 				
 										</td>
 										<td>
-											<input <?php if($feedweb_data['copyright_notice'] == "1") echo 'checked="checked"' ?>
+											<input <?php if($feedweb_data['copyright_notice_ex'] == "1") echo 'checked="checked"' ?>
 											id="CopyrightNoticeBox" name="CopyrightNoticeBox" type="checkbox" onchange='OnCheckCopyrightNotice()'> <?php _e("Allow")?></input>				
 										</td>
-										<td>
+										<td style="padding-bottom: 12px; padding-top: 6px;">
 											<span><i><?php _e("Please check to display the following text below the widgets: ", "FWTD")?></i></span>
-											<?php echo GetCopyrightNotice('#ffff00')?>
+											<?php echo GetCopyrightNotice()?>
 										</td>
 									</tr>
 									
@@ -554,27 +571,6 @@ function FeedwebPluginOptions()
 											<span><i><?php _e("Surround widgets with paragraph tags:", "FWTD")?></i><b> &lt;P&gt;...&lt;/P&gt;</b></span>
 										</td>
 									</tr>
-									
-									<tr style="visibility: 
-										<?php 
-											if (AtContentIncompatibleVersion() != null)
-												echo "visible";
-											else
-												echo "hidden";
-										?>;">
-										<td>
-											<span><b><?php _e("Disable double widget appearance:", "FWTD")?></b></span> 				
-										</td>
-										<td>
-											<input <?php if($feedweb_data['atcontent_widget_check'] == "1") echo 'checked="checked"' ?>
-											id="AtContentWidgetBox" name="AtContentWidgetBox" type="checkbox" onchange='OnCheckAtContentWidget()'> <?php _e("Disable")?></input>				
-										</td>
-										<td>
-											<span style="color: Red;"><b><?php _e("IMPORTANT!", "FWTD")?></b></span>
-											<span><i>Please check if the rating widgets appear twice in your posts.</i></span>
-										</td>
-									</tr>
-									
 								</tbody>
 							</table>
 						</div>

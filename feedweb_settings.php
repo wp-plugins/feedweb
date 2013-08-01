@@ -16,21 +16,26 @@ $error_message = "";
 function UpdateSettings()
 {
 	$data = array();
-	$data["delay"] = $_POST["DelayResults"];
-	$data["language"] = $_POST["FeedwebLanguage"];
-	$data["mp_widgets"] = $_POST["FeedwebMPWidgets"];
-	$data["widget_type"] = $_POST["RatingWidgetType"];
-	$data["widget_width"] = $_POST["WidgetWidthEdit"];
-	$data["add_paragraphs"] = $_POST["AutoAddParagraphs"];
-	$data["widget_prompt"] = $_POST["InsertWidgetPrompt"];
-	$data["widget_cs"] = $_POST["RatingWidgetColorScheme"];
-	$data["widget_place"] = $_POST["RatingWidgetPlacement"];
-	$data["widget_ext_bg"] = $_POST["ExternalBackgroundBox"];
-	$data["front_widget_items"] = $_POST["FrontWidgetItemCount"];
-	$data["front_widget_height"] = $_POST["FrontWidgetHeightEdit"];
-	$data["copyright_notice_ex"] = $_POST["FeedwebCopyrightNotice"];
-	$data["front_widget_hide_scroll"] = $_POST["FrontWidgetHideScroll"];
-	$data["front_widget_color_scheme"] = $_POST["FrontWidgetColorScheme"];
+	if ($_POST["WidgetTypeSwitch"] == "*")
+		$data["widget_type"] = "H";
+	else
+	{
+		$data["delay"] = $_POST["DelayResults"];
+		$data["language"] = $_POST["FeedwebLanguage"];
+		$data["mp_widgets"] = $_POST["FeedwebMPWidgets"];
+		$data["widget_type"] = $_POST["RatingWidgetType"];
+		$data["widget_width"] = $_POST["WidgetWidthEdit"];
+		$data["add_paragraphs"] = $_POST["AutoAddParagraphs"];
+		$data["widget_prompt"] = $_POST["InsertWidgetPrompt"];
+		$data["widget_cs"] = $_POST["RatingWidgetColorScheme"];
+		$data["widget_place"] = $_POST["RatingWidgetPlacement"];
+		$data["widget_ext_bg"] = $_POST["ExternalBackgroundBox"];
+		$data["front_widget_items"] = $_POST["FrontWidgetItemCount"];
+		$data["front_widget_height"] = $_POST["FrontWidgetHeightEdit"];
+		$data["copyright_notice_ex"] = $_POST["FeedwebCopyrightNotice"];
+		$data["front_widget_hide_scroll"] = $_POST["FrontWidgetHideScroll"];
+		$data["front_widget_color_scheme"] = $_POST["FrontWidgetColorScheme"];
+	}
 	
 	if (SetFeedwebOptions($data))
 		$error_message = "";

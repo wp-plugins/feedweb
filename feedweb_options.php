@@ -344,25 +344,33 @@ function FeedwebPluginOptions()
 					return width;
 				}
 
+				function OnSwitchToHtml()
+				{
+					document.getElementById("WidgetTypeSwitch").value = "*";
+				}
+							
 				function OnSubmitFeedwebSettingsForm()
 				{
-					if (ValidateRatingWidgetWidth() == 0)
-						return false;
-					
-					input = document.getElementById("FrontWidgetHeightEdit");
-					var height = parseInt(input.value);
-					if (isNaN(height))
+					if (document.getElementById("WidgetTypeSwitch").value != "*")
 					{
-						window.alert ('<?php _e("Please enter a valid Front Widget height", "FWTD")?>');
-						return false;
-					}
+						if (ValidateRatingWidgetWidth() == 0)
+							return false;
+						
+						input = document.getElementById("FrontWidgetHeightEdit");
+						var height = parseInt(input.value);
+						if (isNaN(height))
+						{
+							window.alert ('<?php _e("Please enter a valid Front Widget height", "FWTD")?>');
+							return false;
+						}
 
-					if (height < 200 || height > 800)
-					{
-						window.alert ('<?php _e("Front Widget height is out of range", "FWTD")?>');
-						return false;
+						if (height < 200 || height > 800)
+						{
+							window.alert ('<?php _e("Front Widget height is out of range", "FWTD")?>');
+							return false;
+						}
+						input.value = height.toString();
 					}
-					input.value = height.toString();
 					
 					var form = document.getElementById("FeedwebSettingsForm");
 					form.action ="<?php echo plugin_dir_url(__FILE__)?>feedweb_settings.php";
@@ -437,29 +445,23 @@ function FeedwebPluginOptions()
 										</td>
 									</tr>
 									
-									<tr>
+									<tr <?php if ($feedweb_data['widget_type']=='H') echo " style='display: none;'"; ?> >
 										<td>
 											<span><b><?php _e("Widget Type:", "FWTD")?></b></span>
 										</td>
 										<td>
-											<div class="RadioDiv">
-												<input type="radio" <?php if ($feedweb_data['widget_type']=='H') echo 'checked="checked"'; ?> 
-													name="WidgetTypeRadio" id="WidgetTypeHTML5Radio" onclick="OnWidgetType('H')"/>
-												<label id="WidgetTypeHTML5Label" for="WidgetTypeHTML5Radio">HTML5</label>
-												
-												<input type="radio" <?php if ($feedweb_data['widget_type']=='F') echo 'checked="checked"'; ?> 
-													name="WidgetTypeRadio" id="WidgetTypeFlashRadio" onclick="OnWidgetType('F')"/>
-												<label id="WidgetTypeFlashLabel" for="WidgetTypeFlashRadio">Flash</label>
-											</div>
+											<input type='submit' class='button button-primary' style='width: 170px;' onclick='OnSwitchToHtml()' value='Upgrade to HTML5'/>
+											<input type='hidden' id='WidgetTypeSwitch' name='WidgetTypeSwitch' value='-'/>
 										</td>
 										<td class="DescriptionColumn">
-											<span><i><?php _e("Please choose the type of rating widget", "FWTD")?></i></span><br/>
+											<span><i><?php _e("Click to upgrade your rating widgets from Flash to HTML5", "FWTD")?></i></span><br/>
 											<span class="DescriptionWarningText">
 												<?php _e("Note that Flash is not supported in devices like iPad or iPhone.", "FWTD")?>
 												<?php _e("Flash widget will be discontinued after December 31, 2013.", "FWTD")?>
 											</span>
 										</td>
 									</tr>
+									
 									
 									<tr id="RatingWidgetColorSchemeRow" style="height: 64px; vertical-align: top;">
 										<td>

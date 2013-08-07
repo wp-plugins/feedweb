@@ -48,5 +48,6 @@
 			<input alt='<?php echo admin_url()?>/plugin-install.php?tab=plugin-information&plugin=the-casengo-chat-widget&TB_iframe=true&width=640&height=500' 
 				class='thickbox InfoImage' title='Casengo Plugin Info' type='image' src='<?php echo plugin_dir_url(__FILE__)?>/images/Info.png'/>";
 		</div>
+		<!-- <div style="top: 250px; left: 0px;"> -->
 	</div>
 </div>

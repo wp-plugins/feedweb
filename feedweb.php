@@ -88,19 +88,20 @@ function GetCopyrightNotice()
 {
 	$data = get_plugin_data( __FILE__ );
 	$version = $data['Version'];
-	$text = "<br/><span style='font-size: 8pt; font-family: Ubuntu, Verdana, sans-serif;'>".
-		"<a href='http://wordpress.org/extend/plugins/feedweb'>Feedweb for Wordpress</a>. v$version".
-		"<iframe src='//www.facebook.com/plugins/like.php?href=https%3A%2F%2Fwww.facebook.com%2Ffeedwebresearch".
-		"&amp;send=false&amp;layout=button_count&amp;width=25&amp;show_faces=false&amp;font&amp;colorscheme=light".
-		"&amp;action=like&amp;height=21&amp;appId=240492672692711' scrolling='no' frameborder='0' allowTransparency='true' ".
-		"style='border:none; overflow:hidden; width:88px; height:21px; position: relative; left: 10px; top: 8px;'></iframe>".
-		"&copy; <a href='http://feedweb.net'>Feedweb</a>, 2012-13</span>";
-	return $text;
+	
+	$text = "<br/><div style='font-size: 8pt; font-family: Ubuntu, Verdana, sans-serif; height: 30px;".
+		"display: block; overflow: hidden; width: 380px; position: relative; margin: 0; padding: 0;'>".
+		"<span style='display:block;positiion:absolute; top: 0px; left: 0px; margin: 0; padding: 0;'>".
+		"<a href = 'http://wordpress.org/extend/plugins/feedweb'>Feedweb for Wordpress</a>. v$version".
+		"</span> <iframe src='//www.facebook.com/plugins/like.php?href=https%3A%2F%2Fwww.facebook.com".
+		"%2Ffeedwebresearch&amp;send=false&amp;layout=button_count&amp;width=25&amp;show_faces=false&".
+		"amp;font&amp;colorscheme=light&amp;action=like&amp;height=21&amp;appId=240492672692711' ".
+		"scrolling='no' frameborder='0' allowTransparency='true' style='border:none; overflow:hidden;".
+		"width:88px; height:21px; margin: 0; padding: 0; position: absolute; left: 160px; top: 0px;'>".
+		"</iframe><span style='display: block; position: absolute; left: 250px; top: 0px;'>&copy; ".
+		"<a href='http://feedweb.net'>Feedweb</a>, 2012-13</span></div>";
 
-	/*
-	if ($highlight != null)
-		$text .= "background-color: $highlight;";
-	*/
+	return $text;
 }
 
 function AddFeedwebColumn($columns) 

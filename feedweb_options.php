@@ -542,8 +542,8 @@ function FeedwebPluginOptions()
 											<input <?php if($feedweb_data['copyright_notice_ex'] == "1") echo 'checked="checked"' ?>
 											id="CopyrightNoticeBox" name="CopyrightNoticeBox" type="checkbox" onchange='OnCheckCopyrightNotice()'> <?php _e("Allow")?></input>				
 										</td>
-										<td style="padding-bottom: 12px; padding-top: 6px;">
-											<span><i><?php _e("Please check to display the following text below the widgets: ", "FWTD")?></i></span>
+										<td style="padding-bottom: 0px; padding-top: 6px;">
+											<span><i><?php _e("Please check to display the following text below the widgets: ", "FWTD")?></i></span><br/>
 											<?php echo GetCopyrightNotice()?>
 										</td>
 									</tr>

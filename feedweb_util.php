@@ -16,6 +16,7 @@ function PrepareParam($param)
 	return $param;
 }
 
+
 function ConvertHtml($str)
 {
 	return htmlspecialchars($str, ENT_QUOTES|ENT_HTML5);

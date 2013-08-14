@@ -799,12 +799,32 @@ function YesNoQuestionPrompt()
 				divs[old_page].style.visibility = "hidden";
 			}
 			
+			
+			function TextIsHTML(text) 
+			{
+    			var element = document.createElement('div');
+    			element.innerHTML = text;
+    			
+    			var children = element.childNodes;
+    			for (var index = 0; index < children.length; index++) 
+        			if (children[index].nodeType == 1) 
+        				return true; 
+    
+    			return false;
+			}
+			
 			function CheckTitle()
 			{
 				var title = document.getElementById("TitleText");
 				if (title.value.length > 100)
 				{
 					alert('<?php _e("Page Title cannot exceed 100 characters", "FWTD") ?>');
+					return false;
+				}
+				
+				if (TextIsHTML(title.value))
+				{
+					alert('<?php _e("Page Title contain hypertext markup", "FWTD") ?>');
 					return false;
 				}
 				return true;

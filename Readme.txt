@@ -2,13 +2,13 @@
 Contributors: Feedweb
 Tags: blog, rate, rating, widget, rating widget, network, feed, feedback, article, aggregator, aggregation, content, content management, post, page, public, opinion, research, flash, html5, media, press, news, politics, society, social, question, answer, survey, poll, polling, vote, voting, stats, discussion, controversy, cooperation, view, comments, community, statistics, syndication, marketing, admin, sidebar, plugin, publishing
 Requires at least: 3.0
-Tested up to: 3.5.1
-Stable Tag: 2.2
+Tested up to: 3.6
+Stable Tag: 2.2.1
 
 Expose your blog to the brand new audience. Use our Rating Widget and find out what your readers think. Ask any question. Join our growing community!
 
 == Description ==
-**Latest update**: More than **210.000** votes collected by **11.000** blog post rating widgets published in **1.500** websites.
+**Latest update**: More than **220.000** votes collected by **11.000** blog post rating widgets published in **1.600** websites.
 
 [vimeo http://vimeo.com/67915433][**Please click here to see the video**](http://vimeo.com/67915433)
 
@@ -67,6 +67,10 @@ Follow us on [**Facebook**](https://www.facebook.com/feedwebresearch) and [**Twi
 
 
 == Changelog ==
+
+= 2.2.1 =
+* Monitor locale support.
+* Title hypertext filter.
 
 = 2.2 =
 * Monitor preview release.

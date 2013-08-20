@@ -10,7 +10,7 @@ function GetDefaultLanguage()
 
 function GetMonitorPath()
 {
-	return GetFeedwebUrl()."MR/Monitor.aspx?lang=".GetDefaultLanguage()."&bac=".GetBac(true);
+	return GetFeedwebUrl()."MR/Monitor.aspx?lang=".GetDefaultLanguage()."&bac=".GetBac(true)."&client=WP:".GetPluginVersion();
 }
 ?>
 

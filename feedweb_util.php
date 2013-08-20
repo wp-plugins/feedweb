@@ -475,15 +475,20 @@ function GetInsertWidgetStatus($id)
 	return null;
 }
 
+function GetPluginVersion()
+{
+	$plugin_name = dirname(__FILE__)."/feedweb.php";
+	$plugin_data = get_plugin_data($plugin_name);
+	return $plugin_data['Version'];
+}
+
 function GetLicenseInfo($remark)
 {
 	$license = GetSingleFeedwebOption("license");
 	if ($license == null || $license == "")
 		$license = "*";
 		
-	$plugin_name = dirname(__FILE__)."/feedweb.php";
-	$plugin_data = get_plugin_data($plugin_name);
-	$val = $license.";".$plugin_data['Version'];
+	$val = $license.";".GetPluginVersion();
 	if ($remark != null)
 		$val .= ";".$remark;
 	return "<input name='FeedwebLicenseInfo' id='FeedwebLicenseInfo' type='hidden' value='$val'/>";

@@ -8,7 +8,18 @@ Stable Tag: 2.2.2
 Expose your blog to the brand new audience. Use our Rating Widget and find out what your readers think. Ask any question. Join our growing community!
 
 == Description ==
-**Latest update**: More than **220.000** votes collected by **11.000** blog post rating widgets published in **1.600** websites.
+**Latest update**: More than **225.000** votes collected by **11.500** blog post rating widgets published in **1.700** websites.
+
+_____________________________________________________________________________________________________
+* Feedweb being the plugin with the most direct impact as it puts out each Blog post to a readership community, and can generate 20 to 60 visits per post on a good day and with a good post topic/headline.
+* [**Shane Hopkins, MoneyMakerSpy.com**](http://www.moneymakerspy.com/bring-250-daily-visitors-blog)
+_____________________________________________________________________________________________________
+* One of the best things about blogging is that you can get direct feedback from your visitors. If you ask the right questions (in the right way), they will tell you what you need to know in order to create better content for them in the future. And that’s where Feedweb comes in. Check out how it can revolutionize your own content strategy...
+* [**Tom Ewer, ManageWP.com**](https://managewp.com/free-wordpress-plugins-july-2013)
+_____________________________________________________________________________________________________
+* Best Voting WordPress Plugin!
+* [**Sanket Rathod, CrazyTechSolutions.org**](http://www.crazytechsolutions.org/feedweb-review-best-voting-wordpress-plugin)
+_____________________________________________________________________________________________________
 
 [vimeo http://vimeo.com/67915433][**Please click here to see the video**](http://vimeo.com/67915433)
 

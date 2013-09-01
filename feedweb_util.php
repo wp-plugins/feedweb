@@ -16,10 +16,14 @@ function PrepareParam($param)
 	return $param;
 }
 
-
 function ConvertHtml($str)
 {
-	return htmlspecialchars($str, ENT_QUOTES|ENT_HTML5);
+	return htmlspecialchars($str, ENT_QUOTES|ENT_HTML5|ENT_IGNORE);
+}
+
+function GetPostId()
+{
+	return $_GET["wp_post_id"];
 }
 
 function GetPostCode($id)

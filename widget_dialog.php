@@ -412,11 +412,6 @@ function GetUrlControl()
 	echo "<input type='text' id='UrlText' name='UrlText' value='$url' style='width:100%;' readonly='readonly'/>";
 }
 
-function GetPostId()
-{
-	return $_GET["wp_post_id"];
-}
-
 function GetRemoveWidgetPrompt()
 {
 	$id = GetPostId();

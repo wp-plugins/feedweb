@@ -2,18 +2,17 @@
 Contributors: Feedweb
 Tags: blog, rate, rating, widget, rating widget, network, feed, feedback, article, aggregator, aggregation, content, content management, post, page, public, opinion, research, flash, html5, media, press, news, politics, society, social, question, answer, survey, poll, polling, vote, voting, stats, discussion, controversy, cooperation, view, comments, community, statistics, syndication, marketing, admin, sidebar, plugin, publishing
 Requires at least: 3.0
-Tested up to: 3.6
-Stable Tag: 2.2.3
+Tested up to: 3.6.1
+Stable Tag: 2.2.4
 
-Ask questions, get answers. Expose your blog to the brand new audience. Find out what your readers think. Join the community of 1800+ websites now!
+Expose your blog to the brand new audience. Ask questions, get answers. Find out what your readers think. Join the community of 1800+ websites now!
 
 == Description ==
-**Latest update**: More than **225.000** votes collected by **12.000** blog post rating widgets published in **1.800** websites.
+**Latest update**: More than **230.000** votes collected by **12.500** blog post rating widgets published in **1.800** websites.
 
 The Feedweb Plugin is a simple and easy way to promote and improve your blog. By activating the plugin you can freely insert customized rating widgets into your selected posts. Choose questions you want to ask your readers and get comprehensive and precise feedback about your blog.
 
 The Blog Rating Widget is an attractive animated visual element that will improve your ratings! It is built using cutting-edge HTML5 technology, meets the highest privacy and security standards and enterprise-level quality.
-
 _____________________________________________________________________________________________________
 * Feedweb being the plugin with the most direct impact as it puts out each Blog post to a readership community, and can generate 20 to 60 visits per post on a good day and with a good post topic/headline.
 * [**Shane Hopkins, MoneyMakerSpy.com**](http://www.moneymakerspy.com/bring-250-daily-visitors-blog)
@@ -25,9 +24,8 @@ ________________________________________________________________________________
 * [**Sanket Rathod, CrazyTechSolutions.org**](http://www.crazytechsolutions.org/feedweb-review-best-voting-wordpress-plugin)
 _____________________________________________________________________________________________________
 * An awesome plugin which allows us to get Feedback/Votes of our Readers by offering them a Voting Widget. It also makes us a lot of Traffic as It automatically posts our Articles to their Community Portal.
-* [**Vishesh Kachheda, http://techbin.org**](http://techbin.org/feedweb-plugin-review/)
+* [**Vishesh Kachheda, TechBin.org**](http://techbin.org/feedweb-plugin-review/)
 _____________________________________________________________________________________________________
-
 
 [vimeo http://vimeo.com/67915433][**Please click here to see the video**](http://vimeo.com/67915433)
 
@@ -82,6 +80,9 @@ Follow us on [**Facebook**](https://www.facebook.com/feedwebresearch) and [**Twi
 
 
 == Changelog ==
+
+= 2.2.4 =
+* Review sites promo page.
 
 = 2.2.3 =
 * L10n update (Russian).

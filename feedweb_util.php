@@ -576,4 +576,12 @@ function GetQuestionCountLimit()
 	return 4;
 }
 
+function GetDefaultLanguage() 
+{
+	$lang = get_locale();
+	$pos = strpos($lang, "_");
+	if ($pos > 0)
+		$lang = substr($lang, 0, $pos);
+	return $lang;
+}
 ?>

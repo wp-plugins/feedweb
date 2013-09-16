@@ -1,12 +1,9 @@
 <?php
-function GetDefaultLanguage()
-{
-	$lang = get_locale();
-	$pos = strpos($lang, "_");
-	if ($pos > 0)
-		$lang = substr($lang, 0, $pos);
-	return $lang;
-}
+if ( !defined('ABSPATH') )
+	define('ABSPATH', dirname(dirname(dirname(dirname(__FILE__)))) . '/');
+
+require_once( ABSPATH.'wp-load.php');
+require_once( 'feedweb_util.php');
 
 function GetMonitorPath()
 {

@@ -1,36 +1,36 @@
-<style type="text/css">
-	.FriendPromotionDiv
-	{
-		position: relative;
-	}
-	
-	.FriendPromotionDiv div,
-	.FriendPromotionDiv a
-	{
-		position: absolute;
-	}
-	
-	.FriendPromotionDiv .LogoImage
-	{
-		width: 500px;
-	}
-	
-	.FriendPromotionDiv a span
-	{
-		position: absolute;
-		font-weight: bold;
-		display: block;
-		width: 450px;
-		top: 180px;
-	}
-	
-	.FriendPromotionDiv .InfoImage
-	{
-		position: absolute;
-		width: 50px;
-		left: 450px;
-		top: 162px;
-	}
+<style>
+.FriendPromotionDiv
+{
+	position: relative;
+}
+
+.FriendPromotionDiv div,
+.FriendPromotionDiv a
+{
+	position: absolute;
+}
+
+.FriendPromotionDiv .LogoImage
+{
+	width: 500px;
+}
+
+.FriendPromotionDiv a span
+{
+	position: absolute;
+	font-weight: bold;
+	display: block;
+	width: 450px;
+	top: 180px;
+}
+
+.FriendPromotionDiv .InfoImage
+{
+	position: absolute;
+	width: 50px;
+	left: 450px;
+	top: 162px;
+}
 </style>
 
 <div class="wrap">
@@ -48,6 +48,6 @@
 			<input alt='<?php echo admin_url()?>/plugin-install.php?tab=plugin-information&plugin=the-casengo-chat-widget&TB_iframe=true&width=640&height=500' 
 				class='thickbox InfoImage' title='Casengo Plugin Info' type='image' src='<?php echo plugin_dir_url(__FILE__)?>/images/Info.png'/>";
 		</div>
-		<!-- <div style="top: 250px; left: 0px;"> -->
 	</div>
 </div>
+

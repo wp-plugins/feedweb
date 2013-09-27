@@ -1,9 +1,9 @@
 ﻿=== Feedweb ===
 Contributors: Feedweb
-Tags: blog, rate, rating, widget, rating widget, network, feed, feedback, article, aggregator, aggregation, content, content management, post, page, public, opinion, research, flash, html5, media, press, news, politics, society, social, question, answer, survey, poll, polling, vote, voting, stats, discussion, controversy, cooperation, view, comments, community, statistics, syndication, marketing, admin, sidebar, plugin, publishing
+Tags: blog, rate, rating, widget, network, feed, feedback, article, aggregator, aggregation, content, content management, post, page, public, opinion, research, flash, html5, media, press, news, politics, society, social, question, answer, survey, poll, polling, vote, voting, stats, discussion, controversy, cooperation, view, comments, community, statistics, syndication, marketing, admin, sidebar, plugin, publishing
 Requires at least: 3.0
 Tested up to: 3.6.1
-Stable Tag: 2.2.4
+Stable Tag: 2.2.5
 
 Expose your blog to the brand new audience. Ask questions, get answers. Find out what your readers think. Join the community of 1800+ websites now!
 
@@ -43,6 +43,7 @@ Follow us on [**Facebook**](https://www.facebook.com/feedwebresearch) and [**Twi
 
 = Translators =
 * Arabic (ar)		 - Abdullah Alshehri ([**Create33.com**](http://Create33.com))
+* French (fr_FR)     - Lago Noel
 * German (de_DE)     - Anna Davidov
 * Hebrew (he_IL)     - Dana Rovinsky
 * Italian (it_IT)    - Menashè Eliezer
@@ -80,6 +81,9 @@ Follow us on [**Facebook**](https://www.facebook.com/feedwebresearch) and [**Twi
 
 
 == Changelog ==
+
+= 2.2.5 =
+* L10n update (French)
 
 = 2.2.4 =
 * Review sites promo page.

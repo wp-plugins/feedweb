@@ -456,26 +456,37 @@ function GetInsertWidgetStatus($id)
 		return __("Cannot insert widget into a password-protected post", "FWTD");
 	
 	$days = GetPostAge($id);
-    if ($days > GetMaxPostAge())
-    {
-	    $format = __("Cannot insert widget into a post published %d days ago", "FWTD");
-	    return sprintf($format, $days);
+	if ($days > GetMaxPostAge()) 
+	{
+		$format = __("Cannot insert widget into a post published %d days ago", "FWTD");
+		return sprintf($format, $days);
 	}
-    	
+
 	global $feedweb_blog_caps;
 	$cap = $feedweb_blog_caps["DW"];
-	if ($cap["used"] >= $cap["limit"])
-	{
-		$format = __("You have created %d widgets in the last 24 hours. The daily limit is %d new widgets", "FWTD");
-		return sprintf ($format, $cap["used"], $cap["limit"]);
-	}
-		
+	if ($cap["limit"] >= 0)
+		if ($cap["used"] >= $cap["limit"]) 
+		{
+			$format = __("You have created %d widgets in the last 24 hours. The daily limit for your subscription is %d new widgets.", "FWTD");
+			return sprintf($format, $cap["used"], $cap["limit"]);
+		}
+
 	$cap = $feedweb_blog_caps["MW"];
-	if ($cap["used"] >= $cap["limit"])
-	{
-		$format = __("You have created %d widgets in the last 30 days. The monthly limit is %d new widgets", "FWTD");
-		return sprintf ($format, $cap["used"], $cap["limit"]);
-	}
+	if ($cap["limit"] >= 0)
+		if ($cap["used"] >= $cap["limit"]) 
+		{
+			$format = __("You have created %d widgets in the last 30 days. The monthly limit for your subscription is %d new widgets", "FWTD");
+			return sprintf($format, $cap["used"], $cap["limit"]);
+		}
+
+	$cap = $feedweb_blog_caps["TW"];
+	if ($cap["limit"] >= 0)
+		if ($cap["used"] >= $cap["limit"]) 
+		{
+			$format = __("You have created %d widgets. The limit for your subscription is %d widgets", "FWTD");
+			return sprintf($format, $cap["used"], $cap["limit"]);
+		}
+
 	return null;
 }
 
@@ -571,9 +582,16 @@ function GetQuestionLengthLimit()
 	return 64;
 }
 
-function GetQuestionCountLimit()
+function GetQuestionCountLimit() 
 {
-	return 4;
+	global $feedweb_blog_caps;
+	
+	if (UpdateBlogCapabilities() != null)
+	{
+		$cap = $feedweb_blog_caps["PQ"];
+		return $cap["limit"];
+	} 
+	return -1;
 }
 
 function GetDefaultLanguage() 

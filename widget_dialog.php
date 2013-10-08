@@ -584,7 +584,7 @@ function YesNoQuestionPrompt()
 				}
 				
 				var limit = <?php echo GetQuestionCountLimit() ?>;
-				if (list.options.length >= limit)
+				if (limit > 0 && list.options.length >= limit)
 				{
 					var message = "<?php _e("A widget cannot contain more than {0} questions", "FWTD")?>";
 					var warning = message.replace("{0}", limit.toString());

@@ -2,9 +2,9 @@
 # This file is distributed under the same license as the Feedweb package.
 msgid ""
 msgstr ""
-"Project-Id-Version: Feedweb 2.2.2\n"
+"Project-Id-Version: Feedweb 2.3.2\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/feedweb\n"
-"POT-Creation-Date: 2013-09-01 18:31:51+00:00\n"
+"POT-Creation-Date: 2013-10-27 12:04:47+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -12,68 +12,72 @@ msgstr ""
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 
-#: feedweb.php:170 feedweb.php:355
+#: feedweb.php:171 feedweb.php:356
 msgid "Insert Rating Widget"
 msgstr ""
 
-#: feedweb.php:187
+#: feedweb.php:188
 msgid "The widget data is invalid and cannot be used."
 msgstr ""
 
-#: feedweb.php:188
+#: feedweb.php:189
 msgid "Remove Invalid Widget?"
 msgstr ""
 
-#: feedweb.php:193
+#: feedweb.php:194
 msgid "Unknown error."
 msgstr ""
 
-#: feedweb.php:193
+#: feedweb.php:194
 msgid ""
 "\n"
 "Please contact Feedweb (contact@feedweb.net)"
 msgstr ""
 
-#: feedweb.php:204
+#: feedweb.php:205
 msgid ""
 "Edit / Remove Rating Widget\n"
 "(%s Votes. Average Score: %s)"
 msgstr ""
 
-#: feedweb.php:212
+#: feedweb.php:213
 msgid ""
 "Edit / Remove Rating Widget\n"
 "(No votes yet)"
 msgstr ""
 
-#: feedweb.php:243 feedweb.php:501
+#: feedweb.php:244 feedweb.php:502
 msgid "Settings"
 msgstr ""
 
-#: feedweb.php:312
+#: feedweb.php:313
 msgid ""
 "The Feedweb service is temporarily unavailable due to system maintenance"
 msgstr ""
 
-#: feedweb.php:356
+#: feedweb.php:357
 msgid "Do you wish to insert a Feedweb rating widget into your new post?"
 msgstr ""
 
-#: feedweb.php:373
+#: feedweb.php:374
 msgid ""
 "The Title or Permalink of the post has been changed. Do you with to update "
 "the Rating Widget with new data?"
 msgstr ""
 
-#: feedweb.php:502
+#: feedweb.php:503
 msgid "Tutorial"
 msgstr ""
 
-#: feedweb.php:504
+#: feedweb.php:506
 msgid "Monitor"
 msgstr ""
 
-#: feedweb.php:505
+#: feedweb.php:507
+msgid "License"
+msgstr ""
+
+#: feedweb.php:509
 msgid "Our Friends"
 msgstr ""
 
@@ -85,11 +89,15 @@ msgstr ""
 msgid "Feedweb Plugin Tutorial"
 msgstr ""
 
+#: feedweb_license.php:16
+msgid "Feedweb License"
+msgstr ""
+
 #: feedweb_menu.php:3 feedweb_options.php:126
 msgid "You do not have sufficient permissions to access this page."
 msgstr ""
 
-#: feedweb_monitor.php:19
+#: feedweb_monitor.php:16
 msgid "Feedweb Monitor"
 msgstr ""
 
@@ -289,7 +297,7 @@ msgstr ""
 msgid "Automatically add paragraphs:"
 msgstr ""
 
-#: feedweb_options.php:570 widget_dialog.php:1357
+#: feedweb_options.php:570 widget_dialog.php:1352
 msgid "Add"
 msgstr ""
 
@@ -367,16 +375,21 @@ msgstr ""
 msgid "Cannot insert widget into a post published %d days ago"
 msgstr ""
 
-#: feedweb_util.php:465
+#: feedweb_util.php:466
 msgid ""
-"You have created %d widgets in the last 24 hours. The daily limit is %d new "
-"widgets"
+"You have created %d widgets in the last 24 hours. The daily limit for your "
+"subscription is %d new widgets."
 msgstr ""
 
-#: feedweb_util.php:472
+#: feedweb_util.php:474
 msgid ""
-"You have created %d widgets in the last 30 days. The monthly limit is %d new "
-"widgets"
+"You have created %d widgets in the last 30 days. The monthly limit for your "
+"subscription is %d new widgets"
+msgstr ""
+
+#: feedweb_util.php:482
+msgid ""
+"You have created %d widgets. The limit for your subscription is %d widgets"
 msgstr ""
 
 #: widget_commit.php:32 widget_commit.php:414
@@ -494,195 +507,195 @@ msgstr ""
 msgid "Uncategorized"
 msgstr ""
 
-#: widget_dialog.php:424
+#: widget_dialog.php:419
 msgid "The rating widget in the post '%s' will be removed"
 msgstr ""
 
-#: widget_dialog.php:478
+#: widget_dialog.php:473
 msgid "http://en.wikipedia.org/wiki/Yes%E2%80%93no_question"
 msgstr ""
 
-#: widget_dialog.php:479
+#: widget_dialog.php:474
 msgid "must be a %sYES / NO%s question"
 msgstr ""
 
-#: widget_dialog.php:584
+#: widget_dialog.php:579
 msgid "Question '{0}' is already selected"
 msgstr ""
 
-#: widget_dialog.php:594
+#: widget_dialog.php:589
 msgid "A widget cannot contain more than {0} questions"
 msgstr ""
 
-#: widget_dialog.php:628
+#: widget_dialog.php:623
 msgid "Please specify a question"
 msgstr ""
 
-#: widget_dialog.php:636
+#: widget_dialog.php:631
 msgid "The question text must not exceed %d characters"
 msgstr ""
 
-#: widget_dialog.php:690
+#: widget_dialog.php:685
 msgid "Please select a question to remove"
 msgstr ""
 
-#: widget_dialog.php:694
+#: widget_dialog.php:689
 msgid "The question will be removed. Proceed?"
 msgstr ""
 
-#: widget_dialog.php:728
+#: widget_dialog.php:723
 msgid "The tags/categories text is limited to 250 characters."
 msgstr ""
 
-#: widget_dialog.php:735
+#: widget_dialog.php:730
 msgid "The number of tags is limited to 10"
 msgstr ""
 
-#: widget_dialog.php:742
+#: widget_dialog.php:737
 msgid "The number of categories is limited to 10"
 msgstr ""
 
-#: widget_dialog.php:821
+#: widget_dialog.php:816
 msgid "Page Title cannot exceed 100 characters"
 msgstr ""
 
-#: widget_dialog.php:827
+#: widget_dialog.php:822
 msgid "Page Title contain hypertext markup"
 msgstr ""
 
-#: widget_dialog.php:839
+#: widget_dialog.php:834
 msgid "Author name is empty"
 msgstr ""
 
-#: widget_dialog.php:847
+#: widget_dialog.php:842
 msgid ""
 "A name like {0} is not recommended for Feedweb Readers Community authors."
 msgstr ""
 
-#: widget_dialog.php:850
+#: widget_dialog.php:845
 msgid "You can set another display name in your WordPress profile."
 msgstr ""
 
-#: widget_dialog.php:851
+#: widget_dialog.php:846
 msgid "Do you wish to continue?"
 msgstr ""
 
-#: widget_dialog.php:865
+#: widget_dialog.php:860
 msgid ""
 "Email-like author names are not allowed due to security considerations. "
 "Please change the name"
 msgstr ""
 
-#: widget_dialog.php:877
+#: widget_dialog.php:872
 msgid "Page Summary cannot exceed 250 characters"
 msgstr ""
 
-#: widget_dialog.php:952
+#: widget_dialog.php:947
 msgid "Please enter image Url"
 msgstr ""
 
-#: widget_dialog.php:984
+#: widget_dialog.php:979
 msgid "The image width or height should be at least 100 pixels"
 msgstr ""
 
-#: widget_dialog.php:994
+#: widget_dialog.php:989
 msgid ""
 "The image ratio is invalid. The proportion between image width and height "
 "cannot be greater than 250%"
 msgstr ""
 
-#: widget_dialog.php:1118
+#: widget_dialog.php:1113
 msgid "Feedweb Plugin Terms of Service"
 msgstr ""
 
-#: widget_dialog.php:1120
+#: widget_dialog.php:1115
 msgid "Close"
 msgstr ""
 
-#: widget_dialog.php:1137
+#: widget_dialog.php:1132
 msgid "Title:"
 msgstr ""
 
-#: widget_dialog.php:1152
+#: widget_dialog.php:1147
 msgid "URL:"
 msgstr ""
 
-#: widget_dialog.php:1167
+#: widget_dialog.php:1162
 msgid "Author:"
 msgstr ""
 
-#: widget_dialog.php:1170
+#: widget_dialog.php:1165
 msgid "Post Language:"
 msgstr ""
 
-#: widget_dialog.php:1212
+#: widget_dialog.php:1207
 msgid "Summary:"
 msgstr ""
 
-#: widget_dialog.php:1227
+#: widget_dialog.php:1222
 msgid "Categories:"
 msgstr ""
 
-#: widget_dialog.php:1230
+#: widget_dialog.php:1225
 msgid "Tags:"
 msgstr ""
 
-#: widget_dialog.php:1248
+#: widget_dialog.php:1243
 msgid "Censorship:"
 msgstr ""
 
-#: widget_dialog.php:1284
+#: widget_dialog.php:1279
 msgid "Image Url"
 msgstr ""
 
-#: widget_dialog.php:1294
+#: widget_dialog.php:1289
 msgid "Set"
 msgstr ""
 
-#: widget_dialog.php:1326
+#: widget_dialog.php:1321
 msgid "Existing Questions:"
 msgstr ""
 
-#: widget_dialog.php:1337
+#: widget_dialog.php:1332
 msgid "Select"
 msgstr ""
 
-#: widget_dialog.php:1347
+#: widget_dialog.php:1342
 msgid "New Question"
 msgstr ""
 
-#: widget_dialog.php:1367
+#: widget_dialog.php:1362
 msgid "Selected Questions:"
 msgstr ""
 
-#: widget_dialog.php:1377
+#: widget_dialog.php:1372
 msgid "Move Up"
 msgstr ""
 
-#: widget_dialog.php:1383
+#: widget_dialog.php:1378
 msgid "Move Down"
 msgstr ""
 
-#: widget_dialog.php:1388
+#: widget_dialog.php:1383
 msgid "Remove"
 msgstr ""
 
-#: widget_dialog.php:1400
+#: widget_dialog.php:1395
 msgid "Remove Widget"
 msgstr ""
 
-#: widget_dialog.php:1405
+#: widget_dialog.php:1400
 msgid "< Back"
 msgstr ""
 
-#: widget_dialog.php:1408
+#: widget_dialog.php:1403
 msgid "Next >"
 msgstr ""
 
-#: widget_dialog.php:1411
+#: widget_dialog.php:1406
 msgid "Done"
 msgstr ""
 
-#: widget_dialog.php:1414
+#: widget_dialog.php:1409
 msgid "Cancel"
 msgstr ""

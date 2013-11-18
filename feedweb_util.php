@@ -168,6 +168,7 @@ function GetFeedwebOptions()
 		"widget_type" => "H", 
 		"widget_place" => "0", 
 		"widget_cs" => "gray",
+		"custom_css" => "0",
 		"widget_ext_bg" => "FFFFFF" );	
 	
 	global $wpdb;

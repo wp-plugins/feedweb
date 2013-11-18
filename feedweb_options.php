@@ -120,6 +120,61 @@ function GetPurgeInactiveWidgets()
 		"title='".__("Click to remove widgets from the deleted posts", "FWTD")."' />";
 }
 
+function GetCSSText()
+{
+	$feedweb_data = GetFeedwebOptions();
+	$cs = $feedweb_data["widget_cs"];
+	$bac = GetBac(true);
+			
+	$query = GetFeedwebUrl().'FBanner.aspx?action=get-css&cs='.$cs.'&bac='.$bac;
+	$response = wp_remote_get ($query, array('timeout' => 30));
+	if (is_wp_error ($response))
+		return null;
+	
+	$dom = new DOMDocument;
+	if ($dom->loadXML($response['body']) == true)
+		if ($dom->documentElement->tagName == "BANNER")
+		{
+			$error = $dom->documentElement->getAttribute("error");
+			if ($error != null || $error != "")
+				return null;
+		
+			return $dom->documentElement->textContent;
+		}
+	
+	return null;
+}
+
+function BuildCSSEditor()
+{
+	$title = __("Close");
+	$button_url = GetFeedwebUrl()."Img/Blue/Cancel.png";
+	echo "<img id='CloseCSSEditorButton' src='$button_url' title='$title' onclick='CloseCSSEditor()'/>";
+	
+	$title = __("Edit Rating Widget CSS", "FWTD");
+	echo "<span id='CSSEditorTitle'>".$title."</span>";
+
+	$text = GetCSSText();
+	if ($text == null)
+		echo "<span id='CSSEditorError'>".__("Error loading Widget CSS", "FWTD")."</span>";
+	else
+	{
+		//OnSwitchToHtml
+		$title = __("Restore Default", "FWTD");
+		echo "<input type='submit' id='RestoreCSSButton' class='button button-primary' onclick='OnRestoreCSS()' value='$title'/>";
+		
+		$title = __("Save"); 	
+		echo "<input type='submit' id='SaveCSSButton' class='button button-primary' onclick='OnSaveCSS()' value='$title'/>";
+			
+		echo "<textarea id='CSSTextEditor' name='CSSTextEditor'>".$text."</textarea>";
+		
+		$encoded = htmlspecialchars($text);
+		echo "<input type='hidden' id='OriginalCSSText' value='$encoded'/>";
+		
+		echo "<input type='hidden' id='CSSCommandValue' name='CSSCommandValue' value=''/>";
+	}
+}
+
 function FeedwebPluginOptions()
 {
 	if (!current_user_can("manage_options"))
@@ -133,11 +188,43 @@ function FeedwebPluginOptions()
 		<h2><?php _e("Feedweb Plugin Settings", "FWTD");?></h2>
 
 		<form name="FeedwebSettingsForm" id="FeedwebSettingsForm" onsubmit="return OnSubmitFeedwebSettingsForm();">
+			<link href='<?php echo plugin_dir_url(__FILE__)?>Feedweb.css?v=2.3.4' rel='stylesheet' type='text/css' />
 			<?php
 				$script_url = GetFeedwebUrl()."Base/jscolor/jscolor.js";
 				echo "<script type='text/javascript' src='$script_url'></script>";
 			?>
+			
 			<script type="text/javascript">
+				function OnEditCSS()
+				{
+					document.getElementById("CSSEditorDiv").style.visibility = "visible";
+					document.getElementById("SettingsTable").style.visibility = "hidden";
+				}
+				
+				function OnRestoreCSS()
+				{
+					document.getElementById("CSSCommandValue").value = "R";
+				}
+				
+				function OnSaveCSS()
+				{
+					document.getElementById("CSSCommandValue").value = "S";
+				}
+				
+				function CloseCSSEditor()
+				{
+					var original = document.getElementById("OriginalCSSText");
+					var text = document.getElementById("CSSTextEditor");
+					if (original.value != text.value)
+						if (confirm('<?php _e("Discard changes?", "FWTD") ?>') == true)
+							text.value = original.value;
+						else
+							return;
+					
+					document.getElementById("CSSEditorDiv").style.visibility = "hidden"; 
+					document.getElementById("SettingsTable").style.visibility = "visible";
+				}
+			
 				function OnShowWidgetPreview()
 				{
 					var settings = document.getElementsByClassName("FeedwebSettingsDiv");
@@ -173,11 +260,18 @@ function FeedwebPluginOptions()
 					if (document.getElementById('RatingWidgetType').value == "H")
 					{
 						var ext_bg = document.getElementById("ExternalBackgroundBox").value;
+						var custom_css = document.getElementById("CustomCSSCode").value;
 						var box = document.getElementById("RatingWidgetColorSchemeBox");
 						var cs = box.options[box.selectedIndex].value;
 						
 						var src = url + "BRW/BlogRatingWidget.aspx?cs=" + cs + "&amp;width=" + width.toString() + 
-							"&amp;height=120&amp;lang=" + lang + "&amp;pac=" + pac + "&amp;ext_bg=" + ext_bg;
+							"&amp;height=120&amp;lang=" + lang + "&amp;pac=" + pac;
+						
+						if (custom_css == "0")
+							src += "&amp;ext_bg=" + ext_bg;
+						else
+							src += "&amp;custom_css=" + custom_css;
+							
 						var style = "width: " + (width + 5).toString() + "px; height: 125px; border-style: none;";
 						div.innerHTML = "<iframe style='" + style + "' scrolling='no' src='" + src + "'></iframe>";
 					}
@@ -398,7 +492,6 @@ function FeedwebPluginOptions()
 				}
 			</script>
 			<?php wp_referer_field(true)?>
-			<link href='<?php echo plugin_dir_url(__FILE__)?>Feedweb.css?v=2.0.7' rel='stylesheet' type='text/css' />
 			<input type='hidden' id='DelayResults' name='DelayResults' value='<?php echo $feedweb_data["delay"];?>'/>
 			<input type='hidden' id='FeedwebLanguage' name='FeedwebLanguage' value='<?php echo $feedweb_data["language"];?>'/>
 			<input type='hidden' id='FeedwebMPWidgets' name='FeedwebMPWidgets' value='<?php echo $feedweb_data["mp_widgets"];?>'/>
@@ -412,7 +505,8 @@ function FeedwebPluginOptions()
 			<input type='hidden' id='FrontWidgetHideScroll' name='FrontWidgetHideScroll' value='<?php echo $feedweb_data["front_widget_hide_scroll"];?>'/>
 			<input type='hidden' id='FrontWidgetColorScheme' name='FrontWidgetColorScheme' value='<?php echo $feedweb_data["front_widget_color_scheme"];?>'/>
 			<br/>
-			<table cellpadding="0" cellspacing="0">
+			<div id="CSSEditorDiv" ><?php BuildCSSEditor();?></div> 
+			<table id="SettingsTable" cellpadding="0" cellspacing="0">
 				<tr class="FeedwebSettingsTabs">
 					<td>
 						<a href="#" class="FeedwebSettingsTab" onclick="OnClickFeedwebSettingsTab(0)" 
@@ -463,14 +557,16 @@ function FeedwebPluginOptions()
 									</tr>
 									
 									
-									<tr id="RatingWidgetColorSchemeRow" style="height: 64px; vertical-align: top;">
+									<tr id="RatingWidgetColorSchemeRow" style="height: 94px; vertical-align: top;">
 										<td>
 											<span style="position: relative; top: 5px;"><b><?php _e("Widget Color Scheme:", "FWTD")?></b></span><br/>
-											<span style="position: relative; top: 20px;"><b><?php _e("Widget External Background:", "FWTD")?></b></span>
+											<span style="position: relative; top: 20px;"><b><?php _e("Widget External Background:", "FWTD")?></b></span><br/>
+											<span style="position: relative; top: 35px;"><b><?php _e("Widget Stylesheet (CSS):", "FWTD")?></b></span>
 										</td>
 										<td>
 											<?php BuildColorSchemeBox($feedweb_data['widget_cs'], true) ?><br/>
 											<?php BuildExternalBackgroundControl($feedweb_data['widget_ext_bg']) ?>
+											<input type='button' class='button button-primary' style='width: 170px; margin-top: 4px;' onclick='OnEditCSS()' value='View / Edit CSS'/>
 										</td>
 										<td class="DescriptionColumn">
 											<span><i><?php _e("Please choose the color scheme of your HTML rating widgets", "FWTD")?></i></span>
@@ -506,6 +602,7 @@ function FeedwebPluginOptions()
 											<span id="WidgetPreviewTitle" onclick="OnShowWidgetPreview()" style="cursor: pointer;"><?php _e("Show Widget Preview >>>", "FWTD")?></span>
 										</td>
 										<td colspan="2">
+											<input id="CustomCSSCode" type="hidden" value="<?php echo $feedweb_data['custom_css'];?>"/>
 											<div id="WidgetPreview" style="display: none;"></div>
 										</td>
 									</tr>

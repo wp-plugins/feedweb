@@ -13,28 +13,66 @@ else
 
 $error_message = "";
 
+function UpdateCSS(&$data)
+{
+	$bac = GetBac(true);
+	$query = GetFeedwebUrl().'FBanner.aspx?action=set-css&bac='.$bac;
+	if ($_POST["CSSCommandValue"] == "S")
+	{
+		$params = array();
+		$params['css'] = $_POST["CSSTextEditor"];
+		$response = wp_remote_post ($query, array('method' => 'POST', 'timeout' => 30, 'body' => $params));
+		if (is_wp_error ($response))
+			return false;
+		
+		$data["custom_css"] = $bac;
+	}
+	else // Restore 
+	{
+		$query .= "&css=null";
+		$response = wp_remote_get ($query, array('timeout' => 30));
+		if (is_wp_error ($response))
+			return false;
+		
+		$data["custom_css"] = "0";
+	}
+	return true;
+}
+
 function UpdateSettings()
 {
-	$data = array();
-	if ($_POST["WidgetTypeSwitch"] == "*")
-		$data["widget_type"] = "H";
-	else
+	$data = GetFeedwebOptions();
+	if ($_POST["CSSCommandValue"] != "")
 	{
-		$data["delay"] = $_POST["DelayResults"];
-		$data["language"] = $_POST["FeedwebLanguage"];
-		$data["mp_widgets"] = $_POST["FeedwebMPWidgets"];
-		$data["widget_type"] = $_POST["RatingWidgetType"];
-		$data["widget_width"] = $_POST["WidgetWidthEdit"];
-		$data["add_paragraphs"] = $_POST["AutoAddParagraphs"];
-		$data["widget_prompt"] = $_POST["InsertWidgetPrompt"];
-		$data["widget_cs"] = $_POST["RatingWidgetColorScheme"];
-		$data["widget_place"] = $_POST["RatingWidgetPlacement"];
-		$data["widget_ext_bg"] = $_POST["ExternalBackgroundBox"];
-		$data["front_widget_items"] = $_POST["FrontWidgetItemCount"];
-		$data["front_widget_height"] = $_POST["FrontWidgetHeightEdit"];
-		$data["copyright_notice_ex"] = $_POST["FeedwebCopyrightNotice"];
-		$data["front_widget_hide_scroll"] = $_POST["FrontWidgetHideScroll"];
-		$data["front_widget_color_scheme"] = $_POST["FrontWidgetColorScheme"];
+		$data["custom_css"] = "1";
+		if (UpdateCSS($data) == false)
+		{
+			$error_message = __("Failed to update CSS", "FWTD");
+			return;
+		}
+	}
+	else 
+	{
+		if ($_POST["WidgetTypeSwitch"] == "*")
+			$data["widget_type"] = "H";
+		else
+		{
+			$data["delay"] = $_POST["DelayResults"];
+			$data["language"] = $_POST["FeedwebLanguage"];
+			$data["mp_widgets"] = $_POST["FeedwebMPWidgets"];
+			$data["widget_type"] = $_POST["RatingWidgetType"];
+			$data["widget_width"] = $_POST["WidgetWidthEdit"];
+			$data["add_paragraphs"] = $_POST["AutoAddParagraphs"];
+			$data["widget_prompt"] = $_POST["InsertWidgetPrompt"];
+			$data["widget_cs"] = $_POST["RatingWidgetColorScheme"];
+			$data["widget_place"] = $_POST["RatingWidgetPlacement"];
+			$data["widget_ext_bg"] = $_POST["ExternalBackgroundBox"];
+			$data["front_widget_items"] = $_POST["FrontWidgetItemCount"];
+			$data["front_widget_height"] = $_POST["FrontWidgetHeightEdit"];
+			$data["copyright_notice_ex"] = $_POST["FeedwebCopyrightNotice"];
+			$data["front_widget_hide_scroll"] = $_POST["FrontWidgetHideScroll"];
+			$data["front_widget_color_scheme"] = $_POST["FrontWidgetColorScheme"];
+		}
 	}
 	
 	if (SetFeedwebOptions($data))

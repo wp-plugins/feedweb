@@ -160,6 +160,65 @@ Plugin Settings
 }
 
 
+#CSSEditorDiv
+{
+	top: 90px;
+	left: 0px;
+	z-index: 100;
+	width: 900px; 
+	height: 500px; 
+	display: block; 
+	visibility: hidden; 
+	position: absolute;
+	border: 1px solid #808080;
+	background-color: #E0E0E0;
+}
+
+#CSSEditorTitle
+{
+	top: 12px;
+	left: 12px;
+	font-size: 12pt;
+	position: absolute;
+}
+
+#CSSTextEditor
+{
+	top: 38px;
+	left: 8px;
+	width: 882px;    
+	resize: none;
+	height: 450px;
+    position: absolute;
+    background-color: #ffffff;
+    border: solid 1px #808080;
+}
+
+#RestoreCSSButton
+{
+	top: 8px;
+	right: 60px;
+	width: 150px;
+	height: 24px;
+	position: absolute;
+}
+
+#SaveCSSButton
+{
+	top: 8px;
+	right: 240px;
+	width: 150px;
+	height: 24px;
+	position: absolute;
+}
+
+#CloseCSSEditorButton
+{
+	top: 8px;
+	right: 8px;
+	position: absolute;
+}
+
 /*-------------------------
 Widget Wizard
 --------------------------*/

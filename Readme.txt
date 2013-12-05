@@ -5,7 +5,7 @@ Requires at least: 3.0
 Tested up to: 3.7.1
 Stable Tag: 2.3.5
 
-Expose your blog to the brand new audience. Ask questions, get answers. Find out what your readers think. Join the community of 1900+ websites now!
+Expose your blog to the brand new audience. Ask questions, get answers. Find out what your readers think. Join the community of 2000+ websites now!
 
 == Description ==
 **Latest update**: More than **250.000** votes collected by **14.000** blog post rating widgets published in **2.000** websites.

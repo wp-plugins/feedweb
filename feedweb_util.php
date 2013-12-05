@@ -158,7 +158,7 @@ function GetFeedwebOptions()
 		"language" => "en", 
 		"mp_widgets" => "0", 
 		"widget_width" => "400", 
-		"delay" => "2", 
+		"delay" => "0", 
 		"copyright_notice_ex" => "0", 
 		"widget_prompt" => "1", 
 		"add_paragraphs" => "0",

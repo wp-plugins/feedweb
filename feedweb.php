@@ -4,7 +4,7 @@ Plugin Name: Feedweb
 Plugin URI: http://wordpress.org/extend/plugins/feedweb/
 Description: Expose your blog to the Feedweb reader's community. Promote your views. Get a comprehensive and detailed feedback from your readers.
 Author: Feedweb
-Version: 2.3.5
+Version: 2.3.6
 Author URI: http://feedweb.net
 */
 
@@ -60,6 +60,10 @@ function ContentFilter($content)
 			$frame_width = intval($width) + 5;
 			$src = GetFeedwebUrl()."BRW/BlogRatingWidget.aspx?cs=".$data["widget_cs"]."&amp;width=$width&amp;height=120&amp;".
 				"lang=".$data["language"]."&amp;pac=$pac";
+				
+			if ($data["results_before_voting"] == "1")	// Display results before voting
+				$src .= "&amp;rbv=true";
+				
 			if ($data["custom_css"] == "0")
 				$src .= "&amp;ext_bg=".$data["widget_ext_bg"];
 			else

@@ -234,14 +234,14 @@ function FeedwebPluginOptions()
 					if (div.style.display == "block") // Hide
 					{
 						title.innerHTML = "<?php _e("Show Widget Preview >>>", "FWTD") ?>";
-						settings[0].style.height = "450px";
+						settings[0].style.height = "480px";
 						div.style.display = "none";
 						row.style.height = "35px";
 					}
 					else
 					{
 						title.innerHTML = "<?php _e("<<< Hide Widget Preview", "FWTD") ?>";
-						settings[0].style.height = "570px";
+						settings[0].style.height = "600px";
 						div.style.display = "block";
 						row.style.height = "155px";
 					}
@@ -262,8 +262,9 @@ function FeedwebPluginOptions()
 						var ext_bg = document.getElementById("ExternalBackgroundBox").value;
 						var custom_css = document.getElementById("CustomCSSCode").value;
 						var box = document.getElementById("RatingWidgetColorSchemeBox");
+						var rbv = document.getElementById("ResultsBeforeVoting").value;
 						var cs = box.options[box.selectedIndex].value;
-						
+												
 						var src = url + "BRW/BlogRatingWidget.aspx?cs=" + cs + "&amp;width=" + width.toString() + 
 							"&amp;height=120&amp;lang=" + lang + "&amp;pac=" + pac;
 						
@@ -271,6 +272,9 @@ function FeedwebPluginOptions()
 							src += "&amp;ext_bg=" + ext_bg;
 						else
 							src += "&amp;custom_css=" + custom_css;
+							
+						if (rbv == "1")
+							src += "&amp;rbv=true";
 							
 						var style = "width: " + (width + 5).toString() + "px; height: 125px; border-style: none;";
 						div.innerHTML = "<iframe style='" + style + "' scrolling='no' src='" + src + "'></iframe>";
@@ -377,6 +381,17 @@ function FeedwebPluginOptions()
 						input.value = "1";
 					else
 						input.value = "0";
+				}
+				
+				function OnCheckResultsBeforeVoting()
+				{
+					var box = document.getElementById('ResultsBeforeVotingBox');
+					var input = document.getElementById('ResultsBeforeVoting');
+					if (box.checked == true)
+						input.value = "1";
+					else
+						input.value = "0";
+					ResetWidgetPreview();
 				}
 				
 				function OnCheckCopyrightNotice()
@@ -501,6 +516,7 @@ function FeedwebPluginOptions()
 			<input type='hidden' id='RatingWidgetPlacement' name='RatingWidgetPlacement' value='<?php echo $feedweb_data["widget_place"];?>'/>
 			<input type='hidden' id='RatingWidgetColorScheme' name='RatingWidgetColorScheme' value='<?php echo $feedweb_data["widget_cs"];?>'/>
 			<input type='hidden' id='FrontWidgetItemCount' name='FrontWidgetItemCount' value='<?php echo $feedweb_data["front_widget_items"];?>'/>
+			<input type='hidden' id='ResultsBeforeVoting' name='ResultsBeforeVoting' value='<?php echo $feedweb_data["results_before_voting"];?>'/>
 			<input type='hidden' id='FeedwebCopyrightNotice' name='FeedwebCopyrightNotice' value='<?php echo $feedweb_data["copyright_notice_ex"];?>'/>
 			<input type='hidden' id='FrontWidgetHideScroll' name='FrontWidgetHideScroll' value='<?php echo $feedweb_data["front_widget_hide_scroll"];?>'/>
 			<input type='hidden' id='FrontWidgetColorScheme' name='FrontWidgetColorScheme' value='<?php echo $feedweb_data["front_widget_color_scheme"];?>'/>
@@ -516,7 +532,7 @@ function FeedwebPluginOptions()
 				</tr>
 				<tr class="FeedwebSettingsContent" style="overflow: hidden;">
 					<td>
-						<div class="FeedwebSettingsDiv" style="display: block; height: 450px;">
+						<div class="FeedwebSettingsDiv" style="display: block; height: 480px;">
 							<table class="FeedwebSettingsTable">
 								<tbody>
 									<tr>
@@ -594,6 +610,19 @@ function FeedwebPluginOptions()
 										</td>
 										<td>
 											<span><i><?php _e("Allowed width: 350 to 700 pixels. Recommended width: 400 to 450 pixels.", "FWTD")?></i></span>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<span><b><?php _e("Display results before voting:", "FWTD")?></b></span>
+										</td>
+										<td>
+											<input <?php if($feedweb_data['results_before_voting'] == "1") echo 'checked="checked"' ?>
+											id="ResultsBeforeVotingBox" name="ResultsBeforeVotingBox" type="checkbox" onchange='OnCheckResultsBeforeVoting()'> 
+											<?php _e("Display Results", "FWTD")?></input>				
+										</td>
+										<td>
+											<span><i><?php _e("Allow your visitors to see results before they vote.", "FWTD")?></i></span>
 										</td>
 									</tr>
 									

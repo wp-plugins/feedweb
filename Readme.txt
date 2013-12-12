@@ -3,7 +3,7 @@ Contributors: Feedweb
 Tags: blog, rate, rating, widget, network, feed, feedback, article, aggregator, aggregation, content, content management, post, page, public, opinion, research, flash, html5, media, press, news, politics, society, social, question, answer, survey, poll, polling, vote, voting, stats, discussion, controversy, cooperation, view, comments, community, statistics, syndication, marketing, admin, sidebar, plugin, publishing
 Requires at least: 3.0
 Tested up to: 3.7.1
-Stable Tag: 2.3.5
+Stable Tag: 2.3.6
 
 Expose your blog to the brand new audience. Ask questions, get answers. Find out what your readers think. Join the community of 2000+ websites now!
 
@@ -84,6 +84,11 @@ Follow us on [**Facebook**](https://www.facebook.com/feedwebresearch) and [**Twi
 
 
 == Changelog ==
+
+= 2.3.6 =
+* Option to display widget results before voting.
+* Site registration procedure upgrade.
+* Feedweb Monitor upgrade.
 
 = 2.3.5 =
 * L10n update (French).

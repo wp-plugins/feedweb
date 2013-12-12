@@ -87,6 +87,23 @@ function GetBac($must_exist)
     // Register Site Domain command
 	$root = PrepareParam(get_option('siteurl'));
 	$query = GetFeedwebUrl()."FBanner.aspx?action=rsd&root=$root";
+	
+	$user_id = wp_get_current_user()->ID;
+	$user_data = get_userdata($user_id);
+	if ($user_data != null)
+	{
+		$name = null;
+		$mail = PrepareParam($user_data->user_email);
+		if ($user_data->display_name != "")
+			$name = PrepareParam($user_data->display_name);
+		else
+			if ($user_data->nickname != "")
+				$name = PrepareParam($user_data->nickname);
+				
+		if ($name != null)
+			$query .= "&name=$name&mail=$mail"; 
+	}
+	
 	$response = wp_remote_get ($query, array('timeout' => 30));
 	if (is_wp_error ($response))
 		return null;
@@ -157,7 +174,8 @@ function GetFeedwebOptions()
 	$data = array(
 		"language" => "en", 
 		"mp_widgets" => "0", 
-		"widget_width" => "400", 
+		"widget_width" => "400",
+		"results_before_voting" => "0", 
 		"delay" => "0", 
 		"copyright_notice_ex" => "0", 
 		"widget_prompt" => "1", 

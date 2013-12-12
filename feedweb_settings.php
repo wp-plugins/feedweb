@@ -68,6 +68,7 @@ function UpdateSettings()
 			$data["widget_place"] = $_POST["RatingWidgetPlacement"];
 			$data["widget_ext_bg"] = $_POST["ExternalBackgroundBox"];
 			$data["front_widget_items"] = $_POST["FrontWidgetItemCount"];
+			$data["results_before_voting"] = $_POST["ResultsBeforeVoting"];
 			$data["front_widget_height"] = $_POST["FrontWidgetHeightEdit"];
 			$data["copyright_notice_ex"] = $_POST["FeedwebCopyrightNotice"];
 			$data["front_widget_hide_scroll"] = $_POST["FrontWidgetHideScroll"];

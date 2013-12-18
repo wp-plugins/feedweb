@@ -99,7 +99,7 @@ function GetCopyrightNotice()
 	$data = get_plugin_data( __FILE__ );
 	$version = $data['Version'];
 	
-	$text = "<br/><div style='direction:ltr; font-size:8pt; font-family: Ubuntu,Verdana; height:30px;".
+	$text = "<br/><div style='direction:ltr; font-size:7pt; font-family: Verdana; height:30px;".
 		"display: block; overflow: hidden; width: 380px; position: relative; margin: 0; padding: 0;'>".
 		"<span style='display:block;positiion:absolute; top: 0px; left: 0px; margin: 0; padding: 0;'>".
 		"<a href = 'http://wordpress.org/extend/plugins/feedweb'>Feedweb for Wordpress</a>. v$version".

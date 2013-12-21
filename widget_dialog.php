@@ -51,14 +51,14 @@ function GetPostTitleControl()
 			$db_title = $data["title"];
 			if ($db_title != null && $db_title != "" && $db_title != $title)
 			{
-				echo "<select style='width: 100%;' id='TitleBox' name='TitleBox' onchange='OnChangeTitle()'>".
+				echo "<select id='TitleBox' name='TitleBox' onchange='OnChangeTitle()'>".
 					"<option>$title</option><option>$db_title</option></select>".
 					"<input type='hidden' id='TitleText' name='TitleText' value='$title'/>";
 				return;
 			}
 		}
 	}
-	echo "<input type='text' id='TitleText' name='TitleText' value='$title' style='width:100%;'/>";
+	echo "<input type='text' id='TitleText' name='TitleText' value='$title'/>";
 }
 
 function GetPostSummaryControl()
@@ -171,7 +171,7 @@ function GetPostImageUrlControl()
 	$default_image = GetDefaultPostImage($id);
 	if ($images != null || $default_image != null)
 	{
-		echo "<select id='WidgetImageList' name='WidgetImageList' onchange='OnChangeImage()' style='width: 450px;' >";
+		echo "<select id='WidgetImageList' name='WidgetImageList' onchange='OnChangeImage()' >";
 		
 		if ($default_image != null)
 		{
@@ -195,7 +195,7 @@ function GetPostImageUrlControl()
 		echo "<input type='hidden' id='WidgetImageUrl' name='WidgetImageUrl' value='$img'/>";
 	} 
 	else
-		echo "<input type='text' readonly='readonly' style='width: 450px;' id='WidgetImageUrl' name='WidgetImageUrl' value='$img'/>";
+		echo "<input type='text' readonly='readonly' id='WidgetImageUrl' name='WidgetImageUrl' value='$img'/>";
 }
 
 function GetLanguageBox()
@@ -232,8 +232,8 @@ function GetPublishWidgetCheckBox()
 		if ($data != null)
 			$checked = ($data["visible"] ? "checked" : "");
 	}
-	echo "<input id='PublishWidgetCheckBox' type='checkbox' onclick='OnClickPublishWidgetBox()' $checked />";
-	echo "<span id='PublishWidgetLabel'>".__("Publish your post in the Feedweb's Readers Community Portal", "FWTD")."</span>";
+	echo "<input id='PublishWidgetCheckBox' type='checkbox' onchange='OnClickPublishWidgetBox()' $checked />";
+	echo "<label id='PublishWidgetLabel' for='PublishWidgetCheckBox'>".__("Publish your post in the Feedweb's Readers Community Portal", "FWTD")."</label>";
 	
 	$placeholders = array("[", "]", "{", "}");
 	$text = __("By clicking ['Next'] you agree to our {Terms of service}", "FWTD");
@@ -284,7 +284,7 @@ function GetAdContentCheckBox()
 	$warning = __("If your post is for advertising and you do not check the box you are violating the license agreement.", "FWTD");
 
 	echo "<input id='AdContentCheckBox' title='$text' type='checkbox' $checked />";
-	echo "<span id='AdContentLabel'>".__("The post contains advertising material", "FWTD")."</span>";
+	echo "<label id='AdContentLabel' for='AdContentCheckBox'>".__("The post contains advertising material", "FWTD")."</label>";
 }
 
 
@@ -309,7 +309,7 @@ function GetCategoryControl()
 				$text .= $category->cat_name;
 			}
 	}
-	echo "<input type='text' id='CategoryText' name='CategoryText' value='$text' style='width:100%;'/>";
+	echo "<input type='text' id='CategoryText' name='CategoryText' value='$text'/>";
 }
 
 function GetTagControl()
@@ -332,7 +332,7 @@ function GetTagControl()
 			$text .= $tag->name;
 		}
 	}
-	echo "<input type='text' id='TagText' name='TagText' value='$text' style='margin-left: 8px; width:310px;'/>";
+	echo "<input type='text' id='TagText' name='TagText' value='$text'/>";
 }
 
 function GetAuthorControl()
@@ -371,7 +371,7 @@ function GetAuthorControl()
 		}
 	}
 	
-	echo "<select style='width:100%;' id='AuthorBox' name='AuthorBox' onchange='OnChangeAuthor()'>";
+	echo "<select id='AuthorBox' name='AuthorBox' onchange='OnChangeAuthor()'>";
 	foreach ($names as $key => $value)
 	{
 		$selected = "";
@@ -409,7 +409,7 @@ function GetUrlControl()
 			}
 		}
 	}
-	echo "<input type='text' id='UrlText' name='UrlText' value='$url' style='width:100%;' readonly='readonly'/>";
+	echo "<input type='text' id='UrlText' name='UrlText' value='$url' readonly='readonly'/>";
 }
 
 function GetRemoveWidgetPrompt()
@@ -453,7 +453,7 @@ function GetQuestionList($pac)
 
 function BuildQuestionsListControl()
 {
-	echo "<select size='4' id='QuestionsList' style='width: 460px; height:100px;'>";
+	echo "<select size='4' id='QuestionsList'>";
 	if ($_GET["mode"] == "edit")
 	{
 		$data = GetEditPageData();
@@ -892,6 +892,10 @@ function YesNoQuestionPrompt()
 					case 0: // Title Div
 						if (CheckTitle() == false)
 							return;
+						
+						if (box.checked == true)
+							if (CheckAuthor() == false)
+								return;
 					
 						if (del_button != null)
 							del_button.style.visibility = "hidden";
@@ -901,9 +905,6 @@ function YesNoQuestionPrompt()
 				
 						if (box.checked == true)
 						{
-							if (CheckAuthor() == false)
-								return;
-							
 							divs[1].style.visibility = "visible";
 							OnSelectCensorship();
 							InitImageDiv();
@@ -1017,12 +1018,10 @@ function YesNoQuestionPrompt()
 					{
 						button.style.backgroundColor = '#ff0000';
 						button.style.color = '#ffffff';
+						button.style.borderStyle = "none";
 					}
 					else
-					{
-						button.style.backgroundColor = '#ffffff';
-						button.style.color = '#000000';
-					}
+						button.removeAttribute("style");
 				}
 			}
 			
@@ -1098,10 +1097,12 @@ function YesNoQuestionPrompt()
 			}
 		</script>
 
+		<!--
 		<link rel='stylesheet' href='<?php echo get_bloginfo('url') ?>/wp-admin/load-styles.php?c=0&amp;dir=ltr&amp;load=admin-bar,wp-admin' type='text/css' media='all' />
+		-->
 		<link rel='stylesheet' id='thickbox-css'  href='<?php echo get_bloginfo('url') ?>/wp-includes/js/thickbox/thickbox.css' type='text/css' media='all' />
 		<link rel='stylesheet' id='colors-css'  href='<?php echo get_bloginfo('url') ?>/wp-admin/css/colors-fresh.css' type='text/css' media='all' />
-		<link href='<?php echo plugin_dir_url(__FILE__)?>Feedweb.css?v=2.0.7' rel='stylesheet' type='text/css' />
+		<link href='<?php echo plugin_dir_url(__FILE__)?>Feedweb.css?v=2.3.7' rel='stylesheet' type='text/css' />
 		
 	</head>
 	<body style="margin: 0px; overflow: hidden;" onload="OnLoad()">
@@ -1109,304 +1110,79 @@ function YesNoQuestionPrompt()
 		 	<form id="WidgetDialogForm" onsubmit="return OnSubmitForm();">
 				<input type="hidden" name="WidgetQuestionsData" id="WidgetQuestionsData"/>
 				<input type='hidden' name="WidgetVisibilityData" id="WidgetVisibilityData"/>
+				
 				<div id="TermsOfServiceDiv">
 					<span id="TermsOfServiceTitle"><?php _e("Feedweb Plugin Terms of Service", "FWTD");?></span>
 					<textarea id="TermsOfServiceText" value="Here are the terms of service, people." readonly><?php LoadTermsOfService(); ?></textarea>
 					<input type="button" id="TermsOfServiceCloseButton" value='<?php _e("Close")?>' onclick='OnCloseTermsOfService()'/>
 				</div>
+				
 				<div id="WidgetTitleDiv" class="WidgetWizardPage" style="visibility: visible;">
-			 		<table id="WidgetTitlePage" class="wp-list-table widefat fixed posts" cellspacing="0">
-						<tbody>
-							<tr style='height: 1px;'>
-								<td style='width: 10px;'/>
-								<td style='width: 180px;'/>
-								<td style='width: 10px;'/>
-								<td style='width: 120px;'/>
-								<td style='width: 100px;'/>
-								<td style='width: 10px;'/>
-							</tr>
-							
-							<tr>
-								<td/>
-								<td colspan="4">
-									<span id='TitleLabel'><b><?php _e("Title:", "FWTD")?></b></span>
-								</td>
-								<td/>
-							</tr>
-							<tr class="WizardContentRow">
-								<td/>
-								<td colspan="4"> 
-									<?php GetPostTitleControl() ?>
-								</td>
-								<td/>
-							</tr>
-							
-							<tr>
-								<td/>
-								<td colspan="4">
-									<span id='UrlLabel'><b><?php _e("URL:", "FWTD")?></b></span>
-								</td>
-								<td/>
-							</tr >
-							<tr class="WizardContentRow">
-								<td/>
-								<td colspan="4"> 
-									<?php GetUrlControl() ?>
-								</td>
-								<td/>
-							</tr>
-							
-							<tr>
-								<td/>
-								<td colspan="2">
-									<span id='AuthorLabel'><b><?php _e("Author:", "FWTD")?></b></span>
-								</td>
-								<td colspan="2">
-									<span id='LanguageLabel' style='padding-left: 20px;'><b><?php _e("Post Language:", "FWTD")?></b></span>
-								</td>
-								<td/>
-							</tr>
-							<tr class="WizardContentRow">
-								<td/>
-								<td colspan="2"> 
-									<?php GetAuthorControl() ?>
-								</td>
-								<td colspan="2" style="text-align: right;"> 
-									<?php GetLanguageBox() ?>
-								</td>
-								<td/>
-							</tr>
-							
-							<tr>
-								<td/>
-								<td colspan="4">
-									<div id="PublishWidgetDiv">
-										<?php GetPublishWidgetCheckBox() ?>
-									</div>
-								</td>
-								<td/>
-							</tr>
-						</tbody>
-					</table>
+					<span id='TitleLabel'><b><?php _e("Title:", "FWTD")?></b></span>
+					<?php GetPostTitleControl() ?>
+					<span id='UrlLabel'><b><?php _e("URL:", "FWTD")?></b></span>
+					<?php GetUrlControl() ?>
+					<span id='AuthorLabel'><b><?php _e("Author:", "FWTD")?></b></span>
+					<?php GetAuthorControl() ?>
+					<span id='LanguageLabel'><b><?php _e("Post Language:", "FWTD")?></b></span>
+					<?php GetLanguageBox() ?>
+					<?php GetPublishWidgetCheckBox() ?>
 				</div>
 				
-				<div id="WidgetBriefDiv" class="WidgetWizardPage" style="visibility: hidden; position: absolute; top: 0; left: 0;">
-					<table id="WidgetBriefTable" class="wp-list-table widefat fixed posts" cellspacing="0">
-						<tbody>
-							<tr style="height: 5px;">
-								<td style='width: 10px;'/>
-								<td style='width: 300px;'/>
-								<td style='width: 150px;'/>
-								<td style='width: 150px;'/>
-								<td style='width: 10px;'/>
-							</tr>
-							
-							<tr>
-								<td/>
-								<td colspan="3">
-									<span id='SummaryLabel'><b><?php _e("Summary:", "FWTD")?></b></span>
-								</td>
-								<td/>
-							</tr>
-							<tr id="SummaryTextRow">
-								<td/>
-								<td colspan="3"> 
-									<?php GetPostSummaryControl() ?>
-								</td>
-								<td/>
-							</tr>
-
-							<tr>
-								<td/>
-								<td>
-									<span id='CategoryLabel'><b><?php _e("Categories:")?></b></span>
-								</td>
-								<td colspan="2">
-									<span id='TagLabel' style='padding-left: 20px;'><b><?php _e("Tags:")?></b></span>
-								</td>
-								<td/>
-							</tr>
-							<tr id="TopicRow">
-								<td/>
-								<td> 
-									<?php GetCategoryControl() ?>
-								</td>
-								<td colspan="2"> 
-									<?php GetTagControl() ?>
-								</td>
-								<td/>
-							</tr>
-							
-							<tr>
-								<td/>
-								<td colspan="3">
-									<span id="CensorshipLabel"><b><?php _e("Censorship:", "FWTD")?></b></span>
-								</td>
-								<td/>
-							</tr>
-							<tr id="CensorshipRow">
-								<td/>
-								<td colspan="3">
-									<?php GetCensorshipBox() ?>
-								</td>
-								<td/>
-							</tr>
-							
-							<tr id="AdContentRow">
-								<td/>
-								<td colspan="3">
-									<?php GetAdContentCheckBox() ?>
-								</td>
-								<td/>
-							</tr>
-						</tbody>
-					</table>
+				<div id="WidgetBriefDiv" class="WidgetWizardPage">
+					<span id='SummaryLabel'><b><?php _e("Summary:", "FWTD")?></b></span>
+					<?php GetPostSummaryControl() ?>
+					<span id='CategoryLabel'><b><?php _e("Categories:")?></b></span>
+					<?php GetCategoryControl() ?>
+					<span id='TagLabel'><b><?php _e("Tags:")?></b></span>
+					<?php GetTagControl() ?>
+					<span id="CensorshipLabel"><b><?php _e("Censorship:", "FWTD")?></b></span>
+					<?php GetCensorshipBox() ?>
+					<?php GetAdContentCheckBox() ?>
 				</div>
 				
-				<div id="WidgetImageDiv" class="WidgetWizardPage" style="visibility: hidden; position: absolute; top: 0; left: 0;">
-					<table id="WidgetImageTable" class="wp-list-table widefat fixed posts" cellspacing="0">
-						<tbody>
-							<tr style="height: 5px;">
-								<td style='width: 10px;'/>
-								<td style='width: 150px;'/>
-								<td style='width: 250px;'/>
-								<td style='width: 150px;'/>
-								<td style='width: 10px;'/>
-							</tr>
-							<tr>
-								<td/>
-								<td colspan="3">
-									<span id='ImageUrlLabel'><b><?php _e("Image Url")?></b></span>
-								</td>
-								<td/>
-							</tr>
-							<tr>
-								<td/>
-								<td colspan="2">
-									<?php GetPostImageUrlControl() ?>
-								</td>
-								<td>
-									<input type='button' value='<?php _e("Set", "FWTD")?>' style='width: 140px;' onclick='OnSetImage()'/>
-								</td>
-								<td/>
-							</tr>
-							<tr style="height: 5px;">
-								<td colspan="5"/>
-							</tr>
-							<tr style="height: 250px; min-height: 250px; max-height: 250px;" >
-								<td/>
-								<td colspan="3" style="text-align: center;">
-									<div id="WidgetImageBox" style="text-align: center; height: 240px; overflow: hidden; border: 1px solid #C0C0C0; margin-right: 24px;">
-										<img id="WidgetImage" onload="OnLoadWidgetImage()" style="position: relative; display: none;"/>
-									</div>
-								</td>
-								<td/>
-							</tr>
-						</tbody>
-					</table>
+				<div id="WidgetImageDiv" class="WidgetWizardPage">
+					<span id='ImageUrlLabel'><b><?php _e("Image Url")?></b></span>
+					<?php GetPostImageUrlControl() ?>
+					<input id='SetImageButton' type='button' value='<?php _e("Set", "FWTD")?>' onclick='OnSetImage()'/>
+					<div id="WidgetImageBox">
+						<img id="WidgetImage" onload="OnLoadWidgetImage()"/>
+					</div>
 				</div>
 				
-				<div id="WidgetQuestionDiv" class="WidgetWizardPage" style="visibility: hidden; position: absolute; top: 0; left: 0;">
-			 		<table id="WidgetQuestionTable" class="wp-list-table widefat fixed posts" cellspacing="0">
-						<tbody>
-							<tr style="height: 5px;">
-								<td style='width: 10px;'/>
-								<td style='width: 350px;'/>
-								<td style='width: 120px;'/>
-								<td style='width: 10px;'/>
-							</tr>
-							<tr>
-								<td/>
-								<td colspan="2">
-									<span id='OldQuestionsLabel'><b><?php _e("Existing Questions:", "FWTD")?></b></span>
-								</td>
-								<td/>
-							</tr>
-							<tr style="height: 36px;">
-								<td/>
-								<td> 
-									<select id='OldQuestionsList' name='OldQuestionsList' style='width:460px;'>
-									</select>
-								</td>
-								<td>
-									<input type="button" value='<?php _e("Select")?>' style='width: 150px; margin-left: 8px;' onclick='OnSelect()'/>
-								</td>
-								<td/>
-							</tr>
-							<tr height='5px'>
-								<td colspan='4'/>
-							</tr>
-							<tr>
-								<td/>
-								<td colspan="2">
-									<span id='NewQuestionLabel'><b><?php _e("New Question", "FWTD")?></b> (<i><?php YesNoQuestionPrompt()?></i>)<b>:</b></span>
-								</td>
-								<td/>
-							</tr>
-							<tr>
-								<td/>
-								<td>
-									<input type='text' id='NewQuestionText' name='NewQuestionText' style='width: 460px;'/>
-								</td>
-								<td>
-									<input type='button' value='<?php _e("Add")?>' onclick="OnAddNew()" style='width: 150px; margin-left: 8px;'/>
-								</td>
-								<td/>
-							</tr>
-							<tr height='5px'>
-								<td colspan='4'/>
-							</tr>
-							<tr>
-								<td/>
-								<td colspan="2">
-									<span id='QuestionsLabel'><b><?php _e("Selected Questions:", "FWTD")?></b></span>
-								</td>
-								<td/>
-							</tr>
-							<tr>
-								<td rowspan='3'/>
-								<td rowspan='3' style='height: 116px;'>
-									<?php BuildQuestionsListControl() ?>
-								</td>
-								<td valign='top'>
-									<input type='button' value='<?php _e("Move Up", "FWTD")?>' onclick='OnMoveUp()' style='width: 150px; margin-left: 8px;'/>
-								</td>
-								<td rowspan='3'/>
-							</tr>
-							<tr>
-								<td>
-									<input type='button' value='<?php _e("Move Down", "FWTD")?>' onclick='OnMoveDown()' style='width: 150px; margin-left: 8px;'/>
-								</td>
-							</tr>
-							<tr>
-								<td valign='bottom'>
-									<input type='button' value='<?php _e("Remove")?>' onclick='OnRemove()' style='width: 150px; margin-left: 8px;'/>
-								</td>
-							</tr>
-							
-						</tbody>
-					</table>
+				<div id="WidgetQuestionDiv" class="WidgetWizardPage">
+					<span id='OldQuestionsLabel'><b><?php _e("Existing Questions:", "FWTD")?></b></span>
+					<select id='OldQuestionsList' name='OldQuestionsList'></select>
+					<input id='SelectQuestionButton' type='button' value='<?php _e("Select")?>' onclick='OnSelect()'/>
+					<span id='NewQuestionLabel'><b><?php _e("New Question", "FWTD")?></b> (<i><?php YesNoQuestionPrompt()?></i>)<b>:</b></span>
+					<input type='text' id='NewQuestionText' name='NewQuestionText'/>
+					<input id='AddQuestionButton' type='button' value='<?php _e("Add")?>' onclick="OnAddNew()"/>
+					<span id='QuestionsLabel'><b><?php _e("Selected Questions:", "FWTD")?></b></span>
+					<?php BuildQuestionsListControl() ?>
+					<input id='MoveUpQuestionButton' type='button' value='<?php _e("Move Up", "FWTD")?>' onclick='OnMoveUp()'/>
+					<input id='MoveDownQuestionButton' type='button' value='<?php _e("Move Down", "FWTD")?>' onclick='OnMoveDown()'/>
+					<input id='RemoveQuestionButton' type='button' value='<?php _e("Remove")?>' onclick='OnRemove()'/>
 				</div>
 				
-				<div id="WizardNavigatorDiv" style="position: absolute; top: 320px; width: 100%; height: 50px;">
+				<div id='WizardNavigatorDiv'>
 					<!-- Remove -->
 					<?php 
 						if($_GET["mode"] == "edit") 
-							echo "<input type='button' value='".__("Remove Widget", "FWTD")."' style='width: 150px; position: absolute; left: 35px; top: 10px;'". 
-								" id='DeleteButton' onmouseover='OnDeleteMouseOver(true)' onmouseout='OnDeleteMouseOver(false)' onclick='OnDelete()'/>";
+							echo "<input type='button' value='".__("Remove Widget", "FWTD")."' id='DeleteButton' ". 
+								"onmouseover='OnDeleteMouseOver(true)' onmouseout='OnDeleteMouseOver(false)' onclick='OnDelete()'/>";
 					?>								
 					
 					<!-- Back -->
-					<input type='button' id='BackButton' value='<?php _e("< Back", "FWTD")?>' style='width: 150px; position: absolute; left: 35px; top: 10px; visibility: hidden;' onclick='OnBack()'/> 
+					<input type='button' id='BackButton' value='<?php _e("< Back", "FWTD")?>' onclick='OnBack()'/> 
 					
 					<!-- Next -->
-					<input type='button' id='NextButton' value='<?php _e("Next >", "FWTD")?>' style='width: 150px; position: absolute; left: 350px; top: 10px;' onclick='OnNext()'/>
+					<input type='button' id='NextButton' value='<?php _e("Next >", "FWTD")?>' onclick='OnNext()'/>
 					
 					<!-- Done -->
-					<input type='submit' id='OkButton' value='<?php _e("Done", "FWTD")?>' style='width: 150px; position: absolute; left: 350px; top: 10px; visibility: hidden;'/>
+					<input type='submit' id='OkButton' value='<?php _e("Done", "FWTD")?>' />
 					
 					<!-- Cancel -->
-					<input type='button' id='CancelButton' value='<?php _e("Cancel")?>' style='width: 150px; position: absolute; left: 510px; top: 10px;' onclick='OnCancel()'/>
+					<input type='button' id='CancelButton' value='<?php _e("Cancel")?>' onclick='OnCancel()'/>
 				</div>
 			</form>
 		</div>

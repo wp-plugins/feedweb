@@ -9,7 +9,7 @@ function BuildLanguageBox($language, $language_set, $all)
 	echo "<select id='WidgetLanguageBox' name='WidgetLanguageBox' onchange='OnChangeLanguage()'>";
     
 	$languages = GetLanguageList($all);
-    if ($language_set != true) // Language was not set yet by the admin. Try to set by default locale
+    if ($language_set != true || $language == null) // Language was not set yet by the admin. Try to set by default locale
 	{
 		$locale = get_locale();
 		$pos = strpos($locale, "_");
@@ -188,7 +188,7 @@ function FeedwebPluginOptions()
 		<h2><?php _e("Feedweb Plugin Settings", "FWTD");?></h2>
 
 		<form name="FeedwebSettingsForm" id="FeedwebSettingsForm" onsubmit="return OnSubmitFeedwebSettingsForm();">
-			<link href='<?php echo plugin_dir_url(__FILE__)?>Feedweb.css?v=2.3.4' rel='stylesheet' type='text/css' />
+			<link href='<?php echo plugin_dir_url(__FILE__)?>Feedweb.css?v=2.3.7' rel='stylesheet' type='text/css' />
 			<?php
 				$script_url = GetFeedwebUrl()."Base/jscolor/jscolor.js";
 				echo "<script type='text/javascript' src='$script_url'></script>";
@@ -234,14 +234,14 @@ function FeedwebPluginOptions()
 					if (div.style.display == "block") // Hide
 					{
 						title.innerHTML = "<?php _e("Show Widget Preview >>>", "FWTD") ?>";
-						settings[0].style.height = "480px";
+						settings[0].style.height = "500px";
 						div.style.display = "none";
 						row.style.height = "35px";
 					}
 					else
 					{
 						title.innerHTML = "<?php _e("<<< Hide Widget Preview", "FWTD") ?>";
-						settings[0].style.height = "600px";
+						settings[0].style.height = "620px";
 						div.style.display = "block";
 						row.style.height = "155px";
 					}
@@ -532,7 +532,7 @@ function FeedwebPluginOptions()
 				</tr>
 				<tr class="FeedwebSettingsContent" style="overflow: hidden;">
 					<td>
-						<div class="FeedwebSettingsDiv" style="display: block; height: 480px;">
+						<div class="FeedwebSettingsDiv" style="display: block; height: 500px;">
 							<table class="FeedwebSettingsTable">
 								<tbody>
 									<tr>

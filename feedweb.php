@@ -4,7 +4,7 @@ Plugin Name: Feedweb
 Plugin URI: http://wordpress.org/extend/plugins/feedweb/
 Description: Expose your blog to the Feedweb reader's community. Promote your views. Get a comprehensive and detailed feedback from your readers.
 Author: Feedweb
-Version: 2.3.6
+Version: 2.3.7
 Author URI: http://feedweb.net
 */
 
@@ -99,7 +99,7 @@ function GetCopyrightNotice()
 	$data = get_plugin_data( __FILE__ );
 	$version = $data['Version'];
 	
-	$text = "<br/><div style='direction:ltr; font-size:7pt; font-family: Verdana; height:30px;".
+	$text = "<br/><div style='direction:ltr; font-size:7pt; font-family: Verdana; height:30px; ".
 		"display: block; overflow: hidden; width: 380px; position: relative; margin: 0; padding: 0;'>".
 		"<span style='display:block;positiion:absolute; top: 0px; left: 0px; margin: 0; padding: 0;'>".
 		"<a href = 'http://wordpress.org/extend/plugins/feedweb'>Feedweb for Wordpress</a>. v$version".
@@ -436,9 +436,9 @@ function EnqueueAdminScript()
 				if (tb != null)
 				{
 					var frames = tb.getElementsByTagName("iframe");
-					frames[0].style.height = "370px";
+					frames[0].style.height = "400px";
 					frames[0].style.width = "700px";
-					tb.style.height = "370px";
+					tb.style.height = "400px";
 					tb.style.width = "700px";
 				}
 			}

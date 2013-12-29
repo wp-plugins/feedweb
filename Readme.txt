@@ -14,7 +14,7 @@ The Feedweb Plugin is a simple and easy way to promote and improve your blog. By
 
 The Blog Rating Widget is an attractive animated visual element that will improve your ratings! It is built using cutting-edge HTML5 technology, meets the highest privacy and security standards and enterprise-level quality.
 
-The plugin is available in Free, Plus and PRO versions.
+The plugin is available in Free, **Plus** and **PRO** versions.
 _____________________________________________________________________________________________________
 * Feedweb being the plugin with the most direct impact as it puts out each Blog post to a readership community, and can generate 20 to 60 visits per post on a good day and with a good post topic/headline.
 * [**Shane Hopkins, MoneyMakerSpy.com**](http://www.moneymakerspy.com/bring-250-daily-visitors-blog)

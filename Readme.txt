@@ -45,6 +45,7 @@ Follow us on [**Facebook**](https://www.facebook.com/feedwebresearch) and [**Twi
 
 = Translators =
 * Arabic (ar)		 - Abdullah Alshehri ([**Create33.com**](http://Create33.com))
+* Bulgarian (bg_BG)	 - Vladimir Dimirev 
 * French (fr_FR)     - Lago Noel
 * German (de_DE)     - Anna Davidov
 * Hebrew (he_IL)     - Dana Rovinsky

@@ -4,7 +4,7 @@ Plugin Name: Feedweb
 Plugin URI: http://wordpress.org/extend/plugins/feedweb/
 Description: Expose your blog to the Feedweb reader's community. Promote your views. Get a comprehensive and detailed feedback from your readers.
 Author: Feedweb
-Version: 2.3.7
+Version: 2.3.8
 Author URI: http://feedweb.net
 */
 
@@ -127,7 +127,7 @@ function AddFeedwebColumn($columns)
 			if ($feedweb_data["widget_type"] == "F")
 			{
 				$msg = __("Please upgrade your Feedweb widget type to HTML5 (in the Feedweb Plugin settings). The Flash widget support will be discontinued after December 31, 2013", "FWTD");
-				showMessage($msg, false);
+				ShowFeedwebMessage($msg, false);
 			}
 		}	
 	}
@@ -313,7 +313,7 @@ function FrontWidgetCallback($atts)
 		"border-style: none;' $scrolling></iframe></div>";
 }
 
-function showMessage($message, $errormsg = false)
+function ShowFeedwebMessage($message, $errormsg = false)
 {
 	if ($errormsg) 
 		echo '<div id="message" class="error">';
@@ -322,7 +322,7 @@ function showMessage($message, $errormsg = false)
 	echo "<p><strong>$message</strong></p></div>";
 }    
 
-function showAdminMessages()
+function ShowAdminMessages()
 {
      // Only show to admins
     if (current_user_can('manage_options'))
@@ -330,7 +330,7 @@ function showAdminMessages()
 		if (!class_exists('DOMDocument'))
 		{
 			$msg = __("Your server configuration does not support DOM Document class. Please upgrade your PHP version or report to contact@feedweb.net", "FWTD");
-			showMessage($msg, true);
+			ShowFeedwebMessage($msg, true);
 			return;
 		}
 		
@@ -340,7 +340,7 @@ function showAdminMessages()
 			$msg = __("The Feedweb service is temporarily unavailable due to system maintenance", "FWTD");
 			if ($error != "")
 				$msg .= " (Error: $error)";
-			showMessage($msg, true);
+			ShowFeedwebMessage($msg, true);
 			return;
 		}
     }
@@ -552,7 +552,7 @@ add_filter("plugin_action_links_$feedweb_plugin", 'FeedwebSettingsLink' );
 add_shortcode( 'FeedwebFrontWidget', 'FrontWidgetCallback' );
 add_filter('widget_text', 'do_shortcode');
 
-add_action('admin_notices', 'showAdminMessages');
+add_action('admin_notices', 'ShowAdminMessages');
 
 add_action('publish_post', 'PublishPostHook');
 

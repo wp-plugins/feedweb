@@ -1,0 +1,800 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: FWTD-bg_BG\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/feedweb\n"
+"POT-Creation-Date: 2014-01-01 10:50:49+00:00\n"
+"PO-Revision-Date: 2014-01-03 00:04+0200\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: bg_BG\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.6.2\n"
+"X-Poedit-Basepath: .\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: feedweb.php:129
+msgid ""
+"Please upgrade your Feedweb widget type to HTML5 (in the Feedweb Plugin "
+"settings). The Flash widget support will be discontinued after December 31, "
+"2013"
+msgstr ""
+"Моля, обновете Вашата Feedweb джаджа до  HTML 5 (в Feedweb Настройки). На 31 "
+"Декември 2013 подръжката на флаш джаджата ще бъде прекратена."
+
+#: feedweb.php:191 feedweb.php:383
+msgid "Insert Rating Widget"
+msgstr "Вмъкнете джаджата за оценяване."
+
+#: feedweb.php:208
+msgid "The widget data is invalid and cannot be used."
+msgstr "Данните за джаджата не са валидни и не могат да бъдат използвани."
+
+#: feedweb.php:209
+msgid "Remove Invalid Widget?"
+msgstr "Да премахна ли невалидната дждаджа?"
+
+#: feedweb.php:214
+msgid "Unknown error."
+msgstr "Непозната грешка."
+
+#: feedweb.php:214
+msgid ""
+"\n"
+"Please contact Feedweb (contact@feedweb.net)"
+msgstr ""
+"\n"
+"Моля, свържете се с Feedweb (contact@feedweb.net)"
+
+#: feedweb.php:225
+msgid ""
+"Edit / Remove Rating Widget\n"
+"(%s Votes. Average Score: %s)"
+msgstr ""
+"Редактирай / Премахни джаджата за оценяване\n"
+"(%s гласували. Среден резултат: %s)"
+
+#: feedweb.php:233
+msgid ""
+"Edit / Remove Rating Widget\n"
+"(No votes yet)"
+msgstr ""
+"Редактирай / Премахни джаджата за оценяване\n"
+"(Няма гласували)"
+
+#: feedweb.php:264 feedweb.php:529
+msgid "Settings"
+msgstr "Настройки"
+
+#: feedweb.php:332
+msgid ""
+"Your server configuration does not support DOM Document class. Please "
+"upgrade your PHP version or report to contact@feedweb.net"
+msgstr ""
+"Вашият сървър не поддържа DOM Document class. Моля, обновете Вашата PHP "
+"версия или се свържете с contact@feedweb.net"
+
+#: feedweb.php:340
+msgid ""
+"The Feedweb service is temporarily unavailable due to system maintenance"
+msgstr "Feedweb е временно недостъпен поради системна поддръжка"
+
+#: feedweb.php:384
+msgid "Do you wish to insert a Feedweb rating widget into your new post?"
+msgstr "Искате ли да вмъкнете Feedweb оценките във Вашата публикация ?"
+
+#: feedweb.php:401
+msgid ""
+"The Title or Permalink of the post has been changed. Do you with to update "
+"the Rating Widget with new data?"
+msgstr ""
+"Заглавието на постоянната връзка на публикацията е променено. Искате ли да "
+"актуализирате джаджата за оценки с новите данни ?"
+
+#: feedweb.php:530
+msgid "Tutorial"
+msgstr "Обучение"
+
+#: feedweb.php:533
+msgid "Monitor"
+msgstr "Контрол"
+
+#: feedweb.php:534
+msgid "License"
+msgstr "Лиценз"
+
+#: feedweb.php:536
+msgid "Our Friends"
+msgstr "Приятели"
+
+#: feedweb_friends.php:38
+msgid "Our Friends - The Plugins We Recommend"
+msgstr "Приятели - Инструменти, които препоръчваме"
+
+#: feedweb_help.php:4
+msgid "Feedweb Plugin Tutorial"
+msgstr "Обучение за Feedweb инструмента"
+
+#: feedweb_license.php:16
+msgid "Feedweb License"
+msgstr "Feedweb лиценз"
+
+#: feedweb_menu.php:3 feedweb_options.php:181
+msgid "You do not have sufficient permissions to access this page."
+msgstr "Нямате разрешение за достъп до тази страница."
+
+#: feedweb_monitor.php:16
+msgid "Feedweb Monitor"
+msgstr "Контролиране на Feedweb"
+
+#: feedweb_options.php:54
+msgid "Blue"
+msgstr "Синьо"
+
+#: feedweb_options.php:54
+msgid "Gray"
+msgstr "Сиво"
+
+#: feedweb_options.php:59
+msgid "Classic"
+msgstr "Класическо"
+
+#: feedweb_options.php:59
+msgid "Monochrome"
+msgstr "Едноцветно"
+
+#: feedweb_options.php:59
+msgid "Light Blue"
+msgstr "Светло-синьо"
+
+#: feedweb_options.php:60
+msgid "Dark Blue"
+msgstr "Тъмно-синьо"
+
+#: feedweb_options.php:60
+msgid "Dark Green"
+msgstr "Тъмно-зелено"
+
+#: feedweb_options.php:81
+msgid "Reset Preview"
+msgstr "Нулиране"
+
+#: feedweb_options.php:88
+msgid "No Delay"
+msgstr "Незабавно"
+
+#: feedweb_options.php:88
+msgid "1 Hour"
+msgstr "1 час"
+
+#: feedweb_options.php:88
+msgid "2 Hours"
+msgstr "2 часа"
+
+#: feedweb_options.php:88
+msgid "5 Hours"
+msgstr "5 часа"
+
+#: feedweb_options.php:119
+msgid "Remove Inactive Widgets"
+msgstr "Премахни неактивните джаджи"
+
+#: feedweb_options.php:120
+msgid "Click to remove widgets from the deleted posts"
+msgstr "Натисни за да премахнеш джаджата от изтритите публикации"
+
+#: feedweb_options.php:150 widget_dialog.php:1117
+msgid "Close"
+msgstr "Затвори"
+
+#: feedweb_options.php:154
+msgid "Edit Rating Widget CSS"
+msgstr "Промени CSS на джаджата за оценки"
+
+#: feedweb_options.php:159
+msgid "Error loading Widget CSS"
+msgstr "Грешка при зареждането на CSS на джаджата"
+
+#: feedweb_options.php:163
+msgid "Restore Default"
+msgstr "Възстанови първоначалните настройки"
+
+#: feedweb_options.php:166
+msgid "Save"
+msgstr "Запази"
+
+#: feedweb_options.php:188
+msgid "Feedweb Plugin Settings"
+msgstr "Настройки на Feedweb инструмента"
+
+#: feedweb_options.php:219
+msgid "Discard changes?"
+msgstr "Да отменя ли промените?"
+
+#: feedweb_options.php:236 feedweb_options.php:631
+msgid "Show Widget Preview >>>"
+msgstr "Покажи предварителен преглед на джаджата >>>"
+
+#: feedweb_options.php:243
+msgid "<<< Hide Widget Preview"
+msgstr "<<< Скрий предварителния преглед на джаджата"
+
+#: feedweb_options.php:306
+msgid "Remove Widgets?"
+msgstr "Искате ли да премахнете джаджата?"
+
+#: feedweb_options.php:443
+msgid "Please enter a valid width"
+msgstr "Моля, въведете валидна широчина"
+
+#: feedweb_options.php:449
+msgid "Width is out of range"
+msgstr "Надхвърлена е допуситмата широчина"
+
+#: feedweb_options.php:472
+msgid "Please enter a valid Front Widget height"
+msgstr "Моля, въведете валидна височина на предната джаджа"
+
+#: feedweb_options.php:478
+msgid "Front Widget height is out of range"
+msgstr "Надхвърлена е допустимата височина на джаджата"
+
+#: feedweb_options.php:529
+msgid "Rating Widget"
+msgstr "Джаджа за оценки"
+
+#: feedweb_options.php:530
+msgid "Front Widget"
+msgstr "Предна дждажа"
+
+#: feedweb_options.php:540
+msgid "Widget Placement:"
+msgstr "Място на джаджата:"
+
+#: feedweb_options.php:554
+msgid "Please choose the placement of the rating widget within a post"
+msgstr "Моля, изберете място за дждажата за оценки в публикацията"
+
+#: feedweb_options.php:560
+msgid "Widget Type:"
+msgstr "Вид джаджа:"
+
+#: feedweb_options.php:567
+msgid "Click to upgrade your rating widgets from Flash to HTML5"
+msgstr "Натиснете за да надстроите джаджата от Флаш до HTML5"
+
+#: feedweb_options.php:569
+msgid "Note that Flash is not supported in devices like iPad or iPhone."
+msgstr "Флаш не се поддържа от устройства като iPad или iPhone."
+
+#: feedweb_options.php:570
+msgid "Flash widget will be discontinued after December 31, 2013."
+msgstr "Флаш джаджата ще бъде сряна след 31 Декември 2013."
+
+#: feedweb_options.php:578
+msgid "Widget Color Scheme:"
+msgstr "Цвят на джаджата:"
+
+#: feedweb_options.php:579
+msgid "Widget External Background:"
+msgstr "Външен фон на джаджата:"
+
+#: feedweb_options.php:580
+msgid "Widget Stylesheet (CSS):"
+msgstr "Стил на джаджата (CSS):"
+
+#: feedweb_options.php:588
+msgid "Please choose the color scheme of your HTML rating widgets"
+msgstr "Моля, изберете език за Вашата HTML джаджа за оценки"
+
+#: feedweb_options.php:594
+msgid "Widget Language:"
+msgstr "Език на джаджата:"
+
+#: feedweb_options.php:605
+msgid "Widget width (pixels):"
+msgstr "Широчина на джаджата (пиксели):"
+
+#: feedweb_options.php:612
+msgid "Allowed width: 350 to 700 pixels. Recommended width: 400 to 450 pixels."
+msgstr ""
+"Позволена широчина: от 350 до 700 пиксела. Препоръчителна широчина: от 400 "
+"до 450 пиксела."
+
+#: feedweb_options.php:617
+msgid "Display results before voting:"
+msgstr "Покажи резултатите преди да се гласува:"
+
+#: feedweb_options.php:622
+msgid "Display Results"
+msgstr "Покажи резултатите"
+
+#: feedweb_options.php:625
+msgid "Allow your visitors to see results before they vote."
+msgstr "Позволете на посетителите да видят резултатите преди да гласуват."
+
+#: feedweb_options.php:641
+msgid "Widgets at the Home/Front Page:"
+msgstr "Джаджи на началната страница:"
+
+#: feedweb_options.php:645
+msgid "Display Widgets"
+msgstr "Покажи джаджите"
+
+#: feedweb_options.php:648
+msgid ""
+"Check to display the widgets both in the Front Page and the single post "
+"pages."
+msgstr ""
+"Маркирай за да се покаже джаджата едновременно в началната страница и в "
+"страницата на публикацията."
+
+#: feedweb_options.php:653
+msgid "Delay displaying results:"
+msgstr "Отложи показването на резултатите:"
+
+#: feedweb_options.php:659
+msgid ""
+"Set the period of time you want to hide voting results after the widget is "
+"created."
+msgstr ""
+"Определете колко време след създаване на джаджата да се скрият резултатите "
+"от гласуването."
+
+#: feedweb_options.php:665
+msgid "Feedweb Copyright Notice:"
+msgstr "Известие за авторски права на Feedweb:"
+
+#: feedweb_options.php:669
+msgid "Allow"
+msgstr "Позволи"
+
+#: feedweb_options.php:672
+msgid "Please check to display the following text below the widgets: "
+msgstr "Моля, маркирайте за да се покаже текста под джаджите:"
+
+#: feedweb_options.php:679
+msgid "Prompt to insert widgets:"
+msgstr "Напомни да се вмъкнат джаджи:"
+
+#: feedweb_options.php:683
+msgid "Show"
+msgstr "Покажи"
+
+#: feedweb_options.php:686
+msgid "Display a prompt to insert a rating widget when a post is published"
+msgstr "Напомни да се вмъкне джаджата за оценки когато се публикува статия"
+
+#: feedweb_options.php:692
+msgid "Automatically add paragraphs:"
+msgstr "Добави автоматично параграфи:"
+
+#: feedweb_options.php:696 widget_dialog.php:1159
+msgid "Add"
+msgstr "Добави"
+
+#: feedweb_options.php:699
+msgid "Surround widgets with paragraph tags:"
+msgstr "Обграждане на джаджите с тагове-параграфи:"
+
+#: feedweb_options.php:710
+msgid "Front Page Widget Color Scheme:"
+msgstr "Цвят аз джаджата на първа страница:"
+
+#: feedweb_options.php:718
+msgid "Select color scheme for the Front Page widget"
+msgstr "Изберете цвята за джаджата на първа страница"
+
+#: feedweb_options.php:723
+msgid "Max. Widget height (pixels):"
+msgstr "Макс. височина на джаджата (пиксели):"
+
+#: feedweb_options.php:732
+msgid "Allowed height: 200 to 800 pixels. Recommended height: 400 pixels."
+msgstr ""
+"Позволена височина: от 200 до 800 пиксела. Препоръчителна височина: 400 "
+"пиксела."
+
+#: feedweb_options.php:738
+msgid "Vertical Scroll Bar:"
+msgstr "Вертикален скрол-бар:"
+
+#: feedweb_options.php:744
+msgid "Hide"
+msgstr "Скрий"
+
+#: feedweb_options.php:748
+msgid ""
+"Check to hide vertical scroll bar when the front widget exceeds max. height."
+msgstr ""
+"Маркирайте за да скриете вертикалния скрол бар когато фронт-джаджата "
+"надвишава макс. височина. "
+
+#: feedweb_options.php:753
+msgid "Number of list items:"
+msgstr "Брой на нещата в списъка:"
+
+#: feedweb_options.php:761
+msgid "Number of items in the Front Widget list"
+msgstr "Брой неща в списъка на фронт-джаджата"
+
+#: feedweb_options.php:771
+msgid "Save Changes"
+msgstr "Запази промените"
+
+#: feedweb_settings.php:10 question_query.php:10 widget_commit.php:10
+#: widget_dialog.php:9
+msgid "You are not allowed to be here"
+msgstr "Не е позволено да сте тук"
+
+#: feedweb_settings.php:50
+msgid "Failed to update CSS"
+msgstr "Неуспешно обновяване на CSS"
+
+#: feedweb_settings.php:82
+msgid "Failed to update settings"
+msgstr "Неуспешно обновяване на настройките"
+
+#: feedweb_util.php:462
+msgid "Cannot insert widget into a post with undefined status"
+msgstr "Не може да вмъкнете джаджа в публикация, която е с неопределен статус"
+
+#: feedweb_util.php:465
+msgid "Cannot insert widget into a private post (must be public)"
+msgstr "Не може да вмъкнете джаджа в публикация, която не е публична"
+
+#: feedweb_util.php:468
+msgid "Cannot insert widget into a trashed post"
+msgstr "Не може да вмъкнете джаджа в публикация, която е в кошчето"
+
+#: feedweb_util.php:471
+msgid "Cannot insert widget into a password-protected post"
+msgstr "Не може да вмъкнете джаджа в публикация, която е защитена с парола"
+
+#: feedweb_util.php:476
+msgid "Cannot insert widget into a post published %d days ago"
+msgstr "Не може да вмъкнете джаджа в публикация по стара от %d дни"
+
+#: feedweb_util.php:485
+msgid ""
+"You have created %d widgets in the last 24 hours. The daily limit for your "
+"subscription is %d new widgets."
+msgstr ""
+"Вие създадохет %d джаджи през последните 24 часа. Дневният Ви лимит е %d "
+"джаджи"
+
+#: feedweb_util.php:493
+msgid ""
+"You have created %d widgets in the last 30 days. The monthly limit for your "
+"subscription is %d new widgets"
+msgstr ""
+"Вие създадохте %d джаджи през последните 30 дни. Месечният Ви лимит е %d "
+"нови дждажи"
+
+#: feedweb_util.php:501
+msgid ""
+"You have created %d widgets. The limit for your subscription is %d widgets"
+msgstr "Създадохте %d джаджи. Ограничението за Вашия абонамент е %d джаджи"
+
+#: widget_commit.php:32 widget_commit.php:414
+msgid "The widget has been removed"
+msgstr "Джаджата беше премахната"
+
+#: widget_commit.php:101 widget_commit.php:109 widget_commit.php:117
+#: widget_commit.php:125 widget_commit.php:255 widget_commit.php:263
+msgid "Error in the Post data"
+msgstr "Грешка в данните на публикацията"
+
+#: widget_commit.php:134
+msgid "Error in the User data"
+msgstr "Грешка в данните на потребителя"
+
+#: widget_commit.php:158
+msgid "Error in the Widget data"
+msgstr "Грешка в данните на джаджата"
+
+#: widget_commit.php:248 widget_commit.php:309
+msgid "Wordpress cannot modify your widget"
+msgstr "Wordpress не може да промени Вашата джаджа"
+
+#: widget_commit.php:277 widget_commit.php:332 widget_commit.php:401
+#: widget_commit.php:455
+msgid "Cannot connect Feedweb server"
+msgstr "Не може да се установи връзка със сървъра на Feedweb"
+
+#: widget_commit.php:289
+msgid "The widget Title/Url have been updated"
+msgstr "URL/Заглавието на джаджата бяха обновени"
+
+#: widget_commit.php:293 widget_commit.php:348
+msgid "Feedweb service cannot update the widget"
+msgstr "Feedweb не може да обнови джаджата"
+
+#: widget_commit.php:344
+msgid "The widget has been updated"
+msgstr "Джаджата беше обновена"
+
+#: widget_commit.php:364
+msgid "The widget has been inserted"
+msgstr "Джаджата беше вмъкната"
+
+#: widget_commit.php:366
+msgid "Wordpress cannot insert your widget"
+msgstr "Wordpress не може да вмъкне Вашата джаджа"
+
+#: widget_commit.php:380
+msgid "%d out of %d widgets have been removed"
+msgstr "%d от %d джаджи бяха премахнати"
+
+#: widget_commit.php:421
+msgid "Wordpress cannot remove your widget"
+msgstr "Wordpress не може да премахне джаджата."
+
+#: widget_commit.php:471
+msgid "Unknown server error"
+msgstr "Непозната грешка на сървъра"
+
+#: widget_commit.php:475
+msgid "Feedweb service cannot create a widget"
+msgstr "Подръжката на Feedweb не може да създаде джаджа"
+
+#: widget_dialog.php:23
+msgid ""
+"Dear %s, Please configure your plugin settings before inserting the widget"
+msgstr ""
+"Уважаеми %s, моля, конфигурирайте настройките на Вашето разширение преди да "
+"добавите джаджата."
+
+#: widget_dialog.php:236
+msgid "Publish your post in the Feedweb's Readers Community Portal"
+msgstr "Публикувайте в портала на Общността на Feedweb читателите"
+
+#: widget_dialog.php:239
+msgid "By clicking ['Next'] you agree to our {Terms of service}"
+msgstr ""
+"С натискането на ['Продължи'] Вие се съгласявате с {Условия за ползване}"
+
+#: widget_dialog.php:257
+msgid "Suitable for any audience type"
+msgstr "Подходящ за всякаква аудитория."
+
+#: widget_dialog.php:258
+msgid ""
+"May contain rude gestures, provocatively dressed individuals; the lesser "
+"swear words, or mild violence"
+msgstr ""
+"Може да съдържа груби жестове, провокативно облечени личности, клетвени думи "
+"или леко насилие."
+
+#: widget_dialog.php:259
+msgid ""
+"May contain such things as harsh profanity, intense violence, nudity, or "
+"hard drug use"
+msgstr ""
+"Може да съдържа материали като: ругатни, грубо насилие, голота или употреба "
+"на наркотици."
+
+#: widget_dialog.php:260
+msgid "May contain hardcore sexual imagery or extremely disturbing violence"
+msgstr ""
+"Възможно е да съдържа порнографски изображения или такива на изключително "
+"грубо насилие."
+
+#: widget_dialog.php:283
+msgid ""
+"If this posts main purpose is to advertise a certain item or product and not "
+"to give information please check here."
+msgstr ""
+"Ако основната цел на Вашата публикация е да рекламира определен продукт, а "
+"не да информира, моля, маркирайте това поле."
+
+#: widget_dialog.php:284
+msgid ""
+"If your post is for advertising and you do not check the box you are "
+"violating the license agreement."
+msgstr ""
+"Ако Вашата публикация съдържа рекламни материали и не сте маркирали това "
+"поле Вие нарушавате лицензионното споразумение."
+
+#: widget_dialog.php:287
+msgid "The post contains advertising material"
+msgstr "Публикацията съдържа рекламни материали"
+
+#: widget_dialog.php:305
+msgid "Uncategorized"
+msgstr "Без категория"
+
+#: widget_dialog.php:419
+msgid "The rating widget in the post '%s' will be removed"
+msgstr "Джаджата за оценяване в публикацията '%s' ще бъде премахната"
+
+#: widget_dialog.php:473
+msgid "http://en.wikipedia.org/wiki/Yes%E2%80%93no_question"
+msgstr "http://en.wikipedia.org/wiki/Yes%E2%80%93no_question"
+
+#: widget_dialog.php:474
+msgid "must be a %sYES / NO%s question"
+msgstr "Трябва да бъде въпрос с отговор %s ДА / НЕ %s"
+
+#: widget_dialog.php:579
+msgid "Question '{0}' is already selected"
+msgstr "Въпросът '{0}' е вече избран"
+
+#: widget_dialog.php:589
+msgid "A widget cannot contain more than {0} questions"
+msgstr "Джаджата не може да съдържа повече от  {0} въпроса."
+
+#: widget_dialog.php:623
+msgid "Please specify a question"
+msgstr "Моля, формулирайте въпрос !"
+
+#: widget_dialog.php:631
+msgid "The question text must not exceed %d characters"
+msgstr "Текстът на въпроса не може да надхвърля %d символа"
+
+#: widget_dialog.php:685
+msgid "Please select a question to remove"
+msgstr "Моля, изберете въпрос за премахване !"
+
+#: widget_dialog.php:689
+msgid "The question will be removed. Proceed?"
+msgstr "Въпросът ще бъде премахнат. Да продължа ли ?"
+
+#: widget_dialog.php:723
+msgid "The tags/categories text is limited to 250 characters."
+msgstr "Текстът за етикети/категории е ограничен до 250 символа"
+
+#: widget_dialog.php:730
+msgid "The number of tags is limited to 10"
+msgstr "Максималният брой етикети е 10"
+
+#: widget_dialog.php:737
+msgid "The number of categories is limited to 10"
+msgstr "Броят категории е ограничен до 10"
+
+#: widget_dialog.php:816
+msgid "Page Title cannot exceed 100 characters"
+msgstr "Името на страницата не може да надхвърля 100 символа"
+
+#: widget_dialog.php:822
+msgid "Page Title contain hypertext markup"
+msgstr "Името на страницата съдържа хипертекст маркер"
+
+#: widget_dialog.php:834
+msgid "Author name is empty"
+msgstr "Няма име на автор"
+
+#: widget_dialog.php:842
+msgid ""
+"A name like {0} is not recommended for Feedweb Readers Community authors."
+msgstr ""
+"Име подобно на {0} не се препоръчва за общността на авторите Feedweb Readers."
+
+#: widget_dialog.php:845
+msgid "You can set another display name in your WordPress profile."
+msgstr "Може да определите друго име във Вашият WordPress профил"
+
+#: widget_dialog.php:846
+msgid "Do you wish to continue?"
+msgstr "Желаете ли да продължите ?"
+
+#: widget_dialog.php:860
+msgid ""
+"Email-like author names are not allowed due to security considerations. "
+"Please change the name"
+msgstr ""
+"Не се позволява ползаването на email подобен на името на автора. Моля, "
+"променете името !"
+
+#: widget_dialog.php:872
+msgid "Page Summary cannot exceed 250 characters"
+msgstr "Резюмето на страницата не може да надвишава 250 символа"
+
+#: widget_dialog.php:948
+msgid "Please enter image Url"
+msgstr "Моля, въведете URL на снимката"
+
+#: widget_dialog.php:980
+msgid "The image width or height should be at least 100 pixels"
+msgstr "Широчината на снимката трябва да е поне 100 пиксела"
+
+#: widget_dialog.php:990
+msgid ""
+"The image ratio is invalid. The proportion between image width and height "
+"cannot be greater than 250%"
+msgstr ""
+"Размерите на снимката са невалидни. Съотношението между широчина и височина "
+"не може да бъде повече от 250%"
+
+#: widget_dialog.php:1115
+msgid "Feedweb Plugin Terms of Service"
+msgstr "Условия за ползване на разширението Feedweb "
+
+#: widget_dialog.php:1121
+msgid "Title:"
+msgstr "Заглавие:"
+
+#: widget_dialog.php:1123
+msgid "URL:"
+msgstr "URL адрес:"
+
+#: widget_dialog.php:1125
+msgid "Author:"
+msgstr "Автор:"
+
+#: widget_dialog.php:1127
+msgid "Post Language:"
+msgstr "Език на публикацията:"
+
+#: widget_dialog.php:1133
+msgid "Summary:"
+msgstr "Резюме:"
+
+#: widget_dialog.php:1135
+msgid "Categories:"
+msgstr "Категории:"
+
+#: widget_dialog.php:1137
+msgid "Tags:"
+msgstr "Етикети:"
+
+#: widget_dialog.php:1139
+msgid "Censorship:"
+msgstr "Цензуриране:"
+
+#: widget_dialog.php:1145
+msgid "Image Url"
+msgstr "URL снимка"
+
+#: widget_dialog.php:1147
+msgid "Set"
+msgstr "Комплект"
+
+#: widget_dialog.php:1154
+msgid "Existing Questions:"
+msgstr "Съществуващи въпроси:"
+
+#: widget_dialog.php:1156
+msgid "Select"
+msgstr "Избери"
+
+#: widget_dialog.php:1157
+msgid "New Question"
+msgstr "Нов въпрос"
+
+#: widget_dialog.php:1160
+msgid "Selected Questions:"
+msgstr "Избрани въпроси:"
+
+#: widget_dialog.php:1162
+msgid "Move Up"
+msgstr "Премести нагоре"
+
+#: widget_dialog.php:1163
+msgid "Move Down"
+msgstr "Премести надолу"
+
+#: widget_dialog.php:1164
+msgid "Remove"
+msgstr "Премахни"
+
+#: widget_dialog.php:1171
+msgid "Remove Widget"
+msgstr "Премахни джаджата"
+
+#: widget_dialog.php:1176
+msgid "< Back"
+msgstr "<Назад"
+
+#: widget_dialog.php:1179
+msgid "Next >"
+msgstr "Продължи>"
+
+#: widget_dialog.php:1182
+msgid "Done"
+msgstr "Готово"
+
+#: widget_dialog.php:1185
+msgid "Cancel"
+msgstr "Отхвърли"

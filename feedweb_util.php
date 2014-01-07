@@ -280,7 +280,7 @@ function IsRTL($language)
 
 function GetFeedwebUrl()
 {
-	return "http://feedweb.net/";
+	return "http://www.feedweb.net/";
 }
 
 function GetFileUrl($file)
@@ -534,7 +534,7 @@ function CheckServiceAvailability()
 	{
 		$current = time();
 		$previous = intval($access);
-		if ($current - $access < 14400)	// 4hours * 60 min * 60 sec
+		if ($current - $access < 1800)	// 30 min * 60 sec
 			return null;
 	}
 

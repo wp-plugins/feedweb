@@ -33,7 +33,7 @@ ________________________________________________________________________________
 
 Requires WordPress 3.0 and PHP 5.
 
-For more information go to [**Feedweb Readers Community**](http://feedweb.net) website.
+For more information go to [**Feedweb Readers Community**](http://www.feedweb.net) website.
 Welcome blogs, blogs, and more blogs!
 [vimeo http://vimeo.com/65323163][**Please click here to see the video**](http://vimeo.com/65323163)
 

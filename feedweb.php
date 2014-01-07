@@ -5,7 +5,7 @@ Plugin URI: http://wordpress.org/extend/plugins/feedweb/
 Description: Expose your blog to the Feedweb reader's community. Promote your views. Get a comprehensive and detailed feedback from your readers.
 Author: Feedweb
 Version: 2.3.8
-Author URI: http://feedweb.net
+Author URI: http://www.feedweb.net
 */
 
 require_once('feedweb_util.php');
@@ -70,7 +70,7 @@ function ContentFilter($content)
 				$src .= "&amp;custom_css=".$data["custom_css"];
 			
 			$code = "<iframe id='FeedwebRatingWidget_$id' style='width: ".$frame_width."px; height: 125px; border-style: none;' scrolling='no' src='$src'></iframe>";
-			$code .= "<a id='FeedwebVerificationLink_$id' style='display: none;' href='http://feedweb.net/RCP?pac=$pac'>.</a>";
+			$code .= "<a id='FeedwebVerificationLink_$id' style='display: none;' href='http://www.feedweb.net/RCP?pac=$pac'>.</a>";
 			break;
 				
 		default:
@@ -109,7 +109,7 @@ function GetCopyrightNotice()
 		"scrolling='no' frameborder='0' allowTransparency='true' style='border:none; overflow:hidden;".
 		"width:88px; height:21px; margin: 0; padding: 0; position: absolute; left: 160px; top: 0px;'>".
 		"</iframe><span style='display: block; position: absolute; left: 250px; top: 0px;'>&copy; ".
-		"<a href='http://feedweb.net'>Feedweb</a>, 2012-13</span></div>";
+		"<a href='http://www.feedweb.net'>Feedweb</a>, 2012-13</span></div>";
 
 	return $text;
 }

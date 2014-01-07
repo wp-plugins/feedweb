@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: FWTD-bg_BG\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/feedweb\n"
 "POT-Creation-Date: 2014-01-01 10:50:49+00:00\n"
-"PO-Revision-Date: 2014-01-03 00:04+0200\n"
+"PO-Revision-Date: 2014-01-07 12:28+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: bg_BG\n"
@@ -380,11 +380,11 @@ msgstr "Обграждане на джаджите с тагове-парагр�
 
 #: feedweb_options.php:710
 msgid "Front Page Widget Color Scheme:"
-msgstr "Цвят аз джаджата на първа страница:"
+msgstr "Цвят за джаджата на първа страница:"
 
 #: feedweb_options.php:718
 msgid "Select color scheme for the Front Page widget"
-msgstr "Изберете цвята за джаджата на първа страница"
+msgstr "Изберете цвета за джаджата на първа страница"
 
 #: feedweb_options.php:723
 msgid "Max. Widget height (pixels):"

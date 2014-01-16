@@ -547,6 +547,10 @@ function CheckServiceAvailability()
 	if ($dom->loadXML($response['body']) == true)
 		if ($dom->documentElement->tagName == "BANNER")
 		{
+			$error = $dom->documentElement->getAttribute("error");
+			if ($error != null && $error != "")
+				return $error;
+			
 			$query = "DELETE FROM $wpdb->postmeta WHERE post_id=0 AND meta_key='feedweb_last_access'";
 			$wpdb->query($query);
 			

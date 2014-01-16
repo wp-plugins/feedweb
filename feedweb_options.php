@@ -136,7 +136,7 @@ function GetCSSText()
 		if ($dom->documentElement->tagName == "BANNER")
 		{
 			$error = $dom->documentElement->getAttribute("error");
-			if ($error != null || $error != "")
+			if ($error != null && $error != "")
 				return null;
 		
 			return $dom->documentElement->textContent;

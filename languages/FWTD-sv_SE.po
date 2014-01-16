@@ -1,0 +1,795 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/feedweb\n"
+"POT-Creation-Date: 2014-01-01 10:50:49+00:00\n"
+"PO-Revision-Date: 2014-01-16 22:20+0200\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: sv_SE\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.6.2\n"
+"X-Poedit-Basepath: .\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: feedweb.php:129
+msgid ""
+"Please upgrade your Feedweb widget type to HTML5 (in the Feedweb Plugin "
+"settings). The Flash widget support will be discontinued after December 31, "
+"2013"
+msgstr ""
+"Var vänlig och uppgradera din Feedweb widget till HTML5 (se Feedweb Plugin "
+"inställningar). Flash widgetens support kommer att upphöra efter den 31:a "
+"December 2013."
+
+#: feedweb.php:191 feedweb.php:383
+msgid "Insert Rating Widget"
+msgstr "Infoga röstnings Widget"
+
+#: feedweb.php:208
+msgid "The widget data is invalid and cannot be used."
+msgstr "Det är något fel på Widgeten vilket medför att den inte kan användas."
+
+#: feedweb.php:209
+msgid "Remove Invalid Widget?"
+msgstr "Ta bort ogiltig Widget?"
+
+#: feedweb.php:214
+msgid "Unknown error."
+msgstr "Okänt fel har uppstått."
+
+#: feedweb.php:214
+msgid ""
+"\n"
+"Please contact Feedweb (contact@feedweb.net)"
+msgstr ""
+"\n"
+"Var vänlig och kontakta Feedweb (contact@feedweb.net)"
+
+#: feedweb.php:225
+msgid ""
+"Edit / Remove Rating Widget\n"
+"(%s Votes. Average Score: %s)"
+msgstr ""
+"Edit / Ta bort Röstnings Widget\n"
+"(%s Röster. Medelvärde: %s)"
+
+#: feedweb.php:233
+msgid ""
+"Edit / Remove Rating Widget\n"
+"(No votes yet)"
+msgstr ""
+"Edit / Ta bort Röstnings Widget\n"
+"(Inga röster än så länge)"
+
+#: feedweb.php:264 feedweb.php:529
+msgid "Settings"
+msgstr "Inställningar"
+
+#: feedweb.php:332
+msgid ""
+"Your server configuration does not support DOM Document class. Please "
+"upgrade your PHP version or report to contact@feedweb.net"
+msgstr ""
+"Dina serverinställningar stödjer inte DOM Dokument klassen. Var vänlig och "
+"uppgradera din PHP version eller skicka en rapport till contact@feedweb.net"
+
+#: feedweb.php:340
+msgid ""
+"The Feedweb service is temporarily unavailable due to system maintenance"
+msgstr ""
+"Feedweb är för närvarande ej tillgängligt på grund av systemunderhållning"
+
+#: feedweb.php:384
+msgid "Do you wish to insert a Feedweb rating widget into your new post?"
+msgstr "Vill du infoga en Feedweb Röstnings widget i ditt nya inlägg?"
+
+#: feedweb.php:401
+msgid ""
+"The Title or Permalink of the post has been changed. Do you with to update "
+"the Rating Widget with new data?"
+msgstr ""
+"Titeln eller Permalänken för ditt inlägg har blivit ändrat. Vill du "
+"uppdatera Röstnings Widgeten med ny data?"
+
+#: feedweb.php:530
+msgid "Tutorial"
+msgstr "Demonstration"
+
+#: feedweb.php:533
+msgid "Monitor"
+msgstr "Skärm"
+
+#: feedweb.php:534
+msgid "License"
+msgstr "Licens"
+
+#: feedweb.php:536
+msgid "Our Friends"
+msgstr "Våra Vänner"
+
+#: feedweb_friends.php:38
+msgid "Our Friends - The Plugins We Recommend"
+msgstr "Våra Vänner - Plugins Vi Rekommenderar"
+
+#: feedweb_help.php:4
+msgid "Feedweb Plugin Tutorial"
+msgstr "Feedweb Plugin Genomgång/Handledning/Demonstration"
+
+#: feedweb_license.php:16
+msgid "Feedweb License"
+msgstr "Feedweb Licens"
+
+#: feedweb_menu.php:3 feedweb_options.php:181
+msgid "You do not have sufficient permissions to access this page."
+msgstr "Du har inte tillräckligt med data för att gå in på denna sida."
+
+#: feedweb_monitor.php:16
+msgid "Feedweb Monitor"
+msgstr "Feedweb Skärm"
+
+#: feedweb_options.php:54
+msgid "Blue"
+msgstr "Blå"
+
+#: feedweb_options.php:54
+msgid "Gray"
+msgstr "Grå"
+
+#: feedweb_options.php:59
+msgid "Classic"
+msgstr "Klassisk"
+
+#: feedweb_options.php:59
+msgid "Monochrome"
+msgstr "Monokrom"
+
+#: feedweb_options.php:59
+msgid "Light Blue"
+msgstr "Ljusblå"
+
+#: feedweb_options.php:60
+msgid "Dark Blue"
+msgstr "Mörkblå"
+
+#: feedweb_options.php:60
+msgid "Dark Green"
+msgstr "Mörkgrön"
+
+#: feedweb_options.php:81
+msgid "Reset Preview"
+msgstr "Återställ Förhandsvisning"
+
+#: feedweb_options.php:88
+msgid "No Delay"
+msgstr "Inga Förseningar"
+
+#: feedweb_options.php:88
+msgid "1 Hour"
+msgstr "1 timme"
+
+#: feedweb_options.php:88
+msgid "2 Hours"
+msgstr "2 timmar"
+
+#: feedweb_options.php:88
+msgid "5 Hours"
+msgstr "5 timmar"
+
+#: feedweb_options.php:119
+msgid "Remove Inactive Widgets"
+msgstr "Ta bort ej aktiverade Widgets"
+
+#: feedweb_options.php:120
+msgid "Click to remove widgets from the deleted posts"
+msgstr "Klicka för att ta bort Widgets från den raderade posten"
+
+#: feedweb_options.php:150 widget_dialog.php:1117
+msgid "Close"
+msgstr "Stäng"
+
+#: feedweb_options.php:154
+msgid "Edit Rating Widget CSS"
+msgstr "Ändra Röstnings Widgets CSS"
+
+#: feedweb_options.php:159
+msgid "Error loading Widget CSS"
+msgstr "Fel vid laddning av Widget CSS"
+
+#: feedweb_options.php:163
+msgid "Restore Default"
+msgstr "Återställ Grundinställningarna"
+
+#: feedweb_options.php:166
+msgid "Save"
+msgstr "Spara"
+
+#: feedweb_options.php:188
+msgid "Feedweb Plugin Settings"
+msgstr "Feedweb Plugin Inställningar"
+
+#: feedweb_options.php:219
+msgid "Discard changes?"
+msgstr "Ignorera ändringar?"
+
+#: feedweb_options.php:236 feedweb_options.php:631
+msgid "Show Widget Preview >>>"
+msgstr "Förhandsvisa Widget >>>"
+
+#: feedweb_options.php:243
+msgid "<<< Hide Widget Preview"
+msgstr "<<< Göm Widget Förhandsvisning"
+
+#: feedweb_options.php:306
+msgid "Remove Widgets?"
+msgstr "Ta bort Widgets?"
+
+#: feedweb_options.php:443
+msgid "Please enter a valid width"
+msgstr "Var vänlig och ange en giltig bredd"
+
+#: feedweb_options.php:449
+msgid "Width is out of range"
+msgstr "Bredden är utanför ramarna"
+
+#: feedweb_options.php:472
+msgid "Please enter a valid Front Widget height"
+msgstr "Var vänlig och ange en godkänd Widget höjd för front"
+
+#: feedweb_options.php:478
+msgid "Front Widget height is out of range"
+msgstr "Front Widget angivna höjd är utanför ramarna"
+
+#: feedweb_options.php:529
+msgid "Rating Widget"
+msgstr "Röstnings Widget"
+
+#: feedweb_options.php:530
+msgid "Front Widget"
+msgstr "Front Widget"
+
+#: feedweb_options.php:540
+msgid "Widget Placement:"
+msgstr "Widget Placering"
+
+#: feedweb_options.php:554
+msgid "Please choose the placement of the rating widget within a post"
+msgstr ""
+"Var vänlig och ange var du vill placera Röstnings Widgeten i ditt inlägg"
+
+#: feedweb_options.php:560
+msgid "Widget Type:"
+msgstr "Widget Typ:"
+
+#: feedweb_options.php:567
+msgid "Click to upgrade your rating widgets from Flash to HTML5"
+msgstr "Klicka för att uppgradera din Röstnings Widget från Flash till HTML5"
+
+#: feedweb_options.php:569
+msgid "Note that Flash is not supported in devices like iPad or iPhone."
+msgstr "Notera att Flash inte stödjs i enheter som iPad eller iPhone."
+
+#: feedweb_options.php:570
+msgid "Flash widget will be discontinued after December 31, 2013."
+msgstr "Flash Widget kommer utgå efter den 31:a December 2013."
+
+#: feedweb_options.php:578
+msgid "Widget Color Scheme:"
+msgstr "Widget Färg Schema:"
+
+#: feedweb_options.php:579
+msgid "Widget External Background:"
+msgstr "Widgets Utanpåliggande Bakgrund:"
+
+#: feedweb_options.php:580
+msgid "Widget Stylesheet (CSS):"
+msgstr "Widget Stylesheet (CSS):"
+
+#: feedweb_options.php:588
+msgid "Please choose the color scheme of your HTML rating widgets"
+msgstr "Var vänlig och ange förgschema för dina HTML Röstnings Widget"
+
+#: feedweb_options.php:594
+msgid "Widget Language:"
+msgstr "Widget språk:"
+
+#: feedweb_options.php:605
+msgid "Widget width (pixels):"
+msgstr "Widget bredd (pixlar):"
+
+#: feedweb_options.php:612
+msgid "Allowed width: 350 to 700 pixels. Recommended width: 400 to 450 pixels."
+msgstr ""
+"Vi rekommenderar en bredd mellan 400 till 450 pixlar. Du kan ha en bredd "
+"mellan 350 till 700 pixlar."
+
+#: feedweb_options.php:617
+msgid "Display results before voting:"
+msgstr "Visa resultat före röstning:"
+
+#: feedweb_options.php:622
+msgid "Display Results"
+msgstr "Visa resultat"
+
+#: feedweb_options.php:625
+msgid "Allow your visitors to see results before they vote."
+msgstr "Låt dina besökare se resultatet innan de röstar."
+
+#: feedweb_options.php:641
+msgid "Widgets at the Home/Front Page:"
+msgstr "Widgets på hem/framsida:"
+
+#: feedweb_options.php:645
+msgid "Display Widgets"
+msgstr "Visa Widgets"
+
+#: feedweb_options.php:648
+msgid ""
+"Check to display the widgets both in the Front Page and the single post "
+"pages."
+msgstr "Kryssa i för att visa Widgets på både framsida och i dina inlägg."
+
+#: feedweb_options.php:653
+msgid "Delay displaying results:"
+msgstr "Vänta med att visa resultat:"
+
+#: feedweb_options.php:659
+msgid ""
+"Set the period of time you want to hide voting results after the widget is "
+"created."
+msgstr ""
+"Ange tidsperioden för hur hur länge det ska dröja innan röstresultaten visas."
+
+#: feedweb_options.php:665
+msgid "Feedweb Copyright Notice:"
+msgstr "Feedweb Copyrigt Meddelande:"
+
+#: feedweb_options.php:669
+msgid "Allow"
+msgstr "Tillåt"
+
+#: feedweb_options.php:672
+msgid "Please check to display the following text below the widgets: "
+msgstr "Kryssa i för att visa följande text under Widgets:"
+
+#: feedweb_options.php:679
+msgid "Prompt to insert widgets:"
+msgstr "Prompt för att lägga in widgets:"
+
+#: feedweb_options.php:683
+msgid "Show"
+msgstr "Visa"
+
+#: feedweb_options.php:686
+msgid "Display a prompt to insert a rating widget when a post is published"
+msgstr ""
+"Visa en prompt för att lägga in en Röstnings Widget när ett inlägg är "
+"publicerat"
+
+#: feedweb_options.php:692
+msgid "Automatically add paragraphs:"
+msgstr "Lägg automatiskt till styckeindelning"
+
+#: feedweb_options.php:696 widget_dialog.php:1159
+msgid "Add"
+msgstr "Lägg till"
+
+#: feedweb_options.php:699
+msgid "Surround widgets with paragraph tags:"
+msgstr "Omge Widgets med Stycke (Paragraf) Taggar:"
+
+#: feedweb_options.php:710
+msgid "Front Page Widget Color Scheme:"
+msgstr "Widget Färgschema på framsida:"
+
+#: feedweb_options.php:718
+msgid "Select color scheme for the Front Page widget"
+msgstr "Välj färgschema för Framsides Widget"
+
+#: feedweb_options.php:723
+msgid "Max. Widget height (pixels):"
+msgstr "Maxhöjd på Widget (Pixlar):"
+
+#: feedweb_options.php:732
+msgid "Allowed height: 200 to 800 pixels. Recommended height: 400 pixels."
+msgstr "Tillåten höjd: 200 till 800 pixlar. Rekommenderad höjd: 400 pixlar."
+
+#: feedweb_options.php:738
+msgid "Vertical Scroll Bar:"
+msgstr "Vertikal Rullist:"
+
+#: feedweb_options.php:744
+msgid "Hide"
+msgstr "Göm"
+
+#: feedweb_options.php:748
+msgid ""
+"Check to hide vertical scroll bar when the front widget exceeds max. height."
+msgstr ""
+"Kryssa i för att dölja vertikal rullista när framsides Widgeten är högre än "
+"maxhöjd."
+
+#: feedweb_options.php:753
+msgid "Number of list items:"
+msgstr "Antal i listan:"
+
+#: feedweb_options.php:761
+msgid "Number of items in the Front Widget list"
+msgstr "Antal i främre Widgetlista:"
+
+#: feedweb_options.php:771
+msgid "Save Changes"
+msgstr "Spara ändringar"
+
+#: feedweb_settings.php:10 question_query.php:10 widget_commit.php:10
+#: widget_dialog.php:9
+msgid "You are not allowed to be here"
+msgstr "Du är inte tillåten att vara här"
+
+#: feedweb_settings.php:50
+msgid "Failed to update CSS"
+msgstr "Misslyckad uppdatering av CSS"
+
+#: feedweb_settings.php:82
+msgid "Failed to update settings"
+msgstr "Misslyckades att uppdatera inställningarna"
+
+#: feedweb_util.php:462
+msgid "Cannot insert widget into a post with undefined status"
+msgstr "Kan inte lägga in Widget i ett inlägg utan status"
+
+#: feedweb_util.php:465
+msgid "Cannot insert widget into a private post (must be public)"
+msgstr "Kan inte lägga in Widget i ett privat inlägg (Det måste vara allmänt)"
+
+#: feedweb_util.php:468
+msgid "Cannot insert widget into a trashed post"
+msgstr "Kan inte infoga WIdget i ett borttaget inlägg"
+
+#: feedweb_util.php:471
+msgid "Cannot insert widget into a password-protected post"
+msgstr "Kan inte infoga Widget i ett inlägg med lösenordsskydd"
+
+#: feedweb_util.php:476
+msgid "Cannot insert widget into a post published %d days ago"
+msgstr ""
+"Kan inte infoga en Widget i ett inlägg som publicerades för %d dagar sedan."
+
+#: feedweb_util.php:485
+msgid ""
+"You have created %d widgets in the last 24 hours. The daily limit for your "
+"subscription is %d new widgets."
+msgstr ""
+"Du har skapat %d Widgets under de senaste 24h. Den dagliga gränsen för din "
+"prenumeration är %d nya Widgets."
+
+#: feedweb_util.php:493
+msgid ""
+"You have created %d widgets in the last 30 days. The monthly limit for your "
+"subscription is %d new widgets"
+msgstr ""
+"Du har skapat %d Widgets under de senaste 30 dagarna. Gränsen för din "
+"prenumeration är %d per månad."
+
+#: feedweb_util.php:501
+msgid ""
+"You have created %d widgets. The limit for your subscription is %d widgets"
+msgstr "Du har skapat %d Widgets. Gränsen för din prenumeration är %d widgets"
+
+#: widget_commit.php:32 widget_commit.php:414
+msgid "The widget has been removed"
+msgstr "Widgetsen är borttagen."
+
+#: widget_commit.php:101 widget_commit.php:109 widget_commit.php:117
+#: widget_commit.php:125 widget_commit.php:255 widget_commit.php:263
+msgid "Error in the Post data"
+msgstr "Det är något fel i ditt inlägg."
+
+#: widget_commit.php:134
+msgid "Error in the User data"
+msgstr "Det är något fel med användardatan"
+
+#: widget_commit.php:158
+msgid "Error in the Widget data"
+msgstr "Det är fel i Widgetsdata"
+
+#: widget_commit.php:248 widget_commit.php:309
+msgid "Wordpress cannot modify your widget"
+msgstr "Wordpress kan inte ändra i din widgets"
+
+#: widget_commit.php:277 widget_commit.php:332 widget_commit.php:401
+#: widget_commit.php:455
+msgid "Cannot connect Feedweb server"
+msgstr "Kan ej ansluta till Feedweb servern"
+
+#: widget_commit.php:289
+msgid "The widget Title/Url have been updated"
+msgstr "Widgets titel har blivit uppdaterad"
+
+#: widget_commit.php:293 widget_commit.php:348
+msgid "Feedweb service cannot update the widget"
+msgstr "Feedweb service kan inte uppdatera widget"
+
+#: widget_commit.php:344
+msgid "The widget has been updated"
+msgstr "Widget har blivit uppdaterad"
+
+#: widget_commit.php:364
+msgid "The widget has been inserted"
+msgstr "Widgeten är infogad"
+
+#: widget_commit.php:366
+msgid "Wordpress cannot insert your widget"
+msgstr "Wordpress kan inte infoga din widget"
+
+#: widget_commit.php:380
+msgid "%d out of %d widgets have been removed"
+msgstr "%d av %d widgets har blivit borttagna"
+
+#: widget_commit.php:421
+msgid "Wordpress cannot remove your widget"
+msgstr "Wordpress kan inte ta bort widget"
+
+#: widget_commit.php:471
+msgid "Unknown server error"
+msgstr "Okänt serverfel"
+
+#: widget_commit.php:475
+msgid "Feedweb service cannot create a widget"
+msgstr "Feedweb kan inte skapa en Widget"
+
+#: widget_dialog.php:23
+msgid ""
+"Dear %s, Please configure your plugin settings before inserting the widget"
+msgstr ""
+"Hej %s, Var vänlig och konfigurera plugin inställningarna innan du infogar "
+"en widget"
+
+#: widget_dialog.php:236
+msgid "Publish your post in the Feedweb's Readers Community Portal"
+msgstr "Publicera ditt inlägg i Feedweb´s Readers Community:s Portal"
+
+#: widget_dialog.php:239
+msgid "By clicking ['Next'] you agree to our {Terms of service}"
+msgstr "Genom att klicka på [Nästa] accepterar du våra {Villkor}"
+
+#: widget_dialog.php:257
+msgid "Suitable for any audience type"
+msgstr "Anpassad för vilken publik som helst"
+
+#: widget_dialog.php:258
+msgid ""
+"May contain rude gestures, provocatively dressed individuals; the lesser "
+"swear words, or mild violence"
+msgstr ""
+"Kan innehålla ovårdat språk, provokativt innehåll, mindre svordommar eller "
+"mindre våld"
+
+#: widget_dialog.php:259
+msgid ""
+"May contain such things as harsh profanity, intense violence, nudity, or "
+"hard drug use"
+msgstr ""
+"Kan innehålla hårda ord, grov våldsamhet, nakenhet eller droganvändning"
+
+#: widget_dialog.php:260
+msgid "May contain hardcore sexual imagery or extremely disturbing violence"
+msgstr "Kan innehålla grova sexbilder eller extremt våldsamt innehåll"
+
+#: widget_dialog.php:283
+msgid ""
+"If this posts main purpose is to advertise a certain item or product and not "
+"to give information please check here."
+msgstr ""
+"Om ditt inläggs huvudanledning är att göra reklam för en speciell produkt "
+"och inte för att ge information, var vänlig kryssa i här."
+
+#: widget_dialog.php:284
+msgid ""
+"If your post is for advertising and you do not check the box you are "
+"violating the license agreement."
+msgstr ""
+"Om ditt inlägg har som ändamål att annonera samt om du inte klickat i "
+"kryssrutan bryter du mot licensvillkoren. "
+
+#: widget_dialog.php:287
+msgid "The post contains advertising material"
+msgstr "Detta inlägg innehåller annonsmaterial"
+
+#: widget_dialog.php:305
+msgid "Uncategorized"
+msgstr "Okategoriserad"
+
+#: widget_dialog.php:419
+msgid "The rating widget in the post '%s' will be removed"
+msgstr "Widget i inlägg '%s' kommer att tas bort"
+
+#: widget_dialog.php:473
+msgid "http://en.wikipedia.org/wiki/Yes%E2%80%93no_question"
+msgstr "http://en.wikipedia.org/wiki/Yes%E2%80%93no_question"
+
+#: widget_dialog.php:474
+msgid "must be a %sYES / NO%s question"
+msgstr "Måste vara en %sJA / NEJ%s fråga"
+
+#: widget_dialog.php:579
+msgid "Question '{0}' is already selected"
+msgstr "Fråga '{0}' är redan vald"
+
+#: widget_dialog.php:589
+msgid "A widget cannot contain more than {0} questions"
+msgstr "En widget kan inte innhålla mer än {0} frågor"
+
+#: widget_dialog.php:623
+msgid "Please specify a question"
+msgstr "Var vänlig specifiera en fråga"
+
+#: widget_dialog.php:631
+msgid "The question text must not exceed %d characters"
+msgstr "Frågan får inte innehålla mer än %d bokstäver"
+
+#: widget_dialog.php:685
+msgid "Please select a question to remove"
+msgstr "Var vänlig och välj en fråga att ta bort"
+
+#: widget_dialog.php:689
+msgid "The question will be removed. Proceed?"
+msgstr "Denna fråga kommer tas bort. Fortsätta?"
+
+#: widget_dialog.php:723
+msgid "The tags/categories text is limited to 250 characters."
+msgstr "Tagg/Kategoritext är begränsad till 250 bokstäver."
+
+#: widget_dialog.php:730
+msgid "The number of tags is limited to 10"
+msgstr "Gränsen för taggar är begränsad till 10 st"
+
+#: widget_dialog.php:737
+msgid "The number of categories is limited to 10"
+msgstr "Antalet kategorier är begränsat till 10"
+
+#: widget_dialog.php:816
+msgid "Page Title cannot exceed 100 characters"
+msgstr "Sidans titel får ej överskrida 100 bokstäver"
+
+#: widget_dialog.php:822
+msgid "Page Title contain hypertext markup"
+msgstr "Huvudsidans titel innehåller hypertext"
+
+#: widget_dialog.php:834
+msgid "Author name is empty"
+msgstr "Författarnamn är tomt"
+
+#: widget_dialog.php:842
+msgid ""
+"A name like {0} is not recommended for Feedweb Readers Community authors."
+msgstr ""
+"Namn som {0} är inte rekomenderat för författare till Feedweb Community."
+
+#: widget_dialog.php:845
+msgid "You can set another display name in your WordPress profile."
+msgstr "Du kan byta skärmnamn i din Wordpress profil."
+
+#: widget_dialog.php:846
+msgid "Do you wish to continue?"
+msgstr "Vill du fortsätta?"
+
+#: widget_dialog.php:860
+msgid ""
+"Email-like author names are not allowed due to security considerations. "
+"Please change the name"
+msgstr "Du kan inte ha ett e-post namn av säkerhetsaspekt. Var vänlig byt namn"
+
+#: widget_dialog.php:872
+msgid "Page Summary cannot exceed 250 characters"
+msgstr "Sidosammanställnin kan inte vara över 250 bokstäver"
+
+#: widget_dialog.php:948
+msgid "Please enter image Url"
+msgstr "Var vänlig och ange bildens URL"
+
+#: widget_dialog.php:980
+msgid "The image width or height should be at least 100 pixels"
+msgstr "Bildens bredd eller höjd måste vara minst 100 pixlar"
+
+#: widget_dialog.php:990
+msgid ""
+"The image ratio is invalid. The proportion between image width and height "
+"cannot be greater than 250%"
+msgstr ""
+"Propotionerna på bilden är felaktig. Bildens bredd och höjd kan inte vara "
+"större än 250%"
+
+#: widget_dialog.php:1115
+msgid "Feedweb Plugin Terms of Service"
+msgstr "Feedweb Plugin Användarvillkor"
+
+#: widget_dialog.php:1121
+msgid "Title:"
+msgstr "Titel:"
+
+#: widget_dialog.php:1123
+msgid "URL:"
+msgstr "URL:"
+
+#: widget_dialog.php:1125
+msgid "Author:"
+msgstr "Författare:"
+
+#: widget_dialog.php:1127
+msgid "Post Language:"
+msgstr "Inläggsspråk:"
+
+#: widget_dialog.php:1133
+msgid "Summary:"
+msgstr "Sammanfattning:"
+
+#: widget_dialog.php:1135
+msgid "Categories:"
+msgstr "Kategorier:"
+
+#: widget_dialog.php:1137
+msgid "Tags:"
+msgstr "Taggar:"
+
+#: widget_dialog.php:1139
+msgid "Censorship:"
+msgstr "Censur:"
+
+#: widget_dialog.php:1145
+msgid "Image Url"
+msgstr "Bild URL"
+
+#: widget_dialog.php:1147
+msgid "Set"
+msgstr "Ändra"
+
+#: widget_dialog.php:1154
+msgid "Existing Questions:"
+msgstr "Existerande Frågor:"
+
+#: widget_dialog.php:1156
+msgid "Select"
+msgstr "Välj"
+
+#: widget_dialog.php:1157
+msgid "New Question"
+msgstr "Ny Fråga"
+
+#: widget_dialog.php:1160
+msgid "Selected Questions:"
+msgstr "Valda frågor:"
+
+#: widget_dialog.php:1162
+msgid "Move Up"
+msgstr "Flytta Upp"
+
+#: widget_dialog.php:1163
+msgid "Move Down"
+msgstr "Flytta Ner"
+
+#: widget_dialog.php:1164
+msgid "Remove"
+msgstr "Ta Bort"
+
+#: widget_dialog.php:1171
+msgid "Remove Widget"
+msgstr "Radera Widget"
+
+#: widget_dialog.php:1176
+msgid "< Back"
+msgstr "< Tillbaka"
+
+#: widget_dialog.php:1179
+msgid "Next >"
+msgstr "Nästa >"
+
+#: widget_dialog.php:1182
+msgid "Done"
+msgstr "Klar"
+
+#: widget_dialog.php:1185
+msgid "Cancel"
+msgstr "Cancel"

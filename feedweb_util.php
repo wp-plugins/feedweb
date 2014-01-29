@@ -291,6 +291,26 @@ function GetFileUrl($file)
 	return GetFeedwebUrl().$file;
 }
 
+function ReadAnswerList($root)
+{
+	$list = $root->getElementsByTagName("ANSWERS");
+	if ($list->length == 0)
+		return null;
+		
+	$answers = array();
+	$list = $list->item(0)->getElementsByTagName("Q");
+	for ($item = 0; $item < $list->length; $item++)
+	{
+		$answer = $list->item($item);
+		$title = $answer->getAttribute("title");
+		$yes = $answer->getAttribute("yes");
+		$no = $answer->getAttribute("no");
+		
+		$answers[$item] = $title."|".$yes."|".$no;
+	}
+	return $answers;
+}
+
 function ReadQuestionList($root)
 {
 	$list = $root->getElementsByTagName("QUESTIONS");
@@ -359,11 +379,12 @@ function GetPageData($pac, $info_mode)
 				}
 				$data['questions'] = ReadQuestionList($dom->documentElement);
 			}
-			else	// Votes / Score / Image
+			else	// Votes / Score / Image / Answers
 			{
 				$data['image'] = $dom->documentElement->getAttribute("image");
 				$data['votes'] = $dom->documentElement->getAttribute("votes");
 				$data['score'] = $dom->documentElement->getAttribute("score");
+				$data['answers'] = ReadAnswerList($dom->documentElement);
 			}
 			return $data;
 		}

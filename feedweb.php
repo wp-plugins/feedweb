@@ -4,7 +4,7 @@ Plugin Name: Feedweb
 Plugin URI: http://wordpress.org/extend/plugins/feedweb/
 Description: Expose your blog to the Feedweb reader's community. Promote your views. Get a comprehensive and detailed feedback from your readers.
 Author: Feedweb
-Version: 2.3.9
+Version: 2.3.10
 Author URI: http://www.feedweb.net
 */
 
@@ -107,9 +107,9 @@ function GetCopyrightNotice()
 		"%2Ffeedwebresearch&amp;send=false&amp;layout=button_count&amp;width=25&amp;show_faces=false&".
 		"amp;font&amp;colorscheme=light&amp;action=like&amp;height=21&amp;appId=240492672692711' ".
 		"scrolling='no' frameborder='0' allowTransparency='true' style='border:none; overflow:hidden;".
-		"width:88px; height:21px; margin: 0; padding: 0; position: absolute; left: 160px; top: 0px;'>".
-		"</iframe><span style='display: block; position: absolute; left: 250px; top: 0px;'>&copy; ".
-		"<a href='http://www.feedweb.net'>Feedweb</a>, 2012-13</span></div>";
+		"width:88px; height:21px; margin: 0; padding: 0; position: absolute; left: 175px; top: 0px;'>".
+		"</iframe><span style='display: block; position: absolute; left: 270px; top: 0px;'>&copy; ".
+		"<a href='http://www.feedweb.net'>Feedweb</a>, 2012-14</span></div>";
 
 	return $text;
 }
@@ -232,10 +232,24 @@ function FillFeedwebCell($id)
 			SetSortValue($id, 0);
 			$title = __("Edit / Remove Rating Widget\n(No votes yet)", "FWTD");
 		}
-			
+		
 		$url = plugin_dir_url(__FILE__)."widget_dialog.php?wp_post_id=".$id."&mode=edit&KeepThis=true&TB_iframe=true&height=$height&width=$width";
-		echo "<input alt='$url' class='thickbox' title='$title' type='image' src='$src'/>";
+		
+		$div_class = GetStatusImageClass();
+		$image_id = $div_class . "_" . $id;
+		echo "<div class='$div_class' style='display: inline;' onmouseover='ShowFeedwebStats($id)' onmouseout='HideFeedwebStats()'>";
+		
+		$answers = $data['answers'];
+		if ($answers != null)
+			for ($index = 0; $index < count($answers); $index++)
+				echo "<input type='hidden' class='FeedwebPostAnswerData' value='".$answers[$index]."'/>";
+		echo "<input alt='$url' class='thickbox' id='$image_id' title='$title' type='image' src='$src'/></div>";
 	}
+}
+
+function GetStatusImageClass()
+{
+	return "FeedwebPostStatusImage";
 }
 
 function FillFeedwebColumn($column_name, $id) 
@@ -371,6 +385,94 @@ function FeedwebSavePost($pid)
 
 function EnqueueAdminScript() 
 {
+	?>
+	<script type="text/javascript">
+		function GetFeedwebPopupInfoClass()
+		{
+			return "FeedwebPostTablePopupInfoDiv";
+		}
+		
+		function HideFeedwebStats()
+		{
+			var popups = document.getElementsByClassName(GetFeedwebPopupInfoClass());
+			for (var index = 0; index < popups.length; index++)
+				popups[index].style.visibility = "hidden";
+		}
+		
+		function ShowFeedwebStats(id)
+		{
+			var image_class = '<?php echo GetStatusImageClass();?>';
+			var image = document.getElementById(image_class + "_" + id);
+			var answers = image.parentElement.getElementsByClassName("FeedwebPostAnswerData");
+			if (answers.length == 0)
+				return;
+			
+			var container = document.getElementById("wpcontent");
+			if (container == null || container == undefined)
+				return;
+			
+			var popup_class = GetFeedwebPopupInfoClass();	
+			var popup_id = popup_class + "_" + id;
+			var popup = document.getElementById(popup_id);
+			if (popup == null || popup == undefined)
+			{
+				popup = document.createElement("DIV");
+				popup.setAttribute("style", "position: absolute; top: 0; left: 0; display: block; visibility: hidden; background-color: #969696; color: white; border: 2px solid #c0c0c0;");
+				popup.setAttribute("class", popup_class);
+				popup.setAttribute("id", popup_id);
+				
+				var base = '<?php echo GetFeedwebUrl();?>' + 'IMG/Plugin/';
+				var html = "<style>"+
+					" ." + popup_class + " table {margin: 4px 0px 4px 0px;}" +
+					" ." + popup_class + " td {font-size: 8pt; text-align: center; padding: 0 8px 0 8px;}" +
+					" ." + popup_class + " img {border: 1px solid white; margin-top: 4px;}" + 
+					" </style>";
+				
+				html += "<table>";
+				html += "<tr><td style='text-align: left;'><img src='" + base + "Question.png'/></td>" + 
+					"<td><img src='" + base + "Yes.png'/></td>" +
+					"<td><img src='" + base + "No.png'/></td></tr>";
+				for (var index = 0; index < answers.length; index++)
+				{
+					html += "<tr>";
+					var data = answers[index].value.split("|");
+					for (var pos = 0; pos < data.length; pos++)
+					{
+						html += "<td";
+						if(pos == 0)
+							html += " style='text-align: left;'";
+						html += ">" + data[pos] + "</td>";
+					}
+					html += "</tr>";
+				}
+				
+				html += "</table>";
+				
+				popup.innerHTML = html;
+				container.appendChild(popup);
+			}
+		    setTimeout(function () { DisplayFeedwebStats(id) }, 100);
+		}
+		
+		function DisplayFeedwebStats(id)
+		{
+			var container = document.getElementById("wpcontent");
+			var container_rect = container.getBoundingClientRect();
+			
+			var image_class = '<?php echo GetStatusImageClass();?>';
+			var image = document.getElementById(image_class + "_" + id);
+			var image_rect = image.getBoundingClientRect();
+			
+			var popup_class = GetFeedwebPopupInfoClass();	
+			var popup = document.getElementById(popup_class + "_" + id);
+			
+			popup.style.visibility = "visible";
+			popup.style.left = (image_rect.left - popup.clientWidth - 8).toString() + "px";
+			popup.style.top = (image_rect.top - container_rect.top - popup.clientHeight / 2 + 16).toString() + "px";
+		}
+	</script>
+	<?php
+	
 	$result = QueryPostStatus();
 	if ($result == null)
 		return;

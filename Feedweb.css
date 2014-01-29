@@ -215,7 +215,7 @@ Plugin Settings
 /*-------------------------
 Widget Wizard
 --------------------------*/
-#WidgetDialog, #WidgetDialog span, #WidgetDialog input
+#WidgetDialog, #WidgetDialog span, #WidgetDialog input, #WidgetDialog select
 {
 	font-family: Verdana;
 	font-size: 9pt;

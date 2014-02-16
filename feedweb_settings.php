@@ -20,7 +20,7 @@ function UpdateCSS(&$data)
 	if ($_POST["CSSCommandValue"] == "S")
 	{
 		$params = array();
-		$params['css'] = $_POST["CSSTextEditor"];
+		$params['css'] = stripslashes($_POST["CSSTextEditor"]);
 		$response = wp_remote_post ($query, array('method' => 'POST', 'timeout' => 30, 'body' => $params));
 		if (is_wp_error ($response))
 			return false;
@@ -62,6 +62,7 @@ function UpdateSettings()
 			$data["mp_widgets"] = $_POST["FeedwebMPWidgets"];
 			$data["widget_type"] = $_POST["RatingWidgetType"];
 			$data["widget_width"] = $_POST["WidgetWidthEdit"];
+			$data["widget_layout"] = $_POST["RatingWidgetLayout"];
 			$data["add_paragraphs"] = $_POST["AutoAddParagraphs"];
 			$data["widget_prompt"] = $_POST["InsertWidgetPrompt"];
 			$data["widget_cs"] = $_POST["RatingWidgetColorScheme"];

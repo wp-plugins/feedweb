@@ -4,6 +4,23 @@ if ( !defined('ABSPATH') )
 require_once( ABSPATH.'wp-load.php');
 include_once( ABSPATH.'wp-admin/includes/plugin.php' );
 
+
+function BuildLayoutBox($layout)
+{
+	$layouts = array("mobile" => __("Mobile Screen", "FWTD"), "wide" => __("Wide Screen", "FWTD"));		
+		
+	echo "<select id='WidgetLayoutBox' name='WidgetLayoutBox' onchange='OnChangeLayout()'>";
+	foreach ($layouts as $key => $value)
+	{
+		echo "<option";
+		if ($key == $layout)
+			echo " selected='selected'";
+		echo " value='".$key."'>".$value."</option>";
+	}
+	echo "</select>";
+}
+
+
 function BuildLanguageBox($language, $language_set, $all)
 {
 	echo "<select id='WidgetLanguageBox' name='WidgetLanguageBox' onchange='OnChangeLanguage()'>";
@@ -51,7 +68,7 @@ function BuildColorSchemeBox($scheme, $is_rating_widget)
 	if ($is_rating_widget)
 	{
 		echo "<select id='RatingWidgetColorSchemeBox' name='RatingWidgetColorSchemeBox' onchange='OnChangeRatingWidgetColorScheme()'>";
-		$values = array("blue" => __("Blue", "FWTD"), "gray" => __("Gray", "FWTD"));
+		$values = array("blue" => __("Blue", "FWTD"), "gray" => __("Gray", "FWTD"), "modern" => __("Modern", "FWTD"));
 	}
 	else
 	{
@@ -79,7 +96,7 @@ function BuildExternalBackgroundControl($color)
 function BuildResetPreviewButton($id)
 {
 	$title = __("Reset Preview", "FWTD");
-	$button_url = GetFeedwebUrl()."Img/Gray/Refresh.png";
+	$button_url = plugin_dir_url(__FILE__)."images/refresh.png";
 	echo "<img id='$id' src='$button_url' title='$title' onclick='ResetWidgetPreview()'/>";
 }
 
@@ -138,8 +155,11 @@ function GetCSSText()
 			$error = $dom->documentElement->getAttribute("error");
 			if ($error != null && $error != "")
 				return null;
-		
-			return $dom->documentElement->textContent;
+			
+			$css = array();
+			$css['valid'] = $dom->documentElement->getAttribute("valid");
+			$css['text'] = $dom->documentElement->textContent;
+			return $css;
 		}
 	
 	return null;
@@ -148,30 +168,29 @@ function GetCSSText()
 function BuildCSSEditor()
 {
 	$title = __("Close");
-	$button_url = GetFeedwebUrl()."Img/Blue/Cancel.png";
+	$button_url = plugin_dir_url(__FILE__)."images/Cancel.png";
 	echo "<img id='CloseCSSEditorButton' src='$button_url' title='$title' onclick='CloseCSSEditor()'/>";
 	
 	$title = __("Edit Rating Widget CSS", "FWTD");
 	echo "<span id='CSSEditorTitle'>".$title."</span>";
 
-	$text = GetCSSText();
-	if ($text == null)
+	$css = GetCSSText();
+	if ($css == null)
 		echo "<span id='CSSEditorError'>".__("Error loading Widget CSS", "FWTD")."</span>";
 	else
 	{
-		//OnSwitchToHtml
 		$title = __("Restore Default", "FWTD");
 		echo "<input type='submit' id='RestoreCSSButton' class='button button-primary' onclick='OnRestoreCSS()' value='$title'/>";
 		
 		$title = __("Save"); 	
 		echo "<input type='submit' id='SaveCSSButton' class='button button-primary' onclick='OnSaveCSS()' value='$title'/>";
 			
-		echo "<textarea id='CSSTextEditor' name='CSSTextEditor'>".$text."</textarea>";
-		
-		$encoded = htmlspecialchars($text);
-		echo "<input type='hidden' id='OriginalCSSText' value='$encoded'/>";
-		
+		echo "<textarea id='CSSTextEditor' name='CSSTextEditor'>".$css['text']."</textarea>";
+		echo "<textarea id='OriginalCSSText'>".$css['text']."</textarea>";
 		echo "<input type='hidden' id='CSSCommandValue' name='CSSCommandValue' value=''/>";
+		
+		if ($css['valid'] != "true")
+			echo "<script>setTimeout(function () { ShowCSSValidityPrompt() }, 1000);</script>";
 	}
 }
 
@@ -188,7 +207,7 @@ function FeedwebPluginOptions()
 		<h2><?php _e("Feedweb Plugin Settings", "FWTD");?></h2>
 
 		<form name="FeedwebSettingsForm" id="FeedwebSettingsForm" onsubmit="return OnSubmitFeedwebSettingsForm();">
-			<link href='<?php echo plugin_dir_url(__FILE__)?>Feedweb.css?v=2.3.10' rel='stylesheet' type='text/css' />
+			<link href='<?php echo plugin_dir_url(__FILE__)?>Feedweb.css?v=2.4' rel='stylesheet' type='text/css' />
 			<?php
 				$script_url = GetFeedwebUrl()."Base/jscolor/jscolor.js";
 				echo "<script type='text/javascript' src='$script_url'></script>";
@@ -224,6 +243,14 @@ function FeedwebPluginOptions()
 					document.getElementById("CSSEditorDiv").style.visibility = "hidden"; 
 					document.getElementById("SettingsTable").style.visibility = "visible";
 				}
+				
+				function ShowCSSValidityPrompt()
+				{
+					var prompt = document.getElementById("CustomCSSValidityPrompt");
+					if (prompt == null || prompt == undefined)
+						return;
+					prompt.style.visibility = "visible";
+				}
 			
 				function OnShowWidgetPreview()
 				{
@@ -241,64 +268,49 @@ function FeedwebPluginOptions()
 					else
 					{
 						title.innerHTML = "<?php _e("<<< Hide Widget Preview", "FWTD") ?>";
-						settings[0].style.height = "620px";
+						settings[0].style.height = "625px";
 						div.style.display = "block";
-						row.style.height = "155px";
+						row.style.height = "160px";
 					}
 				}
 				
 				function ResetWidgetPreview()
 				{
+					var layout = document.getElementById("RatingWidgetLayout").value;
 					var lang = document.getElementById('FeedwebLanguage').value;
 					var div = document.getElementById("WidgetPreview");
 					var pac = "e5615caa-cc14-4c9d-9a5b-069f41c2e802";
-					var width = ValidateRatingWidgetWidth();
-					if (width == 0)
-						return;
+					var height = 150;
+					var width = 300;
+					if (layout == "wide")
+					{
+						width = ValidateRatingWidgetWidth();
+						if (width == 0)
+							return;
+						height = 120;
+					}
 						
+					var ext_bg = document.getElementById("ExternalBackgroundBox").value;
+					var custom_css = document.getElementById("CustomCSSCode").value;
+					var box = document.getElementById("RatingWidgetColorSchemeBox");
+					var rbv = document.getElementById("ResultsBeforeVoting").value;
+					var cs = box.options[box.selectedIndex].value;
 					var url = '<?php echo GetFeedwebUrl()?>';
-					if (document.getElementById('RatingWidgetType').value == "H")
-					{
-						var ext_bg = document.getElementById("ExternalBackgroundBox").value;
-						var custom_css = document.getElementById("CustomCSSCode").value;
-						var box = document.getElementById("RatingWidgetColorSchemeBox");
-						var rbv = document.getElementById("ResultsBeforeVoting").value;
-						var cs = box.options[box.selectedIndex].value;
-												
-						var src = url + "BRW/BlogRatingWidget.aspx?cs=" + cs + "&amp;width=" + width.toString() + 
-							"&amp;height=120&amp;lang=" + lang + "&amp;pac=" + pac;
-						
-						if (custom_css == "0")
-							src += "&amp;ext_bg=" + ext_bg;
-						else
-							src += "&amp;custom_css=" + custom_css;
-							
-						if (rbv == "1")
-							src += "&amp;rbv=true";
-							
-						var style = "width: " + (width + 5).toString() + "px; height: 125px; border-style: none;";
-						div.innerHTML = "<iframe style='" + style + "' scrolling='no' src='" + src + "'></iframe>";
-					}
+											
+					var src = url + "BRW/BlogRatingWidget.aspx?cs=" + cs + "&amp;layout=" + layout + 
+						"&amp;width=" + width + "&amp;height=" + height + "&amp;lang=" + lang + "&amp;pac=" + pac;
+					
+					if (custom_css == "0")
+						src += "&amp;ext_bg=" + ext_bg;
 					else
-					{
-						var swf = url + "FL/RatingWidget.swf";
-						div.innerHTML = "<object width='" + width.toString() + "' height='150' " + 
-							"type='application/x-shockwave-flash' " + 
-							"classid='clsid:D27CDB6E-AE6D-11cf-96B8-444553540000' " + 
-							"codebase='http://fpdownload.macromedia.com/get/flashplayer/current/swflash.cab' " +
-							"pluginspage='http://www.adobe.com/go/getflashplayer'>" +
-							"<param name='PluginsPage' value='http://www.adobe.com/go/getflashplayer'/>" +
-							"<param name='FlashVars' value='PAC=" + pac + "&amp;lang=" + lang + "'/>" +
-							"<param name='Movie' value='" + swf + "'/>" +
-							"<param name='allowScriptAccess' value='always'/>" +
-							"<param name='allowFullScreen' value='true'/>" +
-							"<embed src='" + swf + "' width='" + width.toString() + "' height='150' " +
-							"flashvars='PAC=" + pac + "&amp;lang=" + lang + "' " +
-							"allowfullscreen='true' allowScriptAccess='always' " +
-							"type='application/x-shockwave-flash' " +
-							"pluginspage='http://www.adobe.com/go/getflashplayer'>" +
-							"</embed></object>";
-					}
+						src += "&amp;custom_css=" + custom_css;
+						
+					if (rbv == "1")
+						src += "&amp;rbv=true";
+						
+					var style = "width: " + (width + 5).toString() + "px; height: " + 
+						(height + 5).toString() + "px; border-style: none;";
+					div.innerHTML = "<iframe style='" + style + "' scrolling='no' src='" + src + "'></iframe>";
 				}
 								
 				function OnPurgeInactiveWidgets()
@@ -308,6 +320,32 @@ function FeedwebPluginOptions()
 						var ids = document.getElementById('InactiveWidgetIds');
 						window.location.href = "<?php echo plugin_dir_url(__FILE__)?>widget_commit.php?feedweb_cmd=RMW&wp_post_ids=" + ids.value;
 					}
+				}
+				
+				function OnChangeLayout()
+				{
+					var input = document.getElementById('RatingWidgetLayout');
+					var list = document.getElementById('WidgetLayoutBox');
+					var edit = document.getElementById('WidgetWidthEdit');
+					
+					input.value = list.options[list.selectedIndex].value;
+					if (input.value == "wide")
+					{
+						if (edit.value == "")
+							edit.value = "400";
+						edit.disabled = "";
+						
+						document.getElementById('WideLayoutDisclaimer').style.color = "#000000"
+						document.getElementById('WidgetWidthResetButton').style.visibility = "visible";
+					}
+					else
+					{
+						edit.disabled = "disabled";
+						
+						document.getElementById('WideLayoutDisclaimer').style.color = "#808080"
+						document.getElementById('WidgetWidthResetButton').style.visibility = "hidden";
+					}
+					ResetWidgetPreview();
 				}
 			
 				function OnChangeLanguage()
@@ -444,7 +482,7 @@ function FeedwebPluginOptions()
 						return 0;
 					}
 
-					if (width < 350 || width > 700)
+					if (width < 350 || width > 500)
 					{
 						window.alert ('<?php _e("Width is out of range", "FWTD")?>');
 						return 0;
@@ -462,8 +500,10 @@ function FeedwebPluginOptions()
 				{
 					if (document.getElementById("WidgetTypeSwitch").value != "*")
 					{
-						if (ValidateRatingWidgetWidth() == 0)
-							return false;
+						var layout = document.getElementById("RatingWidgetLayout").value;
+						if (layout == "wide")
+							if (ValidateRatingWidgetWidth() == 0)
+								return false;
 						
 						input = document.getElementById("FrontWidgetHeightEdit");
 						var height = parseInt(input.value);
@@ -513,6 +553,7 @@ function FeedwebPluginOptions()
 			<input type='hidden' id='RatingWidgetType' name='RatingWidgetType' value='<?php echo $feedweb_data["widget_type"];?>'/>
 			<input type='hidden' id='AutoAddParagraphs' name='AutoAddParagraphs' value='<?php echo $feedweb_data["add_paragraphs"];?>'/>
 			<input type='hidden' id='InsertWidgetPrompt' name='InsertWidgetPrompt' value='<?php echo $feedweb_data["widget_prompt"];?>'/>
+			<input type='hidden' id='RatingWidgetLayout' name='RatingWidgetLayout' value='<?php echo $feedweb_data["widget_layout"];?>'/>
 			<input type='hidden' id='RatingWidgetPlacement' name='RatingWidgetPlacement' value='<?php echo $feedweb_data["widget_place"];?>'/>
 			<input type='hidden' id='RatingWidgetColorScheme' name='RatingWidgetColorScheme' value='<?php echo $feedweb_data["widget_cs"];?>'/>
 			<input type='hidden' id='FrontWidgetItemCount' name='FrontWidgetItemCount' value='<?php echo $feedweb_data["front_widget_items"];?>'/>
@@ -551,7 +592,7 @@ function FeedwebPluginOptions()
 											</div>
 										</td>
 										<td class="DescriptionColumn">
-											<span><i><?php _e("Please choose the placement of the rating widget within a post", "FWTD")?></i></span><br/>
+											<span><i><?php _e("Please choose the placement of the rating widget within a post.", "FWTD")?></i></span><br/>
 										</td>
 									</tr>
 									
@@ -573,7 +614,7 @@ function FeedwebPluginOptions()
 									</tr>
 									
 									
-									<tr id="RatingWidgetColorSchemeRow" style="height: 94px; vertical-align: top;">
+									<tr id="RatingWidgetColorSchemeRow" style="height: 100px; vertical-align: top;">
 										<td>
 											<span style="position: relative; top: 5px;"><b><?php _e("Widget Color Scheme:", "FWTD")?></b></span><br/>
 											<span style="position: relative; top: 20px;"><b><?php _e("Widget External Background:", "FWTD")?></b></span><br/>
@@ -582,10 +623,12 @@ function FeedwebPluginOptions()
 										<td>
 											<?php BuildColorSchemeBox($feedweb_data['widget_cs'], true) ?><br/>
 											<?php BuildExternalBackgroundControl($feedweb_data['widget_ext_bg']) ?>
-											<input type='button' class='button button-primary' style='width: 170px; margin-top: 4px;' onclick='OnEditCSS()' value='View / Edit CSS'/>
+											<input type='button' class='button button-primary' id="EditWidgetCSSButton" onclick='OnEditCSS()' value='View / Edit CSS'/>
 										</td>
-										<td class="DescriptionColumn">
-											<span><i><?php _e("Please choose the color scheme of your HTML rating widgets", "FWTD")?></i></span>
+										<td>
+											<span id='ChooseColorSchemePrompt'><?php _e("Please choose the color scheme of your HTML rating widgets.", "FWTD")?></span><br />
+											<span id='CustomCSSValidityPrompt'><?php _e("Your custom CSS might not be compatible with the Widget.", "FWTD")?>
+											<br/><?php _e("Please revise and resubmit.", "FWTD")?></span>
 										</td>
 									</tr>	
 																		
@@ -600,16 +643,19 @@ function FeedwebPluginOptions()
 											<span><i>Don't find your language? <a href="mailto://contact@feedweb.net">Help us translate the widget for you!</a></i></span>
 										</td>
 									</tr>
-									<tr>
+									<tr id="RatingWidgetLayoutRow" style="height: 56px; vertical-align: top;">
 										<td>
-											<span><b><?php _e("Widget width (pixels):", "FWTD")?></b></span>
+											<span style="position: relative; top: 5px;"><b><?php _e("Widget Layout:", "FWTD")?></b></span><br/>
+											<span style="position: relative; top: 20px;"><b><?php _e("Widget width (pixels):", "FWTD")?></b></span>
 										</td>
 										<td>
+											<?php BuildLayoutBox($feedweb_data['widget_layout']) ?><br/>
 											<input id='WidgetWidthEdit' name='WidgetWidthEdit' type='text' value="<?php echo $feedweb_data['widget_width']?>"/>
 											<?php BuildResetPreviewButton('WidgetWidthResetButton') ?>
 										</td>
 										<td>
-											<span><i><?php _e("Allowed width: 350 to 700 pixels. Recommended width: 400 to 450 pixels.", "FWTD")?></i></span>
+											<span id="LayoutInfoText"><i><?php _e("Mobile screen layout (300x150) is recommended for all types of devices.", "FWTD")?></i></span><br/>
+											<span id="WideLayoutDisclaimer"><i><?php _e("Allowed width: 350 to 500 pixels. Recommended width: 400 to 450 pixels.", "FWTD")?></i></span>
 										</td>
 									</tr>
 									<tr>
@@ -683,20 +729,7 @@ function FeedwebPluginOptions()
 											id="WidgetPromptBox" name="WidgetPromptBox" type="checkbox" onchange='OnCheckWidgetPrompt()'> <?php _e("Show")?></input>				
 										</td>
 										<td>
-											<span><i><?php _e("Display a prompt to insert a rating widget when a post is published", "FWTD")?></i></span>
-										</td>
-									</tr>
-									
-									<tr>
-										<td>
-											<span><b><?php _e("Automatically add paragraphs:", "FWTD")?></b></span> 				
-										</td>
-										<td>
-											<input <?php if($feedweb_data['add_paragraphs'] == "1") echo 'checked="checked"' ?>
-											id="AddParagraphsBox" name="AddParagraphsBox" type="checkbox" onchange='OnCheckAddParagraphs()'> <?php _e("Add")?></input>				
-										</td>
-										<td>
-											<span><i><?php _e("Surround widgets with paragraph tags:", "FWTD")?></i><b> &lt;P&gt;...&lt;/P&gt;</b></span>
+											<span><i><?php _e("Display a prompt to insert a rating widget when a post is published.", "FWTD")?></i></span>
 										</td>
 									</tr>
 								</tbody>
@@ -776,6 +809,7 @@ function FeedwebPluginOptions()
 	</div>
 	<script>
 		OnWidgetType('<?php echo $feedweb_data['widget_type']?>');
+		OnChangeLayout();
 	</script>
 	<?php 
 }

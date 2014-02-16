@@ -5,14 +5,14 @@ msgstr ""
 "Project-Id-Version: Feedweb\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/feedweb\n"
 "POT-Creation-Date: 2013-09-01 18:31:51+00:00\n"
-"PO-Revision-Date: 2013-09-01 22:09+0200\n"
+"PO-Revision-Date: 2014-02-16 23:30+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ru_RU\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.5.7\n"
+"X-Generator: Poedit 1.6.2\n"
 
 #: feedweb.php:170 feedweb.php:355
 msgid "Insert Rating Widget"
@@ -204,7 +204,7 @@ msgid "Widget Placement:"
 msgstr "Расположение виджета:"
 
 #: feedweb_options.php:444
-msgid "Please choose the placement of the rating widget within a post"
+msgid "Please choose the placement of the rating widget within a post."
 msgstr "Выберите расположение виджета в посте"
 
 #: feedweb_options.php:450
@@ -234,7 +234,7 @@ msgid "Widget External Background:"
 msgstr "Внешний фон Виджета:"
 
 #: feedweb_options.php:476
-msgid "Please choose the color scheme of your HTML rating widgets"
+msgid "Please choose the color scheme of your HTML rating widgets."
 msgstr "Выберите цветовую схему виджета HTML"
 
 #: feedweb_options.php:482
@@ -246,10 +246,10 @@ msgid "Widget width (pixels):"
 msgstr "Ширина виджета:"
 
 #: feedweb_options.php:500
-msgid "Allowed width: 350 to 700 pixels. Recommended width: 400 to 450 pixels."
+msgid "Allowed width: 350 to 500 pixels. Recommended width: 400 to 450 pixels."
 msgstr ""
-"Допустимая ширина: от 350 до 700 пикселей. Рекомендованная ширина: от 400 до "
-"450 пикселей"
+"Допустимая ширина: от 350 до 500 пикселей. Рекомендованная ширина: от 400 до "
+"450."
 
 #: feedweb_options.php:515
 msgid "Widgets at the Home/Front Page:"

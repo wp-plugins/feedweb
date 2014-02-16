@@ -3,15 +3,16 @@ msgstr ""
 "Project-Id-Version: Feedweb Wordpress Plugin\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/feedweb\n"
 "POT-Creation-Date: 2012-05-28 19:03:39+00:00\n"
-"PO-Revision-Date: 2012-09-21 14:14+0200\n"
+"PO-Revision-Date: 2014-02-16 23:30+0200\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Poedit-KeywordsList: _;gettext;gettext_noop\n"
 "X-Poedit-Basepath: .\n"
-"X-Poedit-Language: Burmese\n"
-"X-Poedit-Country: MYANMAR\n"
+"Last-Translator: \n"
+"Language: my_MM\n"
+"X-Generator: Poedit 1.6.2\n"
 
 #: feedweb.php:103
 msgid "Insert Rating Widget"
@@ -48,7 +49,8 @@ msgid "Settings"
 msgstr ""
 
 #: feedweb.php:235
-msgid "The Feedweb service is temporarily unavailable due to system maintenance"
+msgid ""
+"The Feedweb service is temporarily unavailable due to system maintenance"
 msgstr ""
 
 #: feedweb_options.php:38
@@ -124,7 +126,7 @@ msgid "Widget width (pixels):"
 msgstr ""
 
 #: feedweb_options.php:247
-msgid "Allowed width: 350 to 700 pixels. Recommended width: 400 to 450 pixels."
+msgid "Allowed width: 350 to 500 pixels. Recommended width: 400 to 450 pixels."
 msgstr ""
 
 #: feedweb_options.php:253
@@ -136,7 +138,9 @@ msgid "Display Widgets"
 msgstr ""
 
 #: feedweb_options.php:262
-msgid "Check to display the widgets both in the Front Page and the single post pages."
+msgid ""
+"Check to display the widgets both in the Front Page and the single post "
+"pages."
 msgstr ""
 
 #: feedweb_options.php:267
@@ -144,7 +148,9 @@ msgid "Delay displaying results:"
 msgstr ""
 
 #: feedweb_options.php:275
-msgid "Set the period of time you want to hide voting results after the widget is created."
+msgid ""
+"Set the period of time you want to hide voting results after the widget is "
+"created."
 msgstr ""
 
 #: feedweb_options.php:280
@@ -184,7 +190,8 @@ msgid "Hide"
 msgstr ""
 
 #: feedweb_options.php:338
-msgid "Check to hide vertical scroll bar when the front widget exceeds max. height."
+msgid ""
+"Check to hide vertical scroll bar when the front widget exceeds max. height."
 msgstr ""
 
 #: feedweb_options.php:348
@@ -195,8 +202,7 @@ msgstr ""
 msgid "Learn how to use the Front Page Widget in your blog"
 msgstr ""
 
-#: feedweb_settings.php:10
-#: widget_commit.php:10
+#: feedweb_settings.php:10 widget_commit.php:10
 msgid "You are not allowed to be here"
 msgstr ""
 
@@ -209,16 +215,18 @@ msgid "Cannot insert widget into a post published %d days ago"
 msgstr ""
 
 #: feedweb_util.php:411
-msgid "You have created %d widgets in the last 24 hours. The daily limit is %d new widgets"
+msgid ""
+"You have created %d widgets in the last 24 hours. The daily limit is %d new "
+"widgets"
 msgstr ""
 
 #: feedweb_util.php:418
-msgid "You have created %d widgets in the last 30 days. The monthly limit is %d new widgets"
+msgid ""
+"You have created %d widgets in the last 30 days. The monthly limit is %d new "
+"widgets"
 msgstr ""
 
-#: widget_commit.php:63
-#: widget_commit.php:71
-#: widget_commit.php:79
+#: widget_commit.php:63 widget_commit.php:71 widget_commit.php:79
 #: widget_commit.php:87
 msgid "Error in the Post data"
 msgstr ""
@@ -231,9 +239,7 @@ msgstr ""
 msgid "Wordpress cannot modify your widget"
 msgstr ""
 
-#: widget_commit.php:139
-#: widget_commit.php:189
-#: widget_commit.php:277
+#: widget_commit.php:139 widget_commit.php:189 widget_commit.php:277
 msgid "Cannot connect Feedweb server"
 msgstr ""
 
@@ -262,7 +268,8 @@ msgid "Feedweb service cannot create a widget"
 msgstr ""
 
 #: widget_dialog.php:21
-msgid "Dear %s, Please configure your plugin settings before inserting the widget"
+msgid ""
+"Dear %s, Please configure your plugin settings before inserting the widget"
 msgstr ""
 
 #: widget_dialog.php:175
@@ -313,8 +320,7 @@ msgstr ""
 msgid "URL:"
 msgstr ""
 
-#: widget_dialog.php:569
-#: widget_remove.php:69
+#: widget_dialog.php:569 widget_remove.php:69
 msgid "Remove Widget"
 msgstr ""
 
@@ -322,8 +328,7 @@ msgstr ""
 msgid "Next >"
 msgstr ""
 
-#: widget_dialog.php:578
-#: widget_dialog.php:668
+#: widget_dialog.php:578 widget_dialog.php:668
 msgid "Cancel"
 msgstr ""
 
@@ -370,4 +375,3 @@ msgstr ""
 #: widget_remove.php:17
 msgid "The rating widget in the post %s will be removed"
 msgstr ""
-

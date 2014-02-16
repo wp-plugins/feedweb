@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: FWTD-bg_BG\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/feedweb\n"
 "POT-Creation-Date: 2014-01-01 10:50:49+00:00\n"
-"PO-Revision-Date: 2014-01-07 12:28+0200\n"
+"PO-Revision-Date: 2014-02-16 23:29+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: bg_BG\n"
@@ -253,7 +253,7 @@ msgid "Widget Placement:"
 msgstr "Място на джаджата:"
 
 #: feedweb_options.php:554
-msgid "Please choose the placement of the rating widget within a post"
+msgid "Please choose the placement of the rating widget within a post."
 msgstr "Моля, изберете място за дждажата за оценки в публикацията"
 
 #: feedweb_options.php:560
@@ -285,7 +285,7 @@ msgid "Widget Stylesheet (CSS):"
 msgstr "Стил на джаджата (CSS):"
 
 #: feedweb_options.php:588
-msgid "Please choose the color scheme of your HTML rating widgets"
+msgid "Please choose the color scheme of your HTML rating widgets."
 msgstr "Моля, изберете език за Вашата HTML джаджа за оценки"
 
 #: feedweb_options.php:594
@@ -297,9 +297,9 @@ msgid "Widget width (pixels):"
 msgstr "Широчина на джаджата (пиксели):"
 
 #: feedweb_options.php:612
-msgid "Allowed width: 350 to 700 pixels. Recommended width: 400 to 450 pixels."
+msgid "Allowed width: 350 to 500 pixels. Recommended width: 400 to 450 pixels."
 msgstr ""
-"Позволена широчина: от 350 до 700 пиксела. Препоръчителна широчина: от 400 "
+"Позволена широчина: от 350 до 500 пиксела. Препоръчителна широчина: от 400 "
 "до 450 пиксела."
 
 #: feedweb_options.php:617
@@ -363,7 +363,7 @@ msgid "Show"
 msgstr "Покажи"
 
 #: feedweb_options.php:686
-msgid "Display a prompt to insert a rating widget when a post is published"
+msgid "Display a prompt to insert a rating widget when a post is published."
 msgstr "Напомни да се вмъкне джаджата за оценки когато се публикува статия"
 
 #: feedweb_options.php:692

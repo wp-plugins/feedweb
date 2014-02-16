@@ -3,15 +3,16 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/feedweb\n"
 "POT-Creation-Date: 2012-10-06 00:39:41+00:00\n"
-"PO-Revision-Date: 2012-11-16 00:22+0200\n"
+"PO-Revision-Date: 2014-02-16 23:30+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.5.4\n"
+"X-Generator: Poedit 1.6.2\n"
 "X-Poedit-KeywordsList: _;gettext;gettext_noop\n"
 "X-Poedit-Basepath: .\n"
+"Language: nb_NO\n"
 
 #: feedweb.php:105
 msgid "Insert Rating Widget"
@@ -151,9 +152,9 @@ msgid "Widget width (pixels):"
 msgstr "Widget bredde (piksler):"
 
 #: feedweb_options.php:299
-msgid "Allowed width: 350 to 700 pixels. Recommended width: 400 to 450 pixels."
+msgid "Allowed width: 350 to 500 pixels. Recommended width: 400 to 450 pixels."
 msgstr ""
-"Tillatt bredde: 350 til 700 piksler. Anbefalt bredde: 400 til 450 piksler."
+"Tillatt bredde: 350 til 500 piksler. Anbefalt bredde: 400 til 450 piksler."
 
 #: feedweb_options.php:305
 msgid "Widgets at the Home/Front Page:"

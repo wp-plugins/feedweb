@@ -239,7 +239,7 @@ msgid "Widget Placement:"
 msgstr ""
 
 #: feedweb_options.php:554
-msgid "Please choose the placement of the rating widget within a post"
+msgid "Please choose the placement of the rating widget within a post."
 msgstr ""
 
 #: feedweb_options.php:560
@@ -271,7 +271,7 @@ msgid "Widget Stylesheet (CSS):"
 msgstr ""
 
 #: feedweb_options.php:588
-msgid "Please choose the color scheme of your HTML rating widgets"
+msgid "Please choose the color scheme of your HTML rating widgets."
 msgstr ""
 
 #: feedweb_options.php:594
@@ -283,7 +283,7 @@ msgid "Widget width (pixels):"
 msgstr ""
 
 #: feedweb_options.php:612
-msgid "Allowed width: 350 to 700 pixels. Recommended width: 400 to 450 pixels."
+msgid "Allowed width: 350 to 500 pixels. Recommended width: 400 to 450 pixels."
 msgstr ""
 
 #: feedweb_options.php:617
@@ -343,7 +343,7 @@ msgid "Show"
 msgstr ""
 
 #: feedweb_options.php:686
-msgid "Display a prompt to insert a rating widget when a post is published"
+msgid "Display a prompt to insert a rating widget when a post is published."
 msgstr ""
 
 #: feedweb_options.php:692

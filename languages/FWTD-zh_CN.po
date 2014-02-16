@@ -8,14 +8,13 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2012-04-22 10:29+0200\n"
+"PO-Revision-Date: 2014-02-16 23:30+0200\n"
 "Language-Team: \n"
-"X-Poedit-Language: Chinese\n"
-"X-Poedit-Country: China\n"
+"Last-Translator: \n"
+"Language: zh\n"
+"X-Generator: Poedit 1.6.2\n"
 
-#. #-#-#-#-#  plugin.pot (Feedweb 1.2.7)  #-#-#-#-#
 #. Plugin Name of the plugin/theme
-#. #-#-#-#-#  plugin.pot (Feedweb 1.2.7)  #-#-#-#-#
 #. Author of the plugin/theme
 #: feedweb.php:71
 msgid "Feedweb"
@@ -78,7 +77,7 @@ msgid "Widget width (pixels):"
 msgstr ""
 
 #: feedweb.php:281
-msgid "Allowed width: 350 to 700 pixels. Recommended width: 400 to 450 pixels."
+msgid "Allowed width: 350 to 500 pixels. Recommended width: 400 to 450 pixels."
 msgstr ""
 
 #: feedweb.php:287
@@ -90,7 +89,9 @@ msgid "Display Widgets"
 msgstr ""
 
 #: feedweb.php:296
-msgid "Check to display the widgets both in the Front Page and the single post pages."
+msgid ""
+"Check to display the widgets both in the Front Page and the single post "
+"pages."
 msgstr ""
 
 #: feedweb.php:305
@@ -98,7 +99,9 @@ msgid "Delay displaying results:"
 msgstr ""
 
 #: feedweb.php:313
-msgid "Set the period of time you want to hide voting results after the widget is created."
+msgid ""
+"Set the period of time you want to hide voting results after the widget is "
+"created."
 msgstr ""
 
 #: feedweb.php:322
@@ -121,8 +124,7 @@ msgstr ""
 msgid "Settings"
 msgstr ""
 
-#: feedweb_settings.php:10
-#: widget_commit.php:10
+#: feedweb_settings.php:10 widget_commit.php:10
 msgid "You are not allowed to be here"
 msgstr ""
 
@@ -134,8 +136,7 @@ msgstr ""
 msgid "Wordpress cannot insert your widget"
 msgstr ""
 
-#: widget_commit.php:47
-#: widget_commit.php:146
+#: widget_commit.php:47 widget_commit.php:146
 msgid "Cannot connect Feedweb server"
 msgstr ""
 
@@ -143,9 +144,7 @@ msgstr ""
 msgid "Wordpress cannot remove your widget"
 msgstr ""
 
-#: widget_commit.php:109
-#: widget_commit.php:117
-#: widget_commit.php:125
+#: widget_commit.php:109 widget_commit.php:117 widget_commit.php:125
 msgid "Error in the Post data"
 msgstr ""
 
@@ -201,8 +200,7 @@ msgstr ""
 msgid "URL:"
 msgstr ""
 
-#: widget_dialog.php:354
-#: widget_dialog.php:447
+#: widget_dialog.php:354 widget_dialog.php:447
 msgid "Cancel"
 msgstr ""
 
@@ -263,10 +261,11 @@ msgid "http://wordpress.org/extend/plugins/feedweb/"
 msgstr ""
 
 #. Description of the plugin/theme
-msgid "Expose your blog to the Feedweb reader's community, promote your views, get a comprehensive and detailed feedback from your readers."
+msgid ""
+"Expose your blog to the Feedweb reader's community, promote your views, get "
+"a comprehensive and detailed feedback from your readers."
 msgstr ""
 
 #. Author URI of the plugin/theme
 msgid "http://feedweb.net"
 msgstr ""
-

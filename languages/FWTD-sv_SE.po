@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/feedweb\n"
 "POT-Creation-Date: 2014-01-01 10:50:49+00:00\n"
-"PO-Revision-Date: 2014-01-16 22:20+0200\n"
+"PO-Revision-Date: 2014-02-16 23:29+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: sv_SE\n"
@@ -100,7 +100,7 @@ msgstr "Demonstration"
 
 #: feedweb.php:533
 msgid "Monitor"
-msgstr "Skärm"
+msgstr "Statistik"
 
 #: feedweb.php:534
 msgid "License"
@@ -164,7 +164,7 @@ msgstr "Återställ Förhandsvisning"
 
 #: feedweb_options.php:88
 msgid "No Delay"
-msgstr "Inga Förseningar"
+msgstr "Vänta inte, visa direkt"
 
 #: feedweb_options.php:88
 msgid "1 Hour"
@@ -255,7 +255,7 @@ msgid "Widget Placement:"
 msgstr "Widget Placering"
 
 #: feedweb_options.php:554
-msgid "Please choose the placement of the rating widget within a post"
+msgid "Please choose the placement of the rating widget within a post."
 msgstr ""
 "Var vänlig och ange var du vill placera Röstnings Widgeten i ditt inlägg"
 
@@ -288,7 +288,7 @@ msgid "Widget Stylesheet (CSS):"
 msgstr "Widget Stylesheet (CSS):"
 
 #: feedweb_options.php:588
-msgid "Please choose the color scheme of your HTML rating widgets"
+msgid "Please choose the color scheme of your HTML rating widgets."
 msgstr "Var vänlig och ange förgschema för dina HTML Röstnings Widget"
 
 #: feedweb_options.php:594
@@ -300,10 +300,10 @@ msgid "Widget width (pixels):"
 msgstr "Widget bredd (pixlar):"
 
 #: feedweb_options.php:612
-msgid "Allowed width: 350 to 700 pixels. Recommended width: 400 to 450 pixels."
+msgid "Allowed width: 350 to 500 pixels. Recommended width: 400 to 450 pixels."
 msgstr ""
 "Vi rekommenderar en bredd mellan 400 till 450 pixlar. Du kan ha en bredd "
-"mellan 350 till 700 pixlar."
+"mellan 350 till 500 pixlar."
 
 #: feedweb_options.php:617
 msgid "Display results before voting:"
@@ -363,7 +363,7 @@ msgid "Show"
 msgstr "Visa"
 
 #: feedweb_options.php:686
-msgid "Display a prompt to insert a rating widget when a post is published"
+msgid "Display a prompt to insert a rating widget when a post is published."
 msgstr ""
 "Visa en prompt för att lägga in en Röstnings Widget när ett inlägg är "
 "publicerat"

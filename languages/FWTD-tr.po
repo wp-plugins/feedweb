@@ -3,14 +3,14 @@ msgstr ""
 "Project-Id-Version: Feedweb\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/feedweb\n"
 "POT-Creation-Date: 2013-10-27 12:04:47+00:00\n"
-"PO-Revision-Date: 2013-11-17 10:20+0200\n"
+"PO-Revision-Date: 2014-02-16 23:29+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
-"Language: Turkish\n"
+"Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.5.7\n"
+"X-Generator: Poedit 1.6.2\n"
 "X-Poedit-KeywordsList: _;gettext;gettext_noop\n"
 "X-Poedit-Basepath: .\n"
 
@@ -214,7 +214,7 @@ msgid "Widget Placement:"
 msgstr "Sayaç Konumu:"
 
 #: feedweb_options.php:444
-msgid "Please choose the placement of the rating widget within a post"
+msgid "Please choose the placement of the rating widget within a post."
 msgstr "Lütfen, metinle beraber değerlendirme sayacının yerini seçin"
 
 #: feedweb_options.php:450
@@ -246,7 +246,7 @@ msgid "Widget External Background:"
 msgstr "Sayaç Harici Altyapı:"
 
 #: feedweb_options.php:476
-msgid "Please choose the color scheme of your HTML rating widgets"
+msgid "Please choose the color scheme of your HTML rating widgets."
 msgstr "Lütfen, HTML değerlendirme sayaçlarınızın renk şemasını seçin"
 
 #: feedweb_options.php:482
@@ -258,9 +258,9 @@ msgid "Widget width (pixels):"
 msgstr "Sayaç genişliği (çözünürlük):"
 
 #: feedweb_options.php:500
-msgid "Allowed width: 350 to 700 pixels. Recommended width: 400 to 450 pixels."
+msgid "Allowed width: 350 to 500 pixels. Recommended width: 400 to 450 pixels."
 msgstr ""
-"Müsaade edilen genişlik: 350 ile 700 (çözünürlük). Tavsiye edilen genişlik: "
+"Müsaade edilen genişlik: 350 ile 500 (çözünürlük). Tavsiye edilen genişlik: "
 "400İle 450 çözünürlük."
 
 #: feedweb_options.php:515
@@ -312,7 +312,7 @@ msgid "Show"
 msgstr "Gösterin"
 
 #: feedweb_options.php:560
-msgid "Display a prompt to insert a rating widget when a post is published"
+msgid "Display a prompt to insert a rating widget when a post is published."
 msgstr ""
 "Bir yazı yayınlandığında, değerlendirme sayacının eklenmesini hemen gösterin"
 

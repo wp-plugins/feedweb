@@ -8,11 +8,11 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2013-03-01 12:04+0200\n"
+"PO-Revision-Date: 2014-02-16 23:30+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
-"X-Generator: Poedit 1.5.4\n"
-"Language: Arabic\n"
+"X-Generator: Poedit 1.6.2\n"
+"Language: ar\n"
 
 #: feedweb.php:123 feedweb.php:284
 msgid "Insert Rating Widget"
@@ -164,8 +164,11 @@ msgid "Widget Color Scheme:"
 msgstr "لون التقييم الجانبي:"
 
 #: feedweb_options.php:336
-msgid "Please choose the color scheme of your HTML rating widgets"
+msgid "Please choose the color scheme of your HTML rating widgets."
 msgstr "يرجى اختيار لون حسب HTML"
+
+msgid "Please choose the placement of the rating widget within a post."
+msgstr ""
 
 #: feedweb_options.php:342
 msgid "Widget Language:"
@@ -176,8 +179,8 @@ msgid "Widget width (pixels):"
 msgstr "عرض التقييم الجانبي (بيكسل):"
 
 #: feedweb_options.php:364
-msgid "Allowed width: 350 to 700 pixels. Recommended width: 400 to 450 pixels."
-msgstr "العرض المسموح: 350 إلى 700 بيكسل. العرض الموصى به 400 إلى 450 بيكسل."
+msgid "Allowed width: 350 to 500 pixels. Recommended width: 400 to 450 pixels."
+msgstr "العرض المسموح: 350 إلى 500 بيكسل. العرض الموصى به 400 إلى 450 بيكسل."
 
 #: feedweb_options.php:370
 msgid "Widgets at the Home/Front Page:"
@@ -225,7 +228,7 @@ msgid "Show"
 msgstr "عرض"
 
 #: feedweb_options.php:423
-msgid "Display a prompt to insert a rating widget when a post is published"
+msgid "Display a prompt to insert a rating widget when a post is published."
 msgstr "عرض الحث على اضافة التقييم عندما يتم نشر المشاركة"
 
 #: feedweb_options.php:435
@@ -492,9 +495,7 @@ msgstr "انتهى"
 msgid "The rating widget in the post %s will be removed"
 msgstr "التقييم الجانبي %s في المشاركة سيتم حذفه"
 
-#. #-#-#-#-#  plugin.pot (Feedweb 1.8.2)  #-#-#-#-#
 #. Plugin Name of the plugin/theme
-#. #-#-#-#-#  plugin.pot (Feedweb 1.8.2)  #-#-#-#-#
 #. Author of the plugin/theme
 msgid "Feedweb"
 msgstr ""

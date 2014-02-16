@@ -175,6 +175,7 @@ function GetFeedwebOptions()
 		"language" => "en", 
 		"mp_widgets" => "0", 
 		"widget_width" => "400",
+		"widget_layout" => "wide",
 		"results_before_voting" => "0", 
 		"delay" => "0", 
 		"copyright_notice_ex" => "0", 

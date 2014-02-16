@@ -4,7 +4,7 @@ Plugin Name: Feedweb
 Plugin URI: http://wordpress.org/extend/plugins/feedweb/
 Description: Expose your blog to the Feedweb reader's community. Promote your views. Get a comprehensive and detailed feedback from your readers.
 Author: Feedweb
-Version: 2.3.10
+Version: 2.4
 Author URI: http://www.feedweb.net
 */
 
@@ -33,7 +33,7 @@ function ContentFilter($content)
 	if (CheckServiceAvailability() != null)
 		return $content . GetLicenseInfo('Service is not available');
 	
-	$width = $data["widget_width"];
+	$width = intval($data["widget_width"]);
 	switch ($data["widget_type"])
 	{
 		case "F": // Flash Widget
@@ -57,9 +57,17 @@ function ContentFilter($content)
 			break;
 				
 		case "H": // HTML5 Widget
-			$frame_width = intval($width) + 5;
-			$src = GetFeedwebUrl()."BRW/BlogRatingWidget.aspx?cs=".$data["widget_cs"]."&amp;width=$width&amp;height=120&amp;".
-				"lang=".$data["language"]."&amp;pac=$pac";
+			$height = 120;	// Wide layout default
+			if (strtolower($data["widget_layout"]) == "mobile")
+			{
+				$width = 300;
+				$height = 150;
+			}
+			$frame_width = $width + 5;
+			$frame_height = $height + 5;
+			
+			$src = GetFeedwebUrl()."BRW/BlogRatingWidget.aspx?cs=".$data["widget_cs"]."&amp;width=$width&amp;height=$height".
+				"&amp;lang=".$data["language"]."&amp;pac=$pac&amp;layout=".$data["widget_layout"];
 				
 			if ($data["results_before_voting"] == "1")	// Display results before voting
 				$src .= "&amp;rbv=true";
@@ -69,8 +77,11 @@ function ContentFilter($content)
 			else
 				$src .= "&amp;custom_css=".$data["custom_css"];
 			
-			$code = "<iframe id='FeedwebRatingWidget_$id' style='width: ".$frame_width."px; height: 125px; border-style: none;' scrolling='no' src='$src'></iframe>";
-			$code .= "<a id='FeedwebVerificationLink_$id' style='display: none;' href='http://www.feedweb.net/RCP?pac=$pac'>.</a>";
+			$code = "<iframe id='FeedwebRatingWidget_$id' style='width: ".$frame_width."px; ".
+				"height: ".$frame_height."px; border-style: none;' scrolling='no' src='$src'></iframe>";
+				
+			$url = GetFeedwebUrl()."RCP?pac=$pac";
+			$code .= "<a id='FeedwebVerificationLink_$id' style='display: none;' href='$url'>.</a>";
 			break;
 				
 		default:
@@ -242,7 +253,10 @@ function FillFeedwebCell($id)
 		$answers = $data['answers'];
 		if ($answers != null)
 			for ($index = 0; $index < count($answers); $index++)
-				echo "<input type='hidden' class='FeedwebPostAnswerData' value='".$answers[$index]."'/>";
+			{
+				$text = str_replace("'", "’", $answers[$index]);
+				echo "<input type='hidden' class='FeedwebPostAnswerData' value='$text'/>";
+			}
 		echo "<input alt='$url' class='thickbox' id='$image_id' title='$title' type='image' src='$src'/></div>";
 	}
 }
@@ -424,7 +438,7 @@ function EnqueueAdminScript()
 				var base = '<?php echo GetFeedwebUrl();?>' + 'IMG/Plugin/';
 				var html = "<style>"+
 					" ." + popup_class + " table {margin: 4px 0px 4px 0px;}" +
-					" ." + popup_class + " td {font-size: 8pt; text-align: center; padding: 0 8px 0 8px;}" +
+					" ." + popup_class + " td {font-size: 8pt; text-align: center; padding: 0 8px 0 8px; min-width: 24px;}" +
 					" ." + popup_class + " img {border: 1px solid white; margin-top: 4px;}" + 
 					" </style>";
 				
@@ -432,6 +446,7 @@ function EnqueueAdminScript()
 				html += "<tr><td style='text-align: left;'><img src='" + base + "Question.png'/></td>" + 
 					"<td><img src='" + base + "Yes.png'/></td>" +
 					"<td><img src='" + base + "No.png'/></td></tr>";
+					
 				for (var index = 0; index < answers.length; index++)
 				{
 					html += "<tr>";
@@ -445,7 +460,6 @@ function EnqueueAdminScript()
 					}
 					html += "</tr>";
 				}
-				
 				html += "</table>";
 				
 				popup.innerHTML = html;
@@ -626,7 +640,8 @@ function SetPostStatus($id, $new_status)
 
 function AddFeedwebAdminMenu() 
 {
-	$url = GetFeedwebUrl()."IMG/Logo_16x16_Transparent.png";
+	$url = plugin_dir_url(__FILE__)."images/Logo_16x16_Transparent.png";
+	
 	add_menu_page ( 'Feedweb', 'Feedweb', 'manage_options', 'feedweb/feedweb_menu.php', '', $url );
 	add_submenu_page( 'feedweb/feedweb_menu.php', __('Settings'), __('Settings'), 'manage_options', 'feedweb/feedweb_menu.php');
 	add_submenu_page( 'feedweb/feedweb_menu.php', __('Tutorial', 'FWTD'), __('Tutorial', 'FWTD'), 'manage_options', 'feedweb/feedweb_help.php');

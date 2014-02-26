@@ -207,7 +207,7 @@ function FeedwebPluginOptions()
 		<h2><?php _e("Feedweb Plugin Settings", "FWTD");?></h2>
 
 		<form name="FeedwebSettingsForm" id="FeedwebSettingsForm" onsubmit="return OnSubmitFeedwebSettingsForm();">
-			<link href='<?php echo plugin_dir_url(__FILE__)?>Feedweb.css?v=2.4' rel='stylesheet' type='text/css' />
+			<link href='<?php echo plugin_dir_url(__FILE__)?>Feedweb.css?v=2.4.1' rel='stylesheet' type='text/css' />
 			<?php
 				$script_url = GetFeedwebUrl()."Base/jscolor/jscolor.js";
 				echo "<script type='text/javascript' src='$script_url'></script>";
@@ -261,14 +261,14 @@ function FeedwebPluginOptions()
 					if (div.style.display == "block") // Hide
 					{
 						title.innerHTML = "<?php _e("Show Widget Preview >>>", "FWTD") ?>";
-						settings[0].style.height = "500px";
+						settings[0].style.height = "450px";
 						div.style.display = "none";
 						row.style.height = "35px";
 					}
 					else
 					{
 						title.innerHTML = "<?php _e("<<< Hide Widget Preview", "FWTD") ?>";
-						settings[0].style.height = "625px";
+						settings[0].style.height = "580px";
 						div.style.display = "block";
 						row.style.height = "160px";
 					}
@@ -385,10 +385,12 @@ function FeedwebPluginOptions()
 					ResetWidgetPreview();
 				}
 				
+				/*
 				function OnWidgetPlacement(placement)
 				{
 					document.getElementById('RatingWidgetPlacement').value = placement;
 				}
+				*/
 				
 				function OnWidgetType(type)
 				{
@@ -554,7 +556,9 @@ function FeedwebPluginOptions()
 			<input type='hidden' id='AutoAddParagraphs' name='AutoAddParagraphs' value='<?php echo $feedweb_data["add_paragraphs"];?>'/>
 			<input type='hidden' id='InsertWidgetPrompt' name='InsertWidgetPrompt' value='<?php echo $feedweb_data["widget_prompt"];?>'/>
 			<input type='hidden' id='RatingWidgetLayout' name='RatingWidgetLayout' value='<?php echo $feedweb_data["widget_layout"];?>'/>
+			<!--
 			<input type='hidden' id='RatingWidgetPlacement' name='RatingWidgetPlacement' value='<?php echo $feedweb_data["widget_place"];?>'/>
+			-->
 			<input type='hidden' id='RatingWidgetColorScheme' name='RatingWidgetColorScheme' value='<?php echo $feedweb_data["widget_cs"];?>'/>
 			<input type='hidden' id='FrontWidgetItemCount' name='FrontWidgetItemCount' value='<?php echo $feedweb_data["front_widget_items"];?>'/>
 			<input type='hidden' id='ResultsBeforeVoting' name='ResultsBeforeVoting' value='<?php echo $feedweb_data["results_before_voting"];?>'/>
@@ -573,9 +577,10 @@ function FeedwebPluginOptions()
 				</tr>
 				<tr class="FeedwebSettingsContent" style="overflow: hidden;">
 					<td>
-						<div class="FeedwebSettingsDiv" style="display: block; height: 500px;">
+						<div class="FeedwebSettingsDiv" style="display: block; height: 450px;">
 							<table class="FeedwebSettingsTable">
 								<tbody>
+									<!--
 									<tr>
 										<td>
 											<span><b><?php _e("Widget Placement:", "FWTD")?></b></span>
@@ -595,7 +600,7 @@ function FeedwebPluginOptions()
 											<span><i><?php _e("Please choose the placement of the rating widget within a post.", "FWTD")?></i></span><br/>
 										</td>
 									</tr>
-									
+									-->
 									<tr <?php if ($feedweb_data['widget_type']=='H') echo " style='display: none;'"; ?> >
 										<td>
 											<span><b><?php _e("Widget Type:", "FWTD")?></b></span>
@@ -715,7 +720,8 @@ function FeedwebPluginOptions()
 											id="CopyrightNoticeBox" name="CopyrightNoticeBox" type="checkbox" onchange='OnCheckCopyrightNotice()'> <?php _e("Allow")?></input>				
 										</td>
 										<td style="padding-bottom: 0px; padding-top: 6px;">
-											<span><i><?php _e("Please check to display the following text below the widgets: ", "FWTD")?></i></span><br/>
+											<span style='display: block; margin-bottom: 4px;'><i>
+											<?php _e("Please check to display the following text below the widgets: ", "FWTD")?></i></span>
 											<?php echo GetCopyrightNotice()?>
 										</td>
 									</tr>

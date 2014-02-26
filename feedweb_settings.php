@@ -66,7 +66,7 @@ function UpdateSettings()
 			$data["add_paragraphs"] = $_POST["AutoAddParagraphs"];
 			$data["widget_prompt"] = $_POST["InsertWidgetPrompt"];
 			$data["widget_cs"] = $_POST["RatingWidgetColorScheme"];
-			$data["widget_place"] = $_POST["RatingWidgetPlacement"];
+			//$data["widget_place"] = $_POST["RatingWidgetPlacement"];
 			$data["widget_ext_bg"] = $_POST["ExternalBackgroundBox"];
 			$data["front_widget_items"] = $_POST["FrontWidgetItemCount"];
 			$data["results_before_voting"] = $_POST["ResultsBeforeVoting"];

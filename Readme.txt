@@ -3,7 +3,7 @@ Contributors: Feedweb
 Tags: blog, rate, rating, widget, network, feed, feedback, article, audience, engagement, aggregator, aggregation, content, content management, post, page, public, opinion, research, flash, html5, media, press, news, politics, society, social, question, answer, survey, poll, polling, vote, voting, stats, discussion, controversy, cooperation, view, comments, community, statistics, syndication, marketing, admin, sidebar, plugin, publishing
 Requires at least: 3.0
 Tested up to: 3.8.1
-Stable Tag: 2.4
+Stable Tag: 2.4.1
 
 Expose your blog to a brand new audience. Ask questions, get answers. Find out what your readers think. Join the community of 2000+ websites now!
 
@@ -86,6 +86,12 @@ Follow us on [**Facebook**](https://www.facebook.com/feedwebresearch) and [**Twi
 
 
 == Changelog ==
+
+= 2.4.1 =
+* Fast non-blocking widget loading.
+* Caching plagins compatibility.
+* Improved service availability.
+* Placement option disabled.
 
 = 2.4 =
 * New! Widget color scheme "Modern".

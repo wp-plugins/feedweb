@@ -175,7 +175,7 @@ function GetFeedwebOptions()
 		"language" => "en", 
 		"mp_widgets" => "0", 
 		"widget_width" => "400",
-		"widget_layout" => "wide",
+		"widget_layout" => "mobile",
 		"results_before_voting" => "0", 
 		"delay" => "0", 
 		"copyright_notice_ex" => "0", 
@@ -185,8 +185,8 @@ function GetFeedwebOptions()
 		"front_widget_height" => "400", 
 		"front_widget_hide_scroll" => "0", 
 		"widget_type" => "H", 
-		"widget_place" => "0", 
-		"widget_cs" => "gray",
+		//"widget_place" => "0", 
+		"widget_cs" => "modern",
 		"custom_css" => "0",
 		"widget_ext_bg" => "FFFFFF" );	
 	
@@ -546,24 +546,63 @@ function GetLicenseInfo($remark)
 	return "<input name='FeedwebLicenseInfo' id='FeedwebLicenseInfo' type='hidden' value='$val'/>";
 }
 
+
+// 1 	- Service was available within last 30 minutes - don't check again
+// -1 	- Service was unavailable within last 15 minutes - don't check again
+// 0	- Status is absent / outdated. Check service availability now
+function GetServiceLastAccess()
+{
+	global $wpdb;
+	$query = "SELECT meta_key, meta_value FROM $wpdb->postmeta WHERE post_id=0".
+		" AND (meta_key='feedweb_last_access' OR meta_key='feedweb_last_fail')";
+	
+	$results = $wpdb->get_results($query);
+	if ($results == null)
+		return 0;
+		
+	$current = time();
+	foreach($results as $result)
+	{
+		$previous = intval($result->meta_value);
+		
+		if ($result->meta_key == "feedweb_last_access")
+			if (time() - $previous < 1800) 	// 30 min * 60 sec
+				return 1;
+		
+		if ($result->meta_key == "feedweb_last_fail")
+			if (time() - $previous < 900)	// 15 min * 60 sec
+				return -1;
+	}
+	return 0;
+}
+
+function SetServiceLastAccess($status)
+{
+	global $wpdb;
+	$query = "DELETE FROM $wpdb->postmeta WHERE post_id=0 AND (meta_key='feedweb_last_access' OR meta_key='feedweb_last_fail')";
+	$wpdb->query($query);
+	
+	$key = ($status == true ? "feedweb_last_access" : "feedweb_last_fail");
+	$query = sprintf("INSERT INTO %s(post_id, meta_key, meta_value) VALUES (0, '%s', '%d')", $wpdb->postmeta, $key, time());
+	$wpdb->query($query);
+}
+
 function CheckServiceAvailability()
 {
-	// Check service availability once in an hour
-	global $wpdb;
-	$query = "SELECT meta_value FROM $wpdb->postmeta WHERE post_id=0 AND meta_key='feedweb_last_access'";
-	$access = $wpdb->get_var($query);
-	if ($access != null)
-	{
-		$current = time();
-		$previous = intval($access);
-		if ($current - $access < 1800)	// 30 min * 60 sec
+ 	$status = GetServiceLastAccess();
+	if ($status != 0) // Either true or false
+		if ($status > 0)
 			return null;
-	}
+		else
+			return "Not available. Check later";
 
 	$query = GetFeedwebUrl()."FBanner.aspx?action=ping";
 	$response = wp_remote_get ($query, array('timeout' => 20));
 	if (is_wp_error ($response))
+	{
+		SetServiceLastAccess(false);
 		return $response->get_error_message();
+	}
 	
 	$dom = new DOMDocument;
 	if ($dom->loadXML($response['body']) == true)
@@ -571,18 +610,17 @@ function CheckServiceAvailability()
 		{
 			$error = $dom->documentElement->getAttribute("error");
 			if ($error != null && $error != "")
+			{
+				SetServiceLastAccess(false);
 				return $error;
-			
-			$query = "DELETE FROM $wpdb->postmeta WHERE post_id=0 AND meta_key='feedweb_last_access'";
-			$wpdb->query($query);
-			
-			$access = strval(time());
-			$query = "INSERT INTO $wpdb->postmeta(post_id, meta_key, meta_value) VALUES (0, 'feedweb_last_access', '$access')";
-			$wpdb->query($query);
+			}
+		 	
+		 	SetServiceLastAccess(true);
 			return null;
 		}
 			
-	return "";
+	SetServiceLastAccess(false);
+	return "Unknown Error";
 }
 
 function SetPageVisibilityStatus($id, $visible)

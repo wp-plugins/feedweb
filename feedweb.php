@@ -4,7 +4,7 @@ Plugin Name: Feedweb
 Plugin URI: http://wordpress.org/extend/plugins/feedweb/
 Description: Expose your blog to the Feedweb reader's community. Promote your views. Get a comprehensive and detailed feedback from your readers.
 Author: Feedweb
-Version: 2.4
+Version: 2.4.1
 Author URI: http://www.feedweb.net
 */
 
@@ -18,89 +18,15 @@ $feedweb_rw_swf = "FL/RatingWidget.swf";
 function ContentFilter($content)
 {
 	global $post_ID;
-	global $feedweb_rw_swf;
 	
-	$data = GetFeedwebOptions();
-	if ($data["mp_widgets"] == "0")	// Doesn't display on the Home / Front Page
-		if (is_front_page() || is_home())
-			return  $content;
-			
 	$id = get_the_ID($post_ID);
-	$pac = GetPac($id);
-	if ($pac == null)
-		return  $content;
-		
-	if (CheckServiceAvailability() != null)
-		return $content . GetLicenseInfo('Service is not available');
+	$src = plugin_dir_url(__FILE__)."widget_container.php?pid=".$id;
+	if (is_front_page() || is_home())
+		$src .= "&amp;is_hp=true";
 	
-	$width = intval($data["widget_width"]);
-	switch ($data["widget_type"])
-	{
-		case "F": // Flash Widget
-			$swf = GetFeedwebUrl().$feedweb_rw_swf;
-			$code = "<object width='".$width."' height='150' ". 
-				"type='application/x-shockwave-flash' ". 
-				"classid='clsid:D27CDB6E-AE6D-11cf-96B8-444553540000' ". 
-				"codebase='http://fpdownload.macromedia.com/get/flashplayer/current/swflash.cab' ".
-				"pluginspage='http://www.adobe.com/go/getflashplayer'>". 
-				"<param name='PluginsPage' value='http://www.adobe.com/go/getflashplayer'/>".
-				"<param name='FlashVars' value='PAC=" .$pac. "&amp;lang=" .$data["language"]. "'/>".
-				"<param name='Movie' value='" . $swf. "'/>".
-				"<param name='allowScriptAccess' value='always'/>".
-				"<param name='allowFullScreen' value='true'/>".
-				"<embed src='" .$swf. "' width='".$width."' height='150' ".
-				"flashvars='PAC=" .$pac. "&amp;lang=" .$data["language"]. "' ". 
-				"allowfullscreen='true' allowScriptAccess='always' ".
-				"type='application/x-shockwave-flash' ".
-				"pluginspage='http://www.adobe.com/go/getflashplayer'>".
-				"</embed></object>";
-			break;
-				
-		case "H": // HTML5 Widget
-			$height = 120;	// Wide layout default
-			if (strtolower($data["widget_layout"]) == "mobile")
-			{
-				$width = 300;
-				$height = 150;
-			}
-			$frame_width = $width + 5;
-			$frame_height = $height + 5;
-			
-			$src = GetFeedwebUrl()."BRW/BlogRatingWidget.aspx?cs=".$data["widget_cs"]."&amp;width=$width&amp;height=$height".
-				"&amp;lang=".$data["language"]."&amp;pac=$pac&amp;layout=".$data["widget_layout"];
-				
-			if ($data["results_before_voting"] == "1")	// Display results before voting
-				$src .= "&amp;rbv=true";
-				
-			if ($data["custom_css"] == "0")
-				$src .= "&amp;ext_bg=".$data["widget_ext_bg"];
-			else
-				$src .= "&amp;custom_css=".$data["custom_css"];
-			
-			$code = "<iframe id='FeedwebRatingWidget_$id' style='width: ".$frame_width."px; ".
-				"height: ".$frame_height."px; border-style: none;' scrolling='no' src='$src'></iframe>";
-				
-			$url = GetFeedwebUrl()."RCP?pac=$pac";
-			$code .= "<a id='FeedwebVerificationLink_$id' style='display: none;' href='$url'>.</a>";
-			break;
-				
-		default:
-			return $content.GetLicenseInfo("Invalid Widget Type: " + $data["widget_type"]);
-	}
-	
-	$signature = GetLicenseInfo(null);
-	if (strstr($content, $signature) != false) // The signature is already exists
-		return $content;
-	
-	$code = $signature."<br/>".$code;
-	if ($data["copyright_notice_ex"] == "1")
-		$code .= GetCopyrightNotice();
-	
-	if ($data["add_paragraphs"] == "1")
-		$code = "<p>".$code."</p>";
-	
-	if ($data["widget_place"] == '1') // Place on top
-		return $code.$content;
+	$code = "<iframe class='FeedwebRatingWidgetContainer' id='FeedwebRatingWidgetContainer_$id' scrolling='no' ".
+		"style='border-style: none; margin-bottom: 1px;' width='0' height='0' src='$src'></iframe>".
+		"<div class='FeedwebNoticePlaceHolder' id='FeedwebNoticePlaceHolder_$id'></div>";
 	return $content.$code;
 }
 
@@ -110,7 +36,7 @@ function GetCopyrightNotice()
 	$data = get_plugin_data( __FILE__ );
 	$version = $data['Version'];
 	
-	$text = "<br/><div style='direction:ltr; font-size:7pt; font-family: Verdana; height:30px; ".
+	$text = "<div style='direction:ltr; font-size:7pt; font-family: Verdana; height:30px; ".
 		"display: block; overflow: hidden; width: 380px; position: relative; margin: 0; padding: 0;'>".
 		"<span style='display:block;positiion:absolute; top: 0px; left: 0px; margin: 0; padding: 0;'>".
 		"<a href = 'http://wordpress.org/extend/plugins/feedweb'>Feedweb for Wordpress</a>. v$version".
@@ -118,8 +44,8 @@ function GetCopyrightNotice()
 		"%2Ffeedwebresearch&amp;send=false&amp;layout=button_count&amp;width=25&amp;show_faces=false&".
 		"amp;font&amp;colorscheme=light&amp;action=like&amp;height=21&amp;appId=240492672692711' ".
 		"scrolling='no' frameborder='0' allowTransparency='true' style='border:none; overflow:hidden;".
-		"width:88px; height:21px; margin: 0; padding: 0; position: absolute; left: 175px; top: 0px;'>".
-		"</iframe><span style='display: block; position: absolute; left: 270px; top: 0px;'>&copy; ".
+		"width:88px; height:21px; margin: 0; padding: 0; position: absolute; left: 160px; top: 0px;'>".
+		"</iframe><span style='display: block; position: absolute; left: 250px; top: 0px;'>&copy; ".
 		"<a href='http://www.feedweb.net'>Feedweb</a>, 2012-14</span></div>";
 
 	return $text;

@@ -348,7 +348,7 @@ Widget Wizard - Title Div
 	top: 74px;
 }
 
-#UrlText
+#UrlText, #UrlBox
 {
 	position: absolute;
 	width: 660px;

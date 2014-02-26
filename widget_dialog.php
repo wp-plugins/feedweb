@@ -402,7 +402,7 @@ function GetUrlControl()
 			$db_url = $data["url"];
 			if ($db_url != null && $db_url != "" && $db_url != $url)
 			{
-				echo "<select style='width: 100%;' id='UrlBox' name='UrlBox' onchange='OnChangeUrl()'>".
+				echo "<select id='UrlBox' name='UrlBox' onchange='OnChangeUrl()'>".
 					"<option>$url</option><option>$db_url</option></select>".
 					"<input type='hidden' id='UrlText' name='UrlText' value='$url'/>";
 				return;
@@ -1099,7 +1099,7 @@ function YesNoQuestionPrompt()
 
 		<link rel='stylesheet' id='thickbox-css'  href='<?php echo get_bloginfo('url') ?>/wp-includes/js/thickbox/thickbox.css' type='text/css' media='all' />
 		<link rel='stylesheet' id='colors-css'  href='<?php echo get_bloginfo('url') ?>/wp-admin/css/colors-fresh.css' type='text/css' media='all' />
-		<link href='<?php echo plugin_dir_url(__FILE__)?>Feedweb.css?v=2.4' rel='stylesheet' type='text/css' />
+		<link href='<?php echo plugin_dir_url(__FILE__)?>Feedweb.css?v=2.4.1' rel='stylesheet' type='text/css' />
 		
 	</head>
 	<body style="margin: 0px; overflow: hidden;" onload="OnLoad()">

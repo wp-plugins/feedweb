@@ -8,7 +8,7 @@ Stable Tag: 2.4.1
 Expose your blog to a brand new audience. Ask questions, get answers. Find out what your readers think. Join the community of 2500+ websites now!
 
 == Description ==
-**Latest update**: More than **275.000** votes collected by **16.500** blog post rating widgets published in **2.500** websites.
+**Latest update**: More than **276.000** votes collected by **16.500** blog post rating widgets published in **2.500** websites.
 
 The Feedweb Plugin is a simple and easy way to promote and improve your blog. By activating the plugin you can freely insert customized rating widgets into your selected posts. Choose questions you want to ask your readers and get comprehensive and precise feedback about your blog.
 

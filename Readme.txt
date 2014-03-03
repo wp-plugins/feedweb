@@ -59,6 +59,10 @@ Follow us on [**Facebook**](https://www.facebook.com/feedwebresearch) and [**Twi
 * Swedish (sv_SE)	 - Daniel Sunneson
 * Turkish (tr)		 - Ayşe Nuray Ünyay  
 
+= We recommend =
+Anti-spam plugin [**CleanTalk**](http://wordpress.org/support/view/plugin-reviews/cleantalk-spam-protect)
+
+
 == Installation ==
 
 1.	Install the Feedweb plugin on your blog and activate it. 

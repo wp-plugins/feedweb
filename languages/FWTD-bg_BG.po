@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: FWTD-bg_BG\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/feedweb\n"
 "POT-Creation-Date: 2014-01-01 10:50:49+00:00\n"
-"PO-Revision-Date: 2014-02-16 23:29+0200\n"
+"PO-Revision-Date: 2014-03-07 00:35+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: bg_BG\n"
@@ -702,10 +702,10 @@ msgstr "Широчината на снимката трябва да е поне
 #: widget_dialog.php:990
 msgid ""
 "The image ratio is invalid. The proportion between image width and height "
-"cannot be greater than 250%"
+"cannot be greater than 500%"
 msgstr ""
 "Размерите на снимката са невалидни. Съотношението между широчина и височина "
-"не може да бъде повече от 250%"
+"не може да бъде повече от 500%"
 
 #: widget_dialog.php:1115
 msgid "Feedweb Plugin Terms of Service"

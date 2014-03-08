@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: Feedweb\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/feedweb\n"
 "POT-Creation-Date: 2013-09-01 18:31:51+00:00\n"
-"PO-Revision-Date: 2014-02-16 23:30+0200\n"
+"PO-Revision-Date: 2014-03-07 00:35+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ru_RU\n"
@@ -625,8 +625,8 @@ msgstr "Длина и ширина изображения должна быть 
 #: widget_dialog.php:994
 msgid ""
 "The image ratio is invalid. The proportion between image width and height "
-"cannot be greater than 250%"
-msgstr "Соотношение длины и ширины изображения не может быть больше 250%"
+"cannot be greater than 500%"
+msgstr "Соотношение длины и ширины изображения не может быть больше 500%"
 
 #: widget_dialog.php:1118
 msgid "Feedweb Plugin Terms of Service"

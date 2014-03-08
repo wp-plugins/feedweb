@@ -8,7 +8,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2014-02-16 23:30+0200\n"
+"PO-Revision-Date: 2014-03-07 00:35+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "X-Generator: Poedit 1.6.2\n"
@@ -399,9 +399,9 @@ msgstr "عرض أو ارتفاع التقييم يجب أن يكون على ال
 #: widget_dialog.php:643
 msgid ""
 "The image ratio is invalid. The proportion between image width and height "
-"cannot be greater than 250%"
+"cannot be greater than 500%"
 msgstr ""
-"تناسب الصورة غير صالح. النسبة بين ارتفاع الصورة وعرضها يجب الا يتجاوز 250%"
+"تناسب الصورة غير صالح. النسبة بين ارتفاع الصورة وعرضها يجب الا يتجاوز 500%"
 
 #: widget_dialog.php:750
 msgid "Title:"

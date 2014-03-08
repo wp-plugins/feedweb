@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Feedweb\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/feedweb\n"
 "POT-Creation-Date: 2013-10-27 12:04:47+00:00\n"
-"PO-Revision-Date: 2014-02-16 23:29+0200\n"
+"PO-Revision-Date: 2014-03-07 00:35+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: tr\n"
@@ -646,10 +646,10 @@ msgstr "Görüntü genişliği ya da yükseklik en az 100 çözünürlük olacak
 #: widget_dialog.php:989
 msgid ""
 "The image ratio is invalid. The proportion between image width and height "
-"cannot be greater than 250%"
+"cannot be greater than 500%"
 msgstr ""
 "Geçersiz görüntü oranıdır. Görüntü genişliği ile yükseklik arasındaki oran "
-"dağılımı %250 den büyük olamaz."
+"dağılımı %500 den büyük olamaz."
 
 #: widget_dialog.php:1113
 msgid "Feedweb Plugin Terms of Service"

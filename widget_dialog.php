@@ -985,9 +985,9 @@ function YesNoQuestionPrompt()
 				}
 				
 				var ratio = img.clientWidth / img.clientHeight;
-				if (ratio > 2.5 || ratio < 0.4)
+				if (ratio > 5 || ratio < 0.2)
 				{
-					window.alert ('<?php _e("The image ratio is invalid. The proportion between image width and height cannot be greater than 250%", "FWTD") ?>');
+					window.alert ('<?php _e("The image ratio is invalid. The proportion between image width and height cannot be greater than 500%", "FWTD") ?>');
 					document.getElementById("WidgetImageUrl").value = "";
 					img.style.display = "none";
 					img.src = "";

@@ -13,11 +13,11 @@ else
 
 $error_message = "";
 
-function UpdateCSS(&$data)
+function UpdateCSS($command, &$data)
 {
 	$bac = GetBac(true);
 	$query = GetFeedwebUrl().'FBanner.aspx?action=set-css&bac='.$bac;
-	if ($_POST["CSSCommandValue"] == "S")
+	if ($command == "S")
 	{
 		$params = array();
 		$params['css'] = stripslashes($_POST["CSSTextEditor"]);
@@ -45,36 +45,30 @@ function UpdateSettings()
 	if ($_POST["CSSCommandValue"] != "")
 	{
 		$data["custom_css"] = "1";
-		if (UpdateCSS($data) == false)
+		if (UpdateCSS($_POST["CSSCommandValue"], $data) == false)
 		{
 			$error_message = __("Failed to update CSS", "FWTD");
-			return;
+				return;
 		}
 	}
 	else 
 	{
-		if ($_POST["WidgetTypeSwitch"] == "*")
-			$data["widget_type"] = "H";
-		else
-		{
-			$data["delay"] = $_POST["DelayResults"];
-			$data["language"] = $_POST["FeedwebLanguage"];
-			$data["mp_widgets"] = $_POST["FeedwebMPWidgets"];
-			$data["widget_type"] = $_POST["RatingWidgetType"];
-			$data["widget_width"] = $_POST["WidgetWidthEdit"];
-			$data["widget_layout"] = $_POST["RatingWidgetLayout"];
-			$data["add_paragraphs"] = $_POST["AutoAddParagraphs"];
-			$data["widget_prompt"] = $_POST["InsertWidgetPrompt"];
-			$data["widget_cs"] = $_POST["RatingWidgetColorScheme"];
-			//$data["widget_place"] = $_POST["RatingWidgetPlacement"];
-			$data["widget_ext_bg"] = $_POST["ExternalBackgroundBox"];
-			$data["front_widget_items"] = $_POST["FrontWidgetItemCount"];
-			$data["results_before_voting"] = $_POST["ResultsBeforeVoting"];
-			$data["front_widget_height"] = $_POST["FrontWidgetHeightEdit"];
-			$data["copyright_notice_ex"] = $_POST["FeedwebCopyrightNotice"];
-			$data["front_widget_hide_scroll"] = $_POST["FrontWidgetHideScroll"];
-			$data["front_widget_color_scheme"] = $_POST["FrontWidgetColorScheme"];
-		}
+		$data["delay"] = $_POST["DelayResults"];
+		$data["language"] = $_POST["FeedwebLanguage"];
+		$data["mp_widgets"] = $_POST["FeedwebMPWidgets"];
+		$data["widget_type"] = $_POST["RatingWidgetType"];
+		$data["widget_width"] = $_POST["WidgetWidthEdit"];
+		$data["async_load_mode"] = $_POST["AsyncLoadMode"];
+		$data["widget_layout"] = $_POST["RatingWidgetLayout"];
+		$data["add_paragraphs"] = $_POST["AutoAddParagraphs"];
+		$data["widget_prompt"] = $_POST["InsertWidgetPrompt"];
+		$data["widget_cs"] = $_POST["RatingWidgetColorScheme"];
+		$data["widget_ext_bg"] = $_POST["ExternalBackgroundBox"];
+		$data["results_before_voting"] = $_POST["ResultsBeforeVoting"];
+		$data["copyright_notice_ex"] = $_POST["FeedwebCopyrightNotice"];
+			
+		if($_POST["CSSContentType"] == "reset")
+			UpdateCSS("R", $data);
 	}
 	
 	if (SetFeedwebOptions($data))

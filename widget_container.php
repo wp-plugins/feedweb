@@ -53,11 +53,7 @@
 			
 		$code = $code.GetLicenseInfo(null);
 		
-		$notice = null;
-		if($data["copyright_notice_ex"] == "1")
-			$notice = "<div id='CopyrightNoticeCode' style='visibility: hidden;'>".GetCopyrightNotice()."</div>";
-		
-		return array('width' => $frame_width, 'height' => $frame_height, 'code' => $code, 'notice' => $notice);
+		return array('width' => $frame_width, 'height' => $frame_height, 'code' => $code, 'notice' => $data["copyright_notice_ex"]);
 	}
 
 	$pid = $_GET['pid'];
@@ -90,20 +86,16 @@
 					    if (frame == null)
 					    	return;
 					    
-					    var placeholder = parent.document.getElementById("FeedwebNoticePlaceHolder_<?php echo $pid;?>");
-					    if (placeholder == null || placeholder == undefined)
-					    	return;
-						
 						frame.width = "<?php echo $result['width']?>";
 						frame.height = "<?php echo $result['height']?>";
 						
 						<?php
-						if ($result['notice'] != null)
+						if ($result['notice'] == "1")
 						{
 							?>
-							var code = document.getElementById('CopyrightNoticeCode');
-							placeholder.innerHTML = code.innerHTML;
-							code.parentElement.removeChild(code);
+							var placeholder = parent.document.getElementById("FeedwebNoticePlaceHolder_<?php echo $pid;?>");
+					    	if (placeholder != null && placeholder != undefined)
+					    		placeholder.style.display = 'block';
 							<?php
 						}
 						?>
@@ -113,7 +105,7 @@
 				}
 				?>
 			</head>
-			<body>
+			<body onload="setTimeout(function(){ActivateWidget()}, 10)">
 			<?php
 				if (gettype($result) == "string")
 					echo "<input type='hidden' id='FeedwebErrorMessage' value='$result'/>";
@@ -124,9 +116,11 @@
 						echo $result['notice'];
 				}
 			?>
+			<!--
 			<script type="text/javascript">
 				ActivateWidget();
 			</script>
+			-->
 			</body>			
 		</html>
 		<?php			

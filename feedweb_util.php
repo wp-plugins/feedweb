@@ -75,15 +75,25 @@ function GetPac($id)
 
 function GetBac($must_exist)
 {
+	// First, try to get option...
+	$bac = get_option("_feedweb_plugin_bac");
+	if ($bac != null && $bac != false)
+		return $bac;
+	
+	// Get it old way (from postmeta)	
 	global $wpdb;
 	$query = "SELECT meta_value FROM $wpdb->postmeta WHERE post_id=0 AND meta_key='feedweb_bac'";
 	$bac = $wpdb->get_var($query);
 	if ($bac != null)
+	{
+		// Save it as an option
+		add_option("_feedweb_plugin_bac", $bac);	
 		return $bac;
-
+	}
+	
     if ($must_exist)
 		return null;
-
+	
     // Register Site Domain command
 	$root = PrepareParam(get_option('siteurl'));
 	$query = GetFeedwebUrl()."FBanner.aspx?action=rsd&root=$root";
@@ -116,61 +126,39 @@ function GetBac($must_exist)
 	if ($code == null || $code == "")	
 		return null;
 	
-	$query = "INSERT INTO $wpdb->postmeta (post_id, meta_key, meta_value) VALUES (0, 'feedweb_bac', '$code')";
-	$result = $wpdb->query($query);
-	if ($result == false)
-		return null;
-	
+	add_option("_feedweb_plugin_bac", $code);	
 	return $code;
 }
 
 function SetSingleFeedwebOption($key, $value)
 {
-	global $wpdb;
-	
-	$query = "SELECT COUNT(*) FROM $wpdb->usermeta WHERE meta_key='feedweb_$key'";
-	$count = $wpdb->get_var($query);
-	if ($count > 0)
-		$query = "UPDATE $wpdb->usermeta SET meta_value='$value' WHERE meta_key='feedweb_$key'";
-	else
-	{
-		$id = wp_get_current_user()->ID;
-		$query = "INSERT INTO $wpdb->usermeta (user_id, meta_key, meta_value) VALUES ($id, 'feedweb_$key', '$value')";
-	}
-	$result = $wpdb->query($query);
-	return $result != false;
+	update_option("_feedweb_plugin_$key", $value);
 }
 
 function GetSingleFeedwebOption($key)
 {
-	global $wpdb;
-	
-	$query = "SELECT meta_value FROM $wpdb->usermeta WHERE meta_key='feedweb_$key'";
-	return $wpdb->get_var($query);
+	$value = get_option("_feedweb_plugin_$key");
+	if ($value == null || $value == false)
+	{
+		global $wpdb;
+		
+		$query = "SELECT meta_value FROM $wpdb->usermeta WHERE meta_key='feedweb_$key'";
+		$value = $wpdb->get_var($query);
+		if ($value != null)
+			add_option("_feedweb_plugin_$key", $value);
+	}
+	return $value;
 }
 
 function SetFeedwebOptions($data)
 {
-	global $wpdb;
-	
-	$query = "DELETE FROM $wpdb->usermeta WHERE meta_key LIKE 'feedweb%%'";
-	$wpdb->query($query);
-	
-	$id = wp_get_current_user()->ID;
-	foreach ($data as $key => $value)
-	{
-		$query = "INSERT INTO $wpdb->usermeta (user_id, meta_key, meta_value) ".
-			"VALUES ($id, 'feedweb_$key', '$value')";
-		
-		$result = $wpdb->query($query);
-		if ($result == false)
-			return false;
-	}
+ 	update_option("_feedweb_plugin_options", $data);
 	return true;
 }
 
 function GetFeedwebOptions()
 {
+	// Set default options
 	$data = array(
 		"language" => "en", 
 		"mp_widgets" => "0", 
@@ -184,11 +172,20 @@ function GetFeedwebOptions()
 		"front_widget_color_scheme" => "classic", 
 		"front_widget_height" => "400", 
 		"front_widget_hide_scroll" => "0", 
+		"async_load_mode" => "0",
 		"widget_type" => "H", 
-		//"widget_place" => "0", 
 		"widget_cs" => "modern",
 		"custom_css" => "0",
-		"widget_ext_bg" => "FFFFFF" );	
+		"widget_ext_bg" => "FFFFFF" );
+		
+	$values = get_option("_feedweb_plugin_options");
+	if ($values != null && $values != false)
+	{
+		// override default options with retrieved ones
+		foreach ($values as $key => $value) 
+			$data[$key] = $value;
+		return $data;		
+	}
 	
 	global $wpdb;
 	$query = "SELECT meta_key, meta_value FROM $wpdb->usermeta WHERE meta_key LIKE 'feedweb%%'";
@@ -203,14 +200,20 @@ function GetFeedwebOptions()
 				$data["language_set"] = true;
 		}
 	}
+	add_option("_feedweb_plugin_options", $data);
 	return $data;
 }
 
 function GetFeedwebOptionsCount()
 {
-	global $wpdb;
-	$query = "SELECT COUNT(meta_value) FROM $wpdb->usermeta WHERE meta_key LIKE 'feedweb%%'";
-	return $wpdb->get_var($query);
+ 	$data = get_option("_feedweb_plugin_options");
+ 	if ($data == false || $data == null)
+	{
+		global $wpdb;
+		$query = "SELECT COUNT(meta_value) FROM $wpdb->usermeta WHERE meta_key LIKE 'feedweb%%'";
+		return $wpdb->get_var($query);
+	}
+	return count($data);
 }
 
 

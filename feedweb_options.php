@@ -158,6 +158,7 @@ function GetCSSText()
 			
 			$css = array();
 			$css['valid'] = $dom->documentElement->getAttribute("valid");
+			$css['type'] = $dom->documentElement->getAttribute("type");
 			$css['text'] = $dom->documentElement->textContent;
 			return $css;
 		}
@@ -188,6 +189,7 @@ function BuildCSSEditor()
 		echo "<textarea id='CSSTextEditor' name='CSSTextEditor'>".$css['text']."</textarea>";
 		echo "<textarea id='OriginalCSSText'>".$css['text']."</textarea>";
 		echo "<input type='hidden' id='CSSCommandValue' name='CSSCommandValue' value=''/>";
+		echo "<input type='hidden' id='CSSContentType' name='CSSContentType' value='".$css['type']."'/>";
 		
 		if ($css['valid'] != "true")
 			echo "<script>setTimeout(function () { ShowCSSValidityPrompt() }, 1000);</script>";
@@ -207,7 +209,7 @@ function FeedwebPluginOptions()
 		<h2><?php _e("Feedweb Plugin Settings", "FWTD");?></h2>
 
 		<form name="FeedwebSettingsForm" id="FeedwebSettingsForm" onsubmit="return OnSubmitFeedwebSettingsForm();">
-			<link href='<?php echo plugin_dir_url(__FILE__)?>Feedweb.css?v=2.4.1' rel='stylesheet' type='text/css' />
+			<link href='<?php echo plugin_dir_url(__FILE__)?>Feedweb.css?v=2.4.2' rel='stylesheet' type='text/css' />
 			<?php
 				$script_url = GetFeedwebUrl()."Base/jscolor/jscolor.js";
 				echo "<script type='text/javascript' src='$script_url'></script>";
@@ -296,6 +298,9 @@ function FeedwebPluginOptions()
 					var rbv = document.getElementById("ResultsBeforeVoting").value;
 					var cs = box.options[box.selectedIndex].value;
 					var url = '<?php echo GetFeedwebUrl()?>';
+					
+					if (document.getElementById('CSSContentType').value == "reset")
+						custom_css = "0";
 											
 					var src = url + "BRW/BlogRatingWidget.aspx?cs=" + cs + "&amp;layout=" + layout + 
 						"&amp;width=" + width + "&amp;height=" + height + "&amp;lang=" + lang + "&amp;pac=" + pac;
@@ -382,6 +387,13 @@ function FeedwebPluginOptions()
 					var list = document.getElementById('RatingWidgetColorSchemeBox');
 					var input = document.getElementById('RatingWidgetColorScheme');
 					input.value = list.options[list.selectedIndex].value;
+					
+					var type = document.getElementById('CSSContentType').value;
+					if (type == 'custom')
+					{
+						alert('<?php _e("Note: Changing widget color scheme will disable your custom CSS", "FWTD")?>');
+						document.getElementById('CSSContentType').value = "reset";
+					}
 					ResetWidgetPreview();
 				}
 				
@@ -464,6 +476,16 @@ function FeedwebPluginOptions()
 						input.value = "0";
 				}
 				
+				function OnCheckAsyncLoadMode()
+				{
+					var box = document.getElementById('AsyncLoadModeBox');
+					var input = document.getElementById('AsyncLoadMode');
+					if (box.checked == true)
+						input.value = "1";
+					else
+						input.value = "0";
+				}
+				
 				function OnCheckHideScroll()
 				{
 					var box = document.getElementById('FrontWidgetHideScrollBox');
@@ -493,35 +515,12 @@ function FeedwebPluginOptions()
 					return width;
 				}
 
-				function OnSwitchToHtml()
-				{
-					document.getElementById("WidgetTypeSwitch").value = "*";
-				}
-							
 				function OnSubmitFeedwebSettingsForm()
 				{
-					if (document.getElementById("WidgetTypeSwitch").value != "*")
-					{
-						var layout = document.getElementById("RatingWidgetLayout").value;
-						if (layout == "wide")
-							if (ValidateRatingWidgetWidth() == 0)
-								return false;
-						
-						input = document.getElementById("FrontWidgetHeightEdit");
-						var height = parseInt(input.value);
-						if (isNaN(height))
-						{
-							window.alert ('<?php _e("Please enter a valid Front Widget height", "FWTD")?>');
+					var layout = document.getElementById("RatingWidgetLayout").value;
+					if (layout == "wide")
+						if (ValidateRatingWidgetWidth() == 0)
 							return false;
-						}
-
-						if (height < 200 || height > 800)
-						{
-							window.alert ('<?php _e("Front Widget height is out of range", "FWTD")?>');
-							return false;
-						}
-						input.value = height.toString();
-					}
 					
 					var form = document.getElementById("FeedwebSettingsForm");
 					form.action ="<?php echo plugin_dir_url(__FILE__)?>feedweb_settings.php";
@@ -551,20 +550,21 @@ function FeedwebPluginOptions()
 			<?php wp_referer_field(true)?>
 			<input type='hidden' id='DelayResults' name='DelayResults' value='<?php echo $feedweb_data["delay"];?>'/>
 			<input type='hidden' id='FeedwebLanguage' name='FeedwebLanguage' value='<?php echo $feedweb_data["language"];?>'/>
+			<input type='hidden' id='AsyncLoadMode' name='AsyncLoadMode' value='<?php echo $feedweb_data["async_load_mode"];?>'/>
 			<input type='hidden' id='FeedwebMPWidgets' name='FeedwebMPWidgets' value='<?php echo $feedweb_data["mp_widgets"];?>'/>
 			<input type='hidden' id='RatingWidgetType' name='RatingWidgetType' value='<?php echo $feedweb_data["widget_type"];?>'/>
 			<input type='hidden' id='AutoAddParagraphs' name='AutoAddParagraphs' value='<?php echo $feedweb_data["add_paragraphs"];?>'/>
 			<input type='hidden' id='InsertWidgetPrompt' name='InsertWidgetPrompt' value='<?php echo $feedweb_data["widget_prompt"];?>'/>
 			<input type='hidden' id='RatingWidgetLayout' name='RatingWidgetLayout' value='<?php echo $feedweb_data["widget_layout"];?>'/>
-			<!--
-			<input type='hidden' id='RatingWidgetPlacement' name='RatingWidgetPlacement' value='<?php echo $feedweb_data["widget_place"];?>'/>
-			-->
 			<input type='hidden' id='RatingWidgetColorScheme' name='RatingWidgetColorScheme' value='<?php echo $feedweb_data["widget_cs"];?>'/>
-			<input type='hidden' id='FrontWidgetItemCount' name='FrontWidgetItemCount' value='<?php echo $feedweb_data["front_widget_items"];?>'/>
 			<input type='hidden' id='ResultsBeforeVoting' name='ResultsBeforeVoting' value='<?php echo $feedweb_data["results_before_voting"];?>'/>
 			<input type='hidden' id='FeedwebCopyrightNotice' name='FeedwebCopyrightNotice' value='<?php echo $feedweb_data["copyright_notice_ex"];?>'/>
+			<!--
+			<input type='hidden' id='RatingWidgetPlacement' name='RatingWidgetPlacement' value='<?php echo $feedweb_data["widget_place"];?>'/>
 			<input type='hidden' id='FrontWidgetHideScroll' name='FrontWidgetHideScroll' value='<?php echo $feedweb_data["front_widget_hide_scroll"];?>'/>
 			<input type='hidden' id='FrontWidgetColorScheme' name='FrontWidgetColorScheme' value='<?php echo $feedweb_data["front_widget_color_scheme"];?>'/>
+			<input type='hidden' id='FrontWidgetItemCount' name='FrontWidgetItemCount' value='<?php echo $feedweb_data["front_widget_items"];?>'/>
+			-->
 			<br/>
 			<div id="CSSEditorDiv" ><?php BuildCSSEditor();?></div> 
 			<table id="SettingsTable" cellpadding="0" cellspacing="0">
@@ -572,7 +572,7 @@ function FeedwebPluginOptions()
 					<td>
 						<a href="#" class="FeedwebSettingsTab" onclick="OnClickFeedwebSettingsTab(0)" 
 							style="text-decoration: underline; background-color: #e0e0ff;"><?php _e("Rating Widget", "FWTD")?></a>
-						<a href="#" class="FeedwebSettingsTab" onclick="OnClickFeedwebSettingsTab(1)"><?php _e("Front Widget", "FWTD")?></a>
+						<a href="#" class="FeedwebSettingsTab" onclick="OnClickFeedwebSettingsTab(1)"><?php _e("Advanced", "FWTD")?></a>
 					</td>
 				</tr>
 				<tr class="FeedwebSettingsContent" style="overflow: hidden;">
@@ -580,45 +580,6 @@ function FeedwebPluginOptions()
 						<div class="FeedwebSettingsDiv" style="display: block; height: 450px;">
 							<table class="FeedwebSettingsTable">
 								<tbody>
-									<!--
-									<tr>
-										<td>
-											<span><b><?php _e("Widget Placement:", "FWTD")?></b></span>
-										</td>
-										<td>
-											<div class="RadioDiv">
-												<input type="radio" <?php if ($feedweb_data['widget_place']=='1') echo 'checked="checked"'; ?> 
-													name="WidgetPlaceRadio" id="WidgetPlaceTopRadio" onclick="OnWidgetPlacement('1')"/>
-												<label id="WidgetPlaceTopLabel" for="WidgetPlaceTopRadio">Top</label>
-												
-												<input type="radio" <?php if ($feedweb_data['widget_place']!='1') echo 'checked="checked"'; ?> 
-													name="WidgetPlaceRadio" id="WidgetPlaceBottomRadio" onclick="OnWidgetPlacement('0')"/>
-												<label id="WidgetPlaceBottomLabel" for="WidgetPlaceBottomRadio">Bottom</label>
-											</div>
-										</td>
-										<td class="DescriptionColumn">
-											<span><i><?php _e("Please choose the placement of the rating widget within a post.", "FWTD")?></i></span><br/>
-										</td>
-									</tr>
-									-->
-									<tr <?php if ($feedweb_data['widget_type']=='H') echo " style='display: none;'"; ?> >
-										<td>
-											<span><b><?php _e("Widget Type:", "FWTD")?></b></span>
-										</td>
-										<td>
-											<input type='submit' class='button button-primary' style='width: 170px;' onclick='OnSwitchToHtml()' value='Upgrade to HTML5'/>
-											<input type='hidden' id='WidgetTypeSwitch' name='WidgetTypeSwitch' value='-'/>
-										</td>
-										<td class="DescriptionColumn">
-											<span><i><?php _e("Click to upgrade your rating widgets from Flash to HTML5", "FWTD")?></i></span><br/>
-											<span class="DescriptionWarningText">
-												<?php _e("Note that Flash is not supported in devices like iPad or iPhone.", "FWTD")?>
-												<?php _e("Flash widget will be discontinued after December 31, 2013.", "FWTD")?>
-											</span>
-										</td>
-									</tr>
-									
-									
 									<tr id="RatingWidgetColorSchemeRow" style="height: 100px; vertical-align: top;">
 										<td>
 											<span style="position: relative; top: 5px;"><b><?php _e("Widget Color Scheme:", "FWTD")?></b></span><br/>
@@ -745,59 +706,28 @@ function FeedwebPluginOptions()
 							<table class="FeedwebSettingsTable">
 								<tbody>
 									<tr>
-										<td style="width: 255px;">
-											<span><b><?php _e("Front Page Widget Color Scheme:", "FWTD")?></b></span> 				
+										<td style='width: 320px;'>
+											<span><b><?php _e("Async load mode:", "FWTD")?></b></span> 				
 										</td>
-										<td style='width: 10px;'/>
-										<td style="width: 200px;">
-											<?php BuildColorSchemeBox($feedweb_data['front_widget_color_scheme'], false) ?>				
+										<td style='width: 200px;'>
+											<input id="AsyncLoadModeBox" name="AsyncLoadModeBox" onchange="OnCheckAsyncLoadMode()"
+											<?php if($feedweb_data['async_load_mode'] == "1") echo 'checked="checked"'?> type="checkbox"> 
+											<?php _e("Enable", "FWTD")?></input>				
 										</td>
-										<td style='width: 10px;'/>
-										<td style="width: 600px;">
-											<span><i><?php _e("Select color scheme for the Front Page widget", "FWTD")?></i></span>
-										</td>
-									</tr>
-									<tr>
-										<td>
-											<span><b><?php _e("Max. Widget height (pixels):", "FWTD")?></b></span>
-										</td>
-										<td/>
-										<td>
-											<input id='FrontWidgetHeightEdit' name='FrontWidgetHeightEdit' type='text' style='width: 100%;' 
-												value="<?php echo $feedweb_data['front_widget_height']?>"/>
-										</td>
-										<td/>
-										<td>
-											<span><i><?php _e("Allowed height: 200 to 800 pixels. Recommended height: 400 pixels.", "FWTD")?></i></span>
-										</td>
-									</tr>
-									
-									<tr>
-										<td>
-											<span><b><?php _e("Vertical Scroll Bar:", "FWTD")?></b></span> 				
-										</td>
-										<td />
-										<td>
-											<input id="FrontWidgetHideScrollBox" name="FrontWidgetHideScrollBox" onchange="OnCheckHideScroll()"
-											<?php if($feedweb_data['front_widget_hide_scroll'] == "1") echo 'checked="checked"'?> type="checkbox"> 
-											<?php _e("Hide", "FWTD")?></input>				
-										</td>
-										<td />
-										<td>
-											<span><i><?php _e("Check to hide vertical scroll bar when the front widget exceeds max. height.", "FWTD")?></i></span>
+										<td style='width: 600px;'>
+											<span><i><?php _e("Check to enable asynchronous (nonblocking) loading of Rating Widgets.", "FWTD")?></i></span>
 										</td>
 									</tr>
 									<tr>
-										<td style="width: 255px;">
-											<span><b><?php _e("Number of list items:", "FWTD")?></b></span> 				
+										<td>
+											<span><b><?php _e("Automatically add paragraphs:", "FWTD")?></b></span> 				
 										</td>
-										<td style='width: 10px;'/>
-										<td style="width: 200px;">
-											<?php BuildItemCountBox(intval($feedweb_data['front_widget_items'])) ?>				
+										<td>
+											<input <?php if($feedweb_data['add_paragraphs'] == "1") echo 'checked="checked"' ?>
+											id="AddParagraphsBox" name="AddParagraphsBox" type="checkbox" onchange='OnCheckAddParagraphs()'> <?php _e("Add")?></input>				
 										</td>
-										<td style='width: 10px;'/>
-										<td style="width: 600px;">
-											<span><i><?php _e("Number of items in the Front Widget list", "FWTD")?></i></span>
+										<td>
+											<span><i><?php _e("Surround widgets with paragraph tags:", "FWTD")?></i><b> &lt;P&gt;...&lt;/P&gt;</b></span>
 										</td>
 									</tr>
 								</tbody>
@@ -807,7 +737,8 @@ function FeedwebPluginOptions()
 				</tr>
 				<tr class="FeedwebSettingsCommitButton">
 					<td>
-						<?php echo get_submit_button(__('Save Changes'), 'primary', 'submit', false, "style='width: 200px;'"); GetPurgeInactiveWidgets(); ?>
+						<?php echo get_submit_button(__('Save Changes'), 'primary', 'submit', false, "style='width: 200px;'");?>
+						<?php GetPurgeInactiveWidgets(); ?>
 					</td>
 				</tr>
 			</table>

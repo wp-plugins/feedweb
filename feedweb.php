@@ -4,7 +4,7 @@ Plugin Name: Feedweb
 Plugin URI: http://wordpress.org/extend/plugins/feedweb/
 Description: Expose your blog to the Feedweb reader's community. Promote your views. Get a comprehensive and detailed feedback from your readers.
 Author: Feedweb
-Version: 2.4.1
+Version: 2.4.2
 Author URI: http://www.feedweb.net
 */
 
@@ -17,36 +17,99 @@ $feedweb_rw_swf = "FL/RatingWidget.swf";
 
 function ContentFilter($content)
 {
-	global $post_ID;
-	
-	$id = get_the_ID($post_ID);
-	$src = plugin_dir_url(__FILE__)."widget_container.php?pid=".$id;
-	if (is_front_page() || is_home())
-		$src .= "&amp;is_hp=true";
-	
-	$code = "<iframe class='FeedwebRatingWidgetContainer' id='FeedwebRatingWidgetContainer_$id' scrolling='no' ".
-		"style='border-style: none; margin-bottom: 1px;' width='0' height='0' src='$src'></iframe>".
-		"<div class='FeedwebNoticePlaceHolder' id='FeedwebNoticePlaceHolder_$id'></div>";
-	return $content.$code;
+	$code = GetFeedwebContent();
+	if ($code != null)	
+		return $content.$code;
+	return $content;
 }
 
+
+function GetFeedwebContent()
+{
+	global $post_ID;
+	$pid = get_the_ID($post_ID);
+	
+	$data = GetFeedwebOptions();
+	if ($data["mp_widgets"] == "0")	// Doesn't display on the Home / Front Page
+		if (is_front_page() || is_home())
+			return null;
+	
+	if ($data["async_load_mode"] == "1")
+	{
+		$src = plugin_dir_url(__FILE__)."widget_container.php?pid=".$pid;
+		if (is_front_page() || is_home())
+			$src .= "&amp;is_hp=true";
+		
+		$code = "<iframe class='FeedwebRatingWidgetContainer' id='FeedwebRatingWidgetContainer_$pid' scrolling='no' ".
+			"style='border-style: none; margin-bottom: 1px;' width='0' height='0' src='$src'></iframe>";
+			
+		if($data["copyright_notice_ex"] == "1")
+			$code .= "<div class='FeedwebNoticePlaceHolder' id='FeedwebNoticePlaceHolder_$pid' style='display: none;'>".
+				GetCopyrightNotice()."</div>";
+	}
+	else 
+	{
+		$pac = GetPac($pid);
+		if ($pac == null)
+			return null;
+					
+		if (CheckServiceAvailability() != null)
+			return null; 
+		
+		$width = intval($data["widget_width"]);
+		$height = 120;	// Wide layout default
+		if (strtolower($data["widget_layout"]) == "mobile")
+		{
+			$width = 300;
+			$height = 150;
+		}
+			
+		$frame_width = $width + 5;
+		$frame_height = $height + 5;
+		$src = GetFeedwebUrl()."BRW/BlogRatingWidget.aspx?cs=".$data["widget_cs"]."&amp;width=$width&amp;height=$height".
+			"&amp;lang=".$data["language"]."&amp;pac=$pac&amp;layout=".$data["widget_layout"];
+				
+		if ($data["results_before_voting"] == "1")	// Display results before voting
+			$src .= "&amp;rbv=true";
+				
+		if ($data["custom_css"] == "0")
+			$src .= "&amp;ext_bg=".$data["widget_ext_bg"];
+		else
+			$src .= "&amp;custom_css=".$data["custom_css"];
+			
+		$code = "<iframe class='FeedwebRatingWidget' id='FeedwebRatingWidget_$pid' scrolling='no' src='$src' ".
+			"style='width: ".$frame_width."px; height: ".$frame_height."px; border-style: none;'></iframe>";
+							
+		if($data["copyright_notice_ex"] == "1")
+			$code .= GetCopyrightNotice();
+		$code .= GetLicenseInfo(null);
+	}
+
+	if ($data["add_paragraphs"] == "1")
+		return "<p>$code</p>";
+ 	return $code;
+}
 
 function GetCopyrightNotice()
 {
 	$data = get_plugin_data( __FILE__ );
 	$version = $data['Version'];
 	
-	$text = "<div style='direction:ltr; font-size:7pt; font-family: Verdana; height:30px; ".
-		"display: block; overflow: hidden; width: 380px; position: relative; margin: 0; padding: 0;'>".
-		"<span style='display:block;positiion:absolute; top: 0px; left: 0px; margin: 0; padding: 0;'>".
-		"<a href = 'http://wordpress.org/extend/plugins/feedweb'>Feedweb for Wordpress</a>. v$version".
-		"</span> <iframe src='//www.facebook.com/plugins/like.php?href=https%3A%2F%2Fwww.facebook.com".
-		"%2Ffeedwebresearch&amp;send=false&amp;layout=button_count&amp;width=25&amp;show_faces=false&".
-		"amp;font&amp;colorscheme=light&amp;action=like&amp;height=21&amp;appId=240492672692711' ".
-		"scrolling='no' frameborder='0' allowTransparency='true' style='border:none; overflow:hidden;".
-		"width:88px; height:21px; margin: 0; padding: 0; position: absolute; left: 160px; top: 0px;'>".
-		"</iframe><span style='display: block; position: absolute; left: 250px; top: 0px;'>&copy; ".
-		"<a href='http://www.feedweb.net'>Feedweb</a>, 2012-14</span></div>";
+	$text = 
+		"<div style='direction:ltr; font-size:7pt; font-family:Verdana; height:30px; display:block; overflow:hidden;".
+		"width:380px;position:relative;margin:2px 0 0 0;padding:0;'><span style='display:block; positiion: absolute;".
+		"top: 0px; left: 0px; margin: 0; padding-top: 1px;'><a href= 'http://wordpress.org/plugins/feedweb'>Feedweb ".
+		"for WordPress</a>. v$version</span>".
+		"<iframe src = 'http://www.facebook.com/plugins/like.php?href=https%3A%2F%2Fwww.facebook.com%2Ffeedwebresearch".
+		"&amp;send=false&amp;layout=button_count&amp;width=25&amp;show_faces=false&amp;font&amp;colorscheme=light&amp;".
+		"action=like&amp;height=21&amp;appId=240492672692711' scrolling='no' frameborder='0' allowTransparency='true' ".
+		"style='border: none; overflow: hidden; width: 88px; height: 21px; margin: 0; padding: 0; position: absolute; ".
+		"left:162px; top:0px;'></iframe>".
+		"<div style='position:absolute;left:255px;top:0; display: block;'><a href='https://twitter.com/Feedwebresearch' ".
+		"class='twitter-follow-button' data-show-count='false' data-show-screen-name='false'>Follow @Feedwebresearch</a>".
+        "<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if".
+        "(!d.getElementById ( id ) ) { js = d.createElement(s); js.id=id; js.src=p+'://platform.twitter.com/widgets.js';".
+        "fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script></div></div>";
 
 	return $text;
 }
@@ -257,6 +320,7 @@ function FrontWidgetCallback($atts)
 	$url .= "&amp;items=".$data["front_widget_items"];
 	
 	$width = 250;
+	
 	$scrolling = "";
 	if ($data["front_widget_hide_scroll"] == "1") // No scrolling - 
 		$scrolling = "scrolling='no'";

@@ -5,10 +5,10 @@ Requires at least: 3.0
 Tested up to: 3.8.1
 Stable Tag: 2.4.1
 
-Expose your blog to a brand new audience. Ask questions, get answers. Find out what your readers think. Join the community of 2000+ websites now!
+Expose your blog to a brand new audience. Ask questions, get answers. Find out what your readers think. Join the community of 2500+ websites now!
 
 == Description ==
-**Latest update**: More than **275.000** votes collected by **16.500** blog post rating widgets published in **2.400** websites.
+**Latest update**: More than **283.000** votes collected by **17.400** blog post rating widgets published in **2.500** websites.
 
 The Feedweb Plugin is a simple and easy way to promote and improve your blog. By activating the plugin you can freely insert customized rating widgets into your selected posts. Choose questions you want to ask your readers and get comprehensive and precise feedback about your blog.
 
@@ -50,7 +50,7 @@ Follow us on [**Facebook**](https://www.facebook.com/feedwebresearch) and [**Twi
 * German (de_DE)     - Anna Davidov
 * Hebrew (he_IL)     - Dana Rovinsky
 * Hindi (hi_IN)      - [Sanket Rathod](http://www.crazytechsolutions.org)
-* Italian (it_IT)    - Menashè Eliezer
+* Italian (it_IT)    - Marco Bonelli, Menashè Eliezer
 * Norwegian (nb_NO)  - Stian Iversen
 * Polish (pl_PL)	 - [Frenchgrey](mailto://frenchgrey@live.co.uk)
 * Portuguese (pt_PT) - Tomé Mendes, Nahuel Wainberg 
@@ -86,6 +86,13 @@ Follow us on [**Facebook**](https://www.facebook.com/feedwebresearch) and [**Twi
 
 
 == Changelog ==
+
+= 2.4.2 =
+* L10n update (Italian).
+* Improved metadata storage.
+* New advanced plugin settings.
+* Copyright notice update.
+* Custom CSS bug fix.
 
 = 2.4.1 =
 * Fast non-blocking widget loading.

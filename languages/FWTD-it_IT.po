@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: Feedweb 1.2.12\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/feedweb\n"
 "POT-Creation-Date: 2014-03-02 12:37:54+00:00\n"
-"PO-Revision-Date: 2014-03-07 00:39+0200\n"
+"PO-Revision-Date: 2014-03-09 23:10+0200\n"
 "Last-Translator: Menashè Eliezer <menashe.eliezer@gmail.com>\n"
 "Language-Team: \n"
 "Language: it_IT\n"
@@ -715,12 +715,12 @@ msgstr "Il sommario non può superare i 250 caratteri"
 
 #: widget_dialog.php:948
 msgid "Please enter image Url"
-msgstr "Inserisci l'URL dell'immagine"
+msgstr "Inserisci lʹURL dellʹimmagine"
 
 #: widget_dialog.php:980
 msgid "The image width or height should be at least 100 pixels"
 msgstr ""
-"La larghezza o l'altezza dell'immagine devono essere di almeno 100 pixel"
+"La larghezza o lʹaltezza dellʹimmagine devono essere di almeno 100 pixel"
 
 #: widget_dialog.php:990
 msgid ""

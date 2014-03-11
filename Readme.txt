@@ -60,7 +60,8 @@ Follow us on [**Facebook**](https://www.facebook.com/feedwebresearch) and [**Twi
 * Turkish (tr)		 - Ayşe Nuray Ünyay  
 
 = We recommend =
-Anti-spam plugin [**CleanTalk**](http://wordpress.org/plugins/cleantalk-spam-protect)
+* Anti-spam plugin [**CleanTalk**](http://wordpress.org/plugins/cleantalk-spam-protect)
+* The Best Content Editor plugin [**Zedity**](http://wordpress.org/plugins/zedity)
 
 == Installation ==
 

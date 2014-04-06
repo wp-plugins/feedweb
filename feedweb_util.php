@@ -315,6 +315,32 @@ function ReadAnswerList($root)
 	return $answers;
 }
 
+function ReadChannelList($root)
+{
+	$list = $root->getElementsByTagName("CHANNELS");
+	if ($list->length == 0)
+		return null;
+	
+	$channels = array();
+	$channel_root = $list->item(0);
+	$list = $channel_root->getElementsByTagName("C");
+	for ($item = 0; $item < $list->length; $item++)
+	{
+		$channel = $list->item($item);
+		$id = $channel->getAttribute("id");
+		$code = $channel->getAttribute("code");
+		$desc = $channel->getAttribute("desc");
+		$title = $channel->getAttribute("title");
+		
+		$channels[$id] = array('code' => $code, 'title' => $title, 'desc' => $desc);
+	}
+	
+	$data = array();
+	$data['list'] = $channels;
+	$data['default'] = $channel_root->getAttribute("default");
+	return $data;
+}
+
 function ReadQuestionList($root)
 {
 	$list = $root->getElementsByTagName("QUESTIONS");
@@ -377,6 +403,7 @@ function GetPageData($pac, $info_mode)
 					$data['img'] = $dom->documentElement->getAttribute("img");
 					$data['tags'] = $dom->documentElement->getAttribute("tags");
 					$data['brief'] = $dom->documentElement->getAttribute("brief");
+					$data['cnl_id'] = $dom->documentElement->getAttribute("cnl_id");
 					$data['categories'] = $dom->documentElement->getAttribute("categories");
 					$data['censorship'] = $dom->documentElement->getAttribute("censorship");
 					$data['ad_content'] = Str2Bool($dom->documentElement->getAttribute("ad_content"));

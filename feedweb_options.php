@@ -209,7 +209,7 @@ function FeedwebPluginOptions()
 		<h2><?php _e("Feedweb Plugin Settings", "FWTD");?></h2>
 
 		<form name="FeedwebSettingsForm" id="FeedwebSettingsForm" onsubmit="return OnSubmitFeedwebSettingsForm();">
-			<link href='<?php echo plugin_dir_url(__FILE__)?>Feedweb.css?v=2.4.2' rel='stylesheet' type='text/css' />
+			<link href='<?php echo plugin_dir_url(__FILE__)?>Feedweb.css?v=2.4.3' rel='stylesheet' type='text/css' />
 			<?php
 				$script_url = GetFeedwebUrl()."Base/jscolor/jscolor.js";
 				echo "<script type='text/javascript' src='$script_url'></script>";

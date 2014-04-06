@@ -139,6 +139,10 @@ function GetPostQueryParams($id, $params)
 	$summary = PrepareParam($_POST["SummaryText"]);
 	if ($summary != "")
 		$params['brief'] = $summary;
+	
+	$channel_id = $_POST["SelectedChannelId"];
+	if ($channel_id != null && $channel_id != "" && $channel_id != "0")
+		$params['cnl_id'] = $channel_id;
 		
 	$categories = PrepareParam($_POST["CategoryText"]);
 	if ($categories != "")
@@ -495,6 +499,7 @@ function DisplayAlert($message)
 			{
 				<?php
 				DisplayAlert($alert);
+				//echo "alert('$cmd');";
 				switch ($cmd)
 				{
 					case "REM":

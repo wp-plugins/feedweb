@@ -1,14 +1,14 @@
 ﻿=== Feedweb ===
 Contributors: Feedweb
-Tags: blog, rate, rating, widget, network, feed, feedback, article, audience, engagement, aggregator, aggregation, content, content management, post, page, public, opinion, research, flash, html5, media, press, news, politics, society, social, question, answer, survey, poll, polling, vote, voting, stats, discussion, controversy, cooperation, view, comments, community, statistics, syndication, marketing, admin, sidebar, plugin, publishing
+Tags: blog, rate, rating, widget, network, feed, feedback, collector, article, audience, engagement, aggregator, aggregation, content, management, post, page, public, opinion, research, flash, html5, media, press, news, politics, society, social, question, answer, survey, poll, polling, vote, voting, stats, discussion, controversy, cooperation, view, comments, community, statistics, syndication, marketing, admin, sidebar, plugin, publishing
 Requires at least: 3.0
 Tested up to: 3.8.1
-Stable Tag: 2.4.2
+Stable Tag: 2.4.3
 
 Expose your blog to a brand new audience. Ask questions, get answers. Find out what your readers think. Join the community of 2500+ websites now!
 
 == Description ==
-**Latest update**: More than **283.000** votes collected by **17.400** blog post rating widgets published in **2.500** websites.
+**Latest update**: More than **294.000** votes collected by **18.400** blog post rating widgets published in **2.700** websites.
 
 The Feedweb Plugin is a simple and easy way to promote and improve your blog. By activating the plugin you can freely insert customized rating widgets into your selected posts. Choose questions you want to ask your readers and get comprehensive and precise feedback about your blog.
 
@@ -35,7 +35,6 @@ Requires WordPress 3.0 and PHP 5.
 
 For more information go to [**Feedweb Readers Community**](http://www.feedweb.net) website.
 Welcome blogs, blogs, and more blogs!
-[vimeo http://vimeo.com/65323163][**Please click here to see the video**](http://vimeo.com/65323163)
 
 **NOTE**: The plugin is compatible with Firefox, Chrome and Opera browsers. We strongly recommend not using Internet Explorer. 
 
@@ -90,6 +89,9 @@ Follow us on [**Facebook**](https://www.facebook.com/feedwebresearch) and [**Twi
 
 
 == Changelog ==
+
+= 2.4.3 =
+* Channel selection implemented.
 
 = 2.4.2 =
 * L10n update (Italian).

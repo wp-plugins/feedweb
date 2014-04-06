@@ -415,17 +415,17 @@ Widget Wizard - Brief Div
 	position: absolute;
 	width: 660px;
 	left: 20px;
-	top: 16px;
+	top: 10px;
 }
 
 #SummaryText
 {
 	position: absolute;
 	resize: none;
-	height: 54px;
+	height: 36px;
 	width: 660px;
 	left: 20px;
-	top: 34px;
+	top: 28px;
 }
 
 #CategoryLabel
@@ -433,7 +433,7 @@ Widget Wizard - Brief Div
 	position: absolute;
 	width: 660px;
 	left: 20px;
-	top: 100px;
+	top: 75px;
 }
 
 #CategoryText
@@ -442,7 +442,7 @@ Widget Wizard - Brief Div
 	width: 660px;
 	height: 24px;
 	left: 20px;
-	top: 118px;
+	top: 93px;
 }
 
 #TagLabel
@@ -450,7 +450,7 @@ Widget Wizard - Brief Div
 	position: absolute;
 	width: 660px;
 	left: 20px;
-	top: 154px;
+	top: 128px;
 }
 
 #TagText
@@ -459,23 +459,56 @@ Widget Wizard - Brief Div
 	width: 660px;
 	height: 24px;
 	left: 20px;
-	top: 172px;
+	top: 146px;
+}
+
+#ChannelPlaceholder
+{
+	position: absolute;
+	display: block;
+	width: 100%;
+	top: 180px;
+	left: 20px;
+}
+
+#ChannelLabel
+{
+	position: absolute;
+	top: 0px;
+}
+
+#ChannelBox
+{
+	position: absolute;
+	width: 200px;
+	height: 24px;
+	top: 18px;
+}
+
+#ChannelDescriptionLink
+{
+	position: absolute;
+	font-style: italic;	
+	width: 400px;
+	height: 40px;
+	left: 230px;
+	top: 20px;
 }
 
 #CensorshipLabel
 {
 	position: absolute;
 	left: 20px;
-	top: 212px;
+	top: 232px;
 }
 
 #CensorshipBox
 {
 	position: absolute;
-	width: 150px;
+	width: 200px;
 	height: 24px;
 	left: 20px;
-	top: 230px;
+	top: 250px;
 }
 
 .CensorshipText
@@ -483,17 +516,17 @@ Widget Wizard - Brief Div
 	font-style: italic;	
 	position: absolute;
 	display: none;
-	width: 450px;
+	width: 400px;
 	height: 40px;
-	left: 200px;
-	top: 232px;
+	left: 250px;
+	top: 252px;
 }
 
 #AdContentCheckBox
 {
 	position: absolute;
 	left: 18px;
-	top: 280px;
+	top: 290px;
 }
 
 #AdContentLabel
@@ -502,7 +535,7 @@ Widget Wizard - Brief Div
 	font-weight: bold;
 	width: 600px;
 	left: 40px;
-	top: 282px;
+	top: 292px;
 }
 
 /*-------------------------

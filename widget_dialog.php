@@ -8,6 +8,94 @@ require_once( ABSPATH.'wp-admin/includes/template.php');
 if (!current_user_can('manage_options'))
 	wp_die(__("You are not allowed to be here"));
 
+switch ($_GET["command"])
+{
+	case "get_questions":
+		GetDynamicQuestionList();
+		exit;
+		
+	case "get_channels":
+		GetDynamicChannelList();
+		exit;
+}
+
+function GetDynamicQuestionList()
+{
+	// Get Language
+	$lang = $_GET["lang"];
+	
+	// Get BAC instead of site URL (from 2.1.6)
+	$bac = GetBac(true);
+	if ($bac == null)
+		return;
+		
+	$url = GetFeedwebUrl()."FBanner.aspx?action=gql&lang=$lang&bac=$bac";
+	
+	$response = wp_remote_get ($url, array('timeout' => 60));
+	if (is_wp_error ($response))
+		return;
+		
+	$dom = new DOMDocument;
+	if ($dom->loadXML($response['body']) == true)
+		if ($dom->documentElement->tagName == "BANNER")
+		{
+			$questions = ReadQuestionList($dom->documentElement);
+			if ($questions == null)
+				return;
+				
+			foreach ($questions as $id => $text)
+				echo "<option value='$id'>$text</option>";
+		}
+}
+
+function GetDynamicChannelList()
+{
+	// Get Language
+	$lang = $_GET["lang"];
+	
+	// Get BAC
+	$bac = GetBac(true);
+	if ($bac == null)
+		return;
+	
+	$url = GetFeedwebUrl()."FBanner.aspx?action=gcl&lang=$lang&bac=$bac";
+	$response = wp_remote_get ($url, array('timeout' => 60));
+	if (is_wp_error ($response))
+		return;
+		
+	$dom = new DOMDocument;
+	if ($dom->loadXML($response['body']) == true)
+		if ($dom->documentElement->tagName == "BANNER")
+		{
+			$data = ReadChannelList($dom->documentElement);
+			if ($data == null)
+				return;
+			
+			$channels = $data['list'];
+			if ($channels == null)
+				return;
+			
+			$default = $data['default'];
+			echo "<input type='hidden' id='DefaultChannelId' value='$default'/>";
+			
+			echo "<span id='ChannelLabel'><b>".__("Channel:", "FWTD")."</b></span>";
+			echo "<a id='ChannelDescriptionLink' target='_blank' href='#'></a>";
+			echo "<select id='ChannelBox' onchange='OnChangeChannel()'>";
+			echo "<option value='0'>---------------</option>";
+				
+			foreach ($channels as $id => $data)
+				echo "<option value='$id'>".$data['title']."</option>";
+			echo "</select>";
+			
+			foreach ($channels as $id => $data)
+			{
+				echo "<input type='hidden' id='ChannelDescription_$id' value='".$data['desc']."'/>";
+				echo "<input type='hidden' id='ChannelCode_$id' value='".$data['code']."'/>";
+			}
+		}
+}
+
+
 $edit_page_data = null;
 
 function GetSettingsLink()
@@ -239,6 +327,18 @@ function GetPublishWidgetCheckBox()
 	$text = __("By clicking ['Next'] you agree to our {Terms of service}", "FWTD");
 	$markup = array("<b>", "</b>", "<a href='#' onclick='OnShowTermsOfService()'>", "</a>");
 	echo "<span id='TermsOfServiceDisclaimer'>".str_replace($placeholders, $markup, $text)."</span>";
+}
+
+function GetCurrentChannelInput()
+{
+	$channel = "";
+	if ($_GET["mode"] == "edit")
+	{
+		$data = GetEditPageData();
+		if ($data != null)
+			$channel = $data["cnl_id"];
+	}
+	echo "<input type='hidden' name='SelectedChannelId' id='SelectedChannelId' value='$channel'/>";
 }
 
 function GetCensorshipBox()
@@ -515,6 +615,28 @@ function YesNoQuestionPrompt()
 				input.value = box.options[box.selectedIndex].value; 
 			}
 			
+			function OnChangeChannel()
+			{
+				var channel_box = document.getElementById("ChannelBox");
+				var id = channel_box.options[channel_box.selectedIndex].value;
+				var selected_id = document.getElementById("SelectedChannelId");
+				var desc_link = document.getElementById("ChannelDescriptionLink");
+				
+				if (id == "0")
+					desc_link.innerHTML = "";
+				else
+				{
+					var code = document.getElementById('ChannelCode_' + id);
+					var desc = document.getElementById('ChannelDescription_' + id);
+					var language_box = document.getElementById("WidgetLanguageBox");
+					var lang = language_box.options[language_box.selectedIndex].value;
+									
+					desc_link.href = "<?php echo GetFeedwebUrl()?>" + "RCP/?lang=" + lang + "&channel=" + code.value;
+					desc_link.innerHTML = desc.value;
+				}
+				selected_id.value = id;
+			}
+			
 			function OnClickPublishWidgetBox()
 			{
 				var span = document.getElementById("TermsOfServiceDisclaimer");
@@ -691,17 +813,79 @@ function YesNoQuestionPrompt()
 	            	list.remove(list.selectedIndex);
 			}
 			
+			function GetSelectedChannel()
+			{
+				var channel_box = document.getElementById(ChannelBox);
+				var selected_channel = document.getElementById('SelectedChannelId');
+				if(selected_channel.value != "" && selected_channel.value != "0")
+					return selected_channel.value;
+				
+				var default_channel = document.getElementById('DefaultChannelId');
+				if (default_channel != null && default_channel != undefined)
+					if (default_channel.value != '' && default_channel.value != "0")
+						return default_channel.value;
+				
+				return null;						
+			}
+			
+			function InitChannelBox()
+			{
+				var selected_value = GetSelectedChannel();
+				if (selected_value != null)
+				{
+					var box = document.getElementById("ChannelBox");
+					for (var index = 1; index < box.options.length; index++)
+						if (box.options[index].value == selected_value)
+						{
+							box.selectedIndex = index;
+							OnChangeChannel();						
+							break;								
+						}
+				}
+			}
+			
+			function FillChannelList()
+			{
+				var placeholder = document.getElementById("ChannelPlaceholder");
+				var box = document.getElementById("WidgetLanguageBox");
+				var lang = box.options[box.selectedIndex].value;
+				try
+				{
+					var request = new XMLHttpRequest();
+					var pos = document.URL.indexOf("?");
+					var url = document.URL.substring(0,pos) + "?command=get_channels&lang=" + lang;
+				
+					request.open("GET", url, false);
+					request.send();
+					
+					placeholder.innerHTML = request.responseText;
+					InitChannelBox();
+				}				
+			    catch (err)
+			    {
+			    	placeholder.style.visibility = "hidden";
+			    }
+			}
+			
 			function FillQuestionList()
 			{
 				var list = document.getElementById("OldQuestionsList");
 				var box = document.getElementById("WidgetLanguageBox");
 				var lang = box.options[box.selectedIndex].value;
-				var url = "./question_query.php?lang=" + lang;
-				var request = new XMLHttpRequest();
+				try
+				{
+					var request = new XMLHttpRequest();
+					var pos = document.URL.indexOf("?");
+					var url = document.URL.substring(0,pos) + "?command=get_questions&lang=" + lang;
 				
-				request.open("GET", url, false);
-				request.send();
-				list.innerHTML = request.responseText;
+					request.open("GET", url, false);
+					request.send();
+					list.innerHTML = request.responseText;
+				}				
+			    catch (err)
+			    {
+			    	list.style.visibility = "hidden";
+			    }
 			}
 			
 			function GetCurrentWizardPage()
@@ -905,6 +1089,8 @@ function YesNoQuestionPrompt()
 				
 						if (box.checked == true)
 						{
+							FillChannelList();
+							
 							divs[1].style.visibility = "visible";
 							OnSelectCensorship();
 							InitImageDiv();
@@ -915,6 +1101,7 @@ function YesNoQuestionPrompt()
 							ok_button.style.visibility = "visible";
 							divs[3].style.visibility = "visible";
 						}
+						
 						divs[0].style.visibility = "hidden";
 						break;
 						
@@ -1072,6 +1259,12 @@ function YesNoQuestionPrompt()
 			
 			function OnSubmitForm()
 			{
+				// Prevent double-click reentrancy
+				var locker = document.getElementById("WidgetCreateLocker");
+				if (locker.value == "1")
+					return false;
+				locker.value = "1";
+				
 				BuildQuestionData();
 				BuildVisibilityData();
 								
@@ -1099,14 +1292,15 @@ function YesNoQuestionPrompt()
 
 		<link rel='stylesheet' id='thickbox-css'  href='<?php echo get_bloginfo('url') ?>/wp-includes/js/thickbox/thickbox.css' type='text/css' media='all' />
 		<link rel='stylesheet' id='colors-css'  href='<?php echo get_bloginfo('url') ?>/wp-admin/css/colors-fresh.css' type='text/css' media='all' />
-		<link href='<?php echo plugin_dir_url(__FILE__)?>Feedweb.css?v=2.4.1' rel='stylesheet' type='text/css' />
-		
+		<link href='<?php echo plugin_dir_url(__FILE__)?>Feedweb.css?v=2.4.3' rel='stylesheet' type='text/css' />
 	</head>
 	<body style="margin: 0px; overflow: hidden;" onload="OnLoad()">
 		<div id="WidgetDialog" >
 		 	<form id="WidgetDialogForm" onsubmit="return OnSubmitForm();">
+				<?php GetCurrentChannelInput();?>
+		 		<input type="hidden" name="WidgetCreateLocker" id="WidgetCreateLocker"/>
 				<input type="hidden" name="WidgetQuestionsData" id="WidgetQuestionsData"/>
-				<input type='hidden' name="WidgetVisibilityData" id="WidgetVisibilityData"/>
+				<input type="hidden" name="WidgetVisibilityData" id="WidgetVisibilityData"/>
 				
 				<div id="TermsOfServiceDiv">
 					<span id="TermsOfServiceTitle"><?php _e("Feedweb Plugin Terms of Service", "FWTD");?></span>
@@ -1133,6 +1327,7 @@ function YesNoQuestionPrompt()
 					<?php GetCategoryControl() ?>
 					<span id='TagLabel'><b><?php _e("Tags:")?></b></span>
 					<?php GetTagControl() ?>
+					<div id="ChannelPlaceholder"></div>
 					<span id="CensorshipLabel"><b><?php _e("Censorship:", "FWTD")?></b></span>
 					<?php GetCensorshipBox() ?>
 					<?php GetAdContentCheckBox() ?>

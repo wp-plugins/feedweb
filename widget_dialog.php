@@ -321,7 +321,11 @@ function GetPublishWidgetCheckBox()
 			$checked = ($data["visible"] ? "checked" : "");
 	}
 	echo "<input id='PublishWidgetCheckBox' type='checkbox' onchange='OnClickPublishWidgetBox()' $checked />";
-	echo "<label id='PublishWidgetLabel' for='PublishWidgetCheckBox'>".__("Publish your post in the Feedweb's Readers Community Portal", "FWTD")."</label>";
+	
+	$placeholders = array("{", "}");
+	$markup = array("<a href='http://feedweb.net' target='_blank'>", "</a>");
+	$text = __("Publish your post in the {Feedweb Readers Community Portal}", "FWTD");
+	echo "<label id='PublishWidgetLabel' for='PublishWidgetCheckBox'>".str_replace($placeholders, $markup, $text)."</label>";
 	
 	$placeholders = array("[", "]", "{", "}");
 	$text = __("By clicking ['Next'] you agree to our {Terms of service}", "FWTD");
@@ -1011,7 +1015,7 @@ function YesNoQuestionPrompt()
 			
 			function CheckAuthor()
 			{
-				var bad_names = ["admin", "webmaster", "editor", "publisher"];
+				var bad_names = ["admin", "webmaster", "editor", "publisher", "author"];
 				var author = document.getElementById("AuthorText").value;
 				if (author == "")
 				{

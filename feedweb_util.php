@@ -183,7 +183,11 @@ function GetFeedwebOptions()
 	{
 		// override default options with retrieved ones
 		foreach ($values as $key => $value) 
+		{
 			$data[$key] = $value;
+			if ($key == "language")
+				$data["language_set"] = true;
+		}
 		return $data;		
 	}
 	

@@ -4,7 +4,7 @@ Plugin Name: Feedweb
 Plugin URI: http://wordpress.org/extend/plugins/feedweb/
 Description: Expose your blog to the Feedweb reader's community. Promote your views. Get a comprehensive and detailed feedback from your readers.
 Author: Feedweb
-Version: 2.4.5
+Version: 2.4.6
 Author URI: http://www.feedweb.net
 */
 
@@ -281,6 +281,31 @@ function FeedwebSettingsLink($links)
 	$settings_link = "<a href='options-general.php?page=".basename(__FILE__)."'>".__("Settings")."</a>";
 	array_unshift($links, $settings_link);
 	return $links;
+}
+
+function FeederBarCallback($atts)
+{
+	if (CheckServiceAvailability() != null)
+		return "";
+
+	$bac = GetBac(true);
+	if ($bac == null)
+		return "";
+		
+	$data = GetFeedwebOptions();
+	if ($data == null)
+		return "";
+		
+	$lang = $data["language"];
+	$url = GetFeedwebUrl()."FPW/Feeder.aspx?bac=$bac&lang=$lang&mode=H";
+	
+	$width = 280;
+	$height = 550;
+	$scrolling = "";
+	$color = "#ffffff";
+	return "<div style='width: 100%; height: 100%; background-color: $color; text-align: center;'>".
+		"<iframe id='FeederFrame' src='$url' style='width: ".$width."px; height: ".$height."px; ".
+		"border-style: none;' $scrolling></iframe></div>";
 }
 
 function FrontWidgetCallback($atts)
@@ -657,6 +682,7 @@ add_action('admin_menu', 'FeedwebPluginMenu');
 add_filter("plugin_action_links_$feedweb_plugin", 'FeedwebSettingsLink' );
 
 add_shortcode( 'FeedwebFrontWidget', 'FrontWidgetCallback' );
+add_shortcode( 'FeedwebFeederBar', 'FeederBarCallback' );
 add_filter('widget_text', 'do_shortcode');
 
 add_action('admin_notices', 'ShowAdminMessages');

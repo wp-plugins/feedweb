@@ -2,13 +2,13 @@
 Contributors: Feedweb
 Tags: blog, rate, rating, widget, network, feed, feedback, collector, article, audience, engage, engagement, aggregator, aggregation, content, management, post, page, public, opinion, research, html5, media, press, news, politics, society, social, question, answer, survey, poll, polling, vote, voting, stats, discussion, controversy, cooperation, view, comments, community, statistics, syndication, marketing, admin, sidebar, plugin, publishing, exchange, networking
 Requires at least: 3.0
-Tested up to: 3.8.3
-Stable Tag: 2.4.5
+Tested up to: 3.9.1
+Stable Tag: 2.4.6
 
 Expose your blog to a brand new audience. Ask questions, get answers. Find out what your readers think. Join the community of 2000+ websites now!
 
 == Description ==
-**Latest update**: More than **306.000** votes collected by **18.500** blog post rating widgets published in **2.300** websites.
+**Latest update**: More than **312.000** votes collected by **19.200** blog post rating widgets published in **2.400** websites.
 
 The Feedweb Plugin is a simple and easy way to promote and improve your blog. By activating the plugin you can freely insert customized rating widgets into your selected posts. Choose questions you want to ask your readers and get comprehensive and precise feedback about your blog.
 
@@ -89,6 +89,9 @@ Follow us on [**Facebook**](https://www.facebook.com/feedwebresearch) and [**Twi
 
 
 == Changelog ==
+
+= 2.4.6 =
+* Feeder sidebar widget (beta).
 
 = 2.4.5 =
 * Default language selection bug fix.

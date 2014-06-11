@@ -266,6 +266,8 @@ function GetPostAge($id)
 		$now = new DateTime("now");
 		$date = new DateTime($post->post_date);
 		$interval = $date->diff($now);
+		if ($interval->invert == 1)
+			return -$interval->days;
 		return $interval->days;
 	}
 	catch(Exception $e)
@@ -516,7 +518,7 @@ function GetInsertWidgetStatus($id)
 	$status = get_post_status($id);
 	if ($status == false)
 		return __("Cannot insert widget into a post with undefined status", "FWTD");
-		
+	
 	if ($status == 'private')
 		return __("Cannot insert widget into a private post (must be public)", "FWTD");
 		
@@ -532,6 +534,9 @@ function GetInsertWidgetStatus($id)
 		$format = __("Cannot insert widget into a post published %d days ago", "FWTD");
 		return sprintf($format, $days);
 	}
+	
+	if ($days < 0)
+		return __("Cannot insert widget into a scheduled post", "FWTD");
 
 	global $feedweb_blog_caps;
 	$cap = $feedweb_blog_caps["DW"];

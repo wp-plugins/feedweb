@@ -1,14 +1,14 @@
 ﻿=== Feedweb ===
 Contributors: Feedweb
-Tags: blog, rate, rating, widget, network, feed, feedback, collector, article, audience, engage, engagement, aggregator, aggregation, content, management, post, page, public, opinion, research, html5, media, press, news, politics, society, social, question, answer, survey, poll, polling, vote, voting, stats, discussion, controversy, cooperation, view, comments, community, statistics, syndication, marketing, admin, sidebar, plugin, publishing, exchange, networking
+Tags: blog, rate, rating, widget, network, feed, feedback, collector, article, audience, engage, engagement, aggregator, aggregation, content, management, post, public, opinion, research, html5, media, press, news, politics, society, social, question, answer, survey, poll, polling, vote, voting, stats, discussion, controversy, cooperation, view, comments, community, statistics, syndication, marketing, admin, sidebar, plugin, publishing, exchange, networking, sharing
 Requires at least: 3.0
 Tested up to: 3.9.1
-Stable Tag: 2.4.6
+Stable Tag: 2.4.7
 
 Expose your blog to a brand new audience. Ask questions, get answers. Find out what your readers think. Join the community of 2000+ websites now!
 
 == Description ==
-**Latest update**: More than **312.000** votes collected by **19.200** blog post rating widgets published in **2.400** websites.
+**Latest update**: More than **321.000** votes collected by **20.000** blog post rating widgets published in **2.500** websites.
 
 The Feedweb Plugin is a simple and easy way to promote and improve your blog. By activating the plugin you can freely insert customized rating widgets into your selected posts. Choose questions you want to ask your readers and get comprehensive and precise feedback about your blog.
 
@@ -36,7 +36,7 @@ Requires WordPress 3.0 and PHP 5.
 For more information go to [**Feedweb Readers Community**](http://www.feedweb.net) website.
 Welcome blogs, blogs, and more blogs!
 
-NOTE: The plugin is compatible with Chrome, Firefox, Safari and Opera browsers. We strongly recommend not using Internet Explorer. 
+NOTE: The plugin is compatible with Chrome, Firefox, Safari, Opera and Dolphin browsers. We strongly recommend not using Internet Explorer. 
 
 Please [**contact us**](mailto://contact@feedweb.net) if you experience any problems with our plugin.
 
@@ -59,8 +59,8 @@ Follow us on [**Facebook**](https://www.facebook.com/feedwebresearch) and [**Twi
 * Turkish (tr)		 - Ayşe Nuray Ünyay  
 
 = We recommend =
-* The Best Content Editor plugin [**Zedity**](http://wordpress.org/plugins/zedity)
 * Anti-spam plugin [**CleanTalk**](http://wordpress.org/plugins/cleantalk-spam-protect)
+* The Best Content Editor plugin [**Zedity**](http://wordpress.org/plugins/zedity)
 
 == Installation ==
 
@@ -89,6 +89,9 @@ Follow us on [**Facebook**](https://www.facebook.com/feedwebresearch) and [**Twi
 
 
 == Changelog ==
+
+= 2.4.7 =
+* Block for the scheduled posts.
 
 = 2.4.6 =
 * Feeder sidebar widget (beta).

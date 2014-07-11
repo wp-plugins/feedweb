@@ -1,9 +1,9 @@
-﻿=== Feedweb ===
+=== Feedweb ===
 Contributors: Feedweb
 Tags: blog, rate, rating, widget, network, feed, feedback, collector, article, audience, engage, engagement, aggregator, aggregation, content, management, post, public, opinion, research, html5, media, press, news, politics, society, social, question, answer, survey, poll, polling, vote, voting, stats, discussion, controversy, cooperation, view, comments, community, statistics, syndication, marketing, admin, sidebar, plugin, publishing, exchange, networking, sharing
 Requires at least: 3.0
 Tested up to: 3.9.1
-Stable Tag: 2.4.10
+Stable Tag: 2.4.10.1
 
 Expose your blog to a brand new audience. Ask questions, get answers. Find out what your readers think. Join the community of 2500+ websites now!
 
@@ -90,6 +90,9 @@ Follow us on [**Facebook**](https://www.facebook.com/feedwebresearch) and [**Twi
 
 
 == Changelog ==
+
+= 2.4.10.1 =
+* Header warning.
 
 = 2.4.10 =
 * 2.4.9. Rolled back.

@@ -4,7 +4,7 @@ Plugin Name: Feedweb
 Plugin URI: http://wordpress.org/extend/plugins/feedweb/
 Description: Expose your blog to the Feedweb reader's community. Promote your views. Get a comprehensive and detailed feedback from your readers.
 Author: Feedweb
-Version: 2.4.9
+Version: 2.4.10
 Author URI: http://www.feedweb.net
 */
 
@@ -34,43 +34,59 @@ function GetFeedwebContent()
 		if (is_front_page() || is_home())
 			return null;
 	
-	$pac = GetPac($pid);
-	if ($pac == null)
-		return null;
-				
-	if (CheckServiceAvailability() != null)
-		return null; 
-	
-	$width = intval($data["widget_width"]);
-	$height = 120;	// Wide layout default
-	if (strtolower($data["widget_layout"]) == "mobile")
+	if ($data["async_load_mode"] == "1")
 	{
-		$width = 300;
-		$height = 150;
+		$src = plugin_dir_url(__FILE__)."widget_container.php?pid=".$pid;
+		if (is_front_page() || is_home())
+			$src .= "&amp;is_hp=true";
+		
+		$code = "<iframe class='FeedwebRatingWidgetContainer' id='FeedwebRatingWidgetContainer_$pid' scrolling='no' ".
+			"style='border-style: none; margin-bottom: 1px;' width='0' height='0' src='$src'></iframe>";
+			
+		if($data["copyright_notice_ex"] == "1")
+			$code .= "<div class='FeedwebNoticePlaceHolder' id='FeedwebNoticePlaceHolder_$pid' style='display: none;'>".
+				GetCopyrightNotice()."</div>";
 	}
+	else 
+	{
+		$pac = GetPac($pid);
+		if ($pac == null)
+			return null;
+					
+		if (CheckServiceAvailability() != null)
+			return null; 
 		
-	$frame_width = $width + 5;
-	$frame_height = $height + 5;
-	$src = GetFeedwebUrl()."BRW/BlogRatingWidget.aspx?cs=".$data["widget_cs"]."&amp;width=$width&amp;height=$height".
-		"&amp;lang=".$data["language"]."&amp;pac=$pac&amp;layout=".$data["widget_layout"];
+		$width = intval($data["widget_width"]);
+		$height = 120;	// Wide layout default
+		if (strtolower($data["widget_layout"]) == "mobile")
+		{
+			$width = 300;
+			$height = 150;
+		}
 			
-	if ($data["results_before_voting"] == "1")	// Display results before voting
-		$src .= "&amp;rbv=true";
+		$frame_width = $width + 5;
+		$frame_height = $height + 5;
+		$src = GetFeedwebUrl()."BRW/BlogRatingWidget.aspx?cs=".$data["widget_cs"]."&amp;width=$width&amp;height=$height".
+			"&amp;lang=".$data["language"]."&amp;pac=$pac&amp;layout=".$data["widget_layout"];
+				
+		if ($data["results_before_voting"] == "1")	// Display results before voting
+			$src .= "&amp;rbv=true";
+				
+		if ($data["custom_css"] == "0")
+			$src .= "&amp;ext_bg=".$data["widget_ext_bg"];
+		else
+			$src .= "&amp;custom_css=".$data["custom_css"];
 			
-	if ($data["custom_css"] == "0")
-		$src .= "&amp;ext_bg=".$data["widget_ext_bg"];
-	else
-		$src .= "&amp;custom_css=".$data["custom_css"];
-		
-	$code = "<iframe class='FeedwebRatingWidget' id='FeedwebRatingWidget_$pid' scrolling='no' src='$src' ".
-		"style='width: ".$frame_width."px; height: ".$frame_height."px; border-style: none;'></iframe>";
-		
-	$url = GetFeedwebUrl()."?pac=$pac";
-	$code .= "<a id='FeedwebVerificationLink_$pid' style='display: none;' href='$url'>.</a>";
-						
-	if($data["copyright_notice_ex"] == "1")
-		$code .= GetCopyrightNotice();
-	$code .= GetLicenseInfo(null);
+		$code = "<iframe class='FeedwebRatingWidget' id='FeedwebRatingWidget_$pid' scrolling='no' src='$src' ".
+			"style='width: ".$frame_width."px; height: ".$frame_height."px; border-style: none;'></iframe>";
+			
+		$url = GetFeedwebUrl()."?pac=$pac";
+		$code .= "<a id='FeedwebVerificationLink_$pid' style='display: none;' href='$url'>.</a>";
+							
+		if($data["copyright_notice_ex"] == "1")
+			$code .= GetCopyrightNotice();
+		$code .= GetLicenseInfo(null);
+	}
 
 	if ($data["add_paragraphs"] == "1")
 		return "<p>$code</p>";

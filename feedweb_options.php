@@ -476,6 +476,16 @@ function FeedwebPluginOptions()
 						input.value = "0";
 				}
 				
+				function OnCheckAsyncLoadMode()
+				{
+					var box = document.getElementById('AsyncLoadModeBox');
+					var input = document.getElementById('AsyncLoadMode');
+					if (box.checked == true)
+						input.value = "1";
+					else
+						input.value = "0";
+				}
+				
 				function OnCheckHideScroll()
 				{
 					var box = document.getElementById('FrontWidgetHideScrollBox');
@@ -540,6 +550,7 @@ function FeedwebPluginOptions()
 			<?php wp_referer_field(true)?>
 			<input type='hidden' id='DelayResults' name='DelayResults' value='<?php echo $feedweb_data["delay"];?>'/>
 			<input type='hidden' id='FeedwebLanguage' name='FeedwebLanguage' value='<?php echo $feedweb_data["language"];?>'/>
+			<input type='hidden' id='AsyncLoadMode' name='AsyncLoadMode' value='<?php echo $feedweb_data["async_load_mode"];?>'/>
 			<input type='hidden' id='FeedwebMPWidgets' name='FeedwebMPWidgets' value='<?php echo $feedweb_data["mp_widgets"];?>'/>
 			<input type='hidden' id='RatingWidgetType' name='RatingWidgetType' value='<?php echo $feedweb_data["widget_type"];?>'/>
 			<input type='hidden' id='AutoAddParagraphs' name='AutoAddParagraphs' value='<?php echo $feedweb_data["add_paragraphs"];?>'/>
@@ -549,7 +560,6 @@ function FeedwebPluginOptions()
 			<input type='hidden' id='ResultsBeforeVoting' name='ResultsBeforeVoting' value='<?php echo $feedweb_data["results_before_voting"];?>'/>
 			<input type='hidden' id='FeedwebCopyrightNotice' name='FeedwebCopyrightNotice' value='<?php echo $feedweb_data["copyright_notice_ex"];?>'/>
 			<!--
-			<input type='hidden' id='AsyncLoadMode' name='AsyncLoadMode' value='<?php echo $feedweb_data["async_load_mode"];?>'/>
 			<input type='hidden' id='RatingWidgetPlacement' name='RatingWidgetPlacement' value='<?php echo $feedweb_data["widget_place"];?>'/>
 			<input type='hidden' id='FrontWidgetHideScroll' name='FrontWidgetHideScroll' value='<?php echo $feedweb_data["front_widget_hide_scroll"];?>'/>
 			<input type='hidden' id='FrontWidgetColorScheme' name='FrontWidgetColorScheme' value='<?php echo $feedweb_data["front_widget_color_scheme"];?>'/>
@@ -695,7 +705,6 @@ function FeedwebPluginOptions()
 						<div class="FeedwebSettingsDiv" style="display: none; height: 450px;">
 							<table class="FeedwebSettingsTable">
 								<tbody>
-									<!--
 									<tr>
 										<td style='width: 320px;'>
 											<span><b><?php _e("Async load mode:", "FWTD")?></b></span> 				
@@ -709,16 +718,15 @@ function FeedwebPluginOptions()
 											<span><i><?php _e("Check to enable asynchronous (nonblocking) loading of Rating Widgets.", "FWTD")?></i></span>
 										</td>
 									</tr>
-									-->
 									<tr>
-										<td style='width: 320px;'>
+										<td>
 											<span><b><?php _e("Automatically add paragraphs:", "FWTD")?></b></span> 				
 										</td>
-										<td style='width: 200px;'>
+										<td>
 											<input <?php if($feedweb_data['add_paragraphs'] == "1") echo 'checked="checked"' ?>
 											id="AddParagraphsBox" name="AddParagraphsBox" type="checkbox" onchange='OnCheckAddParagraphs()'> <?php _e("Add")?></input>				
 										</td>
-										<td style='width: 600px;'>
+										<td>
 											<span><i><?php _e("Surround widgets with paragraph tags:", "FWTD")?></i><b> &lt;P&gt;...&lt;/P&gt;</b></span>
 										</td>
 									</tr>

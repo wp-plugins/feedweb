@@ -58,6 +58,7 @@ function UpdateSettings()
 		$data["mp_widgets"] = $_POST["FeedwebMPWidgets"];
 		$data["widget_type"] = $_POST["RatingWidgetType"];
 		$data["widget_width"] = $_POST["WidgetWidthEdit"];
+		$data["async_load_mode"] = $_POST["AsyncLoadMode"];
 		$data["widget_layout"] = $_POST["RatingWidgetLayout"];
 		$data["add_paragraphs"] = $_POST["AutoAddParagraphs"];
 		$data["widget_prompt"] = $_POST["InsertWidgetPrompt"];

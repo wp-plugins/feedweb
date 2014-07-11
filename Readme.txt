@@ -3,18 +3,18 @@ Contributors: Feedweb
 Tags: blog, rate, rating, widget, network, feed, feedback, collector, article, audience, engage, engagement, aggregator, aggregation, content, management, post, public, opinion, research, html5, media, press, news, politics, society, social, question, answer, survey, poll, polling, vote, voting, stats, discussion, controversy, cooperation, view, comments, community, statistics, syndication, marketing, admin, sidebar, plugin, publishing, exchange, networking, sharing
 Requires at least: 3.0
 Tested up to: 3.9.1
-Stable Tag: 2.4.9
+Stable Tag: 2.4.10
 
 Expose your blog to a brand new audience. Ask questions, get answers. Find out what your readers think. Join the community of 2500+ websites now!
 
 == Description ==
-**Latest update**: More than **330.000** votes collected by **21.000** blog post rating widgets published in **2.500** websites.
+**Latest update**: More than **331.000** votes collected by **21.100** blog post rating widgets published in **2.500** websites.
 
 The Feedweb Plugin is a simple and easy way to promote and improve your blog. By activating the plugin you can freely insert customized rating widgets into your selected posts. Choose questions you want to ask your readers and get comprehensive and precise feedback about your blog.
 
 The Blog Rating Widget is an attractive animated visual element that will improve your ratings! It is built using cutting-edge HTML5 technology, meets the highest privacy and security standards and enterprise-level quality.
 
-The plugin is available in Free, Plus and PRO versions.
+The plugin is available in Free, **Plus** and **PRO** versions.
 _____________________________________________________________________________________________________
 * Feedweb being the plugin with the most direct impact as it puts out each Blog post to a readership community, and can generate 20 to 60 visits per post on a good day and with a good post topic/headline.
 * [**Shane Hopkins, MoneyMakerSpy.com**](http://www.moneymakerspy.com/bring-250-daily-visitors-blog)
@@ -31,12 +31,12 @@ ________________________________________________________________________________
 
 [vimeo http://vimeo.com/67915433][**Please click here to see the video**](http://vimeo.com/67915433)
 
-Requires WordPress 3.0 and PHP 5.
+Requires **WordPress 3.0** and **PHP 5**.
 
 For more information go to [**Feedweb Readers Community**](http://www.feedweb.net) website.
-Welcome blogs, blogs, and more blogs!
+**Welcome blogs, blogs, and more blogs!**
 
-NOTE: The plugin is compatible with Chrome, Firefox, Safari, Opera and Dolphin browsers. We strongly recommend not using Internet Explorer. 
+**NOTE**: The plugin is compatible with Chrome, Firefox, Safari, Opera and Dolphin browsers. We strongly recommend not using Internet Explorer. 
 
 Please [**contact us**](mailto://contact@feedweb.net) if you experience any problems with our plugin.
 
@@ -61,6 +61,7 @@ Follow us on [**Facebook**](https://www.facebook.com/feedwebresearch) and [**Twi
 = We recommend =
 * Anti-spam plugin [**CleanTalk**](http://wordpress.org/plugins/cleantalk-spam-protect)
 * The Best Content Editor plugin [**Zedity**](http://wordpress.org/plugins/zedity)
+* [**WPKnights**](http://creativemarket.com/retep007) premium themes
 
 == Installation ==
 
@@ -90,8 +91,8 @@ Follow us on [**Facebook**](https://www.facebook.com/feedwebresearch) and [**Twi
 
 == Changelog ==
 
-= 2.4.9 =
-* Redundant option removed.
+= 2.4.10 =
+* 2.4.9. Rolled back.
 
 = 2.4.8 =
 * Verification link added.

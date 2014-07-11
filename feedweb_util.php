@@ -172,6 +172,7 @@ function GetFeedwebOptions()
 		"front_widget_color_scheme" => "classic", 
 		"front_widget_height" => "400", 
 		"front_widget_hide_scroll" => "0", 
+		"async_load_mode" => "0",
 		"widget_type" => "H", 
 		"widget_cs" => "modern",
 		"custom_css" => "0",

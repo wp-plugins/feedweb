@@ -4,7 +4,7 @@ Plugin Name: Feedweb
 Plugin URI: http://wordpress.org/extend/plugins/feedweb/
 Description: Expose your blog to the Feedweb reader's community. Promote your views. Get a comprehensive and detailed feedback from your readers.
 Author: Feedweb
-Version: 2.4.11
+Version: 2.4.12
 Author URI: http://www.feedweb.net
 */
 
@@ -31,7 +31,7 @@ function GetFeedwebContent()
 	
 	$data = GetFeedwebOptions();
 	if ($data["mp_widgets"] == "0")	// Doesn't display on the Home / Front Page
-		if (is_front_page() || is_home())
+		if (is_front_page() || is_home() || is_feed() || is_category() || is_tag())
 			return null;
 	
 	$pac = GetPac($pid);
@@ -91,8 +91,8 @@ function GetCopyrightNotice()
 		"&amp;send=false&amp;layout=button_count&amp;width=25&amp;show_faces=false&amp;font&amp;colorscheme=light&amp;".
 		"action=like&amp;height=21&amp;appId=240492672692711' scrolling='no' frameborder='0' allowTransparency='true' ".
 		"style='border: none; overflow: hidden; width: 88px; height: 21px; margin: 0; padding: 0; position: absolute; ".
-		"left:162px; top:0px;'></iframe>".
-		"<div style='position:absolute;left:255px;top:0; display: block;'><a href='https://twitter.com/Feedwebresearch' ".
+		"left:170px; top:0px;'></iframe>".
+		"<div style='position:absolute;left:259px;top:0; display: block;'><a href='https://twitter.com/Feedwebresearch' ".
 		"class='twitter-follow-button' data-show-count='false' data-show-screen-name='false'>Follow @Feedwebresearch</a>".
         "<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if".
         "(!d.getElementById ( id ) ) { js = d.createElement(s); js.id=id; js.src=p+'://platform.twitter.com/widgets.js';".

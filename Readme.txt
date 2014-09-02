@@ -1,14 +1,14 @@
 ﻿=== Feedweb ===
 Contributors: Feedweb
-Tags: blog, rate, rating, widget, network, feed, feeder, feedback, collector, article, audience, engage, engagement, aggregator, aggregation, content, management, post, public, opinion, research, html5, media, press, news, politics, society, social, question, answer, survey, poll, polling, vote, voting, stats, discussion, controversy, cooperation, view, comments, community, statistics, syndication, marketing, admin, sidebar, plugin, publishing, exchange, networking, sharing
+Tags: blog, rate, rating, widget, network, feed, feedback, collector, article, audience, engage, engagement, aggregator, aggregation, content, management, post, public, opinion, research, html5, media, press, news, politics, society, social, question, answer, survey, poll, polling, vote, voting, stats, discussion, controversy, cooperation, view, comments, community, statistics, syndication, marketing, admin, sidebar, plugin, publishing, exchange, networking, sharing, business
 Requires at least: 3.0
 Tested up to: 3.9.2
-Stable Tag: 2.4.12
+Stable Tag: 2.5
 
 Get precise feedback and expose your blog to a brand new audience at the same time. Join the community of 2500+ websites! 
 
 == Description ==
-**Latest update**: More than **345.000** votes collected by **22.500** blog post rating widgets published in **2.700** websites. [**See them on our website!**](http://feedweb.net/)
+**Latest update**: More than **354.000** votes collected by **23.600** blog post rating widgets published in **2.800** websites. [**See them on our website!**](http://feedweb.net/)
 
 The Feedweb Plugin is a simple and easy way to promote and improve your blog. By activating the plugin you can freely insert customized rating widgets into your selected posts. Choose questions you want to ask your readers and get comprehensive and precise feedback about your blog.
 
@@ -93,6 +93,10 @@ Follow us on [**Facebook**](https://www.facebook.com/feedwebresearch) and [**Twi
 
 
 == Changelog ==
+
+= 2.5 =
+* Final Feeder Beta.
+* Page aggregator filter.
 
 = 2.4.12 =
 * Tag / Category aggregator filter.

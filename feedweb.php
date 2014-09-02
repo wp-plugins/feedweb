@@ -4,7 +4,7 @@ Plugin Name: Feedweb
 Plugin URI: http://wordpress.org/extend/plugins/feedweb/
 Description: Expose your blog to the Feedweb reader's community. Promote your views. Get a comprehensive and detailed feedback from your readers.
 Author: Feedweb
-Version: 2.4.12
+Version: 2.5
 Author URI: http://www.feedweb.net
 */
 
@@ -31,7 +31,7 @@ function GetFeedwebContent()
 	
 	$data = GetFeedwebOptions();
 	if ($data["mp_widgets"] == "0")	// Doesn't display on the Home / Front Page
-		if (is_front_page() || is_home() || is_feed() || is_category() || is_tag())
+		if (is_front_page() || is_home() || is_feed() || is_category() || is_tag() || is_page())
 			return null;
 	
 	$pac = GetPac($pid);
@@ -284,10 +284,10 @@ function FeederBarCallback($atts)
 		return "";
 		
 	$lang = $data["language"];
-	$url = GetFeedwebUrl()."FPW/Feeder.aspx?bac=$bac&lang=$lang&mode=H";
+	$url = GetFeedwebUrl()."FPW/Feeder.aspx?bac=$bac&mode=HFN&bc=25&mfc=200";
 	
-	$width = 280;
-	$height = 550;
+	$width = 300;
+	$height = 800;
 	$scrolling = "";
 	$color = "#ffffff";
 	return "<div style='width: 100%; height: 100%; background-color: $color; text-align: center;'>".

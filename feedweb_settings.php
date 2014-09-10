@@ -65,6 +65,16 @@ function UpdateSettings()
 		$data["widget_ext_bg"] = $_POST["ExternalBackgroundBox"];
 		$data["results_before_voting"] = $_POST["ResultsBeforeVoting"];
 		$data["copyright_notice_ex"] = $_POST["FeedwebCopyrightNotice"];
+
+		$data["feeder_width"] = $_POST["FeederWidthEdit"];
+		$data["feeder_auto_run"] = $_POST["FeederAutoRun"];
+		$data["feeder_height"] = $_POST["FeederHeightEdit"];
+		$data["feeder_show_header"] = $_POST["FeederShowHeader"];
+		$data["feeder_show_nav"] = $_POST["FeederShowNavigator"];
+		$data["feeder_author_info"] = $_POST["FeederAuthorInfo"];
+		$data["feeder_show_footer"] = $_POST["FeederShowFooter"];
+		$data["feeder_links_new_tab"] = $_POST["FeederLinksNewTab"];
+		$data["feeder_img_height"] = $_POST["FeederImageHeightEdit"];
 			
 		if($_POST["CSSContentType"] == "reset")
 			UpdateCSS("R", $data);

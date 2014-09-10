@@ -175,7 +175,18 @@ function GetFeedwebOptions()
 		"widget_type" => "H", 
 		"widget_cs" => "modern",
 		"custom_css" => "0",
-		"widget_ext_bg" => "FFFFFF" );
+		"widget_ext_bg" => "FFFFFF",
+		
+		"feeder_width" => "300",
+		"feeder_auto_run" => "0",
+		"feeder_height" => "1000",
+		"feeder_show_header" => "1",
+		"feeder_show_nav" => "1",
+		"feeder_author_info" => "0",
+		"feeder_show_footer" => "1",
+		"feeder_links_new_tab" => "1",
+		"feeder_img_height" => "300"
+		);
 		
 	$values = get_option("_feedweb_plugin_options");
 	if ($values != null && $values != false)

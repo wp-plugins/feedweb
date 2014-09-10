@@ -209,7 +209,7 @@ function FeedwebPluginOptions()
 		<h2><?php _e("Feedweb Plugin Settings", "FWTD");?></h2>
 
 		<form name="FeedwebSettingsForm" id="FeedwebSettingsForm" onsubmit="return OnSubmitFeedwebSettingsForm();">
-			<link href='<?php echo plugin_dir_url(__FILE__)?>Feedweb.css?v=2.4.3' rel='stylesheet' type='text/css' />
+			<link href='<?php echo plugin_dir_url(__FILE__)?>Feedweb.css?v=3.0' rel='stylesheet' type='text/css' />
 			<?php
 				$script_url = GetFeedwebUrl()."Base/jscolor/jscolor.js";
 				echo "<script type='text/javascript' src='$script_url'></script>";
@@ -263,14 +263,14 @@ function FeedwebPluginOptions()
 					if (div.style.display == "block") // Hide
 					{
 						title.innerHTML = "<?php _e("Show Widget Preview >>>", "FWTD") ?>";
-						settings[0].style.height = "450px";
+						settings[0].style.height = "550px";
 						div.style.display = "none";
 						row.style.height = "35px";
 					}
 					else
 					{
 						title.innerHTML = "<?php _e("<<< Hide Widget Preview", "FWTD") ?>";
-						settings[0].style.height = "580px";
+						settings[0].style.height = "680px";
 						div.style.display = "block";
 						row.style.height = "160px";
 					}
@@ -486,23 +486,168 @@ function FeedwebPluginOptions()
 						input.value = "0";
 				}
 				
-				function ValidateRatingWidgetWidth()
+				function ValidateNumberParam(input_id, min_value, max_value, validation_alert, range_alert)
 				{
-					var input = document.getElementById("WidgetWidthEdit");
-					var width = parseInt(input.value);
-					if (isNaN(width))
+					var input = document.getElementById(input_id);
+					var value = parseInt(input.value);
+					if (isNaN(value))
 					{
-						window.alert ('<?php _e("Please enter a valid width", "FWTD")?>');
+						window.alert (validation_alert);
 						return 0;
 					}
 
-					if (width < 350 || width > 500)
+					if (value < min_value || value > max_value)
 					{
-						window.alert ('<?php _e("Width is out of range", "FWTD")?>');
+						window.alert (range_alert);
 						return 0;
 					}
-					input.value = width.toString();
-					return width;
+					
+					input.value = value.toString();
+					return value;
+				}
+				
+				function ValidateRatingWidgetWidth()
+				{
+					return ValidateNumberParam("WidgetWidthEdit", 350, 500, 
+						'<?php _e("Please enter a valid width", "FWTD")?>', 
+						'<?php _e("Width is out of range", "FWTD")?>');
+				}
+				
+				function ValidateFeederHeight()
+				{
+		            return ValidateNumberParam("FeederHeightEdit", 300, 2000, 
+						'<?php _e("Please enter a valid feeder height", "FWTD")?>', 
+						'<?php _e("Feeder height is out of range", "FWTD")?>');
+				}				
+
+				function ValidateFeederWidth()
+				{
+					return ValidateNumberParam("FeederWidthEdit", 200, 1000, 
+						'<?php _e("Please enter a valid feeder width", "FWTD")?>', 
+						'<?php _e("Feeder width is out of range", "FWTD")?>');
+				}
+		        
+		        function ValidateFeederImageHeight()
+		        {
+		        	return ValidateNumberParam("FeederImageHeightEdit", 100, 1000, 
+						'<?php _e("Please enter a valid maximum image height", "FWTD")?>', 
+						'<?php _e("Max. image height is out of range", "FWTD")?>');
+				}
+				
+				function OnFeederCheck(box_id, input_id)
+				{
+					var input = document.getElementById(input_id);
+					var box = document.getElementById(box_id);
+					if (box.checked == true)
+						input.value = "1";
+					else
+						input.value = "0";
+					return box.checked;
+				}
+				
+				function OnFeederShowHeader()
+				{
+					if (OnFeederCheck('FeederShowHeaderBox', 'FeederShowHeader') == true)
+					{
+						document.getElementById("FeederShowNavigatorBox").disabled = "";
+						document.getElementById('FeederNavigatorTableRow').style.color = "#000000"
+					}
+					else
+					{
+						document.getElementById("FeederShowNavigatorBox").checked = ""; 
+						document.getElementById("FeederShowNavigatorBox").disabled = "disabled";
+						document.getElementById('FeederNavigatorTableRow').style.color = "#808080"
+					}
+					OnFeederShowNavigator();
+				}
+				
+				function OnFeederShowNavigator()
+				{
+					if (OnFeederCheck('FeederShowNavigatorBox', 'FeederShowNavigator') == true)
+					{
+						document.getElementById("FeederAutoRunBox").disabled = "";
+						document.getElementById('FeederAutoRunTableRow').style.color = "#000000"
+					}
+					else
+					{
+						document.getElementById("FeederAutoRunBox").checked = ""; 
+						document.getElementById("FeederAutoRunBox").disabled = "disabled";
+						document.getElementById('FeederAutoRunTableRow').style.color = "#808080"
+					}
+					OnFeederAutoRun();
+				}
+				
+				function OnFeederAutoRun()
+				{
+					OnFeederCheck('FeederAutoRunBox', 'FeederAutoRun');
+				}
+				
+				function OnFeederAuthorInfo()
+				{
+					OnFeederCheck('FeederAuthorInfoBox', 'FeederAuthorInfo');
+				}
+				
+				function OnFeederLinksNewTab()
+				{
+					OnFeederCheck('FeederLinksNewTabBox', 'FeederLinksNewTab');
+				}
+				
+				function OnFeederShowFooter()
+				{
+					OnFeederCheck('FeederShowFooterBox', 'FeederShowFooter');
+				}
+				
+				function OnResetFeeder()
+				{
+					var mode = "";
+					var box = document.getElementById("FeederShowHeaderBox");
+					
+					if (box.checked == true)
+					{
+						mode += "H";
+						
+						box = document.getElementById("FeederShowNavigatorBox");
+						if (box.checked == true)
+						{
+		                    mode += "N";
+		                    
+							box = document.getElementById("FeederAutoRunBox");
+		                    if (box.checked == true)
+		                        mode += "S";
+						}
+					} 
+					
+					box = document.getElementById("FeederShowFooterBox");
+					if (box.checked == true)
+		                mode += "F";
+		            
+					box = document.getElementById("FeederAuthorInfoBox");
+					if (box.checked == true)
+		                mode += "A";
+		                
+					box = document.getElementById("FeederLinksNewTabBox");
+					if (box.checked == false)
+		                mode += "W";
+		              
+		            var height = ValidateFeederHeight();
+					if (height == 0)
+						return;
+		            
+		            var width = ValidateFeederWidth();
+					if (width == 0)
+						return;
+		            
+		            var mih = ValidateFeederImageHeight();
+					if (mih == 0)
+						return;
+					
+					var feeder = document.getElementById("FeederPreview");
+					var url = "<?php echo GetFeedwebUrl();?>";
+					var bac = "<?php echo GetBac(true);?>";
+					
+					feeder.src = url + "FPW/Feeder.aspx?bac=" + bac + "&mode=" + mode + "&mih=" + mih + "&bc=20&mfc=300";
+					feeder.style.height = height.toString() + "px";
+					feeder.style.width = width.toString() + "px";
 				}
 
 				function OnSubmitFeedwebSettingsForm()
@@ -511,7 +656,10 @@ function FeedwebPluginOptions()
 					if (layout == "wide")
 						if (ValidateRatingWidgetWidth() == 0)
 							return false;
-					
+							
+					if (ValidateFeederHeight() == 0 || ValidateFeederWidth() == 0 || ValidateFeederImageHeight() == 0)
+						return false;
+		            
 					var form = document.getElementById("FeedwebSettingsForm");
 					form.action ="<?php echo plugin_dir_url(__FILE__)?>feedweb_settings.php";
 					form.method = "post";
@@ -535,6 +683,13 @@ function FeedwebPluginOptions()
 							tabs[index].style.textDecoration = "none";
 							tabs[index].style.backgroundColor = "#ffffff";
 						}
+					
+					var reset_button = document.getElementById("ResetFeederButton");
+					reset_button.style.visibility = (tab == 1 ? "visible" : "hidden");
+					
+					var purge_button = document.getElementById("PurgeInactiveWidgetsButton");
+					if (purge_button != null && purge_button != undefined)
+						purge_button.style.visibility = (tab == 0 ? "visible" : "hidden");
 				}
 			</script>
 			<?php wp_referer_field(true)?>
@@ -548,13 +703,14 @@ function FeedwebPluginOptions()
 			<input type='hidden' id='RatingWidgetColorScheme' name='RatingWidgetColorScheme' value='<?php echo $feedweb_data["widget_cs"];?>'/>
 			<input type='hidden' id='ResultsBeforeVoting' name='ResultsBeforeVoting' value='<?php echo $feedweb_data["results_before_voting"];?>'/>
 			<input type='hidden' id='FeedwebCopyrightNotice' name='FeedwebCopyrightNotice' value='<?php echo $feedweb_data["copyright_notice_ex"];?>'/>
-			<!--
-			<input type='hidden' id='AsyncLoadMode' name='AsyncLoadMode' value='<?php echo $feedweb_data["async_load_mode"];?>'/>
-			<input type='hidden' id='RatingWidgetPlacement' name='RatingWidgetPlacement' value='<?php echo $feedweb_data["widget_place"];?>'/>
-			<input type='hidden' id='FrontWidgetHideScroll' name='FrontWidgetHideScroll' value='<?php echo $feedweb_data["front_widget_hide_scroll"];?>'/>
-			<input type='hidden' id='FrontWidgetColorScheme' name='FrontWidgetColorScheme' value='<?php echo $feedweb_data["front_widget_color_scheme"];?>'/>
-			<input type='hidden' id='FrontWidgetItemCount' name='FrontWidgetItemCount' value='<?php echo $feedweb_data["front_widget_items"];?>'/>
-			-->
+			
+			<input type='hidden' id='FeederAutoRun' name='FeederAutoRun' value='<?php echo $feedweb_data["feeder_auto_run"];?>'/>
+			<input type='hidden' id='FeederShowHeader' name='FeederShowHeader' value='<?php echo $feedweb_data["feeder_show_header"];?>'/>
+			<input type='hidden' id='FeederAuthorInfo' name='FeederAuthorInfo' value='<?php echo $feedweb_data["feeder_author_info"];?>'/>
+			<input type='hidden' id='FeederShowFooter' name='FeederShowFooter' value='<?php echo $feedweb_data["feeder_show_footer"];?>'/>
+			<input type='hidden' id='FeederShowNavigator' name='FeederShowNavigator' value='<?php echo $feedweb_data["feeder_show_nav"];?>'/>
+			<input type='hidden' id='FeederLinksNewTab' name='FeederLinksNewTab' value='<?php echo $feedweb_data["feeder_links_new_tab"];?>'/>
+			
 			<br/>
 			<div id="CSSEditorDiv" ><?php BuildCSSEditor();?></div> 
 			<table id="SettingsTable" cellpadding="0" cellspacing="0">
@@ -562,26 +718,26 @@ function FeedwebPluginOptions()
 					<td>
 						<a href="#" class="FeedwebSettingsTab" onclick="OnClickFeedwebSettingsTab(0)" 
 							style="text-decoration: underline; background-color: #e0e0ff;"><?php _e("Rating Widget", "FWTD")?></a>
-						<a href="#" class="FeedwebSettingsTab" onclick="OnClickFeedwebSettingsTab(1)"><?php _e("Advanced", "FWTD")?></a>
+						<a href="#" class="FeedwebSettingsTab" onclick="OnClickFeedwebSettingsTab(1)"><?php _e("Feeder", "FWTD")?></a>
 					</td>
 				</tr>
 				<tr class="FeedwebSettingsContent" style="overflow: hidden;">
 					<td>
-						<div class="FeedwebSettingsDiv" style="display: block; height: 450px;">
+						<div class="FeedwebSettingsDiv" style="display: block; height: 550px;">
 							<table class="FeedwebSettingsTable">
 								<tbody>
 									<tr id="RatingWidgetColorSchemeRow" style="height: 100px; vertical-align: top;">
-										<td>
+										<td style="width: 275px; min-width: 275px;">
 											<span style="position: relative; top: 5px;"><b><?php _e("Widget Color Scheme:", "FWTD")?></b></span><br/>
 											<span style="position: relative; top: 20px;"><b><?php _e("Widget External Background:", "FWTD")?></b></span><br/>
 											<span style="position: relative; top: 35px;"><b><?php _e("Widget Stylesheet (CSS):", "FWTD")?></b></span>
 										</td>
-										<td>
+										<td style='width: 280px; min-width: 280px;'>
 											<?php BuildColorSchemeBox($feedweb_data['widget_cs'], true) ?><br/>
 											<?php BuildExternalBackgroundControl($feedweb_data['widget_ext_bg']) ?>
 											<input type='button' class='button button-primary' id="EditWidgetCSSButton" onclick='OnEditCSS()' value='View / Edit CSS'/>
 										</td>
-										<td>
+										<td style='width: 550px; min-width: 550px;'>
 											<span id='ChooseColorSchemePrompt'><?php _e("Please choose the color scheme of your HTML rating widgets.", "FWTD")?></span><br />
 											<span id='CustomCSSValidityPrompt'><?php _e("Your custom CSS might not be compatible with the Widget.", "FWTD")?>
 											<br/><?php _e("Please revise and resubmit.", "FWTD")?></span>
@@ -592,10 +748,10 @@ function FeedwebPluginOptions()
 										<td>
 											<span><b><?php _e("Widget Language:", "FWTD")?></b></span>
 										</td>
-										<td style='width: 200px;'>
+										<td>
 											<?php BuildLanguageBox($feedweb_data['language'], $feedweb_data['language_set'], false) ?>
 										</td>
-										<td style='width: 600px;'>
+										<td>
 											<span><i>Don't find your language? <a href="mailto://contact@feedweb.net">Help us translate the widget for you!</a></i></span>
 										</td>
 									</tr>
@@ -689,37 +845,140 @@ function FeedwebPluginOptions()
 											<span><i><?php _e("Display a prompt to insert a rating widget when a post is published.", "FWTD")?></i></span>
 										</td>
 									</tr>
-								</tbody>
-							</table>
-						</div>
-						<div class="FeedwebSettingsDiv" style="display: none; height: 450px;">
-							<table class="FeedwebSettingsTable">
-								<tbody>
-									<!--
 									<tr>
-										<td style='width: 320px;'>
-											<span><b><?php _e("Async load mode:", "FWTD")?></b></span> 				
-										</td>
-										<td style='width: 200px;'>
-											<input id="AsyncLoadModeBox" name="AsyncLoadModeBox" onchange="OnCheckAsyncLoadMode()"
-											<?php if($feedweb_data['async_load_mode'] == "1") echo 'checked="checked"'?> type="checkbox"> 
-											<?php _e("Enable", "FWTD")?></input>				
-										</td>
-										<td style='width: 600px;'>
-											<span><i><?php _e("Check to enable asynchronous (nonblocking) loading of Rating Widgets.", "FWTD")?></i></span>
-										</td>
-									</tr>
-									-->
-									<tr>
-										<td style='width: 320px;'>
+										<td>
 											<span><b><?php _e("Automatically add paragraphs:", "FWTD")?></b></span> 				
 										</td>
-										<td style='width: 200px;'>
+										<td>
 											<input <?php if($feedweb_data['add_paragraphs'] == "1") echo 'checked="checked"' ?>
 											id="AddParagraphsBox" name="AddParagraphsBox" type="checkbox" onchange='OnCheckAddParagraphs()'> <?php _e("Add")?></input>				
 										</td>
-										<td style='width: 600px;'>
+										<td>
 											<span><i><?php _e("Surround widgets with paragraph tags:", "FWTD")?></i><b> &lt;P&gt;...&lt;/P&gt;</b></span>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						<div class="FeedwebSettingsDiv" style="display: none; height: 550px;">
+							<table class="FeedwebSettingsTable" cellpadding="0" cellspacing="0">
+								<tbody>
+									<tr>
+										<td style='width: 140px; min-width: 140px; height: 44px;'>
+											<span><b><?php _e("Feeder Width:", "FWTD")?></b></span>
+										</td>
+										<td style='width: 140px; min-width: 140px;'>
+											<input id='FeederWidthEdit' name='FeederWidthEdit' type='text' style="width: 128px;" value="<?php echo $feedweb_data['feeder_width']?>"/>
+										</td>
+										<td style='width: 280px; min-width: 280px;'>
+											<span><i><?php _e("Width of the Feeder in pixels.<br/>Allowed: 200 to 1000. Recommended: 300.", "FWTD")?></i></span>
+										</td>
+										<td style='padding: 0; background-color: #e0e0e0; vertical-align: top;' rowspan='9'>
+											<div style='position: relative; width: 500px; height: 100%; display: block; overflow-y: scroll; overflow-x: scroll;'>
+												<div style='position: absolute; display: block; top: 15px; bottom: 15px; left: 15px; right: 15px; text-align: right;'>
+													<iframe id="FeederPreview" style="position: relative;"></iframe>	
+												</div>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td style='height: 44px;'>
+											<span><b><?php _e("Feeder Height:", "FWTD")?></b></span>
+										</td>
+										<td>
+											<input id='FeederHeightEdit' name='FeederHeightEdit' type='text' style="width: 128px;" value="<?php echo $feedweb_data['feeder_height']?>"/>
+										</td>
+										<td>
+											<span><i><?php _e("Height of the Feeder in pixels.<br/>Allowed: 300 to 2000 pixels.", "FWTD")?></i></span>
+										</td>
+									</tr>
+									<tr >
+										<td style='height: 44px;'>
+											<span><b><?php _e("Show Header:", "FWTD")?></b></span> 				
+										</td>
+										<td>
+											<input <?php if($feedweb_data['feeder_show_header'] == "1") echo 'checked="checked"' ?>
+											id="FeederShowHeaderBox" name="FeederShowHeaderBox" type="checkbox" onchange='OnFeederShowHeader()'> <?php _e("Show")?></input>				
+										</td>
+										<td>
+											<span><i><?php _e("Display header bar of the Feeder.", "FWTD")?></i></span>
+										</td>
+									</tr>
+									<tr id="FeederNavigatorTableRow">
+										<td style="height: 44px;">
+											<span><b><?php _e("Show Navigator:", "FWTD")?></b></span> 				
+										</td>
+										<td>
+											<input <?php if($feedweb_data['feeder_show_nav'] == "1") echo 'checked="checked"' ?>
+											id="FeederShowNavigatorBox" name="FeederShowNavigatorBox" type="checkbox" onchange='OnFeederShowNavigator()'> <?php _e("Show")?></input>				
+										</td>
+										<td>
+											<span><i><?php _e("Display navigator icons on the Feeder<br/>(show vertical scrollbar when unchecked).", "FWTD")?></i></span>
+										</td>
+									</tr> 
+									<tr id="FeederAutoRunTableRow">
+										<td style="height: 44px;">
+											<span><b><?php _e("Auto Run Feed:", "FWTD")?></b></span> 				
+										</td>
+										<td>
+											<input <?php if($feedweb_data['feeder_auto_run'] == "1") echo 'checked="checked"' ?>
+											id="FeederAutoRunBox" name="FeederAutoRunBox" type="checkbox" onchange='OnFeederAutoRun()'> <?php _e("Yes")?></input>				
+										</td>
+										<td>
+											<span><i><?php _e("Auto-play the Feeder on start.", "FWTD")?></i></span>
+										</td>
+									</tr> 
+									<tr>
+										<td style="height: 44px;">
+											<span><b><?php _e("Author Info:", "FWTD")?></b></span> 				
+										</td>
+										<td>
+											<input <?php if($feedweb_data['feeder_author_info'] == "1") echo 'checked="checked"' ?>
+											id="FeederAuthorInfoBox" name="FeederAuthorInfoBox" type="checkbox" onchange='OnFeederAuthorInfo()'> <?php _e("Show")?></input>				
+										</td>
+										<td>
+											<span><i><?php _e("Show Author info in the Feeder Items<br/>(Gravatar, Author Name, Site, Date).", "FWTD")?></i></span>
+										</td>
+									</tr> 
+									<tr>
+										<td style="height: 44px;">
+											<span><b><?php _e("Feeder Links:", "FWTD")?></b></span> 				
+										</td>
+										<td>
+											<input <?php if($feedweb_data['feeder_links_new_tab'] == "1") echo 'checked="checked"' ?>
+											id="FeederLinksNewTabBox" name="FeederLinksNewTabBox" type="checkbox" onchange='OnFeederLinksNewTab()'> <?php _e("Open New Tab")?></input>				
+										</td>
+										<td>
+											<span><i><?php _e("Open the Feeder links in a new tab<br/>(otherwise redirect the current window).", "FWTD")?></i></span>
+										</td>
+									</tr> 
+									<tr>
+										<td style="height: 44px;">
+											<span><b><?php _e("Show Footer:", "FWTD")?></b></span> 				
+										</td>
+										<td>
+											<input <?php if($feedweb_data['feeder_show_footer'] == "1") echo 'checked="checked"' ?>
+											id="FeederShowFooterBox" name="FeederShowFooterBox" type="checkbox" onchange='OnFeederShowFooter()'> 
+											<?php _e("Show")?></input>				
+										</td>
+										<td>
+											<span><i><?php _e("Display footer bar of the Feeder.", "FWTD")?></i></span>
+										</td>
+									</tr> 
+									<tr>
+										<td style='height: 44px;'>
+											<span><b><?php _e("Max. Image Height:", "FWTD")?></b></span>
+										</td>
+										<td>
+											<input id='FeederImageHeightEdit' name='FeederImageHeightEdit' type='text' style="width: 128px;" value="<?php echo $feedweb_data['feeder_img_height']?>"/>
+										</td>
+										<td>
+											<span><i><?php _e("Maximum height of the images in the Feeder.<br/>Allowed: 100 to 1000 pixels.", "FWTD")?></i></span>
+										</td>
+									</tr>
+									<tr>
+										<td colspan="4" style="border-bottom: none; padding-top: 10px;">
+											<span>To <span style="color: red; font-weight: bold;">enable</span> the Feeder, go to <a href="./widgets.php">Appearance -> Widgets</a>, add a text widget to your sidebar, and place <b>[FeedwebFeederBar]</b> in the widget's text.<br/>Please <a href="mailto://contact@feedweb.net">contact us</a> if you have any questions.</span>	
 										</td>
 									</tr>
 								</tbody>
@@ -729,8 +988,12 @@ function FeedwebPluginOptions()
 				</tr>
 				<tr class="FeedwebSettingsCommitButton">
 					<td>
-						<?php echo get_submit_button(__('Save Changes'), 'primary', 'submit', false, "style='width: 200px;'");?>
-						<?php GetPurgeInactiveWidgets(); ?>
+						<div>
+							<?php echo get_submit_button(__('Save Changes'), 'primary', 'submit', false, "");?>
+							<?php GetPurgeInactiveWidgets(); ?>
+							<?php echo "<input id='ResetFeederButton' type='button' onclick='OnResetFeeder()' 
+								value='".__("Reset Feeder Preview", "FWTD")."' title='".__("Click to Reset Feeder Preview", "FWTD")."'/>";?>
+						</div>
 					</td>
 				</tr>
 			</table>
@@ -739,6 +1002,7 @@ function FeedwebPluginOptions()
 	<script>
 		OnWidgetType('<?php echo $feedweb_data['widget_type']?>');
 		OnChangeLayout();
+		OnResetFeeder();
 	</script>
 	<?php 
 }

@@ -4,7 +4,7 @@ Plugin Name: Feedweb
 Plugin URI: http://wordpress.org/extend/plugins/feedweb/
 Description: Expose your blog to the Feedweb reader's community. Promote your views. Get a comprehensive and detailed feedback from your readers.
 Author: Feedweb
-Version: 2.5
+Version: 3.0
 Author URI: http://www.feedweb.net
 */
 
@@ -283,14 +283,35 @@ function FeederBarCallback($atts)
 	if ($data == null)
 		return "";
 		
-	$lang = $data["language"];
-	$url = GetFeedwebUrl()."FPW/Feeder.aspx?bac=$bac&mode=HFN&bc=25&mfc=200";
+	$mode = "";
+	if ($data["feeder_show_header"] == "1")
+	{
+		$mode.="H";
+		if ($data["feeder_show_nav"] == "1")
+		{
+			$mode.="N";
+			if ($data["feeder_auto_run"] == "1")
+				$mode.="S";
+		}
+	}
 	
-	$width = 300;
-	$height = 800;
+	if ($data["feeder_show_footer"] == "1")
+		$mode.="F";
+	
+	if ($data["feeder_author_info"] == "1")
+		$mode.="A";
+	
+	if ($data["feeder_links_new_tab"] == "0")
+		$mode.="W";
+		
 	$scrolling = "";
 	$color = "#ffffff";
-	return "<div style='width: 100%; height: 100%; background-color: $color; text-align: center;'>".
+	$width = $data["feeder_width"];
+	$height = $data["feeder_height"];
+	$img_height = $data["feeder_img_height"];
+	$url = GetFeedwebUrl()."FPW/Feeder.aspx?bac=$bac&mode=$mode&bc=20&mfc=300&mih=$img_height";
+	
+	return "<div style='width: 100%; height: 100%; text-align: center;'>".
 		"<iframe id='FeederFrame' src='$url' style='width: ".$width."px; height: ".$height."px; ".
 		"border-style: none;' $scrolling></iframe></div>";
 }

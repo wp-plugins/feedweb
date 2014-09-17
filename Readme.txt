@@ -2,13 +2,13 @@
 Contributors: Feedweb
 Tags: blog, rate, rating, widget, network, feed, feeder, feedback, collector, article, audience, engage, engagement, aggregator, aggregation, content, management, post, public, opinion, research, html5, media, press, news, politics, society, social, question, answer, survey, poll, polling, vote, voting, stats, discussion, controversy, cooperation, view, comments, community, statistics, syndication, marketing, admin, sidebar, plugin, publishing, exchange, networking, sharing, business
 Requires at least: 3.0
-Tested up to: 3.9.2
+Tested up to: 4.0
 Stable Tag: 3.0
 
 Get precise feedback and expose your blog to a brand new audience at the same time. Join the community of 2500+ websites! 
 
 == Description ==
-**Latest update**: More than **357.000** votes collected by **24.200** blog post rating widgets published in **2.800** websites. [**See them on our website!**](http://feedweb.net/)
+**Latest update**: More than **359.000** votes collected by **24.500** blog post rating widgets published in **2.900** websites. [**See them on our website!**](http://feedweb.net/)
 
 The Feedweb Plugin is a simple and easy way to promote and improve your blog. By activating the plugin you can freely insert customized rating widgets into your selected posts. Choose questions you want to ask your readers and get comprehensive and precise feedback about your blog.
 
@@ -76,7 +76,7 @@ Follow us on [**Facebook**](https://www.facebook.com/feedwebresearch) and [**Twi
 3.	Go to your posts' table, choose a post and click on the PLUS icon. 
 4.	Set the new widget's parameters and publish it.
 5.	Now you can browse to your post and see the widget at the bottom.
-6.	For the Front Page Widget: Use short-code **[FeedwebFrontWidget]** to display the list of Most Voted / Best Rated / Latest posts at the front page of your blog.
+6.	For the Feeder Sidebar Widget: Use short-code **[FeedwebFeederBar]** to display the Feeder in your blog.
 
 
 == Screenshots ==
@@ -89,7 +89,7 @@ Follow us on [**Facebook**](https://www.facebook.com/feedwebresearch) and [**Twi
 6. Insert Widget Wizard: Step 4 (Questions).
 7. The Rating Widget: Voting panels.
 8. The Rating Widget: Results panels.
-9. A blog post in the Feedweb Readers' Community feed.
+9. The Feeder (use shortcode [FeedwebFeederBar]).
 
 
 == Changelog ==

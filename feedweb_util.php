@@ -183,9 +183,12 @@ function GetFeedwebOptions()
 		"feeder_show_header" => "1",
 		"feeder_show_nav" => "1",
 		"feeder_author_info" => "0",
+		"feeder_widget_info" => "0",
 		"feeder_show_footer" => "1",
 		"feeder_links_new_tab" => "1",
-		"feeder_img_height" => "300"
+		"feeder_img_height" => "300",
+		"feeder_order_selector" => "1",
+		"feeder_author_selector" => "0"
 		);
 		
 	$values = get_option("_feedweb_plugin_options");

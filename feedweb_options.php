@@ -550,15 +550,38 @@ function FeedwebPluginOptions()
 					if (OnFeederCheck('FeederShowHeaderBox', 'FeederShowHeader') == true)
 					{
 						document.getElementById("FeederShowNavigatorBox").disabled = "";
-						document.getElementById('FeederNavigatorTableRow').style.color = "#000000"
+						document.getElementById("FeederOrderSelectorBox").disabled = "";
+						document.getElementById("FeederAuthorSelectorBox").disabled = "";
+						
+						document.getElementById('FeederNavigatorTableRow').style.color = "#000000";
+						document.getElementById('FeederOrderSelectorTableRow').style.color = "#000000";
+						document.getElementById('FeederAuthorSelectorTableRow').style.color = "#000000";
 					}
 					else
 					{
 						document.getElementById("FeederShowNavigatorBox").checked = ""; 
+						document.getElementById("FeederOrderSelectorBox").checked = "";
+						document.getElementById("FeederAuthorSelectorBox").checked = "";
+						
 						document.getElementById("FeederShowNavigatorBox").disabled = "disabled";
+						document.getElementById("FeederOrderSelectorBox").disabled = "disabled";
+						document.getElementById("FeederAuthorSelectorBox").disabled = "disabled";
+						
 						document.getElementById('FeederNavigatorTableRow').style.color = "#808080"
+						document.getElementById('FeederOrderSelectorTableRow').style.color = "#808080";
+						document.getElementById('FeederAuthorSelectorTableRow').style.color = "#808080";
 					}
 					OnFeederShowNavigator();
+				}
+				
+				function OnFeederAuthorSelector()
+				{
+					OnFeederCheck('FeederAuthorSelectorBox', 'FeederAuthorSelector');
+				}
+				
+				function OnFeederOrderSelector()
+				{
+					OnFeederCheck('FeederOrderSelectorBox', 'FeederOrderSelector');
 				}
 				
 				function OnFeederShowNavigator()
@@ -585,6 +608,11 @@ function FeedwebPluginOptions()
 				function OnFeederAuthorInfo()
 				{
 					OnFeederCheck('FeederAuthorInfoBox', 'FeederAuthorInfo');
+				}
+				
+				function OnFeederWidgetInfo()
+				{
+					OnFeederCheck('FeederWidgetInfoBox', 'FeederWidgetInfo');
 				}
 				
 				function OnFeederLinksNewTab()
@@ -615,6 +643,14 @@ function FeedwebPluginOptions()
 		                    if (box.checked == true)
 		                        mode += "S";
 						}
+						
+						box = document.getElementById("FeederAuthorSelectorBox");
+						if (box.checked == true)
+			                mode += "U";
+						
+						box = document.getElementById("FeederOrderSelectorBox");
+						if (box.checked == true)
+			                mode += "O";
 					} 
 					
 					box = document.getElementById("FeederShowFooterBox");
@@ -625,6 +661,10 @@ function FeedwebPluginOptions()
 					if (box.checked == true)
 		                mode += "A";
 		                
+					box = document.getElementById("FeederWidgetInfoBox");
+					if (box.checked == true)
+		                mode += "I";
+					
 					box = document.getElementById("FeederLinksNewTabBox");
 					if (box.checked == false)
 		                mode += "W";
@@ -707,9 +747,12 @@ function FeedwebPluginOptions()
 			<input type='hidden' id='FeederAutoRun' name='FeederAutoRun' value='<?php echo $feedweb_data["feeder_auto_run"];?>'/>
 			<input type='hidden' id='FeederShowHeader' name='FeederShowHeader' value='<?php echo $feedweb_data["feeder_show_header"];?>'/>
 			<input type='hidden' id='FeederAuthorInfo' name='FeederAuthorInfo' value='<?php echo $feedweb_data["feeder_author_info"];?>'/>
+			<input type='hidden' id='FeederWidgetInfo' name='FeederWidgetInfo' value='<?php echo $feedweb_data["feeder_widget_info"];?>'/>
 			<input type='hidden' id='FeederShowFooter' name='FeederShowFooter' value='<?php echo $feedweb_data["feeder_show_footer"];?>'/>
 			<input type='hidden' id='FeederShowNavigator' name='FeederShowNavigator' value='<?php echo $feedweb_data["feeder_show_nav"];?>'/>
 			<input type='hidden' id='FeederLinksNewTab' name='FeederLinksNewTab' value='<?php echo $feedweb_data["feeder_links_new_tab"];?>'/>
+			<input type='hidden' id='FeederOrderSelector' name='FeederOrderSelector' value='<?php echo $feedweb_data["feeder_order_selector"];?>'/>
+			<input type='hidden' id='FeederAuthorSelector' name='FeederAuthorSelector' value='<?php echo $feedweb_data["feeder_author_selector"];?>'/>
 			
 			<br/>
 			<div id="CSSEditorDiv" ><?php BuildCSSEditor();?></div> 
@@ -860,7 +903,7 @@ function FeedwebPluginOptions()
 								</tbody>
 							</table>
 						</div>
-						<div class="FeedwebSettingsDiv" style="display: none; height: 550px;">
+						<div class="FeedwebSettingsDiv" style="display: none; height: 670px;">
 							<table class="FeedwebSettingsTable" cellpadding="0" cellspacing="0">
 								<tbody>
 									<tr>
@@ -873,8 +916,8 @@ function FeedwebPluginOptions()
 										<td style='width: 280px; min-width: 280px;'>
 											<span><i><?php _e("Width of the Feeder in pixels.<br/>Allowed: 200 to 1000. Recommended: 300.", "FWTD")?></i></span>
 										</td>
-										<td style='padding: 0; background-color: #e0e0e0; vertical-align: top;' rowspan='9'>
-											<div style='position: relative; width: 500px; height: 100%; display: block; overflow-y: scroll; overflow-x: scroll;'>
+										<td style='padding: 0; background-color: #e0e0e0; vertical-align: top;' rowspan='12'>
+											<div style='position: relative; width: 500px; height: 600px; display: block; overflow-y: scroll; overflow-x: scroll;'>
 												<div style='position: absolute; display: block; top: 15px; bottom: 15px; left: 15px; right: 15px; text-align: right;'>
 													<iframe id="FeederPreview" style="position: relative;"></iframe>	
 												</div>
@@ -904,6 +947,30 @@ function FeedwebPluginOptions()
 											<span><i><?php _e("Display header bar of the Feeder.", "FWTD")?></i></span>
 										</td>
 									</tr>
+									<tr id="FeederAuthorSelectorTableRow">
+										<td style="height: 44px;">
+											<span><b><?php _e("Select Authors:", "FWTD")?></b></span> 				
+										</td>
+										<td>
+											<input <?php if($feedweb_data['feeder_author_selector'] == "1") echo 'checked="checked"' ?>
+											id="FeederAuthorSelectorBox" name="FeederAuthorSelectorBox" type="checkbox" onchange='OnFeederAuthorSelector()'> <?php _e("Show")?></input>				
+										</td>
+										<td>
+											<span><i><?php _e("Display Authors Menu<br/>(Appears when the site has 2 or more authors).", "FWTD")?></i></span>
+										</td>
+									</tr>
+									<tr id="FeederOrderSelectorTableRow">
+										<td style="height: 44px;">
+											<span><b><?php _e("Select Order:", "FWTD")?></b></span> 				
+										</td>
+										<td>
+											<input <?php if($feedweb_data['feeder_order_selector'] == "1") echo 'checked="checked"' ?>
+											id="FeederOrderSelectorBox" name="FeederOrderSelectorBox" type="checkbox" onchange='OnFeederOrderSelector()'> <?php _e("Show")?></input>				
+										</td>
+										<td>
+											<span><i><?php _e("Display Order Menu<br/>(Sort posts by time / votes).", "FWTD")?></i></span>
+										</td>
+									</tr>
 									<tr id="FeederNavigatorTableRow">
 										<td style="height: 44px;">
 											<span><b><?php _e("Show Navigator:", "FWTD")?></b></span> 				
@@ -925,9 +992,10 @@ function FeedwebPluginOptions()
 											id="FeederAutoRunBox" name="FeederAutoRunBox" type="checkbox" onchange='OnFeederAutoRun()'> <?php _e("Yes")?></input>				
 										</td>
 										<td>
-											<span><i><?php _e("Auto-play the Feeder on start.", "FWTD")?></i></span>
+											<span><i><?php _e("Auto-play the Feeder on start.<br/>(*10 posts and up)", "FWTD")?></i></span>
 										</td>
 									</tr> 
+									
 									<tr>
 										<td style="height: 44px;">
 											<span><b><?php _e("Author Info:", "FWTD")?></b></span> 				
@@ -937,9 +1005,22 @@ function FeedwebPluginOptions()
 											id="FeederAuthorInfoBox" name="FeederAuthorInfoBox" type="checkbox" onchange='OnFeederAuthorInfo()'> <?php _e("Show")?></input>				
 										</td>
 										<td>
-											<span><i><?php _e("Show Author info in the Feeder Items<br/>(Gravatar, Author Name, Site, Date).", "FWTD")?></i></span>
+											<span><i><?php _e("Show Author info in the Feeder Items<br/>(Gravatar, Author Name, Site Title).", "FWTD")?></i></span>
 										</td>
 									</tr> 
+									<tr>
+										<td style="height: 44px;">
+											<span><b><?php _e("Post Info:", "FWTD")?></b></span> 				
+										</td>
+										<td>
+											<input <?php if($feedweb_data['feeder_widget_info'] == "1") echo 'checked="checked"' ?>
+											id="FeederWidgetInfoBox" name="FeederWidgetInfoBox" type="checkbox" onchange='OnFeederWidgetInfo()'> <?php _e("Show")?></input>				
+										</td>
+										<td>
+											<span><i><?php _e("Show Post info in the Feeder Items<br/>(Date / Number of votes).", "FWTD")?></i></span>
+										</td>
+									</tr> 
+									
 									<tr>
 										<td style="height: 44px;">
 											<span><b><?php _e("Feeder Links:", "FWTD")?></b></span> 				
@@ -978,7 +1059,7 @@ function FeedwebPluginOptions()
 									</tr>
 									<tr>
 										<td colspan="4" style="border-bottom: none; padding-top: 10px;">
-											<span>To <span style="color: red; font-weight: bold;">enable</span> the Feeder, go to <a href="./widgets.php">Appearance -> Widgets</a>, add a text widget to your sidebar, and place <b>[FeedwebFeederBar]</b> in the widget's text.<br/>Please <a href="mailto://contact@feedweb.net">contact us</a> if you have any questions.</span>	
+											<span style="font-weight: bold; font-size: 12pt;">To <span style="color: red;">enable</span> the Feeder, go to <a href="./widgets.php">Appearance -> Widgets</a>, add a text widget to your sidebar, and place <span style='color: blue;'>[FeedwebFeederBar]</span> in the widget's text.<br/>Please <a href="mailto://contact@feedweb.net">contact us</a> if you have any questions.</span>	
 										</td>
 									</tr>
 								</tbody>

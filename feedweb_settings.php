@@ -72,10 +72,13 @@ function UpdateSettings()
 		$data["feeder_show_header"] = $_POST["FeederShowHeader"];
 		$data["feeder_show_nav"] = $_POST["FeederShowNavigator"];
 		$data["feeder_author_info"] = $_POST["FeederAuthorInfo"];
+		$data["feeder_widget_info"] = $_POST["FeederWidgetInfo"];
 		$data["feeder_show_footer"] = $_POST["FeederShowFooter"];
 		$data["feeder_links_new_tab"] = $_POST["FeederLinksNewTab"];
 		$data["feeder_img_height"] = $_POST["FeederImageHeightEdit"];
-			
+		$data["feeder_order_selector"] = $_POST["FeederOrderSelector"];
+		$data["feeder_author_selector"] = $_POST["FeederAuthorSelector"];
+					
 		if($_POST["CSSContentType"] == "reset")
 			UpdateCSS("R", $data);
 	}

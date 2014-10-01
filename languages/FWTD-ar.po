@@ -1,0 +1,515 @@
+# Copyright (C) 2013 Feedweb
+# This file is distributed under the same license as the Feedweb package.
+msgid ""
+msgstr ""
+"Project-Id-Version: Feedweb 1.8.2\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/feedweb\n"
+"POT-Creation-Date: 2013-02-27 10:50:41+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2014-03-07 00:35+0200\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"X-Generator: Poedit 1.6.2\n"
+"Language: ar\n"
+
+#: feedweb.php:123 feedweb.php:284
+msgid "Insert Rating Widget"
+msgstr "إدارج التقييم الجانبي"
+
+#: feedweb.php:137
+msgid "The widget data is invalid and cannot be used."
+msgstr "البيانات المستخدمة في التقييم الجانبي غير صالحة ولا يمكن استخدامها"
+
+#: feedweb.php:138
+msgid "Remove Invalid Widget?"
+msgstr "حذف التقييم الجانبي الغير صالحة؟"
+
+#: feedweb.php:143
+msgid "Unknown error."
+msgstr "خطأ غير معروف."
+
+#: feedweb.php:143
+msgid ""
+"\n"
+"Please contact Feedweb (contact@feedweb.net)"
+msgstr ""
+"\n"
+"يرجى مراسلة Feedweb (contact@feedweb.net)"
+
+#: feedweb.php:153
+msgid ""
+"Edit / Remove Rating Widget\n"
+"(%s Votes. Average Score: %s)"
+msgstr "تحرير / حذف التقييم الجانبي/n(%s تقييمات. متوسط الدرجة: %s)"
+
+#: feedweb.php:159
+msgid ""
+"Edit / Remove Rating Widget\n"
+"(No votes yet)"
+msgstr "تحرير / حذف التقييم الجانبي/n(لا يوجد تقييم بعد)"
+
+#: feedweb.php:189
+msgid "Settings"
+msgstr "الإعدادات"
+
+#: feedweb.php:264
+msgid ""
+"The Feedweb service is temporarily unavailable due to system maintenance"
+msgstr "خدمة Feedweb غير متاحة مؤقتاً لأعمال الصيانة"
+
+#: feedweb.php:285
+msgid "Do you wish to insert a Feedweb rating widget into your new post?"
+msgstr "هل ترغب في إضافة Feedweb  في المشاركات الجديدة؟"
+
+#: feedweb_options.php:54
+msgid "Blue"
+msgstr "أزرق"
+
+#: feedweb_options.php:54
+msgid "Gray"
+msgstr "رصاصي"
+
+#: feedweb_options.php:59
+msgid "Classic"
+msgstr "تقليدي"
+
+#: feedweb_options.php:59
+msgid "Monochrome"
+msgstr "أحادي اللون"
+
+#: feedweb_options.php:59
+msgid "Light Blue"
+msgstr "أزرق فاتح"
+
+#: feedweb_options.php:60
+msgid "Dark Blue"
+msgstr "أزرق غامق"
+
+#: feedweb_options.php:60
+msgid "Dark Green"
+msgstr "أخضر غامق"
+
+#: feedweb_options.php:75
+msgid "No Delay"
+msgstr "لا تأخير"
+
+#: feedweb_options.php:75
+msgid "1 Hour"
+msgstr "1 ساعة"
+
+#: feedweb_options.php:75
+msgid "2 Hours"
+msgstr "2 ساعة"
+
+#: feedweb_options.php:75
+msgid "5 Hours"
+msgstr "5 ساعات"
+
+#: feedweb_options.php:106
+msgid "Remove Inactive Widgets"
+msgstr "حذف التقييم الجانبي الغير مفعلة"
+
+#: feedweb_options.php:107
+msgid "Click to remove widgets from the deleted posts"
+msgstr "اضغط لحذف التقييم الجانبي من المشاركات الممسوحة"
+
+#: feedweb_options.php:113
+msgid "You do not have sufficient permissions to access this page."
+msgstr "لا يوجد لديك الصلاحيات الكافية لدخول هذه الصفحة."
+
+#: feedweb_options.php:121
+msgid "Feedweb Plugin Settings"
+msgstr "إعدادات Feedweb"
+
+#: feedweb_options.php:127
+msgid "Remove Widgets?"
+msgstr "حذف التقييم الجانبي؟"
+
+#: feedweb_options.php:232
+msgid "Please enter a valid width"
+msgstr "يرجى ادخال عرض صالح"
+
+#: feedweb_options.php:238
+msgid "Width is out of range"
+msgstr "العرض خارج النطاق"
+
+#: feedweb_options.php:247
+msgid "Please enter a valid Front Widget height"
+msgstr "يرجى ادخال ارتفاع صحيح"
+
+#: feedweb_options.php:253
+msgid "Front Widget height is out of range"
+msgstr "الارتفاع خارج النطاق"
+
+#: feedweb_options.php:300
+msgid "Rating Widget"
+msgstr "التقييم الجانبي"
+
+#: feedweb_options.php:301
+msgid "Front Widget"
+msgstr "واجهة التقييم الجانبي"
+
+#: feedweb_options.php:311
+msgid "Widget Type:"
+msgstr "نوع التقييم الجانبي:"
+
+#: feedweb_options.php:322
+msgid "Please choose the type of rating widget"
+msgstr "يرجى اختيار نوع التقييم الجانبي"
+
+#: feedweb_options.php:328
+msgid "Widget Color Scheme:"
+msgstr "لون التقييم الجانبي:"
+
+#: feedweb_options.php:336
+msgid "Please choose the color scheme of your HTML rating widgets."
+msgstr "يرجى اختيار لون حسب HTML"
+
+msgid "Please choose the placement of the rating widget within a post."
+msgstr ""
+
+#: feedweb_options.php:342
+msgid "Widget Language:"
+msgstr "لغة التقييم الجانبي:"
+
+#: feedweb_options.php:355
+msgid "Widget width (pixels):"
+msgstr "عرض التقييم الجانبي (بيكسل):"
+
+#: feedweb_options.php:364
+msgid "Allowed width: 350 to 500 pixels. Recommended width: 400 to 450 pixels."
+msgstr "العرض المسموح: 350 إلى 500 بيكسل. العرض الموصى به 400 إلى 450 بيكسل."
+
+#: feedweb_options.php:370
+msgid "Widgets at the Home/Front Page:"
+msgstr "التقييم في الصفحة الرئيسية/ الواجهة"
+
+#: feedweb_options.php:375
+msgid "Display Widgets"
+msgstr "إظهار التقييم الجانبي"
+
+#: feedweb_options.php:379
+msgid ""
+"Check to display the widgets both in the Front Page and the single post "
+"pages."
+msgstr "اضغط لإظهار التقييم الجانبي في الواجهة و صفحة المشاركة الفردية."
+
+#: feedweb_options.php:384
+msgid "Delay displaying results:"
+msgstr "تأجير عرض النتائج:"
+
+#: feedweb_options.php:392
+msgid ""
+"Set the period of time you want to hide voting results after the widget is "
+"created."
+msgstr ""
+"تعيين الفترة الزمنية التي تريد إخفاء نتائج التصويت بعد إنشاء التقييم الجانبي."
+
+#: feedweb_options.php:398
+msgid "Feedweb Copyright Notice:"
+msgstr "حقوق النشر لـ Feedweb :"
+
+#: feedweb_options.php:403
+msgid "Allow"
+msgstr "سماح"
+
+#: feedweb_options.php:407
+msgid "Please check to display the following text below the widgets: "
+msgstr "يرجى الاختيار لإظهار النص التالي أسفل التقييم الجانبي"
+
+#: feedweb_options.php:414
+msgid "Prompt to insert widgets:"
+msgstr "حث لإدراج التقييم:"
+
+#: feedweb_options.php:419
+msgid "Show"
+msgstr "عرض"
+
+#: feedweb_options.php:423
+msgid "Display a prompt to insert a rating widget when a post is published."
+msgstr "عرض الحث على اضافة التقييم عندما يتم نشر المشاركة"
+
+#: feedweb_options.php:435
+msgid "Front Page Widget Color Scheme:"
+msgstr "لون التقييم الجانبي في الواجهة"
+
+#: feedweb_options.php:443
+msgid "Select color scheme for the Front Page widget"
+msgstr "اختر لون التقييم الجانبي في الواجهة"
+
+#: feedweb_options.php:448
+msgid "Max. Widget height (pixels):"
+msgstr "الحد الأقصى لإرتفاع التقييم الجانبي (بيكسل):"
+
+#: feedweb_options.php:457
+msgid "Allowed height: 200 to 800 pixels. Recommended height: 400 pixels."
+msgstr "الحد المسموح للإرتفاع: 200 إلى 800 بيكسل. الموصى به: 400 بيكسل."
+
+#: feedweb_options.php:463
+msgid "Vertical Scroll Bar:"
+msgstr "شريط التمرير العمودي:"
+
+#: feedweb_options.php:469
+msgid "Hide"
+msgstr "إخفاء"
+
+#: feedweb_options.php:473
+msgid ""
+"Check to hide vertical scroll bar when the front widget exceeds max. height."
+msgstr "اختر لإخفاء شريط التمرير العمودي إذا وصل إرتفاع التقييم للحد الأعلى"
+
+#: feedweb_options.php:478
+msgid "Number of list items:"
+msgstr "عدد عناصر القائمة:"
+
+#: feedweb_options.php:486
+msgid "Number of items in the Front Widget list"
+msgstr "عدد العناصر في القائمة الجانبية"
+
+#: feedweb_options.php:496
+msgid "Save Changes"
+msgstr "حفظ التغييرات"
+
+#: feedweb_settings.php:10 question_query.php:10 widget_commit.php:10
+#: widget_dialog.php:9 widget_remove.php:9
+msgid "You are not allowed to be here"
+msgstr "أنت غير مسموح لك بان تكون هنا"
+
+#: feedweb_settings.php:35
+msgid "Failed to update settings"
+msgstr "فشل في تحديث الإعدادات"
+
+#: feedweb_util.php:424
+msgid "Cannot insert widget into a post published %d days ago"
+msgstr "لا يمكن إضافة التقيييم في المشاركات التي مضى عليها %d أيام"
+
+#: feedweb_util.php:432
+msgid ""
+"You have created %d widgets in the last 24 hours. The daily limit is %d new "
+"widgets"
+msgstr "أنشأت عدد %d تقييمات جانبية خلال آخر 24 ساعة. الحد المسموح يومياً %d"
+
+#: feedweb_util.php:439
+msgid ""
+"You have created %d widgets in the last 30 days. The monthly limit is %d new "
+"widgets"
+msgstr "أنشأت عدد %d تقييمات جانبية في آخر 30 يوم. الحد المسموح شهرياً %d"
+
+#: widget_commit.php:95 widget_commit.php:103 widget_commit.php:111
+#: widget_commit.php:119 widget_commit.php:167 widget_commit.php:175
+#: widget_commit.php:183 widget_commit.php:191
+msgid "Error in the Post data"
+msgstr "خطأ في بيانات المشاركة"
+
+#: widget_commit.php:128 widget_commit.php:200
+msgid "Error in the User data"
+msgstr "خطأ في بيانات العضو"
+
+#: widget_commit.php:232
+msgid "Wordpress cannot modify your widget"
+msgstr "ووردبريس غير قادر على تعديل تقييمك"
+
+#: widget_commit.php:255 widget_commit.php:312 widget_commit.php:360
+msgid "Cannot connect Feedweb server"
+msgstr "غير قادر على الاتصال بالسيرفر"
+
+#: widget_commit.php:267
+msgid "The widget has been updated"
+msgstr "تم التحديث بنجاح"
+
+#: widget_commit.php:271
+msgid "Feedweb service cannot update the widget"
+msgstr "خدمة Feedweb غير قادرة على تحديث التقييم"
+
+#: widget_commit.php:287
+msgid "Wordpress cannot insert your widget"
+msgstr "ووردبريس غير قادر على ادراج التقييم"
+
+#: widget_commit.php:326
+msgid "Wordpress cannot remove your widget"
+msgstr "ووردبريس غير قادر على حذف التقييم"
+
+#: widget_commit.php:376
+msgid "Unknown server error"
+msgstr "خطأ سيرفر غير معروف"
+
+#: widget_commit.php:380
+msgid "Feedweb service cannot create a widget"
+msgstr "خدمة Feedweb غير قادرة على انشاء التقييم"
+
+#: widget_dialog.php:23
+msgid ""
+"Dear %s, Please configure your plugin settings before inserting the widget"
+msgstr "عزيزي  %s ، يرجى ضبط إعدادات الإضافة قبل إدراج التقييم"
+
+#: widget_dialog.php:164
+msgid "Uncategorized"
+msgstr "غير مصنف"
+
+#: widget_dialog.php:283
+msgid "The rating widget in the post '%s' will be removed"
+msgstr "سيتم حذف التقييم في المشاركة التالية '%s' "
+
+#: widget_dialog.php:333
+msgid "http://en.wikipedia.org/wiki/Yes%E2%80%93no_question"
+msgstr ""
+
+#: widget_dialog.php:334
+msgid "must be a %sYES / NO%s question"
+msgstr "يجب أن يكون السؤال إجابته بـ %sنعم / لا%s"
+
+#: widget_dialog.php:400
+msgid "Question '{0}' is already selected"
+msgstr "تم اختيار السؤال '{0}'  من قبل"
+
+#: widget_dialog.php:410
+msgid "A widget cannot contain more than {0} questions"
+msgstr "التقييم الجانبي لا يمكن أن يحتوي على أكثر من  {0} اسئلة"
+
+#: widget_dialog.php:444
+msgid "Please specify a question"
+msgstr "يرجى تحديد السؤال"
+
+#: widget_dialog.php:452
+msgid "The question text must not exceed %d characters"
+msgstr "نص السؤال يجب ان لا يتجاوز %d حرف"
+
+#: widget_dialog.php:506
+msgid "Please select a question to remove"
+msgstr "يرجى تحديد السؤال للحذف"
+
+#: widget_dialog.php:510
+msgid "The question will be removed. Proceed?"
+msgstr "سيتم حذف السؤال. متابعة؟"
+
+#: widget_dialog.php:558
+msgid "The tags/categories text is limited to 250 characters."
+msgstr "نص الدلالات/التصانيف محدد بـ 250 حرف."
+
+#: widget_dialog.php:601
+msgid "Please enter image Url"
+msgstr "يرجى إدخال رابط (URL) الصورة"
+
+#: widget_dialog.php:633
+msgid "The image width or height should be at least 100 pixels"
+msgstr "عرض أو ارتفاع التقييم يجب أن يكون على الأقل 100 بيكسل"
+
+#: widget_dialog.php:643
+msgid ""
+"The image ratio is invalid. The proportion between image width and height "
+"cannot be greater than 500%"
+msgstr ""
+"تناسب الصورة غير صالح. النسبة بين ارتفاع الصورة وعرضها يجب الا يتجاوز 500%"
+
+#: widget_dialog.php:750
+msgid "Title:"
+msgstr "العنوان:"
+
+#: widget_dialog.php:765
+msgid "Sub-Title:"
+msgstr "العنوان الفرعي:"
+
+#: widget_dialog.php:780
+msgid "Author:"
+msgstr "الكاتب:"
+
+#: widget_dialog.php:783
+msgid "Post Language:"
+msgstr "لغة المشاركة:"
+
+#: widget_dialog.php:801
+msgid "Categories"
+msgstr "التصانيف"
+
+#: widget_dialog.php:804
+msgid "Tags"
+msgstr "الدلالات"
+
+#: widget_dialog.php:822
+msgid "URL:"
+msgstr "الرابط (URL)"
+
+#: widget_dialog.php:842 widget_remove.php:72
+msgid "Remove Widget"
+msgstr "حذف التقييم الجانبي"
+
+#: widget_dialog.php:848 widget_dialog.php:904
+msgid "Next >"
+msgstr "التالي"
+
+#: widget_dialog.php:851 widget_dialog.php:907 widget_dialog.php:999
+msgid "Cancel"
+msgstr "إلغاء"
+
+#: widget_dialog.php:872
+msgid "Image Url"
+msgstr "رابط الصورة (URL)"
+
+#: widget_dialog.php:882
+msgid "Set"
+msgstr "ضبط"
+
+#: widget_dialog.php:901 widget_dialog.php:1002
+msgid "< Back"
+msgstr "الخلف"
+
+#: widget_dialog.php:928
+msgid "Existing Questions:"
+msgstr "الأسئلة المتاحة:"
+
+#: widget_dialog.php:939
+msgid "Select"
+msgstr "حدد"
+
+#: widget_dialog.php:949
+msgid "New Question"
+msgstr "سؤال جديد"
+
+#: widget_dialog.php:959
+msgid "Add"
+msgstr "أضف"
+
+#: widget_dialog.php:969
+msgid "Selected Questions:"
+msgstr "الأسئلة المحددة:"
+
+#: widget_dialog.php:979
+msgid "Move Up"
+msgstr "تحريك للأعلى"
+
+#: widget_dialog.php:985
+msgid "Move Down"
+msgstr "تحريك للأسفل"
+
+#: widget_dialog.php:990
+msgid "Remove"
+msgstr "حذف"
+
+#: widget_dialog.php:1010
+msgid "Done"
+msgstr "انتهى"
+
+#: widget_remove.php:20
+msgid "The rating widget in the post %s will be removed"
+msgstr "التقييم الجانبي %s في المشاركة سيتم حذفه"
+
+#. Plugin Name of the plugin/theme
+#. Author of the plugin/theme
+msgid "Feedweb"
+msgstr ""
+
+#. Plugin URI of the plugin/theme
+msgid "http://wordpress.org/extend/plugins/feedweb/"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid ""
+"Expose your blog to the Feedweb reader's community. Promote your views. Get "
+"a comprehensive and detailed feedback from your readers."
+msgstr "انشر مشاركاتك للقراء، عزز وجهة نظرك ،أحصل على ملاحظات وأراء القراء."
+
+#. Author URI of the plugin/theme
+msgid "http://feedweb.net"
+msgstr ""

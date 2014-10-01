@@ -1,0 +1,463 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/feedweb\n"
+"POT-Creation-Date: 2012-10-06 00:39:41+00:00\n"
+"PO-Revision-Date: 2014-02-16 23:30+0200\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.6.2\n"
+"X-Poedit-KeywordsList: _;gettext;gettext_noop\n"
+"X-Poedit-Basepath: .\n"
+"Language: nb_NO\n"
+
+#: feedweb.php:105
+msgid "Insert Rating Widget"
+msgstr "Sett inn Vurderings Widget"
+
+#: feedweb.php:119
+msgid "The widget data is invalid and cannot be used."
+msgstr "Widget data er ugyldig og kan ikke benyttes."
+
+#: feedweb.php:120
+msgid "Remove Invalid Widget?"
+msgstr "Fjern Ugyldig Widget?"
+
+#: feedweb.php:125
+msgid "Unknown error."
+msgstr "Ukjent feil."
+
+#: feedweb.php:125
+msgid ""
+"\n"
+"Please contact Feedweb (contact@feedweb.net)"
+msgstr ""
+"\n"
+"Vennligst kontakt Feedweb (contact@feedweb.net)"
+
+#: feedweb.php:135
+msgid ""
+"Edit / Remove Rating Widget\n"
+"(%s Votes. Average Score: %s)"
+msgstr ""
+"Rediger / Fjern Vurderings Widget\n"
+"(%s Stemmer. Gjennomsnitts poengsum: %s)"
+
+#: feedweb.php:141
+msgid ""
+"Edit / Remove Rating Widget\n"
+"(No votes yet)"
+msgstr ""
+"Rediger / Fjern Vurderings Widget\n"
+"(Ingen stemmer enda)"
+
+#: feedweb.php:171
+msgid "Settings"
+msgstr "Innstillinger"
+
+#: feedweb.php:246
+msgid ""
+"The Feedweb service is temporarily unavailable due to system maintenance"
+msgstr "Feedweb tjenesten er midlertidig ute av drift grunnet vedlikehold"
+
+#: feedweb_options.php:51
+msgid "Classic"
+msgstr "Klassisk"
+
+#: feedweb_options.php:51
+msgid "Monochrome"
+msgstr "Monokrom"
+
+#: feedweb_options.php:51
+msgid "Light Blue"
+msgstr "Lys Blå"
+
+#: feedweb_options.php:52
+msgid "Dark Blue"
+msgstr "Mørk Blå"
+
+#: feedweb_options.php:52
+msgid "Dark Green"
+msgstr "Mørk Grønn"
+
+#: feedweb_options.php:67
+msgid "No Delay"
+msgstr "Ingen Forsinkelse"
+
+#: feedweb_options.php:67
+msgid "1 Hour"
+msgstr "1 Time"
+
+#: feedweb_options.php:67
+msgid "2 Hours"
+msgstr "2 Timer"
+
+#: feedweb_options.php:67
+msgid "5 Hours"
+msgstr "5 Timer"
+
+#: feedweb_options.php:98
+msgid "Remove Inactive Widgets"
+msgstr "Fjern Inaktive Widgeter"
+
+#: feedweb_options.php:99
+msgid "Click to remove widgets from the deleted posts"
+msgstr "Klikk for å fjerne widgeter fra slettede innlegg"
+
+#: feedweb_options.php:105
+msgid "You do not have sufficient permissions to access this page."
+msgstr "Du har ikke nødvendig tillatelse for å se denne siden."
+
+#: feedweb_options.php:113
+msgid "Feedweb Plugin Settings"
+msgstr "Feedweb Plugin Innstillinger"
+
+#: feedweb_options.php:119
+msgid "Remove Widgets?"
+msgstr "Fjern Widgeter?"
+
+#: feedweb_options.php:200
+msgid "Please enter a valid width"
+msgstr "Vennligst skriv inn en gyldig bredde"
+
+#: feedweb_options.php:206
+msgid "Width is out of range"
+msgstr "Bredde er utenfor rekkevidde"
+
+#: feedweb_options.php:215
+msgid "Please enter a valid Front Widget height"
+msgstr "Vennligst skriv inn en gyldig Front Widget høyde"
+
+#: feedweb_options.php:221
+msgid "Front Widget height is out of range"
+msgstr "Front Widget høyde er utenfor rekkevidde"
+
+#: feedweb_options.php:266
+msgid "Rating Widget"
+msgstr "Vurderings Widget"
+
+#: feedweb_options.php:267
+msgid "Front Widget"
+msgstr "Front Widget"
+
+#: feedweb_options.php:277
+msgid "Widget Language:"
+msgstr "Widget Språk:"
+
+#: feedweb_options.php:290
+msgid "Widget width (pixels):"
+msgstr "Widget bredde (piksler):"
+
+#: feedweb_options.php:299
+msgid "Allowed width: 350 to 500 pixels. Recommended width: 400 to 450 pixels."
+msgstr ""
+"Tillatt bredde: 350 til 500 piksler. Anbefalt bredde: 400 til 450 piksler."
+
+#: feedweb_options.php:305
+msgid "Widgets at the Home/Front Page:"
+msgstr "Widgeter på Hjem/Forside:"
+
+#: feedweb_options.php:310
+msgid "Display Widgets"
+msgstr "Vis Widgeter"
+
+#: feedweb_options.php:314
+msgid ""
+"Check to display the widgets both in the Front Page and the single post "
+"pages."
+msgstr "Huk av for å vise widgeter både på Forsiden og på innleggssidene."
+
+#: feedweb_options.php:319
+msgid "Delay displaying results:"
+msgstr "Utsett resultatvisning:"
+
+#: feedweb_options.php:327
+msgid ""
+"Set the period of time you want to hide voting results after the widget is "
+"created."
+msgstr ""
+"Sett tidsperioden du ønsker å gjemme avstemmingsresultatene etter at widget "
+"er opprettet."
+
+#: feedweb_options.php:332
+msgid "Feedweb Copyright Notice:"
+msgstr "Feedweb Kopirettigheter:"
+
+#: feedweb_options.php:337 feedweb_options.php:352
+msgid "Allow"
+msgstr "Tillat"
+
+#: feedweb_options.php:341
+msgid "Please check to display the following text below the widgets: "
+msgstr "Vennligst huk av for å vise følgende tekst under widgeter:"
+
+#: feedweb_options.php:347
+msgid "Edit Widget Data:"
+msgstr "Rediger Widgetdata:"
+
+#: feedweb_options.php:356
+msgid ""
+"Allow Feedweb community administrator to edit / correct your widget data."
+msgstr ""
+"Tillat administrator for Feedweb fellesskapet å redigere / korrigere dine "
+"widgetdata."
+
+#: feedweb_options.php:367
+msgid "Front Page Widget Color Sceme:"
+msgstr "Forside Widget Fargeprofil:"
+
+#: feedweb_options.php:375
+msgid "Select color scheme for the Front Page widget"
+msgstr "Velg fargeprofil for Forside Widget"
+
+#: feedweb_options.php:380
+msgid "Max. Widget height (pixels):"
+msgstr "Maks. Widget høyde (piksler):"
+
+#: feedweb_options.php:389
+msgid "Allowed height: 200 to 800 pixels. Recommended height: 400 pixels."
+msgstr "Tillatt høyde: 200 til 800 piksler. Anbefalt høyde: 400 piksler."
+
+#: feedweb_options.php:395
+msgid "Vertical Scroll Bar:"
+msgstr "Vertikal Scroll Bar:"
+
+#: feedweb_options.php:401
+msgid "Hide"
+msgstr "Skjul"
+
+#: feedweb_options.php:405
+msgid ""
+"Check to hide vertical scroll bar when the front widget exceeds max. height."
+msgstr ""
+"Huk av for å skjule vertikal scroll bar når forside widget overgår maks. "
+"høyde."
+
+#: feedweb_options.php:410
+msgid "Number of list items:"
+msgstr "Antall listeelementer:"
+
+#: feedweb_options.php:418
+msgid "Number of items in the Front Widget list"
+msgstr "Antall elementer i Forside Widget listen"
+
+#: feedweb_options.php:427
+msgid "Save Changes"
+msgstr "Lagre Endringer"
+
+#: feedweb_settings.php:10 widget_commit.php:10
+msgid "You are not allowed to be here"
+msgstr "Du har ikke tillatelse til å være her"
+
+#: feedweb_settings.php:33
+msgid "Failed to update settings"
+msgstr "Oppdatering av innstillinger feilet"
+
+#: feedweb_util.php:415
+msgid "Cannot insert widget into a post published %d days ago"
+msgstr ""
+"Kan ikke sette inn widget i et innlegg som ble publiert for %d dager siden"
+
+#: feedweb_util.php:423
+msgid ""
+"You have created %d widgets in the last 24 hours. The daily limit is %d new "
+"widgets"
+msgstr ""
+"Du har opprettet %d widgeter de siste 24 timer. Den daglige grensen er %d "
+"nye widgeter"
+
+#: feedweb_util.php:430
+msgid ""
+"You have created %d widgets in the last 30 days. The monthly limit is %d new "
+"widgets"
+msgstr ""
+"Du har opprettet %d widgeter de siste 30 dagene. Den månedlige grensen er %d "
+"nye widgeter"
+
+#: widget_commit.php:95 widget_commit.php:103 widget_commit.php:111
+#: widget_commit.php:119 widget_commit.php:167 widget_commit.php:175
+#: widget_commit.php:183 widget_commit.php:191
+msgid "Error in the Post data"
+msgstr "Feil i Postdata"
+
+#: widget_commit.php:128 widget_commit.php:200
+msgid "Error in the User data"
+msgstr "Feil i Brukerdata"
+
+#: widget_commit.php:232
+msgid "Wordpress cannot modify your widget"
+msgstr "Wordpress kan ikke endre din widget"
+
+#: widget_commit.php:255 widget_commit.php:312 widget_commit.php:360
+msgid "Cannot connect Feedweb server"
+msgstr "Kan ikke koble til Feedweb server"
+
+#: widget_commit.php:267
+msgid "The widget has been updated"
+msgstr "Widgeten er oppdatert"
+
+#: widget_commit.php:271
+msgid "Feedweb service cannot update the widget"
+msgstr "Feedweb tjenesten kan ikke oppdatere widgeten"
+
+#: widget_commit.php:287
+msgid "Wordpress cannot insert your widget"
+msgstr "Wordpress kan ikke sette inn din widget"
+
+#: widget_commit.php:326
+msgid "Wordpress cannot remove your widget"
+msgstr "Wordpress kan ikke fjerne din widget"
+
+#: widget_commit.php:376
+msgid "Unknown server error"
+msgstr "Ukjent server feil"
+
+#: widget_commit.php:380
+msgid "Feedweb service cannot create a widget"
+msgstr "Feedweb tjeneste kan ikke opprette widget"
+
+#: widget_dialog.php:21
+msgid ""
+"Dear %s, Please configure your plugin settings before inserting the widget"
+msgstr ""
+"Kjære %s, Vennligst konfigurer dine plugin innstillinger før du setter inn "
+"widgeten"
+
+#: widget_dialog.php:124
+msgid "Uncategorized"
+msgstr "Ukategorisert"
+
+#: widget_dialog.php:243
+msgid "The rating widget in the post '%s' will be removed"
+msgstr "Vurderings widgeten i innlegget '%s' blir fjernet"
+
+#: widget_dialog.php:305
+msgid "http://en.wikipedia.org/wiki/Yes%E2%80%93no_question"
+msgstr "http://en.wikipedia.org/wiki/Yes%E2%80%93no_question"
+
+#: widget_dialog.php:306
+msgid "must be a %sYES / NO%s question"
+msgstr "må være et %sJA / NEI%s spørsmål"
+
+#: widget_dialog.php:357
+msgid "Question '{0}' is already selected"
+msgstr "Spørsmål '{0}' er allerede valgt"
+
+#: widget_dialog.php:367
+msgid "A widget cannot contain more than {0} questions"
+msgstr "En widget kan ikke inneholde mer enn {0} spørsmål"
+
+#: widget_dialog.php:401
+msgid "Please specify a question"
+msgstr "Vennligst spesifiser et spørsmål"
+
+#: widget_dialog.php:454
+msgid "Please select a question to remove"
+msgstr "Vennligst velg et spørsmål å fjerne"
+
+#: widget_dialog.php:458
+msgid "The question will be removed. Proceed?"
+msgstr "Spørsmålet vil fjernes. Fortsett?"
+
+#: widget_dialog.php:493
+msgid "The tags/categories text is limited to 250 characters."
+msgstr "Tagg/kategorier teksten er begrenset til 250 tegn."
+
+#: widget_dialog.php:518
+msgid "Please enter image Url"
+msgstr "Vennligst skriv inn bilde URL"
+
+#: widget_dialog.php:625
+msgid "Title:"
+msgstr "Tittel:"
+
+#: widget_dialog.php:640
+msgid "Sub-Title:"
+msgstr "Undertittel:"
+
+#: widget_dialog.php:655
+msgid "Author:"
+msgstr "Forfatter:"
+
+#: widget_dialog.php:658
+msgid "Post Language:"
+msgstr "Innleggsspråk:"
+
+#: widget_dialog.php:676
+msgid "Categories"
+msgstr "Kategorier"
+
+#: widget_dialog.php:679
+msgid "Tags"
+msgstr "Tagger"
+
+#: widget_dialog.php:697
+msgid "URL:"
+msgstr "URL:"
+
+#: widget_dialog.php:717 widget_remove.php:69
+msgid "Remove Widget"
+msgstr "Fjern Widget"
+
+#: widget_dialog.php:723 widget_dialog.php:779
+msgid "Next >"
+msgstr "Neste >"
+
+#: widget_dialog.php:726 widget_dialog.php:782 widget_dialog.php:873
+msgid "Cancel"
+msgstr "Avbryt"
+
+#: widget_dialog.php:747
+msgid "Image Url"
+msgstr "Bilde URL"
+
+#: widget_dialog.php:757
+msgid "Set"
+msgstr "Sett"
+
+#: widget_dialog.php:776 widget_dialog.php:876
+msgid "< Back"
+msgstr "< Tilbake"
+
+#: widget_dialog.php:803
+msgid "Existing Questions:"
+msgstr "Eksisterende Spørsmål:"
+
+#: widget_dialog.php:813
+msgid "Select"
+msgstr "Velg"
+
+#: widget_dialog.php:823
+msgid "New Question"
+msgstr "Nytt Spørsmål"
+
+#: widget_dialog.php:833
+msgid "Add"
+msgstr "Legg til"
+
+#: widget_dialog.php:843
+msgid "Selected Questions:"
+msgstr "Valgte Spørsmål:"
+
+#: widget_dialog.php:853
+msgid "Move Up"
+msgstr "Flytt Opp"
+
+#: widget_dialog.php:859
+msgid "Move Down"
+msgstr "Flytt Ned"
+
+#: widget_dialog.php:864
+msgid "Remove"
+msgstr "Fjern"
+
+#: widget_dialog.php:879
+msgid "Done"
+msgstr "Ferdig"
+
+#: widget_remove.php:17
+msgid "The rating widget in the post %s will be removed"
+msgstr "Vurderings widgeten i innlegg %s blir fjernet"

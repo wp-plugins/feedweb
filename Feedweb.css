@@ -318,29 +318,29 @@ Widget Navigator
 	top: 10px;
 }
 
-#WizardNavigatorDiv #DeleteButton
+#WizardNavigatorDiv #FeedwebWizardDeleteButton
 {
 	left: 20px; 
 }
 
-#WizardNavigatorDiv #BackButton
+#WizardNavigatorDiv #FeedwebWizardBackButton
 {
 	visibility: hidden;
 	left: 20px; 
 }
 
-#WizardNavigatorDiv #NextButton
+#WizardNavigatorDiv #FeedwebWizardNextButton
 {
 	left: 360px; 	
 }
 
-#WizardNavigatorDiv #OkButton
+#WizardNavigatorDiv #FeedwebWizardOkButton
 {
 	visibility: hidden;
 	left: 360px; 	
 }
 
-#WizardNavigatorDiv #CancelButton
+#WizardNavigatorDiv #FeedwebWizardCancelButton
 {
 	left: 530px;
 }

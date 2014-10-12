@@ -1,14 +1,14 @@
 ﻿=== Feedweb ===
 Contributors: Feedweb
-Tags: blog, rate, rating, widget, network, feed, feeder, feedback, collector, article, audience, engage, engagement, aggregator, aggregation, content, management, post, public, opinion, research, html5, media, press, news, politics, society, social, question, answer, survey, poll, polling, vote, voting, stats, discussion, controversy, cooperation, view, comments, community, statistics, syndication, marketing, admin, sidebar, plugin, publishing, exchange, networking, sharing, business, traffic
+Tags: blog, rate, rating, widget, network, feed, feeder, feedback, collector, article, audience, engage, engagement, aggregator, aggregation, content, management, post, public, opinion, research, html5, media, press, news, politics, society, social, question, answer, survey, poll, polling, vote, voting, stats, discussion, cooperation, view, comments, community, statistics, syndication, marketing, admin, sidebar, plugin, publishing, exchange, networking, sharing, business, traffic
 Requires at least: 3.0
 Tested up to: 4.0
-Stable Tag: 3.0.1
+Stable Tag: 3.0.2
 
-Get precise feedback and expose your blog to a brand new audience at the same time. Join the community of 2900+ websites! 
+Get precise feedback and expose your blog to a brand new audience at the same time. Join the community of 3000+ websites! 
 
 == Description ==
-**Latest update**: More than **363.000** votes collected by **25.100** blog post rating widgets published in **2.900** websites.
+**Latest update**: More than **366.000** votes collected by **25.800** blog post rating widgets published in **3.000** websites.
 
 The Feedweb Plugin is a simple and easy way to promote and improve your blog. By activating the plugin you can freely insert customized rating widgets into your selected posts. Choose questions you want to ask your readers and get comprehensive and precise feedback about your blog.
 
@@ -62,9 +62,9 @@ Follow us on [**Facebook**](https://www.facebook.com/feedwebresearch) and [**Twi
 * Turkish (tr)		 - Ayşe Nuray Ünyay  
 
 = We recommend =
-* [**WPKnights**](http://creativemarket.com/retep007) premium themes
 * The Best Content Editor plugin [**Zedity**](http://wordpress.org/plugins/zedity)
 * Anti-spam plugin [**CleanTalk**](http://wordpress.org/plugins/cleantalk-spam-protect)
+* [**WPKnights**](http://creativemarket.com/retep007) premium themes
 
 == Installation ==
 
@@ -93,6 +93,9 @@ Follow us on [**Facebook**](https://www.facebook.com/feedwebresearch) and [**Twi
 
 
 == Changelog ==
+
+= 3.0.2 =
+* Bug fix (Widget Wizard).
 
 = 3.0.1 =
 * New Feeder options.

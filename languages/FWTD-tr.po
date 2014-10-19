@@ -1,0 +1,748 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Feedweb\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/feedweb\n"
+"POT-Creation-Date: 2013-10-27 12:04:47+00:00\n"
+"PO-Revision-Date: 2014-03-07 00:35+0200\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: tr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.6.2\n"
+"X-Poedit-KeywordsList: _;gettext;gettext_noop\n"
+"X-Poedit-Basepath: .\n"
+
+#: feedweb.php:171 feedweb.php:356
+msgid "Insert Rating Widget"
+msgstr "Değerlendirme Sayacı Ekleyin"
+
+#: feedweb.php:188
+msgid "The widget data is invalid and cannot be used."
+msgstr "Sayaç bilgileri geçersizdir, bu yüzden kullanılamaz."
+
+#: feedweb.php:189
+msgid "Remove Invalid Widget?"
+msgstr "Geçersiz Sayacı Kaldırın? "
+
+#: feedweb.php:194
+msgid "Unknown error."
+msgstr "Meçhul hata."
+
+#: feedweb.php:194
+msgid ""
+"\n"
+"Please contact Feedweb (contact@feedweb.net)"
+msgstr ""
+"\n"
+"Lütfen Feedweb'le irtibat kurun (contact@feedweb.net)"
+
+#: feedweb.php:205
+msgid ""
+"Edit / Remove Rating Widget\n"
+"(%s Votes. Average Score: %s)"
+msgstr ""
+"Düzenleyin/Değerlendirme Sayacını Çıkarın\n"
+"(%lik Oylar, Ortalama Puanlar:%si)"
+
+#: feedweb.php:213
+msgid ""
+"Edit / Remove Rating Widget\n"
+"(No votes yet)"
+msgstr ""
+"Düzenleyin/Değerlendirme Sayacını Çıkarın\n"
+"(Şu ana kadar oy verilmemiş) "
+
+#: feedweb.php:244 feedweb.php:502
+msgid "Settings"
+msgstr "Ayarlar"
+
+#: feedweb.php:313
+msgid ""
+"The Feedweb service is temporarily unavailable due to system maintenance"
+msgstr ""
+"Feedweb hizmetine sistem bakımı nedeniyle, geçici olarak erişilememektedir."
+
+#: feedweb.php:357
+msgid "Do you wish to insert a Feedweb rating widget into your new post?"
+msgstr ""
+"Feedweb değerlendirme sayacını, yeni yazınız için eklemek ister misiniz? "
+
+#: feedweb.php:374
+msgid ""
+"The Title or Permalink of the post has been changed. Do you with to update "
+"the Rating Widget with new data?"
+msgstr ""
+"Yazının Başlığı ya da Kalıcı Bağlantıları değişmiştir. Değerlendirme "
+"Sayacını yeni bilgilerinize göre güncellemek ister misiniz?"
+
+#: feedweb.php:503
+msgid "Tutorial"
+msgstr "Özel eğitim"
+
+#: feedweb.php:506
+msgid "Monitor"
+msgstr "İzleme"
+
+#: feedweb.php:507
+msgid "License"
+msgstr "İzin"
+
+#: feedweb.php:509
+msgid "Our Friends"
+msgstr "Bizim Arkadaşlarımız"
+
+#: feedweb_friends.php:38
+msgid "Our Friends - The Plugins We Recommend"
+msgstr "Bizim Arkadaşlarımız-Tavsiye Ettiğimiz Eklentiler"
+
+#: feedweb_help.php:4
+msgid "Feedweb Plugin Tutorial"
+msgstr "Feedweb Eklenti Eğitimi"
+
+#: feedweb_license.php:16
+msgid "Feedweb License"
+msgstr "Feedweb Lisansı"
+
+#: feedweb_menu.php:3 feedweb_options.php:126
+msgid "You do not have sufficient permissions to access this page."
+msgstr "Bu sayfaya erişmek için yeterli izniniz yok"
+
+#: feedweb_monitor.php:16
+msgid "Feedweb Monitor"
+msgstr "Feedweb İzleme"
+
+#: feedweb_options.php:54
+msgid "Blue"
+msgstr "Mavi"
+
+#: feedweb_options.php:54
+msgid "Gray"
+msgstr "Gri"
+
+#: feedweb_options.php:59
+msgid "Classic"
+msgstr "Klasik"
+
+#: feedweb_options.php:59
+msgid "Monochrome"
+msgstr "Tek renkli resim"
+
+#: feedweb_options.php:59
+msgid "Light Blue"
+msgstr "Açık Mavi"
+
+#: feedweb_options.php:60
+msgid "Dark Blue"
+msgstr "Koyu Mavi"
+
+#: feedweb_options.php:60
+msgid "Dark Green"
+msgstr "Koyu yeşil"
+
+#: feedweb_options.php:81
+msgid "Reset Preview"
+msgstr "Öngörüleni Yenileme"
+
+#: feedweb_options.php:88
+msgid "No Delay"
+msgstr "Gecikmeksizin"
+
+#: feedweb_options.php:88
+msgid "1 Hour"
+msgstr "1 Saat"
+
+#: feedweb_options.php:88
+msgid "2 Hours"
+msgstr "2 Saat"
+
+#: feedweb_options.php:88
+msgid "5 Hours"
+msgstr "5 Saat"
+
+#: feedweb_options.php:119
+msgid "Remove Inactive Widgets"
+msgstr "Faaliyette Olmayan Sayacı Kaldırın"
+
+#: feedweb_options.php:120
+msgid "Click to remove widgets from the deleted posts"
+msgstr "Sildiğiniz yazılardaki sayacı, tıklayarak kaldırınız"
+
+#: feedweb_options.php:133
+msgid "Feedweb Plugin Settings"
+msgstr "Feedweb Eklenti Ayarları"
+
+#: feedweb_options.php:149 feedweb_options.php:506
+msgid "Show Widget Preview >>>"
+msgstr "Sayaç Öngörüleni Göster >>>"
+
+#: feedweb_options.php:156
+msgid "<<< Hide Widget Preview"
+msgstr "<<< Sayaç Öngörüleni Gizle"
+
+#: feedweb_options.php:208
+msgid "Remove Widgets?"
+msgstr "Sayaçları Kaldırmak? "
+
+#: feedweb_options.php:334
+msgid "Please enter a valid width"
+msgstr "Lütfen, geçerli bir genişlik yazın"
+
+#: feedweb_options.php:340
+msgid "Width is out of range"
+msgstr "Genişlik sınırların dışındadır."
+
+#: feedweb_options.php:363
+msgid "Please enter a valid Front Widget height"
+msgstr "Lütfen, geçerli bir Ön Sayaç yüksekliği bildirin"
+
+#: feedweb_options.php:369
+msgid "Front Widget height is out of range"
+msgstr "Ön Sayaç yüksekliği geçerli sınırlar dışındadır."
+
+#: feedweb_options.php:419
+msgid "Rating Widget"
+msgstr "Değerlendirme Sayacı"
+
+#: feedweb_options.php:420
+msgid "Front Widget"
+msgstr "Ön Sayaç"
+
+#: feedweb_options.php:430
+msgid "Widget Placement:"
+msgstr "Sayaç Konumu:"
+
+#: feedweb_options.php:444
+msgid "Please choose the placement of the rating widget within a post."
+msgstr "Lütfen, metinle beraber değerlendirme sayacının yerini seçin"
+
+#: feedweb_options.php:450
+msgid "Widget Type:"
+msgstr "Sayaç Çeşitleri:"
+
+#: feedweb_options.php:457
+msgid "Click to upgrade your rating widgets from Flash to HTML5"
+msgstr ""
+"Değerlendirme sayaçlarınızdaki ışıklı göstergeleri HTML5'e yükseltmek için "
+"tıklayın."
+
+#: feedweb_options.php:459
+msgid "Note that Flash is not supported in devices like iPad or iPhone."
+msgstr ""
+"Işıklı göstergelerin, İPhone ve İPad gibi aygıtlarda desteklenmediğini göz "
+"önünde bulundurun."
+
+#: feedweb_options.php:460
+msgid "Flash widget will be discontinued after December 31, 2013."
+msgstr "Işıklı gösterge, 31 Aralık 2013'den sonra kullanımda olmayacaktır."
+
+#: feedweb_options.php:468
+msgid "Widget Color Scheme:"
+msgstr "Sayaç Renk Şeması:"
+
+#: feedweb_options.php:469
+msgid "Widget External Background:"
+msgstr "Sayaç Harici Altyapı:"
+
+#: feedweb_options.php:476
+msgid "Please choose the color scheme of your HTML rating widgets."
+msgstr "Lütfen, HTML değerlendirme sayaçlarınızın renk şemasını seçin"
+
+#: feedweb_options.php:482
+msgid "Widget Language:"
+msgstr "Sayaç Lisanı:"
+
+#: feedweb_options.php:493
+msgid "Widget width (pixels):"
+msgstr "Sayaç genişliği (çözünürlük):"
+
+#: feedweb_options.php:500
+msgid "Allowed width: 350 to 500 pixels. Recommended width: 400 to 450 pixels."
+msgstr ""
+"Müsaade edilen genişlik: 350 ile 500 (çözünürlük). Tavsiye edilen genişlik: "
+"400İle 450 çözünürlük."
+
+#: feedweb_options.php:515
+msgid "Widgets at the Home/Front Page:"
+msgstr "Sayaçlar Ana Sayfada/Ön Sayfa"
+
+#: feedweb_options.php:519
+msgid "Display Widgets"
+msgstr "Sayaçları Gösterin"
+
+#: feedweb_options.php:522
+msgid ""
+"Check to display the widgets both in the Front Page and the single post "
+"pages."
+msgstr ""
+"Sayaçların hem Ön Sayfada hem de her metin yazısında gösterildiğini kontrol "
+"edin."
+
+#: feedweb_options.php:527
+msgid "Delay displaying results:"
+msgstr "Sonuçların gösteriminde gecikme:"
+
+#: feedweb_options.php:533
+msgid ""
+"Set the period of time you want to hide voting results after the widget is "
+"created."
+msgstr ""
+"Sayacı oluşturduktan sonra, oylama sonuçlarını saklamak isterseniz, size "
+"uygun bir zaman dilimi seçin."
+
+#: feedweb_options.php:539
+msgid "Feedweb Copyright Notice:"
+msgstr "Feedweb Telif Hakkı Duyurusuı:"
+
+#: feedweb_options.php:543
+msgid "Allow"
+msgstr "İzin verin"
+
+#: feedweb_options.php:546
+msgid "Please check to display the following text below the widgets: "
+msgstr "Lütfen, sayaçların aşağısında yer alan metnin görünümünü kontrol edin:"
+
+#: feedweb_options.php:553
+msgid "Prompt to insert widgets:"
+msgstr "Sayaçları eklemekle aktifleştirin:"
+
+#: feedweb_options.php:557
+msgid "Show"
+msgstr "Gösterin"
+
+#: feedweb_options.php:560
+msgid "Display a prompt to insert a rating widget when a post is published."
+msgstr ""
+"Bir yazı yayınlandığında, değerlendirme sayacının eklenmesini hemen gösterin"
+
+#: feedweb_options.php:566
+msgid "Automatically add paragraphs:"
+msgstr "Paragrafları otomatik olarak ekleyin:"
+
+#: feedweb_options.php:570 widget_dialog.php:1352
+msgid "Add"
+msgstr "Ekleyin"
+
+#: feedweb_options.php:573
+msgid "Surround widgets with paragraph tags:"
+msgstr "Sayaçları paragraf etiketleri ile çerçeveleyin"
+
+#: feedweb_options.php:584
+msgid "Front Page Widget Color Scheme:"
+msgstr "Ön Sayfa Sayacı Renk Şeması"
+
+#: feedweb_options.php:592
+msgid "Select color scheme for the Front Page widget"
+msgstr "Ön Sayfa sayacı için renk şeması seçin"
+
+#: feedweb_options.php:597
+msgid "Max. Widget height (pixels):"
+msgstr "Maksimum Sayaç yüksekliği (çözünürlük):"
+
+#: feedweb_options.php:606
+msgid "Allowed height: 200 to 800 pixels. Recommended height: 400 pixels."
+msgstr ""
+"İzin verilen yükseklik: 200 ila 800 çözünürlük. Tavsiye edilen yükseklik: "
+"400 çözünürlük"
+
+#: feedweb_options.php:612
+msgid "Vertical Scroll Bar:"
+msgstr "Dikey Şerit Çubuk"
+
+#: feedweb_options.php:618
+msgid "Hide"
+msgstr "Gizleyin"
+
+#: feedweb_options.php:622
+msgid ""
+"Check to hide vertical scroll bar when the front widget exceeds max. height."
+msgstr ""
+"Ön sayaç mak. yüksekliği aştığı zaman, düşey şerit çubuğu gizlemeyi "
+"işaretleyin."
+
+#: feedweb_options.php:627
+msgid "Number of list items:"
+msgstr "Parçaların liste sayısı:"
+
+#: feedweb_options.php:635
+msgid "Number of items in the Front Widget list"
+msgstr "Ön Sayaç listesindeki parçaların sayısı"
+
+#: feedweb_options.php:645
+msgid "Save Changes"
+msgstr "Değişiklikleri Kaydet"
+
+#: feedweb_settings.php:10 question_query.php:10 widget_commit.php:10
+#: widget_dialog.php:9
+msgid "You are not allowed to be here"
+msgstr "Burada olmanıza müsaade edilemez "
+
+#: feedweb_settings.php:43
+msgid "Failed to update settings"
+msgstr "Başarısız güncelleme ayarları "
+
+#: feedweb_util.php:443
+msgid "Cannot insert widget into a post with undefined status"
+msgstr "Tanımlanmamış konumdaki bir yazıya sayaç ekleyemezsiniz"
+
+#: feedweb_util.php:446
+msgid "Cannot insert widget into a private post (must be public)"
+msgstr "Bir özel yazınıza sayaç ekleyemezsiniz (herkese açık olmalı)"
+
+#: feedweb_util.php:449
+msgid "Cannot insert widget into a trashed post"
+msgstr "Çöpteki bir yazınıza sayaç ekleyemezsiniz"
+
+#: feedweb_util.php:452
+msgid "Cannot insert widget into a password-protected post"
+msgstr "Şifre korumalı bir yazınıza sayaç ekleyemezsiniz"
+
+#: feedweb_util.php:457
+msgid "Cannot insert widget into a post published %d days ago"
+msgstr "%d gün önce yayınlanmış olan bir yazıya sayaç eklenemez "
+
+#: feedweb_util.php:466
+msgid ""
+"You have created %d widgets in the last 24 hours. The daily limit for your "
+"subscription is %d new widgets."
+msgstr ""
+"Son 24 saatte %d sayaç oluşturdunuz. Üyeliğinizi kapsayan günlük limit %d "
+"yeni sayaçtır."
+
+#: feedweb_util.php:474
+msgid ""
+"You have created %d widgets in the last 30 days. The monthly limit for your "
+"subscription is %d new widgets"
+msgstr ""
+"Son 30 günde %d sayaç oluşturdunuz. Üyeliğinizde aylık sınır %d yeni "
+"sayaçtır."
+
+#: feedweb_util.php:482
+msgid ""
+"You have created %d widgets. The limit for your subscription is %d widgets"
+msgstr "%d sayaçlar oluşturdunuz. Üyeliğiniz %d sayaçla sınırlıdır."
+
+#: widget_commit.php:32 widget_commit.php:414
+msgid "The widget has been removed"
+msgstr "Sayaç kaldırılmıştır"
+
+#: widget_commit.php:101 widget_commit.php:109 widget_commit.php:117
+#: widget_commit.php:125 widget_commit.php:255 widget_commit.php:263
+msgid "Error in the Post data"
+msgstr "Yazı istatistiğinde hata"
+
+#: widget_commit.php:134
+msgid "Error in the User data"
+msgstr "Kullanıcı bilgisinde hata"
+
+#: widget_commit.php:158
+msgid "Error in the Widget data"
+msgstr "Sayaç bilgisinde hata"
+
+#: widget_commit.php:248 widget_commit.php:309
+msgid "Wordpress cannot modify your widget"
+msgstr "Wordpress sayacınızda değişiklik yapamaz"
+
+#: widget_commit.php:277 widget_commit.php:332 widget_commit.php:401
+#: widget_commit.php:455
+msgid "Cannot connect Feedweb server"
+msgstr "Feedweb server bağlantı kuramaz"
+
+#: widget_commit.php:289
+msgid "The widget Title/Url have been updated"
+msgstr "Sayaç Başlık/Url güncellenmiş durumda"
+
+#: widget_commit.php:293 widget_commit.php:348
+msgid "Feedweb service cannot update the widget"
+msgstr "Feedweb sayaç güncellenme hizmeti veremez"
+
+#: widget_commit.php:344
+msgid "The widget has been updated"
+msgstr "Sayaç güncellenmiş "
+
+#: widget_commit.php:364
+msgid "The widget has been inserted"
+msgstr "Sayaç eklenmiş durumda"
+
+#: widget_commit.php:366
+msgid "Wordpress cannot insert your widget"
+msgstr "Sayacınızı Wordpress ekleyemez"
+
+#: widget_commit.php:380
+msgid "%d out of %d widgets have been removed"
+msgstr "Sayaçlar, %d den %d 'ye kadar kaldırılmış durumda"
+
+#: widget_commit.php:421
+msgid "Wordpress cannot remove your widget"
+msgstr "Wordpress sayacınızı kaldıramaz"
+
+#: widget_commit.php:471
+msgid "Unknown server error"
+msgstr "Meçhul server hatası"
+
+#: widget_commit.php:475
+msgid "Feedweb service cannot create a widget"
+msgstr "Feedweb hizmet bir sayaç yaratamaz "
+
+#: widget_dialog.php:23
+msgid ""
+"Dear %s, Please configure your plugin settings before inserting the widget"
+msgstr ""
+"Sevgili %s, Lütfen, sayacı takmadan önce eklentinizin ayarlarını tesbit edin"
+
+#: widget_dialog.php:236
+msgid "Publish your post in the Feedweb's Readers Community Portal"
+msgstr "Yazınızı Feedweb'in Okuyucu Topluluğu Portal'ında yayınlayın "
+
+#: widget_dialog.php:239
+msgid "By clicking ['Next'] you agree to our {Terms of service}"
+msgstr ""
+"[ ' Sonraki'] yazısını tıklamakla, bizim (Hizmet Koşulları) nı kabul etmiş "
+"olursunuz"
+
+#: widget_dialog.php:257
+msgid "Suitable for any audience type"
+msgstr "Her tip izleyici için uygun"
+
+#: widget_dialog.php:258
+msgid ""
+"May contain rude gestures, provocatively dressed individuals; the lesser "
+"swear words, or mild violence"
+msgstr ""
+"Hafif şiddet, hafif küfür, kışkırtıcı şekilde giyinmiş kişiler, kaba "
+"hareketler içerebilir "
+
+#: widget_dialog.php:259
+msgid ""
+"May contain such things as harsh profanity, intense violence, nudity, or "
+"hard drug use"
+msgstr ""
+" Uyuşturucu kullanımı, çıplaklık, yoğun şiddet, kaba küfür gibi şeyler "
+"içerebilir"
+
+#: widget_dialog.php:260
+msgid "May contain hardcore sexual imagery or extremely disturbing violence"
+msgstr "Sabit seksüel görüntü ya da çok aşırı şiddet içerebilir"
+
+#: widget_dialog.php:283
+msgid ""
+"If this posts main purpose is to advertise a certain item or product and not "
+"to give information please check here."
+msgstr ""
+"Eğer bu yazıların amacı belli bir ürün veya mamülün reklamı ise ve bilgi "
+"vermek istemiyorsanız, lütfen burayı işaretleyin."
+
+#: widget_dialog.php:284
+msgid ""
+"If your post is for advertising and you do not check the box you are "
+"violating the license agreement."
+msgstr ""
+"Eğer reklam yazınız için kutuyu işaretlemezseniz, lisans sözleşmesini ihlal "
+"etmiş olursunuz."
+
+#: widget_dialog.php:287
+msgid "The post contains advertising material"
+msgstr "Yazı, reklam metinleri içerir"
+
+#: widget_dialog.php:305
+msgid "Uncategorized"
+msgstr "Sınıflandırılmamış"
+
+#: widget_dialog.php:419
+msgid "The rating widget in the post '%s' will be removed"
+msgstr "Yazıdaki değerlendirme sayacı '%'ler kaldırılacaktır"
+
+#: widget_dialog.php:473
+msgid "http://en.wikipedia.org/wiki/Yes%E2%80%93no_question"
+msgstr "http:// en.wikipedia.org/wiki/Evet%E2%80%93Hayır_soru"
+
+#: widget_dialog.php:474
+msgid "must be a %sYES / NO%s question"
+msgstr "Bir %EVET/ %HAYIR sorusu olmalı "
+
+#: widget_dialog.php:579
+msgid "Question '{0}' is already selected"
+msgstr "Soru '(0)' zaten seçilmiş durumda"
+
+#: widget_dialog.php:589
+msgid "A widget cannot contain more than {0} questions"
+msgstr "Bir sayaç (0) dan daha fazla sorular içeremez"
+
+#: widget_dialog.php:623
+msgid "Please specify a question"
+msgstr "Lütfen, bir soru tayin edin"
+
+#: widget_dialog.php:631
+msgid "The question text must not exceed %d characters"
+msgstr "Soru yazısı %d karakteri geçemez."
+
+#: widget_dialog.php:685
+msgid "Please select a question to remove"
+msgstr "Lütfen, kaldırılacak bir soru seçin"
+
+#: widget_dialog.php:689
+msgid "The question will be removed. Proceed?"
+msgstr "Soru kaldırılacak. İleri?"
+
+#: widget_dialog.php:723
+msgid "The tags/categories text is limited to 250 characters."
+msgstr "Metindeki kategoriler/etiketler 250 karakter ile sınırlıdır."
+
+#: widget_dialog.php:730
+msgid "The number of tags is limited to 10"
+msgstr "Etiketlerin sayıları 10 ile sınırlıdır"
+
+#: widget_dialog.php:737
+msgid "The number of categories is limited to 10"
+msgstr "Kategorilerin sayıları 10 ile sınırlıdır"
+
+#: widget_dialog.php:816
+msgid "Page Title cannot exceed 100 characters"
+msgstr "Sayfa Başlığı 100 karakterden fazla olamaz."
+
+#: widget_dialog.php:822
+msgid "Page Title contain hypertext markup"
+msgstr "Sayfa Başlığı, yazı harici fiyat yükseltme içerir."
+
+#: widget_dialog.php:834
+msgid "Author name is empty"
+msgstr "Yazar adı yok"
+
+#: widget_dialog.php:842
+msgid ""
+"A name like {0} is not recommended for Feedweb Readers Community authors."
+msgstr ""
+"Feedweb Okurlar Topluluğu yazarları için, bir ad beğen (0) tavsiye edilmez.  "
+
+#: widget_dialog.php:845
+msgid "You can set another display name in your WordPress profile."
+msgstr "WordPress profilinizde başka isimle görünüm ayarlayabilirsiniz."
+
+#: widget_dialog.php:846
+msgid "Do you wish to continue?"
+msgstr "Devam etmeyi istiyor musunuz?"
+
+#: widget_dialog.php:860
+msgid ""
+"Email-like author names are not allowed due to security considerations. "
+"Please change the name"
+msgstr ""
+"Güvenlik nedeniyle, yazar isimlerine Email-Beğen'de izin verilmemektedir. "
+"Lütfen, ismi değiştirin"
+
+#: widget_dialog.php:872
+msgid "Page Summary cannot exceed 250 characters"
+msgstr "Sayfa Özeti 250 karakteri (harfi) geçemez."
+
+#: widget_dialog.php:947
+msgid "Please enter image Url"
+msgstr "Lütfen, görüntü Url gir"
+
+#: widget_dialog.php:979
+msgid "The image width or height should be at least 100 pixels"
+msgstr "Görüntü genişliği ya da yükseklik en az 100 çözünürlük olacak"
+
+#: widget_dialog.php:989
+msgid ""
+"The image ratio is invalid. The proportion between image width and height "
+"cannot be greater than 500%"
+msgstr ""
+"Geçersiz görüntü oranıdır. Görüntü genişliği ile yükseklik arasındaki oran "
+"dağılımı %500 den büyük olamaz."
+
+#: widget_dialog.php:1113
+msgid "Feedweb Plugin Terms of Service"
+msgstr "Feedweb Eklenti Hizmet Şartları"
+
+#: widget_dialog.php:1115
+msgid "Close"
+msgstr "Kapalı"
+
+#: widget_dialog.php:1132
+msgid "Title:"
+msgstr "Başlık:"
+
+#: widget_dialog.php:1147
+msgid "URL:"
+msgstr "URL:"
+
+#: widget_dialog.php:1162
+msgid "Author:"
+msgstr "Yazar:"
+
+#: widget_dialog.php:1165
+msgid "Post Language:"
+msgstr "Metin Dili:"
+
+#: widget_dialog.php:1207
+msgid "Summary:"
+msgstr "Özet:"
+
+#: widget_dialog.php:1222
+msgid "Categories:"
+msgstr "Kategoriler:"
+
+#: widget_dialog.php:1225
+msgid "Tags:"
+msgstr "Etiketler:"
+
+#: widget_dialog.php:1243
+msgid "Censorship:"
+msgstr "Sansür:"
+
+#: widget_dialog.php:1279
+msgid "Image Url"
+msgstr "Görüntü Url"
+
+#: widget_dialog.php:1289
+msgid "Set"
+msgstr "Ayarlar"
+
+#: widget_dialog.php:1321
+msgid "Existing Questions:"
+msgstr "Var olan Sorular"
+
+#: widget_dialog.php:1332
+msgid "Select"
+msgstr "Seç"
+
+#: widget_dialog.php:1342
+msgid "New Question"
+msgstr "Yeni Soru"
+
+#: widget_dialog.php:1362
+msgid "Selected Questions:"
+msgstr "Seçilen Sorular"
+
+#: widget_dialog.php:1372
+msgid "Move Up"
+msgstr "Yukarı Hareket"
+
+#: widget_dialog.php:1378
+msgid "Move Down"
+msgstr "Aşağı  Hareket"
+
+#: widget_dialog.php:1383
+msgid "Remove"
+msgstr "Kaldır"
+
+#: widget_dialog.php:1395
+msgid "Remove Widget"
+msgstr "Sayacı Kaldırın"
+
+#: widget_dialog.php:1400
+msgid "< Back"
+msgstr "< Geri"
+
+#: widget_dialog.php:1403
+msgid "Next >"
+msgstr "Sonraki >"
+
+#: widget_dialog.php:1406
+msgid "Done"
+msgstr "Tamam"
+
+#: widget_dialog.php:1409
+msgid "Cancel"
+msgstr "İptal"

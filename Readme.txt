@@ -3,7 +3,7 @@ Contributors: Feedweb
 Tags: blog, rate, rating, widget, network, feed, feeder, feedback, collector, article, audience, engage, engagement, aggregator, aggregation, content, management, post, public, opinion, research, html5, media, press, news, politics, society, social, question, answer, survey, poll, polling, vote, voting, stats, discussion, cooperation, view, comments, community, statistics, syndication, marketing, admin, sidebar, plugin, publishing, exchange, networking, sharing, business, traffic
 Requires at least: 3.0
 Tested up to: 4.0
-Stable Tag: 3.0.2
+Stable Tag: 3.0.3
 
 Get precise feedback and expose your blog to a brand new audience at the same time. Join the community of 3000+ websites! 
 
@@ -93,6 +93,9 @@ Follow us on [**Facebook**](https://www.facebook.com/feedwebresearch) and [**Twi
 
 
 == Changelog ==
+
+= 3.0.3 =
+* L10n update (Russian).
 
 = 3.0.2 =
 * Bug fix (Widget Wizard).

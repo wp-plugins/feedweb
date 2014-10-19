@@ -2,9 +2,9 @@
 # This file is distributed under the same license as the Feedweb package.
 msgid ""
 msgstr ""
-"Project-Id-Version: Feedweb 2.4.1\n"
+"Project-Id-Version: Feedweb 3.0.2\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/feedweb\n"
-"POT-Creation-Date: 2014-03-02 12:37:54+00:00\n"
+"POT-Creation-Date: 2014-10-19 13:43:25+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -12,85 +12,83 @@ msgstr ""
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 
-#: feedweb.php:66
+#: feedweb.php:116
 msgid ""
-"Please upgrade your Feedweb widget type to HTML5 (in the Feedweb Plugin "
-"settings). The Flash widget support will be discontinued after December 31, "
-"2013"
+"Please upgrade your Feedweb widget type to HTML5 (in the Feedweb Plugin settings). The Flash widget support is discontinued."
 msgstr ""
 
-#: feedweb.php:128 feedweb.php:425
+#: feedweb.php:178 feedweb.php:531
 msgid "Insert Rating Widget"
 msgstr ""
 
-#: feedweb.php:145
+#: feedweb.php:195
 msgid "The widget data is invalid and cannot be used."
 msgstr ""
 
-#: feedweb.php:146
+#: feedweb.php:196
 msgid "Remove Invalid Widget?"
 msgstr ""
 
-#: feedweb.php:151
+#: feedweb.php:201
 msgid "Unknown error."
 msgstr ""
 
-#: feedweb.php:151
+#: feedweb.php:201
 msgid ""
 "\n"
 "Please contact Feedweb (contact@feedweb.net)"
 msgstr ""
 
-#: feedweb.php:162
+#: feedweb.php:212
 msgid ""
 "Edit / Remove Rating Widget\n"
 "(%s Votes. Average Score: %s)"
 msgstr ""
 
-#: feedweb.php:170
+#: feedweb.php:220
 msgid ""
 "Edit / Remove Rating Widget\n"
 "(No votes yet)"
 msgstr ""
 
-#: feedweb.php:218 feedweb.php:572
+#: feedweb.php:268 feedweb.php:678
 msgid "Settings"
 msgstr ""
 
-#: feedweb.php:286
+#: feedweb.php:392
 msgid ""
 "Your server configuration does not support DOM Document class. Please "
 "upgrade your PHP version or report to contact@feedweb.net"
 msgstr ""
 
-#: feedweb.php:294
+#: feedweb.php:400
 msgid ""
 "The Feedweb service is temporarily unavailable due to system maintenance"
 msgstr ""
 
-#: feedweb.php:426
+#: feedweb.php:532
 msgid "Do you wish to insert a Feedweb rating widget into your new post?"
 msgstr ""
 
-#: feedweb.php:443
+#: feedweb.php:549
 msgid ""
 "The Title or Permalink of the post has been changed. Do you with to update "
 "the Rating Widget with new data?"
 msgstr ""
 
-#: feedweb.php:573
+#: feedweb.php:679
 msgid "Tutorial"
 msgstr ""
 
-#: feedweb.php:576
+#: feedweb.php:682
 msgid "Monitor"
 msgstr ""
 
-#: feedweb.php:577
+#: feedweb.php:683
 msgid "License"
 msgstr ""
 
-#: feedweb.php:579
+#: feedweb.php:685
 msgid "Our Friends"
 msgstr ""
 
@@ -106,7 +104,7 @@ msgstr ""
 msgid "Feedweb License"
 msgstr ""
 
-#: feedweb_menu.php:3 feedweb_options.php:200
+#: feedweb_menu.php:3 feedweb_options.php:202
 msgid "You do not have sufficient permissions to access this page."
 msgstr ""
 
@@ -182,241 +180,332 @@ msgstr ""
 msgid "Click to remove widgets from the deleted posts"
 msgstr ""
 
-#: feedweb_options.php:170 widget_dialog.php:1114
+#: feedweb_options.php:171 widget_dialog.php:1312
 msgid "Close"
 msgstr ""
 
-#: feedweb_options.php:174
+#: feedweb_options.php:175
 msgid "Edit Rating Widget CSS"
 msgstr ""
 
-#: feedweb_options.php:179
+#: feedweb_options.php:180
 msgid "Error loading Widget CSS"
 msgstr ""
 
-#: feedweb_options.php:182
+#: feedweb_options.php:183
 msgid "Restore Default"
 msgstr ""
 
-#: feedweb_options.php:185
+#: feedweb_options.php:186
 msgid "Save"
 msgstr ""
 
-#: feedweb_options.php:207
+#: feedweb_options.php:209
 msgid "Feedweb Plugin Settings"
 msgstr ""
 
-#: feedweb_options.php:238
+#: feedweb_options.php:240
 msgid "Discard changes?"
 msgstr ""
 
-#: feedweb_options.php:263 feedweb_options.php:682
+#: feedweb_options.php:265 feedweb_options.php:832
 msgid "Show Widget Preview >>>"
 msgstr ""
 
-#: feedweb_options.php:270
+#: feedweb_options.php:272
 msgid "<<< Hide Widget Preview"
 msgstr ""
 
-#: feedweb_options.php:318
+#: feedweb_options.php:323
 msgid "Remove Widgets?"
 msgstr ""
 
-#: feedweb_options.php:483
+#: feedweb_options.php:394
+msgid "Note: Changing widget color scheme will disable your custom CSS"
+msgstr ""
+
+#: feedweb_options.php:512
 msgid "Please enter a valid width"
 msgstr ""
 
-#: feedweb_options.php:489
+#: feedweb_options.php:513
 msgid "Width is out of range"
 msgstr ""
 
-#: feedweb_options.php:514
-msgid "Please enter a valid Front Widget height"
+#: feedweb_options.php:519
+msgid "Please enter a valid feeder height"
 msgstr ""
 
 #: feedweb_options.php:520
-msgid "Front Widget height is out of range"
+msgid "Feeder height is out of range"
 msgstr ""
 
-#: feedweb_options.php:574
+#: feedweb_options.php:526
+msgid "Please enter a valid feeder width"
+msgstr ""
+
+#: feedweb_options.php:527
+msgid "Feeder width is out of range"
+msgstr ""
+
+#: feedweb_options.php:533
+msgid "Please enter a valid maximum image height"
+msgstr ""
+
+#: feedweb_options.php:534
+msgid "Max. image height is out of range"
+msgstr ""
+
+#: feedweb_options.php:763
 msgid "Rating Widget"
 msgstr ""
 
-#: feedweb_options.php:575
-msgid "Front Widget"
+#: feedweb_options.php:764
+msgid "Feeder"
 msgstr ""
 
-#: feedweb_options.php:586
-msgid "Widget Placement:"
-msgstr ""
-
-#: feedweb_options.php:600
-msgid "Please choose the placement of the rating widget within a post."
-msgstr ""
-
-#: feedweb_options.php:606
-msgid "Widget Type:"
-msgstr ""
-
-#: feedweb_options.php:613
-msgid "Click to upgrade your rating widgets from Flash to HTML5"
-msgstr ""
-
-#: feedweb_options.php:615
-msgid "Note that Flash is not supported in devices like iPad or iPhone."
-msgstr ""
-
-#: feedweb_options.php:616
-msgid "Flash widget will be discontinued after December 31, 2013."
-msgstr ""
-
-#: feedweb_options.php:624
+#: feedweb_options.php:774
 msgid "Widget Color Scheme:"
 msgstr ""
 
-#: feedweb_options.php:625
+#: feedweb_options.php:775
 msgid "Widget External Background:"
 msgstr ""
 
-#: feedweb_options.php:626
+#: feedweb_options.php:776
 msgid "Widget Stylesheet (CSS):"
 msgstr ""
 
-#: feedweb_options.php:634
+#: feedweb_options.php:784
 msgid "Please choose the color scheme of your HTML rating widgets."
 msgstr ""
 
-#: feedweb_options.php:635
+#: feedweb_options.php:785
 msgid "Your custom CSS might not be compatible with the Widget."
 msgstr ""
 
-#: feedweb_options.php:636
+#: feedweb_options.php:786
 msgid "Please revise and resubmit."
 msgstr ""
 
-#: feedweb_options.php:642
+#: feedweb_options.php:792
 msgid "Widget Language:"
 msgstr ""
 
-#: feedweb_options.php:653
+#: feedweb_options.php:803
 msgid "Widget Layout:"
 msgstr ""
 
-#: feedweb_options.php:654
+#: feedweb_options.php:804
 msgid "Widget width (pixels):"
 msgstr ""
 
-#: feedweb_options.php:662
+#: feedweb_options.php:812
 msgid "Mobile screen layout (300x150) is recommended for all types of devices."
 msgstr ""
 
-#: feedweb_options.php:663
+#: feedweb_options.php:813
 msgid "Allowed width: 350 to 500 pixels. Recommended width: 400 to 450 pixels."
 msgstr ""
 
-#: feedweb_options.php:668
+#: feedweb_options.php:818
 msgid "Display results before voting:"
 msgstr ""
 
-#: feedweb_options.php:673
+#: feedweb_options.php:823
 msgid "Display Results"
 msgstr ""
 
-#: feedweb_options.php:676
+#: feedweb_options.php:826
 msgid "Allow your visitors to see results before they vote."
 msgstr ""
 
-#: feedweb_options.php:692
+#: feedweb_options.php:842
 msgid "Widgets at the Home/Front Page:"
 msgstr ""
 
-#: feedweb_options.php:696
+#: feedweb_options.php:846
 msgid "Display Widgets"
 msgstr ""
 
-#: feedweb_options.php:699
+#: feedweb_options.php:849
 msgid ""
 "Check to display the widgets both in the Front Page and the single post "
 "pages."
 msgstr ""
 
-#: feedweb_options.php:704
+#: feedweb_options.php:854
 msgid "Delay displaying results:"
 msgstr ""
 
-#: feedweb_options.php:710
+#: feedweb_options.php:860
 msgid ""
 "Set the period of time you want to hide voting results after the widget is "
 "created."
 msgstr ""
 
-#: feedweb_options.php:716
+#: feedweb_options.php:866
 msgid "Feedweb Copyright Notice:"
 msgstr ""
 
-#: feedweb_options.php:720
+#: feedweb_options.php:870
 msgid "Allow"
 msgstr ""
 
-#: feedweb_options.php:724
+#: feedweb_options.php:874
 msgid "Please check to display the following text below the widgets: "
 msgstr ""
 
-#: feedweb_options.php:731
+#: feedweb_options.php:881
 msgid "Prompt to insert widgets:"
 msgstr ""
 
-#: feedweb_options.php:735
+#: feedweb_options.php:885 feedweb_options.php:944 feedweb_options.php:956
+#: feedweb_options.php:968 feedweb_options.php:980 feedweb_options.php:1005
+#: feedweb_options.php:1017 feedweb_options.php:1043
 msgid "Show"
 msgstr ""
 
-#: feedweb_options.php:738
+#: feedweb_options.php:888
 msgid "Display a prompt to insert a rating widget when a post is published."
 msgstr ""
 
-#: feedweb_options.php:749
-msgid "Front Page Widget Color Scheme:"
+#: feedweb_options.php:893
+msgid "Automatically add paragraphs:"
 msgstr ""
 
-#: feedweb_options.php:757
-msgid "Select color scheme for the Front Page widget"
+#: feedweb_options.php:897 widget_dialog.php:1355
+msgid "Add"
 msgstr ""
 
-#: feedweb_options.php:762
-msgid "Max. Widget height (pixels):"
+#: feedweb_options.php:900
+msgid "Surround widgets with paragraph tags:"
 msgstr ""
 
-#: feedweb_options.php:771
-msgid "Allowed height: 200 to 800 pixels. Recommended height: 400 pixels."
+#: feedweb_options.php:911
+msgid "Feeder Width:"
 msgstr ""
 
-#: feedweb_options.php:777
-msgid "Vertical Scroll Bar:"
-msgstr ""
-
-#: feedweb_options.php:783
-msgid "Hide"
-msgstr ""
-
-#: feedweb_options.php:787
+#: feedweb_options.php:917
 msgid ""
-"Check to hide vertical scroll bar when the front widget exceeds max. height."
+"Width of the Feeder in pixels.<br/>Allowed: 200 to 1000. Recommended: 300."
 msgstr ""
 
-#: feedweb_options.php:792
-msgid "Number of list items:"
+#: feedweb_options.php:929
+msgid "Feeder Height:"
 msgstr ""
 
-#: feedweb_options.php:800
-msgid "Number of items in the Front Widget list"
+#: feedweb_options.php:935
+msgid "Height of the Feeder in pixels.<br/>Allowed: 300 to 2000 pixels."
 msgstr ""
 
-#: feedweb_options.php:810
+#: feedweb_options.php:940
+msgid "Show Header:"
+msgstr ""
+
+#: feedweb_options.php:947
+msgid "Display header bar of the Feeder."
+msgstr ""
+
+#: feedweb_options.php:952
+msgid "Select Authors:"
+msgstr ""
+
+#: feedweb_options.php:959
+msgid "Display Authors Menu<br/>(Appears when the site has 2 or more authors)."
+msgstr ""
+
+#: feedweb_options.php:964
+msgid "Select Order:"
+msgstr ""
+
+#: feedweb_options.php:971
+msgid "Display Order Menu<br/>(Sort posts by time / votes)."
+msgstr ""
+
+#: feedweb_options.php:976
+msgid "Show Navigator:"
+msgstr ""
+
+#: feedweb_options.php:983
+msgid ""
+"Display navigator icons on the Feeder<br/>(show vertical scrollbar when "
+"unchecked)."
+msgstr ""
+
+#: feedweb_options.php:988
+msgid "Auto Run Feed:"
+msgstr ""
+
+#: feedweb_options.php:992
+msgid "Yes"
+msgstr ""
+
+#: feedweb_options.php:995
+msgid "Auto-play the Feeder on start.<br/>(*10 posts and up)"
+msgstr ""
+
+#: feedweb_options.php:1001
+msgid "Author Info:"
+msgstr ""
+
+#: feedweb_options.php:1008
+msgid ""
+"Show Author info in the Feeder Items<br/>(Gravatar, Author Name, Site Title)."
+msgstr ""
+
+#: feedweb_options.php:1013
+msgid "Post Info:"
+msgstr ""
+
+#: feedweb_options.php:1020
+msgid "Show Post info in the Feeder Items<br/>(Date / Number of votes)."
+msgstr ""
+
+#: feedweb_options.php:1026
+msgid "Feeder Links:"
+msgstr ""
+
+#: feedweb_options.php:1030
+msgid "Open New Tab"
+msgstr ""
+
+#: feedweb_options.php:1033
+msgid ""
+"Open the Feeder links in a new tab<br/>(otherwise redirect the current "
+"window)."
+msgstr ""
+
+#: feedweb_options.php:1038
+msgid "Show Footer:"
+msgstr ""
+
+#: feedweb_options.php:1046
+msgid "Display footer bar of the Feeder."
+msgstr ""
+
+#: feedweb_options.php:1051
+msgid "Max. Image Height:"
+msgstr ""
+
+#: feedweb_options.php:1057
+msgid ""
+"Maximum height of the images in the Feeder.<br/>Allowed: 100 to 1000 pixels."
+msgstr ""
+
+#: feedweb_options.php:1073
 msgid "Save Changes"
 msgstr ""
 
-#: feedweb_settings.php:10 question_query.php:10 widget_commit.php:10
-#: widget_dialog.php:9
+#: feedweb_options.php:1076
+msgid "Reset Feeder Preview"
+msgstr ""
+
+#: feedweb_options.php:1076
+msgid "Click to Reset Feeder Preview"
+msgstr ""
+
+#: feedweb_settings.php:10 widget_commit.php:10 widget_dialog.php:9
 msgid "You are not allowed to be here"
 msgstr ""
 
@@ -424,53 +513,57 @@ msgstr ""
 msgid "Failed to update CSS"
 msgstr ""
 
-#: feedweb_settings.php:83
+#: feedweb_settings.php:89
 msgid "Failed to update settings"
 msgstr ""
 
-#: feedweb_util.php:484
+#: feedweb_util.php:533
 msgid "Cannot insert widget into a post with undefined status"
 msgstr ""
 
-#: feedweb_util.php:487
+#: feedweb_util.php:536
 msgid "Cannot insert widget into a private post (must be public)"
 msgstr ""
 
-#: feedweb_util.php:490
+#: feedweb_util.php:539
 msgid "Cannot insert widget into a trashed post"
 msgstr ""
 
-#: feedweb_util.php:493
+#: feedweb_util.php:542
 msgid "Cannot insert widget into a password-protected post"
 msgstr ""
 
-#: feedweb_util.php:498
+#: feedweb_util.php:547
 msgid "Cannot insert widget into a post published %d days ago"
 msgstr ""
 
-#: feedweb_util.php:507
+#: feedweb_util.php:552
+msgid "Cannot insert widget into a scheduled post"
+msgstr ""
+
+#: feedweb_util.php:559
 msgid ""
 "You have created %d widgets in the last 24 hours. The daily limit for your "
 "subscription is %d new widgets."
 msgstr ""
 
-#: feedweb_util.php:515
+#: feedweb_util.php:567
 msgid ""
 "You have created %d widgets in the last 30 days. The monthly limit for your "
 "subscription is %d new widgets"
 msgstr ""
 
-#: feedweb_util.php:523
+#: feedweb_util.php:575
 msgid ""
 "You have created %d widgets. The limit for your subscription is %d widgets"
 msgstr ""
 
-#: widget_commit.php:32 widget_commit.php:414
+#: widget_commit.php:32 widget_commit.php:418
 msgid "The widget has been removed"
 msgstr ""
 
 #: widget_commit.php:101 widget_commit.php:109 widget_commit.php:117
-#: widget_commit.php:125 widget_commit.php:255 widget_commit.php:263
+#: widget_commit.php:125 widget_commit.php:259 widget_commit.php:267
 msgid "Error in the Post data"
 msgstr ""
 
@@ -478,318 +571,297 @@ msgstr ""
 msgid "Error in the User data"
 msgstr ""
 
-#: widget_commit.php:158
+#: widget_commit.php:162
 msgid "Error in the Widget data"
 msgstr ""
 
-#: widget_commit.php:248 widget_commit.php:309
+#: widget_commit.php:252 widget_commit.php:313
 msgid "Wordpress cannot modify your widget"
 msgstr ""
 
-#: widget_commit.php:277 widget_commit.php:332 widget_commit.php:401
-#: widget_commit.php:455
+#: widget_commit.php:281 widget_commit.php:336 widget_commit.php:405
+#: widget_commit.php:459
 msgid "Cannot connect Feedweb server"
 msgstr ""
 
-#: widget_commit.php:289
+#: widget_commit.php:293
 msgid "The widget Title/Url have been updated"
 msgstr ""
 
-#: widget_commit.php:293 widget_commit.php:348
+#: widget_commit.php:297 widget_commit.php:352
 msgid "Feedweb service cannot update the widget"
 msgstr ""
 
-#: widget_commit.php:344
+#: widget_commit.php:348
 msgid "The widget has been updated"
 msgstr ""
 
-#: widget_commit.php:364
+#: widget_commit.php:368
 msgid "The widget has been inserted"
 msgstr ""
 
-#: widget_commit.php:366
+#: widget_commit.php:370
 msgid "Wordpress cannot insert your widget"
 msgstr ""
 
-#: widget_commit.php:380
+#: widget_commit.php:384
 msgid "%d out of %d widgets have been removed"
 msgstr ""
 
-#: widget_commit.php:421
+#: widget_commit.php:425
 msgid "Wordpress cannot remove your widget"
 msgstr ""
 
-#: widget_commit.php:471
+#: widget_commit.php:475
 msgid "Unknown server error"
 msgstr ""
 
-#: widget_commit.php:475
+#: widget_commit.php:479
 msgid "Feedweb service cannot create a widget"
 msgstr ""
 
-#: widget_dialog.php:23
+#: widget_dialog.php:81
+msgid "Channel:"
+msgstr ""
+
+#: widget_dialog.php:111
 msgid ""
 "Dear %s, Please configure your plugin settings before inserting the widget"
 msgstr ""
 
-#: widget_dialog.php:236
-msgid "Publish your post in the Feedweb's Readers Community Portal"
+#: widget_dialog.php:327
+msgid "Publish your post in the {Feedweb Readers Community Portal}"
 msgstr ""
 
-#: widget_dialog.php:239
+#: widget_dialog.php:331
 msgid "By clicking ['Next'] you agree to our {Terms of service}"
 msgstr ""
 
-#: widget_dialog.php:257
+#: widget_dialog.php:361
 msgid "Suitable for any audience type"
 msgstr ""
 
-#: widget_dialog.php:258
+#: widget_dialog.php:362
 msgid ""
 "May contain rude gestures, provocatively dressed individuals; the lesser "
 "swear words, or mild violence"
 msgstr ""
 
-#: widget_dialog.php:259
+#: widget_dialog.php:363
 msgid ""
 "May contain such things as harsh profanity, intense violence, nudity, or "
 "hard drug use"
 msgstr ""
 
-#: widget_dialog.php:260
+#: widget_dialog.php:364
 msgid "May contain hardcore sexual imagery or extremely disturbing violence"
 msgstr ""
 
-#: widget_dialog.php:283
+#: widget_dialog.php:387
 msgid ""
 "If this posts main purpose is to advertise a certain item or product and not "
 "to give information please check here."
 msgstr ""
 
-#: widget_dialog.php:284
+#: widget_dialog.php:388
 msgid ""
 "If your post is for advertising and you do not check the box you are "
 "violating the license agreement."
 msgstr ""
 
-#: widget_dialog.php:287
+#: widget_dialog.php:391
 msgid "The post contains advertising material"
 msgstr ""
 
-#: widget_dialog.php:305
+#: widget_dialog.php:409
 msgid "Uncategorized"
 msgstr ""
 
-#: widget_dialog.php:419
+#: widget_dialog.php:523
 msgid "The rating widget in the post '%s' will be removed"
 msgstr ""
 
-#: widget_dialog.php:473
+#: widget_dialog.php:577
 msgid "http://en.wikipedia.org/wiki/Yes%E2%80%93no_question"
 msgstr ""
 
-#: widget_dialog.php:474
+#: widget_dialog.php:578
 msgid "must be a %sYES / NO%s question"
 msgstr ""
 
-#: widget_dialog.php:579
+#: widget_dialog.php:705
 msgid "Question '{0}' is already selected"
 msgstr ""
 
-#: widget_dialog.php:589
+#: widget_dialog.php:715
 msgid "A widget cannot contain more than {0} questions"
 msgstr ""
 
-#: widget_dialog.php:623
+#: widget_dialog.php:749
 msgid "Please specify a question"
 msgstr ""
 
-#: widget_dialog.php:631
+#: widget_dialog.php:757
 msgid "The question text must not exceed %d characters"
 msgstr ""
 
-#: widget_dialog.php:685
+#: widget_dialog.php:811
 msgid "Please select a question to remove"
 msgstr ""
 
-#: widget_dialog.php:689
+#: widget_dialog.php:815
 msgid "The question will be removed. Proceed?"
 msgstr ""
 
-#: widget_dialog.php:723
+#: widget_dialog.php:911
 msgid "The tags/categories text is limited to 250 characters."
 msgstr ""
 
-#: widget_dialog.php:730
+#: widget_dialog.php:918
 msgid "The number of tags is limited to 10"
 msgstr ""
 
-#: widget_dialog.php:737
+#: widget_dialog.php:925
 msgid "The number of categories is limited to 10"
 msgstr ""
 
-#: widget_dialog.php:816
+#: widget_dialog.php:1004
 msgid "Page Title cannot exceed 100 characters"
 msgstr ""
 
-#: widget_dialog.php:822
+#: widget_dialog.php:1010
 msgid "Page Title contain hypertext markup"
 msgstr ""
 
-#: widget_dialog.php:834
+#: widget_dialog.php:1022
 msgid "Author name is empty"
 msgstr ""
 
-#: widget_dialog.php:842
+#: widget_dialog.php:1030
 msgid ""
 "A name like {0} is not recommended for Feedweb Readers Community authors."
 msgstr ""
 
-#: widget_dialog.php:845
+#: widget_dialog.php:1033
 msgid "You can set another display name in your WordPress profile."
 msgstr ""
 
-#: widget_dialog.php:846
+#: widget_dialog.php:1034
 msgid "Do you wish to continue?"
 msgstr ""
 
-#: widget_dialog.php:860
+#: widget_dialog.php:1048
 msgid ""
 "Email-like author names are not allowed due to security considerations. "
 "Please change the name"
 msgstr ""
 
-#: widget_dialog.php:872
+#: widget_dialog.php:1060
 msgid "Page Summary cannot exceed 250 characters"
 msgstr ""
 
-#: widget_dialog.php:948
+#: widget_dialog.php:1139
 msgid "Please enter image Url"
 msgstr ""
 
-#: widget_dialog.php:980
+#: widget_dialog.php:1171
 msgid "The image width or height should be at least 100 pixels"
 msgstr ""
 
-#: widget_dialog.php:990
+#: widget_dialog.php:1181
 msgid ""
 "The image ratio is invalid. The proportion between image width and height "
 "cannot be greater than 500%"
 msgstr ""
 
-#: widget_dialog.php:1112
+#: widget_dialog.php:1310
 msgid "Feedweb Plugin Terms of Service"
 msgstr ""
 
-#: widget_dialog.php:1118
+#: widget_dialog.php:1316
 msgid "Title:"
 msgstr ""
 
-#: widget_dialog.php:1120
+#: widget_dialog.php:1318
 msgid "URL:"
 msgstr ""
 
-#: widget_dialog.php:1122
+#: widget_dialog.php:1320
 msgid "Author:"
 msgstr ""
 
-#: widget_dialog.php:1124
+#: widget_dialog.php:1322
 msgid "Post Language:"
 msgstr ""
 
-#: widget_dialog.php:1130
+#: widget_dialog.php:1328
 msgid "Summary:"
 msgstr ""
 
-#: widget_dialog.php:1132
+#: widget_dialog.php:1330
 msgid "Categories:"
 msgstr ""
 
-#: widget_dialog.php:1134
+#: widget_dialog.php:1332
 msgid "Tags:"
 msgstr ""
 
-#: widget_dialog.php:1136
+#: widget_dialog.php:1335
 msgid "Censorship:"
 msgstr ""
 
-#: widget_dialog.php:1142
+#: widget_dialog.php:1341
 msgid "Image Url"
 msgstr ""
 
-#: widget_dialog.php:1144
+#: widget_dialog.php:1343
 msgid "Set"
 msgstr ""
 
-#: widget_dialog.php:1151
+#: widget_dialog.php:1350
 msgid "Existing Questions:"
 msgstr ""
 
-#: widget_dialog.php:1153
+#: widget_dialog.php:1352
 msgid "Select"
 msgstr ""
 
-#: widget_dialog.php:1154
+#: widget_dialog.php:1353
 msgid "New Question"
 msgstr ""
 
-#: widget_dialog.php:1156
-msgid "Add"
-msgstr ""
-
-#: widget_dialog.php:1157
+#: widget_dialog.php:1356
 msgid "Selected Questions:"
 msgstr ""
 
-#: widget_dialog.php:1159
+#: widget_dialog.php:1358
 msgid "Move Up"
 msgstr ""
 
-#: widget_dialog.php:1160
+#: widget_dialog.php:1359
 msgid "Move Down"
 msgstr ""
 
-#: widget_dialog.php:1161
+#: widget_dialog.php:1360
 msgid "Remove"
 msgstr ""
 
-#: widget_dialog.php:1168
+#: widget_dialog.php:1367
 msgid "Remove Widget"
 msgstr ""
 
-#: widget_dialog.php:1173
+#: widget_dialog.php:1372
 msgid "< Back"
 msgstr ""
 
-#: widget_dialog.php:1176
+#: widget_dialog.php:1375
 msgid "Next >"
 msgstr ""
 
-#: widget_dialog.php:1179
+#: widget_dialog.php:1378
 msgid "Done"
 msgstr ""
 
-#: widget_dialog.php:1182
+#: widget_dialog.php:1381
 msgid "Cancel"
-msgstr ""
-
-#. #-#-#-#-#  plugin.pot (Feedweb 2.4.1)  #-#-#-#-#
-#. Plugin Name of the plugin/theme
-#. #-#-#-#-#  plugin.pot (Feedweb 2.4.1)  #-#-#-#-#
-#. Author of the plugin/theme
-msgid "Feedweb"
-msgstr ""
-
-#. Plugin URI of the plugin/theme
-msgid "http://wordpress.org/extend/plugins/feedweb/"
-msgstr ""
-
-#. Description of the plugin/theme
-msgid ""
-"Expose your blog to the Feedweb reader's community. Promote your views. Get "
-"a comprehensive and detailed feedback from your readers."
-msgstr ""
-
-#. Author URI of the plugin/theme
-msgid "http://www.feedweb.net"
 msgstr ""

@@ -209,7 +209,7 @@ function FeedwebPluginOptions()
 		<h2><?php _e("Feedweb Plugin Settings", "FWTD");?></h2>
 
 		<form name="FeedwebSettingsForm" id="FeedwebSettingsForm" onsubmit="return OnSubmitFeedwebSettingsForm();">
-			<link href='<?php echo plugin_dir_url(__FILE__)?>Feedweb.css?v=3.0.2' rel='stylesheet' type='text/css' />
+			<link href='<?php echo plugin_dir_url(__FILE__)?>Feedweb.css?v=3.0.3' rel='stylesheet' type='text/css' />
 			<?php
 				$script_url = GetFeedwebUrl()."Base/jscolor/jscolor.js";
 				echo "<script type='text/javascript' src='$script_url'></script>";
@@ -767,20 +767,20 @@ function FeedwebPluginOptions()
 				<tr class="FeedwebSettingsContent" style="overflow: hidden;">
 					<td>
 						<div class="FeedwebSettingsDiv" style="display: block; height: 550px;">
-							<table class="FeedwebSettingsTable">
+							<table class="FeedwebSettingsTable" cellpadding="0" cellspacing="0">
 								<tbody>
 									<tr id="RatingWidgetColorSchemeRow" style="height: 100px; vertical-align: top;">
-										<td style="width: 275px; min-width: 275px;">
-											<span style="position: relative; top: 5px;"><b><?php _e("Widget Color Scheme:", "FWTD")?></b></span><br/>
-											<span style="position: relative; top: 20px;"><b><?php _e("Widget External Background:", "FWTD")?></b></span><br/>
-											<span style="position: relative; top: 35px;"><b><?php _e("Widget Stylesheet (CSS):", "FWTD")?></b></span>
+										<td style="width: 325px; min-width: 325px; max-width: 325px; position: relative;">
+											<span style="position: absolute; top: 6px;"><b><?php _e("Widget Color Scheme:", "FWTD")?></b></span><br/>
+											<span style="position: absolute; top: 38px;"><b><?php _e("Widget External Background:", "FWTD")?></b></span><br/>
+											<span style="position: absolute; top: 70px;"><b><?php _e("Widget Stylesheet (CSS):", "FWTD")?></b></span>
 										</td>
-										<td style='width: 280px; min-width: 280px;'>
+										<td style='width: 310px; min-width: 310px;'>
 											<?php BuildColorSchemeBox($feedweb_data['widget_cs'], true) ?><br/>
 											<?php BuildExternalBackgroundControl($feedweb_data['widget_ext_bg']) ?>
 											<input type='button' class='button button-primary' id="EditWidgetCSSButton" onclick='OnEditCSS()' value='View / Edit CSS'/>
 										</td>
-										<td style='width: 550px; min-width: 550px;'>
+										<td style='width: 500px; min-width: 500px;'>
 											<span id='ChooseColorSchemePrompt'><?php _e("Please choose the color scheme of your HTML rating widgets.", "FWTD")?></span><br />
 											<span id='CustomCSSValidityPrompt'><?php _e("Your custom CSS might not be compatible with the Widget.", "FWTD")?>
 											<br/><?php _e("Please revise and resubmit.", "FWTD")?></span>
@@ -799,9 +799,9 @@ function FeedwebPluginOptions()
 										</td>
 									</tr>
 									<tr id="RatingWidgetLayoutRow" style="height: 56px; vertical-align: top;">
-										<td>
-											<span style="position: relative; top: 5px;"><b><?php _e("Widget Layout:", "FWTD")?></b></span><br/>
-											<span style="position: relative; top: 20px;"><b><?php _e("Widget width (pixels):", "FWTD")?></b></span>
+										<td style='position: relative;'>
+											<span style="position: absolute; top: 8px;"><b><?php _e("Widget Layout:", "FWTD")?></b></span><br/>
+											<span style="position: absolute; top: 40px;"><b><?php _e("Widget width (pixels):", "FWTD")?></b></span>
 										</td>
 										<td>
 											<?php BuildLayoutBox($feedweb_data['widget_layout']) ?><br/>
@@ -907,17 +907,17 @@ function FeedwebPluginOptions()
 							<table class="FeedwebSettingsTable" cellpadding="0" cellspacing="0">
 								<tbody>
 									<tr>
-										<td style='width: 140px; min-width: 140px; height: 44px;'>
+										<td style='width: 170px; min-width: 170px; max-width: 170px; height: 44px;'>
 											<span><b><?php _e("Feeder Width:", "FWTD")?></b></span>
 										</td>
-										<td style='width: 140px; min-width: 140px;'>
-											<input id='FeederWidthEdit' name='FeederWidthEdit' type='text' style="width: 128px;" value="<?php echo $feedweb_data['feeder_width']?>"/>
+										<td style='width: 155px; min-width: 155px; max-width: 155px; '>
+											<input id='FeederWidthEdit' name='FeederWidthEdit' type='text' style="width: 145px;" value="<?php echo $feedweb_data['feeder_width']?>"/>
 										</td>
-										<td style='width: 280px; min-width: 280px;'>
+										<td style='width: 320px; min-width: 320px;'>
 											<span><i><?php _e("Width of the Feeder in pixels.<br/>Allowed: 200 to 1000. Recommended: 300.", "FWTD")?></i></span>
 										</td>
-										<td style='padding: 0; background-color: #e0e0e0; vertical-align: top;' rowspan='12'>
-											<div style='position: relative; width: 500px; height: 600px; display: block; overflow-y: scroll; overflow-x: scroll;'>
+										<td style='padding: 0; background-color: #e0e0e0; vertical-align: top; min-width: 350px;' rowspan='12'>
+											<div style='position: relative; width: 100%; height: 100%; display: block; overflow-y: scroll; overflow-x: scroll;'>
 												<div style='position: absolute; display: block; top: 15px; bottom: 15px; left: 15px; right: 15px; text-align: right;'>
 													<iframe id="FeederPreview" style="position: relative;"></iframe>	
 												</div>
@@ -929,7 +929,7 @@ function FeedwebPluginOptions()
 											<span><b><?php _e("Feeder Height:", "FWTD")?></b></span>
 										</td>
 										<td>
-											<input id='FeederHeightEdit' name='FeederHeightEdit' type='text' style="width: 128px;" value="<?php echo $feedweb_data['feeder_height']?>"/>
+											<input id='FeederHeightEdit' name='FeederHeightEdit' type='text' style="width: 145px;" value="<?php echo $feedweb_data['feeder_height']?>"/>
 										</td>
 										<td>
 											<span><i><?php _e("Height of the Feeder in pixels.<br/>Allowed: 300 to 2000 pixels.", "FWTD")?></i></span>
@@ -1027,7 +1027,7 @@ function FeedwebPluginOptions()
 										</td>
 										<td>
 											<input <?php if($feedweb_data['feeder_links_new_tab'] == "1") echo 'checked="checked"' ?>
-											id="FeederLinksNewTabBox" name="FeederLinksNewTabBox" type="checkbox" onchange='OnFeederLinksNewTab()'> <?php _e("Open New Tab")?></input>				
+											id="FeederLinksNewTabBox" name="FeederLinksNewTabBox" type="checkbox" onchange='OnFeederLinksNewTab()'> <?php _e("Open New Tab", "FWTD")?></input>				
 										</td>
 										<td>
 											<span><i><?php _e("Open the Feeder links in a new tab<br/>(otherwise redirect the current window).", "FWTD")?></i></span>
@@ -1051,7 +1051,7 @@ function FeedwebPluginOptions()
 											<span><b><?php _e("Max. Image Height:", "FWTD")?></b></span>
 										</td>
 										<td>
-											<input id='FeederImageHeightEdit' name='FeederImageHeightEdit' type='text' style="width: 128px;" value="<?php echo $feedweb_data['feeder_img_height']?>"/>
+											<input id='FeederImageHeightEdit' name='FeederImageHeightEdit' type='text' style="width: 145px;" value="<?php echo $feedweb_data['feeder_img_height']?>"/>
 										</td>
 										<td>
 											<span><i><?php _e("Maximum height of the images in the Feeder.<br/>Allowed: 100 to 1000 pixels.", "FWTD")?></i></span>
@@ -1059,7 +1059,7 @@ function FeedwebPluginOptions()
 									</tr>
 									<tr>
 										<td colspan="4" style="border-bottom: none; padding-top: 10px;">
-											<span style="font-weight: bold; font-size: 12pt;">To <span style="color: red;">enable</span> the Feeder, go to <a href="./widgets.php">Appearance -> Widgets</a>, add a text widget to your sidebar, and place <span style='color: blue;'>[FeedwebFeederBar]</span> in the widget's text.<br/>Please <a href="mailto://contact@feedweb.net">contact us</a> if you have any questions.</span>	
+											<span style="font-weight: bold; font-size: 12pt;">To <font style="color: red;">enable</font> the Feeder, go to <a href="./widgets.php">Appearance -> Widgets</a>, add a text widget to your sidebar, and place <font style='color: blue;'>[FeedwebFeederBar]</font> in the widget's text.<br/>Please <a href="mailto://contact@feedweb.net">contact us</a> if you have any questions.</span>	
 										</td>
 									</tr>
 								</tbody>

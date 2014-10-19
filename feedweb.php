@@ -4,7 +4,7 @@ Plugin Name: Feedweb
 Plugin URI: http://wordpress.org/extend/plugins/feedweb/
 Description: Expose your blog to the Feedweb reader's community. Promote your views. Get a comprehensive and detailed feedback from your readers.
 Author: Feedweb
-Version: 3.0.2
+Version: 3.0.3
 Author URI: http://www.feedweb.net
 */
 
@@ -113,7 +113,7 @@ function AddFeedwebColumn($columns)
 			$feedweb_data = GetFeedwebOptions();
 			if ($feedweb_data["widget_type"] == "F")
 			{
-				$msg = __("Please upgrade your Feedweb widget type to HTML5 (in the Feedweb Plugin settings). The Flash widget support will be discontinued after December 31, 2013", "FWTD");
+				$msg = __("Please upgrade your Feedweb widget type to HTML5 (in the Feedweb Plugin settings). The Flash widget support is discontinued.", "FWTD");
 				ShowFeedwebMessage($msg, false);
 			}
 		}	

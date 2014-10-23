@@ -894,7 +894,7 @@ function FeedwebPluginOptions()
 										</td>
 										<td>
 											<input <?php if($feedweb_data['add_paragraphs'] == "1") echo 'checked="checked"' ?>
-											id="AddParagraphsBox" name="AddParagraphsBox" type="checkbox" onchange='OnCheckAddParagraphs()'> <?php _e("Add")?></input>				
+											id="AddParagraphsBox" name="AddParagraphsBox" type="checkbox" onchange='OnCheckAddParagraphs()'> <?php _e("Add", "FWTD")?></input>				
 										</td>
 										<td>
 											<span><i><?php _e("Surround widgets with paragraph tags:", "FWTD")?></i><b> &lt;P&gt;...&lt;/P&gt;</b></span>

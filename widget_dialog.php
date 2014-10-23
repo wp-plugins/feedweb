@@ -1327,9 +1327,9 @@ function YesNoQuestionPrompt()
 				<div id="WidgetBriefDiv" class="WidgetWizardPage">
 					<span id='SummaryLabel'><b><?php _e("Summary:", "FWTD")?></b></span>
 					<?php GetPostSummaryControl() ?>
-					<span id='CategoryLabel'><b><?php _e("Categories:")?></b></span>
+					<span id='CategoryLabel'><b><?php _e("Categories:", "FWTD")?></b></span>
 					<?php GetCategoryControl() ?>
-					<span id='TagLabel'><b><?php _e("Tags:")?></b></span>
+					<span id='TagLabel'><b><?php _e("Tags:", "FWTD")?></b></span>
 					<?php GetTagControl() ?>
 					<div id="ChannelPlaceholder"></div>
 					<span id="CensorshipLabel"><b><?php _e("Censorship:", "FWTD")?></b></span>
@@ -1338,7 +1338,7 @@ function YesNoQuestionPrompt()
 				</div>
 				
 				<div id="WidgetImageDiv" class="WidgetWizardPage">
-					<span id='ImageUrlLabel'><b><?php _e("Image Url")?></b></span>
+					<span id='ImageUrlLabel'><b><?php _e("Image Url", "FWTD")?></b></span>
 					<?php GetPostImageUrlControl() ?>
 					<input id='SetImageButton' type='button' value='<?php _e("Set", "FWTD")?>' onclick='OnSetImage()'/>
 					<div id="WidgetImageBox">
@@ -1352,7 +1352,7 @@ function YesNoQuestionPrompt()
 					<input id='SelectQuestionButton' type='button' value='<?php _e("Select")?>' onclick='OnSelect()'/>
 					<span id='NewQuestionLabel'><b><?php _e("New Question", "FWTD")?></b> (<i><?php YesNoQuestionPrompt()?></i>)<b>:</b></span>
 					<input type='text' id='NewQuestionText' name='NewQuestionText'/>
-					<input id='AddQuestionButton' type='button' value='<?php _e("Add")?>' onclick="OnAddNew()"/>
+					<input id='AddQuestionButton' type='button' value='<?php _e("Add", "FWTD")?>' onclick="OnAddNew()"/>
 					<span id='QuestionsLabel'><b><?php _e("Selected Questions:", "FWTD")?></b></span>
 					<?php BuildQuestionsListControl() ?>
 					<input id='MoveUpQuestionButton' type='button' value='<?php _e("Move Up", "FWTD")?>' onclick='OnMoveUp()'/>

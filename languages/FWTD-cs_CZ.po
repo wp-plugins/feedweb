@@ -1,0 +1,910 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Feedweb Plugin\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/feedweb\n"
+"POT-Creation-Date: 2014-10-19 13:43:25+00:00\n"
+"PO-Revision-Date: 2014-10-23 15:48+0200\n"
+"Last-Translator: Ing.Lubomir Matiasko <mlubo@seznam.cz>\n"
+"Language-Team: \n"
+"Language: cs_CZ\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.6.2\n"
+"X-Poedit-Basepath: .\n"
+"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
+
+#: feedweb.php:116
+msgid ""
+"Please upgrade your Feedweb widget type to HTML5 (in the Feedweb Plugin "
+"settings). The Flash widget support is discontinued."
+msgstr ""
+"Prosím aktualizujte Váš Feedweb widget na HTML5 (v Nastavení Pluginu "
+"Feedweb). Podpora Flash Widget je přerušena."
+
+#: feedweb.php:178 feedweb.php:531
+msgid "Insert Rating Widget"
+msgstr "Vložit Rating Widget"
+
+#: feedweb.php:195
+msgid "The widget data is invalid and cannot be used."
+msgstr "Data Widgetu jsou neplatná a nemohou být použita."
+
+#: feedweb.php:196
+msgid "Remove Invalid Widget?"
+msgstr "Odstranit neplatný Widget?"
+
+#: feedweb.php:201
+msgid "Unknown error."
+msgstr "Došlo k neznámé chybě."
+
+#: feedweb.php:201
+msgid ""
+"\n"
+"Please contact Feedweb (contact@feedweb.net)"
+msgstr ""
+"\n"
+"Prosím, kontaktujte Feedweb (contact@feedweb.net)"
+
+#: feedweb.php:212
+msgid ""
+"Edit / Remove Rating Widget\n"
+"(%s Votes. Average Score: %s)"
+msgstr ""
+"Upravit / Odstranit Rating Widget\n"
+"( Hlasů: %s, Průměrné skóre: %s )"
+
+#: feedweb.php:220
+msgid ""
+"Edit / Remove Rating Widget\n"
+"(No votes yet)"
+msgstr ""
+"Upravit / Odstranit Rating Widget\n"
+"(Zatím nebylo hlasováno)"
+
+#: feedweb.php:268 feedweb.php:678
+msgid "Settings"
+msgstr "Nastavení"
+
+#: feedweb.php:392
+msgid ""
+"Your server configuration does not support DOM Document class. Please "
+"upgrade your PHP version or report to contact@feedweb.net"
+msgstr ""
+"Vaše konfigurace serveru nepodporuje třídu DOM Document. Prosím, "
+"aktualizujte svoji verzi PHP nebo napište zprávu contact@feedweb.net"
+
+#: feedweb.php:400
+msgid ""
+"The Feedweb service is temporarily unavailable due to system maintenance"
+msgstr "Feedweb služba je dočasně nedostupná z důvodu údržby"
+
+#: feedweb.php:532
+msgid "Do you wish to insert a Feedweb rating widget into your new post?"
+msgstr "Přejete si vložit Feedweb Rating Widget do vašeho nového příspěvku?"
+
+#: feedweb.php:549
+msgid ""
+"The Title or Permalink of the post has been changed. Do you with to update "
+"the Rating Widget with new data?"
+msgstr ""
+"Název nebo trvalý odkaz příspěvku byl změněn. Má se aktualizovat Rating "
+"Widget s novými daty?"
+
+#: feedweb.php:679
+msgid "Tutorial"
+msgstr "Video návod"
+
+#: feedweb.php:682
+msgid "Monitor"
+msgstr "Monitoring"
+
+#: feedweb.php:683
+msgid "License"
+msgstr "Licence"
+
+#: feedweb.php:685
+msgid "Our Friends"
+msgstr "Naši přátelé"
+
+#: feedweb_friends.php:38
+msgid "Our Friends - The Plugins We Recommend"
+msgstr "Naši přátelé - Pluginy Doporučujeme"
+
+#: feedweb_help.php:4
+msgid "Feedweb Plugin Tutorial"
+msgstr " Video návod Feedweb Plugin"
+
+#: feedweb_license.php:16
+msgid "Feedweb License"
+msgstr " Licence Feedweb"
+
+#: feedweb_menu.php:3 feedweb_options.php:202
+msgid "You do not have sufficient permissions to access this page."
+msgstr "Nemáte dostatečná oprávnění k zobrazení této stránky."
+
+#: feedweb_monitor.php:16
+msgid "Feedweb Monitor"
+msgstr "Feedweb Monitor"
+
+#: feedweb_options.php:10
+msgid "Mobile Screen"
+msgstr "Mobil Vzhled"
+
+#: feedweb_options.php:10
+msgid "Wide Screen"
+msgstr "Široký Vzhled"
+
+#: feedweb_options.php:71
+msgid "Blue"
+msgstr "Modrá"
+
+#: feedweb_options.php:71
+msgid "Gray"
+msgstr "Šedá"
+
+#: feedweb_options.php:71
+msgid "Modern"
+msgstr "Moderní"
+
+#: feedweb_options.php:76
+msgid "Classic"
+msgstr "Klasický"
+
+#: feedweb_options.php:76
+msgid "Monochrome"
+msgstr "Jednobarevný"
+
+#: feedweb_options.php:76
+msgid "Light Blue"
+msgstr "Světle Modrý"
+
+#: feedweb_options.php:77
+msgid "Dark Blue"
+msgstr "Tmavě Modrý"
+
+#: feedweb_options.php:77
+msgid "Dark Green"
+msgstr "Tmavě Zelený"
+
+#: feedweb_options.php:98
+msgid "Reset Preview"
+msgstr "Obnovit Náhled"
+
+#: feedweb_options.php:105
+msgid "No Delay"
+msgstr "Ihned"
+
+#: feedweb_options.php:105
+msgid "1 Hour"
+msgstr "1 hodina"
+
+#: feedweb_options.php:105
+msgid "2 Hours"
+msgstr "2 hodiny"
+
+#: feedweb_options.php:105
+msgid "5 Hours"
+msgstr "5 hodin"
+
+#: feedweb_options.php:136
+msgid "Remove Inactive Widgets"
+msgstr "Odstranit Neaktivní Widgety"
+
+#: feedweb_options.php:137
+msgid "Click to remove widgets from the deleted posts"
+msgstr "Klepněte na tlačítko odebrat widgety z odstraněných příspěvků"
+
+#: feedweb_options.php:171 widget_dialog.php:1312
+msgid "Close"
+msgstr "Zavřít"
+
+#: feedweb_options.php:175
+msgid "Edit Rating Widget CSS"
+msgstr "Editovat CSS Widgetu"
+
+#: feedweb_options.php:180
+msgid "Error loading Widget CSS"
+msgstr "Chyba při načítání CSS Widgetu"
+
+#: feedweb_options.php:183
+msgid "Restore Default"
+msgstr "Obnovit výchozí"
+
+#: feedweb_options.php:186
+msgid "Save"
+msgstr "Uložit"
+
+#: feedweb_options.php:209
+msgid "Feedweb Plugin Settings"
+msgstr "Nastavení Feedweb Pluginu"
+
+#: feedweb_options.php:240
+msgid "Discard changes?"
+msgstr "Zahodit změny?"
+
+#: feedweb_options.php:265 feedweb_options.php:832
+msgid "Show Widget Preview >>>"
+msgstr "Zobrazit Náhled Widgetu >>>"
+
+#: feedweb_options.php:272
+msgid "<<< Hide Widget Preview"
+msgstr "<<< Skrýt Náhled Widgetu"
+
+#: feedweb_options.php:323
+msgid "Remove Widgets?"
+msgstr "Odstranit widgety?"
+
+#: feedweb_options.php:394
+msgid "Note: Changing widget color scheme will disable your custom CSS"
+msgstr "Poznámka: Změna  barevné schémy widgetu zakáže vlastní CSS"
+
+#: feedweb_options.php:512
+msgid "Please enter a valid width"
+msgstr "Prosím zadejte šířku"
+
+#: feedweb_options.php:513
+msgid "Width is out of range"
+msgstr "Šířka je mimo rozsah"
+
+#: feedweb_options.php:519
+msgid "Please enter a valid feeder height"
+msgstr "Prosím zadejte výšku"
+
+#: feedweb_options.php:520
+msgid "Feeder height is out of range"
+msgstr "Výška je mimo rozsah"
+
+#: feedweb_options.php:526
+msgid "Please enter a valid feeder width"
+msgstr "Prosím zadejte šířku"
+
+#: feedweb_options.php:527
+msgid "Feeder width is out of range"
+msgstr "Šířka je mimo rozsah"
+
+#: feedweb_options.php:533
+msgid "Please enter a valid maximum image height"
+msgstr "Prosím zadejte  maximální výšku obrázku"
+
+#: feedweb_options.php:534
+msgid "Max. image height is out of range"
+msgstr "Max. Výška obrázku je mimo rozsah"
+
+#: feedweb_options.php:763
+msgid "Rating Widget"
+msgstr "Rating Widget"
+
+#: feedweb_options.php:764
+msgid "Feeder"
+msgstr "Feeder"
+
+#: feedweb_options.php:774
+msgid "Widget Color Scheme:"
+msgstr "Barevné schéma Widgetu:"
+
+#: feedweb_options.php:775
+msgid "Widget External Background:"
+msgstr "Externí pozadí Widgetu:"
+
+#: feedweb_options.php:776
+msgid "Widget Stylesheet (CSS):"
+msgstr "Styl Widgetu (CSS):"
+
+#: feedweb_options.php:784
+msgid "Please choose the color scheme of your HTML rating widgets."
+msgstr "Vyberte si barevné schéma vašeho HTML Rating Widgets."
+
+#: feedweb_options.php:785
+msgid "Your custom CSS might not be compatible with the Widget."
+msgstr "Vlastní CSS nemusí být kompatibilní s Widgetem."
+
+#: feedweb_options.php:786
+msgid "Please revise and resubmit."
+msgstr "Prosím, revidovat a znovu potvrdit."
+
+#: feedweb_options.php:792
+msgid "Widget Language:"
+msgstr "Jazyk Widgetu:"
+
+#: feedweb_options.php:803
+msgid "Widget Layout:"
+msgstr "Velikost Widgetu:"
+
+#: feedweb_options.php:804
+msgid "Widget width (pixels):"
+msgstr "Šířka Widgetu (v pixelech):"
+
+#: feedweb_options.php:812
+msgid "Mobile screen layout (300x150) is recommended for all types of devices."
+msgstr ""
+"Mobilní vzhled rozložení ( 300x150), doporučuje se pro všechny typy zařízení."
+
+#: feedweb_options.php:813
+msgid "Allowed width: 350 to 500 pixels. Recommended width: 400 to 450 pixels."
+msgstr "Povolená šířka: 350 - 500 pixelů. Doporučená šířka: 400 - 450 pixelů."
+
+#: feedweb_options.php:818
+msgid "Display results before voting:"
+msgstr "Zobrazit výsledky hlasování předem:"
+
+#: feedweb_options.php:823
+msgid "Display Results"
+msgstr "Zobrazit výsledky"
+
+#: feedweb_options.php:826
+msgid "Allow your visitors to see results before they vote."
+msgstr "Nechte vaše návštěvníky vidět výsledky před  hlasováním."
+
+#: feedweb_options.php:842
+msgid "Widgets at the Home/Front Page:"
+msgstr "Widgety na domovské / úvodní  stránce:"
+
+#: feedweb_options.php:846
+msgid "Display Widgets"
+msgstr "Zobrazit Widgety"
+
+#: feedweb_options.php:849
+msgid ""
+"Check to display the widgets both in the Front Page and the single post "
+"pages."
+msgstr ""
+"Zkontrolujte, zda a jak se zobrazí widgety na titulní stránce a jednotlivých "
+"stránkách."
+
+#: feedweb_options.php:854
+msgid "Delay displaying results:"
+msgstr "Zpoždění zobrazení výsledků:"
+
+#: feedweb_options.php:860
+msgid ""
+"Set the period of time you want to hide voting results after the widget is "
+"created."
+msgstr ""
+"Nastavte dobu, kterou chcete skrýt výsledky hlasování poté, co je widget "
+"vytvořen."
+
+#: feedweb_options.php:866
+msgid "Feedweb Copyright Notice:"
+msgstr "Feedweb o autorských právech:"
+
+#: feedweb_options.php:870
+msgid "Allow"
+msgstr "Povolit"
+
+#: feedweb_options.php:874
+msgid "Please check to display the following text below the widgets: "
+msgstr "Zkontrolujte, zda se zobrazí následující text pod widgety:"
+
+#: feedweb_options.php:881
+msgid "Prompt to insert widgets:"
+msgstr "Výzva ke vložení widgetů:"
+
+#: feedweb_options.php:885 feedweb_options.php:944 feedweb_options.php:956
+#: feedweb_options.php:968 feedweb_options.php:980 feedweb_options.php:1005
+#: feedweb_options.php:1017 feedweb_options.php:1043
+msgid "Show"
+msgstr "Zobrazit"
+
+#: feedweb_options.php:888
+msgid "Display a prompt to insert a rating widget when a post is published."
+msgstr "Zobrazit výzvu k vložení Rating Widget, když je příspěvek publikován."
+
+#: feedweb_options.php:893
+msgid "Automatically add paragraphs:"
+msgstr "Automaticky přidat odstavce:"
+
+#: feedweb_options.php:897 widget_dialog.php:1355
+msgid "Add"
+msgstr "Přidat"
+
+#: feedweb_options.php:900
+msgid "Surround widgets with paragraph tags:"
+msgstr "Obklopte widgety odstavci s tagy:"
+
+#: feedweb_options.php:911
+msgid "Feeder Width:"
+msgstr "Feeder Šířka:"
+
+#: feedweb_options.php:917
+msgid ""
+"Width of the Feeder in pixels.<br/>Allowed: 200 to 1000. Recommended: 300."
+msgstr "Šířka v pixelech povolena <br/>: 200 až 1000 Doporučeno: 300."
+
+#: feedweb_options.php:929
+msgid "Feeder Height:"
+msgstr "Feeder Výška:"
+
+#: feedweb_options.php:935
+msgid "Height of the Feeder in pixels.<br/>Allowed: 300 to 2000 pixels."
+msgstr "Výška v pixelech povolena <br/>: 300 až 2000 pixelů."
+
+#: feedweb_options.php:940
+msgid "Show Header:"
+msgstr "Zobrazit Záhlaví:"
+
+#: feedweb_options.php:947
+msgid "Display header bar of the Feeder."
+msgstr "Zobrazí v záhlaví Feederu lištu."
+
+#: feedweb_options.php:952
+msgid "Select Authors:"
+msgstr "Vyberte Autory:"
+
+#: feedweb_options.php:959
+msgid "Display Authors Menu<br/>(Appears when the site has 2 or more authors)."
+msgstr ""
+"Zobrazit Autory <br/> (Objeví se, když  má stránka dva nebo více autorů)."
+
+#: feedweb_options.php:964
+msgid "Select Order:"
+msgstr "Zvolit Pořadí:"
+
+#: feedweb_options.php:971
+msgid "Display Order Menu<br/>(Sort posts by time / votes)."
+msgstr "Zobrazení pořadí nabídky <br/> (Řazení příspěvků podle času / hlasů)."
+
+#: feedweb_options.php:976
+msgid "Show Navigator:"
+msgstr "Zobrazit Navigaci:"
+
+#: feedweb_options.php:983
+msgid ""
+"Display navigator icons on the Feeder<br/>(show vertical scrollbar when "
+"unchecked)."
+msgstr ""
+"Navigace Zobrazí ikony na Feederu <br/> (zobrazí svislý posuvník při "
+"nezaškrtnutí)."
+
+#: feedweb_options.php:988
+msgid "Auto Run Feed:"
+msgstr "Auto spuštění Feedu:"
+
+#: feedweb_options.php:992
+msgid "Yes"
+msgstr "Ano"
+
+#: feedweb_options.php:995
+msgid "Auto-play the Feeder on start.<br/>(*10 posts and up)"
+msgstr "Auto-spuštění Feederu na začátku. <br/> (* 10 příspěvků a více)"
+
+#: feedweb_options.php:1001
+msgid "Author Info:"
+msgstr "Autor Info:"
+
+#: feedweb_options.php:1008
+msgid ""
+"Show Author info in the Feeder Items<br/>(Gravatar, Author Name, Site Title)."
+msgstr ""
+"Zobrazit info o autorovi ve Feederu <br/> (gravatar, jméno autora, titulní "
+"stránka)."
+
+#: feedweb_options.php:1013
+msgid "Post Info:"
+msgstr "Příspěvek Info:"
+
+#: feedweb_options.php:1020
+msgid "Show Post info in the Feeder Items<br/>(Date / Number of votes)."
+msgstr "Zobrazit info příspěvku ve Feederu <br/> (Datum / Počet hlasů)."
+
+#: feedweb_options.php:1026
+msgid "Feeder Links:"
+msgstr "Feeder Odkazy:"
+
+#: feedweb_options.php:1030
+msgid "Open New Tab"
+msgstr "Otevřít Nový Tab"
+
+#: feedweb_options.php:1033
+msgid ""
+"Open the Feeder links in a new tab<br/>(otherwise redirect the current "
+"window)."
+msgstr "Otevřete Feeder na nové kartě <br/> (jinak přesměrovat aktuální okno)."
+
+#: feedweb_options.php:1038
+msgid "Show Footer:"
+msgstr "Zobrazit zápatí:"
+
+#: feedweb_options.php:1046
+msgid "Display footer bar of the Feeder."
+msgstr "Zobrazit v zápatí Feederu lištu."
+
+#: feedweb_options.php:1051
+msgid "Max. Image Height:"
+msgstr "Max. Výška obrázku:"
+
+#: feedweb_options.php:1057
+msgid ""
+"Maximum height of the images in the Feeder.<br/>Allowed: 100 to 1000 pixels."
+msgstr "Maximální výška obrázků ve Feederu <br/>: 100 až 1000 pixelů."
+
+#: feedweb_options.php:1073
+msgid "Save Changes"
+msgstr "Uložit změny"
+
+#: feedweb_options.php:1076
+msgid "Reset Feeder Preview"
+msgstr "Obnovit Náhled Feederu"
+
+#: feedweb_options.php:1076
+msgid "Click to Reset Feeder Preview"
+msgstr "Klepněte na tlačítko Obnovit Náhled Feederu"
+
+#: feedweb_settings.php:10 widget_commit.php:10 widget_dialog.php:9
+msgid "You are not allowed to be here"
+msgstr "Ty nesmí tu být"
+
+#: feedweb_settings.php:50
+msgid "Failed to update CSS"
+msgstr "Nepodařilo se aktualizovat CSS"
+
+#: feedweb_settings.php:89
+msgid "Failed to update settings"
+msgstr "Nepodařilo se aktualizovat nastavení"
+
+#: feedweb_util.php:533
+msgid "Cannot insert widget into a post with undefined status"
+msgstr "Nelze vložit widget do sloupku s nedefinovaným statusem"
+
+#: feedweb_util.php:536
+msgid "Cannot insert widget into a private post (must be public)"
+msgstr "Nelze vložit widget, do soukromé pošty (musí být veřejná)"
+
+#: feedweb_util.php:539
+msgid "Cannot insert widget into a trashed post"
+msgstr "Nelze vložit widget, do  příspěvku"
+
+#: feedweb_util.php:542
+msgid "Cannot insert widget into a password-protected post"
+msgstr "Nelze vložit widget, do místa chráněného heslem"
+
+#: feedweb_util.php:547
+msgid "Cannot insert widget into a post published %d days ago"
+msgstr "Nelze vložit ovládací prvek do příspěvku publikovaného před %d dny"
+
+#: feedweb_util.php:552
+msgid "Cannot insert widget into a scheduled post"
+msgstr "Nelze vložit widget, do plánovaného místa"
+
+#: feedweb_util.php:559
+msgid ""
+"You have created %d widgets in the last 24 hours. The daily limit for your "
+"subscription is %d new widgets."
+msgstr ""
+"Vytvořili jste %d widgety v posledních 24 hodinách. Denní limit pro "
+"předplatné je %d nové widgety."
+
+#: feedweb_util.php:567
+msgid ""
+"You have created %d widgets in the last 30 days. The monthly limit for your "
+"subscription is %d new widgets"
+msgstr ""
+"Vytvořili jste %d widgety v posledních 30 dnech. Měsíční limit pro "
+"předplatné je %d nové widgety"
+
+#: feedweb_util.php:575
+msgid ""
+"You have created %d widgets. The limit for your subscription is %d widgets"
+msgstr "Vytvořili jste %d widgety. Limit pro vaše předplatné je %d widgety"
+
+#: widget_commit.php:32 widget_commit.php:418
+msgid "The widget has been removed"
+msgstr "Widget odstraněn"
+
+#: widget_commit.php:101 widget_commit.php:109 widget_commit.php:117
+#: widget_commit.php:125 widget_commit.php:259 widget_commit.php:267
+msgid "Error in the Post data"
+msgstr "Chyba v datech Příspěvku"
+
+#: widget_commit.php:134
+msgid "Error in the User data"
+msgstr "Chyba v datech uživatele"
+
+#: widget_commit.php:162
+msgid "Error in the Widget data"
+msgstr "Chyba v datech Widgetu"
+
+#: widget_commit.php:252 widget_commit.php:313
+msgid "Wordpress cannot modify your widget"
+msgstr "Wordpress Nemůžete upravovat widget"
+
+#: widget_commit.php:281 widget_commit.php:336 widget_commit.php:405
+#: widget_commit.php:459
+msgid "Cannot connect Feedweb server"
+msgstr "Nelze se připojit k Feedweb serveru"
+
+#: widget_commit.php:293
+msgid "The widget Title/Url have been updated"
+msgstr "Widget Název / URL byly aktualizovány"
+
+#: widget_commit.php:297 widget_commit.php:352
+msgid "Feedweb service cannot update the widget"
+msgstr "Feedweb služba nemůže widget aktualizovat"
+
+#: widget_commit.php:348
+msgid "The widget has been updated"
+msgstr "Widget byl aktualizován"
+
+#: widget_commit.php:368
+msgid "The widget has been inserted"
+msgstr "Widget byl vložen"
+
+#: widget_commit.php:370
+msgid "Wordpress cannot insert your widget"
+msgstr "Wordpress nemůže vložit ovládací prvek"
+
+#: widget_commit.php:384
+msgid "%d out of %d widgets have been removed"
+msgstr "%d z %d byly odstraněny widgety "
+
+#: widget_commit.php:425
+msgid "Wordpress cannot remove your widget"
+msgstr "Wordpress nemůže odebrat widget"
+
+#: widget_commit.php:475
+msgid "Unknown server error"
+msgstr "Neznámá chyba serveru"
+
+#: widget_commit.php:479
+msgid "Feedweb service cannot create a widget"
+msgstr "Feedweb služba nemůže vytvořit widget"
+
+#: widget_dialog.php:81
+msgid "Channel:"
+msgstr "Kanál:"
+
+#: widget_dialog.php:111
+msgid ""
+"Dear %s, Please configure your plugin settings before inserting the widget"
+msgstr ""
+"Vážený %s |Prosím, konfigurujtet plugin v nastavení před vložením widgetu"
+
+#: widget_dialog.php:327
+msgid "Publish your post in the {Feedweb Readers Community Portal}"
+msgstr "Publikovat příspěvek na {Feedweb Readers Community Portal}"
+
+#: widget_dialog.php:331
+msgid "By clicking ['Next'] you agree to our {Terms of service}"
+msgstr "Kliknutím na ['Další'] souhlasíte s našimi {Podmínkami služby}"
+
+#: widget_dialog.php:361
+msgid "Suitable for any audience type"
+msgstr "Vhodné pro všechny typy publika"
+
+#: widget_dialog.php:362
+msgid ""
+"May contain rude gestures, provocatively dressed individuals; the lesser "
+"swear words, or mild violence"
+msgstr ""
+"Může obsahovat hrubé gesta, provokativně oblečené osoby, mírné nadávky, nebo "
+"mírné násilí"
+
+#: widget_dialog.php:363
+msgid ""
+"May contain such things as harsh profanity, intense violence, nudity, or "
+"hard drug use"
+msgstr ""
+"Může obsahovat drsné vulgární výrazy, intenzivní násilí, nahotu, nebo "
+"použití tvrdé drogy"
+
+#: widget_dialog.php:364
+msgid "May contain hardcore sexual imagery or extremely disturbing violence"
+msgstr ""
+"Může obsahovat tvrdý sex, užívání metafor, nebo extrémně znepokojující násilí"
+
+#: widget_dialog.php:387
+msgid ""
+"If this posts main purpose is to advertise a certain item or product and not "
+"to give information please check here."
+msgstr ""
+"Pokud hlavním cílem tohoto příspěvku je propagovat určitý produkt nebo "
+"výrobek a nikoliv poskytovat informace ověřit zde."
+
+#: widget_dialog.php:388
+msgid ""
+"If your post is for advertising and you do not check the box you are "
+"violating the license agreement."
+msgstr ""
+"Je-li váš příspěvek s reklamou a nezaškrtnete políčko, jedná se porušení "
+"licenční smlouvy."
+
+#: widget_dialog.php:391
+msgid "The post contains advertising material"
+msgstr "Příspěvek obsahuje reklamní materiál"
+
+#: widget_dialog.php:409
+msgid "Uncategorized"
+msgstr "Nezařazené"
+
+#: widget_dialog.php:523
+msgid "The rating widget in the post '%s' will be removed"
+msgstr "Rating Widget v příspěvku '% s', budou odstraněny"
+
+#: widget_dialog.php:577
+msgid "http://en.wikipedia.org/wiki/Yes%E2%80%93no_question"
+msgstr "http://en.wikipedia.org/wiki/Yes%E2%80%93no_question"
+
+#: widget_dialog.php:578
+msgid "must be a %sYES / NO%s question"
+msgstr "otázka musí být typu %sANO / NE%s"
+
+#: widget_dialog.php:705
+msgid "Question '{0}' is already selected"
+msgstr "Otázka '{0}'  je již vybrána"
+
+#: widget_dialog.php:715
+msgid "A widget cannot contain more than {0} questions"
+msgstr "Widget nemůže obsahovat více než {0} otázek"
+
+#: widget_dialog.php:749
+msgid "Please specify a question"
+msgstr "Zadejte otázku"
+
+#: widget_dialog.php:757
+msgid "The question text must not exceed %d characters"
+msgstr "Otázka textu nesmí překročit %d znaků"
+
+#: widget_dialog.php:811
+msgid "Please select a question to remove"
+msgstr "Prosím, vyberte otázku k odstranění"
+
+#: widget_dialog.php:815
+msgid "The question will be removed. Proceed?"
+msgstr "Otázka bude odstraněna. Pokračovat?"
+
+#: widget_dialog.php:911
+msgid "The tags/categories text is limited to 250 characters."
+msgstr "Tagy / kategorie text je omezen na 250 znaků."
+
+#: widget_dialog.php:918
+msgid "The number of tags is limited to 10"
+msgstr "Počet tagů je omezen na 10"
+
+#: widget_dialog.php:925
+msgid "The number of categories is limited to 10"
+msgstr "Počet kategorií je omezen na 10"
+
+#: widget_dialog.php:1004
+msgid "Page Title cannot exceed 100 characters"
+msgstr "Název stránky nesmí být delší než 100 znaků"
+
+#: widget_dialog.php:1010
+msgid "Page Title contain hypertext markup"
+msgstr "Název stránky obsahuje Hypertext Markup"
+
+#: widget_dialog.php:1022
+msgid "Author name is empty"
+msgstr "Jméno autora není vyplněno"
+
+#: widget_dialog.php:1030
+msgid ""
+"A name like {0} is not recommended for Feedweb Readers Community authors."
+msgstr "Název jako {0} není doporučeno pro Feedweb Readers Komunitu autorů."
+
+#: widget_dialog.php:1033
+msgid "You can set another display name in your WordPress profile."
+msgstr "Můžete si nastavit jiný název zobrazení ve vašem profilu WordPress."
+
+#: widget_dialog.php:1034
+msgid "Do you wish to continue?"
+msgstr "Přejete si pokračovat?"
+
+#: widget_dialog.php:1048
+msgid ""
+"Email-like author names are not allowed due to security considerations. "
+"Please change the name"
+msgstr ""
+"Email-jako jméno autora z bezpečnostních důvodů není povoleno. Prosím, "
+"změňte název"
+
+#: widget_dialog.php:1060
+msgid "Page Summary cannot exceed 250 characters"
+msgstr "Shrnutí stránky nesmí přesáhnout 250 znaků"
+
+#: widget_dialog.php:1139
+msgid "Please enter image Url"
+msgstr "Zadejte prosím URL obrázku"
+
+#: widget_dialog.php:1171
+msgid "The image width or height should be at least 100 pixels"
+msgstr "Šířka obrázku, nebo výška by měla být alespoň 100 pixelů"
+
+#: widget_dialog.php:1181
+msgid ""
+"The image ratio is invalid. The proportion between image width and height "
+"cannot be greater than 500%"
+msgstr ""
+"Poměr obrázku je neplatný. Poměr mezi šířkou a výškou obrazu nemůže být "
+"větší než 500%"
+
+#: widget_dialog.php:1310
+msgid "Feedweb Plugin Terms of Service"
+msgstr "Feedweb Plugin Podmínky služby"
+
+#: widget_dialog.php:1316
+msgid "Title:"
+msgstr "Titul:"
+
+#: widget_dialog.php:1318
+msgid "URL:"
+msgstr "URL:"
+
+#: widget_dialog.php:1320
+msgid "Author:"
+msgstr "Autor:"
+
+#: widget_dialog.php:1322
+msgid "Post Language:"
+msgstr "Jazyk příspěvku:"
+
+#: widget_dialog.php:1328
+msgid "Summary:"
+msgstr "Shrnutí:"
+
+#: widget_dialog.php:1330
+msgid "Categories:"
+msgstr "Kategorie:"
+
+#: widget_dialog.php:1332
+msgid "Tags:"
+msgstr "Tagy:"
+
+#: widget_dialog.php:1335
+msgid "Censorship:"
+msgstr "Cenzura:"
+
+#: widget_dialog.php:1341
+msgid "Image Url"
+msgstr "URL obrázku"
+
+#: widget_dialog.php:1343
+msgid "Set"
+msgstr "Nastavit"
+
+#: widget_dialog.php:1350
+msgid "Existing Questions:"
+msgstr "Stávající otázky:"
+
+#: widget_dialog.php:1352
+msgid "Select"
+msgstr "Zvolte"
+
+#: widget_dialog.php:1353
+msgid "New Question"
+msgstr "Nová otázka"
+
+#: widget_dialog.php:1356
+msgid "Selected Questions:"
+msgstr "Vybrané otázky:"
+
+#: widget_dialog.php:1358
+msgid "Move Up"
+msgstr "Přesunout nahoru"
+
+#: widget_dialog.php:1359
+msgid "Move Down"
+msgstr "Přesunout dolů"
+
+#: widget_dialog.php:1360
+msgid "Remove"
+msgstr "Odstranit"
+
+#: widget_dialog.php:1367
+msgid "Remove Widget"
+msgstr "Odstranit widget"
+
+#: widget_dialog.php:1372
+msgid "< Back"
+msgstr "< Zpět"
+
+#: widget_dialog.php:1375
+msgid "Next >"
+msgstr "Další >"
+
+#: widget_dialog.php:1378
+msgid "Done"
+msgstr "Dokončit"
+
+#: widget_dialog.php:1381
+msgid "Cancel"
+msgstr "Zrušit"

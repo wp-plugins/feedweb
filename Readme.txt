@@ -1,14 +1,14 @@
 ﻿=== Feedweb ===
 Contributors: Feedweb
-Tags: blog, rate, rating, widget, network, feed, feeder, feedback, collector, article, audience, engage, engagement, aggregator, aggregation, content, management, post, public, opinion, research, html5, media, press, news, politics, society, social, question, answer, survey, poll, polling, vote, voting, stats, discussion, cooperation, view, comments, community, statistics, syndication, marketing, admin, sidebar, plugin, publishing, exchange, networking, sharing, business, traffic
+Tags: blog, rate, rating, widget, network, feed, feeder, feedback, audience, engage, engagement, aggregator, aggregation, content, management, post, public, opinion, research, html5, media, press, news, politics, society, social, question, answer, survey, poll, polling, vote, voting, stats, discussion, cooperation, comments, community, statistics, syndication, marketing, admin, sidebar, plugin, publishing, exchange, networking, sharing, business, traffic
 Requires at least: 3.0
 Tested up to: 4.0
-Stable Tag: 3.0.4
+Stable Tag: 3.0.5
 
 Get precise feedback and expose your blog to a brand new audience at the same time. Join the community of 3000+ websites! 
 
 == Description ==
-**Latest update**: More than **369.000** votes collected by **26.600** blog post rating widgets published in **3.000** websites.
+**Latest update**: More than **373.000** votes collected by **27.500** blog post rating widgets published in **3.000** websites.
 
 The Feedweb Plugin is a simple and easy way to promote and improve your blog. By activating the plugin you can freely insert customized rating widgets into your selected posts. Choose questions you want to ask your readers and get comprehensive and precise feedback about your blog.
 
@@ -16,7 +16,7 @@ The Blog Rating Widget is an attractive animated visual element that will improv
 
 The plugin is available in Free, Plus and PRO versions.
 _____________________________________________________________________________________________________
-* Feedweb being the plugin with the most direct impact as it puts out each Blog post to a readership community, and can generate 20 to 60 visits per post on a good day and with a good post topic/headline.
+* Feedweb being the plugin with the most direct impact as it puts out each Blog post to a readership community, and can generate many visits per post on a good day and with a good post topic/headline.
 * [**Shane Hopkins, MoneyMakerSpy.com**](http://www.moneymakerspy.com/bring-250-daily-visitors-blog)
 _____________________________________________________________________________________________________
 * One of the best things about blogging is that you can get direct feedback from your visitors. If you ask the right questions (in the right way), they will tell you what you need to know in order to create better content for them in the future. And that’s where Feedweb comes in. Check out how it can revolutionize your own content strategy...
@@ -39,7 +39,7 @@ Requires WordPress 3.0 and PHP 5.
 For more information go to [**Feedweb Readers Community**](http://www.feedweb.net) website.
 Welcome blogs, blogs, and more blogs!
 
-NOTE: The plugin is compatible with Chrome, Firefox, Safari, Opera and Dolphin browsers. We strongly recommend not using Internet Explorer. 
+NOTE: The plugin is compatible with Chrome, Firefox, Safari and Opera browsers. We strongly recommend not using Internet Explorer. 
 
 Please [**contact us**](mailto://contact@feedweb.net) if you experience any problems with our plugin.
 
@@ -63,7 +63,6 @@ Follow us on [**Facebook**](https://www.facebook.com/feedwebresearch) and [**Twi
 * Turkish (tr)		 - Ayşe Nuray Ünyay  
 
 = We recommend =
-* The Best Content Editor plugin [**Zedity**](http://wordpress.org/plugins/zedity)
 * Anti-spam plugin [**CleanTalk**](http://wordpress.org/plugins/cleantalk-spam-protect)
 * [**WPKnights**](http://creativemarket.com/retep007) premium themes
 
@@ -94,6 +93,9 @@ Follow us on [**Facebook**](https://www.facebook.com/feedwebresearch) and [**Twi
 
 
 == Changelog ==
+
+= 3.0.5 =
+* Copyright notice fix.
 
 = 3.0.4 =
 * L10n update (Czech).

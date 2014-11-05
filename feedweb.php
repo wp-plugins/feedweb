@@ -4,7 +4,7 @@ Plugin Name: Feedweb
 Plugin URI: http://wordpress.org/extend/plugins/feedweb/
 Description: Expose your blog to the Feedweb reader's community. Promote your views. Get a comprehensive and detailed feedback from your readers.
 Author: Feedweb
-Version: 3.0.4
+Version: 3.0.5
 Author URI: http://www.feedweb.net
 */
 
@@ -83,16 +83,17 @@ function GetCopyrightNotice()
 	$version = $data['Version'];
 	
 	$text = 
-		"<div style='direction:ltr; font-size:7pt; font-family:Verdana; height:30px; display:block; overflow:hidden;".
-		"width:380px;position:relative;margin:2px 0 0 0;padding:0;'><span style='display:block; positiion: absolute;".
-		"top: 0px; left: 0px; margin: 0; padding-top: 1px;'><a href= 'http://wordpress.org/plugins/feedweb'>Feedweb ".
-		"for WordPress</a>. v$version</span>".
-		"<iframe src = 'http://www.facebook.com/plugins/like.php?href=https%3A%2F%2Fwww.facebook.com%2Ffeedwebresearch".
-		"&amp;send=false&amp;layout=button_count&amp;width=25&amp;show_faces=false&amp;font&amp;colorscheme=light&amp;".
-		"action=like&amp;height=21&amp;appId=240492672692711' scrolling='no' frameborder='0' allowTransparency='true' ".
-		"style='border: none; overflow: hidden; width: 88px; height: 21px; margin: 0; padding: 0; position: absolute; ".
-		"left:170px; top:0px;'></iframe>".
-		"<div style='position:absolute;left:259px;top:0; display: block;'><a href='https://twitter.com/Feedwebresearch' ".
+		"<div style='direction:ltr; font-size: 7pt; font-family: Verdana; height:30px;display:block;overflow:hidden;".
+		"width:380px; position:relative; margin:0;padding:0;'><span style='display:block;positiion:absolute;top:0px;".
+		"left:0px; margin:0; padding-top: 3px;'><a href='http://wordpress.org/plugins/feedweb'>Feedweb for WordPress".
+		"</a>. v$version</span>".
+		
+		"<iframe src='http://www.facebook.com/plugins/like.php?href=https%3A%2F%2Fwww.facebook.com%2Ffeedwebresearch".
+		"&amp;send=false&amp;layout=button_count&amp;width=25&amp;show_faces=false&amp;font&amp;colorscheme=dark&amp".
+		";action = like&amp;height = 21' scrolling='no' frameborder='0' allowTransparency='true' style='border:none;".
+		"overflow:hidden; width:88px;height:21px;margin:0;padding:0;position:absolute;left:166px;top:0px;'></iframe>".
+		
+		"<div style='position:absolute;left:255px;top:0; display: block;'><a href='https://twitter.com/Feedwebresearch' ".
 		"class='twitter-follow-button' data-show-count='false' data-show-screen-name='false'>Follow @Feedwebresearch</a>".
         "<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if".
         "(!d.getElementById ( id ) ) { js = d.createElement(s); js.id=id; js.src=p+'://platform.twitter.com/widgets.js';".

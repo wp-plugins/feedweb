@@ -4,7 +4,7 @@ Plugin Name: Feedweb
 Plugin URI: http://wordpress.org/extend/plugins/feedweb/
 Description: Expose your blog to the Feedweb reader's community. Promote your views. Get a comprehensive and detailed feedback from your readers.
 Author: Feedweb
-Version: 3.0.5
+Version: 3.0.6
 Author URI: http://www.feedweb.net
 */
 
@@ -12,6 +12,7 @@ require_once('feedweb_util.php');
 require_once('feedweb_options.php');
 require_once(ABSPATH.'wp-admin/includes/plugin.php');
 
+$feedweb_cell_index = 0;
 $feedweb_blog_caps = null;
 $feedweb_rw_swf = "FL/RatingWidget.swf";
 
@@ -22,7 +23,6 @@ function ContentFilter($content)
 		return $content.$code;
 	return $content;
 }
-
 
 function GetFeedwebContent()
 {
@@ -183,6 +183,14 @@ function FillFeedwebCell($id)
 	}
 	else	// Created - display 'Edit' button
 	{
+		global $feedweb_cell_index;
+		$feedweb_cell_index++;
+		
+		$src = GetFeedwebUrl()."FPW/IMG/Loader.gif";
+		echo "<img id='Feedweb_PostDataLoadingImage_$id' alt='' title='Loading...' src='$src' style='width: 30px;'/>";
+		echo "<script>setTimeout(function () { LoadPageInfo('$pac', '$id') }, $feedweb_cell_index * 500);</script>";
+		
+		/*
 		$data = GetPageData($pac, false);
 		if ($data == null)
 			return;
@@ -235,6 +243,7 @@ function FillFeedwebCell($id)
 				echo "<input type='hidden' class='FeedwebPostAnswerData' value='$text'/>";
 			}
 		echo "<input alt='$url' class='thickbox' id='$image_id' title='$title' type='image' src='$src'/></div>";
+	 	*/
 	}
 }
 
@@ -434,6 +443,33 @@ function EnqueueAdminScript()
 {
 	?>
 	<script type="text/javascript">
+		function OnPageInfoLoaded(id, pac, text)
+		{
+			var id="Feedweb_PostDataLoadingImage_" + id;
+			var img = document.getElementById(id);
+			if (img == null || img == undefined)
+				return;
+				
+			if (text == null || text == "")
+				setTimeout(function () { LoadPageInfo(pac, id) }, 1000);
+			else		
+				img.parentElement.innerHTML = text;	
+		}
+	
+		function LoadPageInfo(pac, id)
+		{
+		    var request = new XMLHttpRequest();
+		    request.onreadystatechange = function ()
+		    {
+		        if (request.readyState == 4 && request.status == 200)
+		            OnPageInfoLoaded(id, pac, request.responseText);
+		    }
+	
+			var url = "<?php echo plugin_dir_url(__FILE__)?>page_data.php?pac=" + pac + "&id=" + id;
+		    request.open("GET", url, true);
+		    request.send();
+		}
+	
 		function GetFeedwebPopupInfoClass()
 		{
 			return "FeedwebPostTablePopupInfoDiv";

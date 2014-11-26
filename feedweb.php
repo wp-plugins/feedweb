@@ -4,7 +4,7 @@ Plugin Name: Feedweb
 Plugin URI: http://wordpress.org/extend/plugins/feedweb/
 Description: Expose your blog to the Feedweb reader's community. Promote your views. Get a comprehensive and detailed feedback from your readers.
 Author: Feedweb
-Version: 3.0.6
+Version: 3.0.7
 Author URI: http://www.feedweb.net
 */
 
@@ -318,7 +318,11 @@ function FeederBarCallback($atts)
 		$mode.="A";
 	
 	if ($data["feeder_widget_info"] == "1")
+	{
 		$mode.="I";
+		if ($data["feeder_date_format"] == "1")
+			$mode.="R";
+	}
 	
 	if ($data["feeder_links_new_tab"] == "0")
 		$mode.="W";
@@ -327,8 +331,9 @@ function FeederBarCallback($atts)
 	$color = "#ffffff";
 	$width = $data["feeder_width"];
 	$height = $data["feeder_height"];
+	$timeout = $data["feeder_run_timeout"];
 	$img_height = $data["feeder_img_height"];
-	$url = GetFeedwebUrl()."FPW/Feeder.aspx?bac=$bac&mode=$mode&bc=20&mfc=300&mih=$img_height";
+	$url = GetFeedwebUrl()."FPW/Feeder.aspx?bac=$bac&mode=$mode&bc=20&mfc=300&mih=$img_height&rt=$timeout";
 	
 	return "<div style='width: 100%; height: 100%; text-align: center;'>".
 		"<iframe id='FeederFrame' src='$url' style='width: ".$width."px; height: ".$height."px; ".

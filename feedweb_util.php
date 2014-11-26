@@ -188,7 +188,9 @@ function GetFeedwebOptions()
 		"feeder_links_new_tab" => "1",
 		"feeder_img_height" => "300",
 		"feeder_order_selector" => "1",
-		"feeder_author_selector" => "0"
+		"feeder_author_selector" => "0",
+		"feeder_run_timeout" => "1500",
+		"feeder_date_format" => "0"		
 		);
 		
 	$values = get_option("_feedweb_plugin_options");
@@ -265,8 +267,6 @@ function GetUserCode($id, $must_exist)
 	
 	return $code;
 }
-
-
 
 function GetPostAge($id)
 {

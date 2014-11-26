@@ -1,14 +1,14 @@
 ﻿=== Feedweb ===
 Contributors: Feedweb
-Tags: blog, rate, rating, widget, network, feed, feeder, feedback, audience, engage, engagement, aggregator, aggregation, content, management, post, public, opinion, research, html5, media, press, news, politics, society, social, question, answer, survey, poll, polling, vote, voting, stats, discussion, cooperation, comments, community, statistics, syndication, marketing, admin, sidebar, plugin, shortcode, publishing, exchange, networking, sharing, business, traffic
+Tags: blog, rate, rating, widget, network, feed, feeder, feedback, audience, engage, engagement, aggregator, aggregation, content, management, post, public, opinion, research, html5, media, press, news, politics, society, social, question, answer, survey, poll, polling, vote, voting, discussion, cooperation, comments, community, statistics, marketing, admin, sidebar, plugin, shortcode, publishing, exchange, networking, sharing, business, traffic
 Requires at least: 3.0
-Tested up to: 4.0
-Stable Tag: 3.0.6
+Tested up to: 4.0.1
+Stable Tag: 3.0.7
 
 Get precise feedback and expose your blog to a brand new audience at the same time. Join the community of 3000+ websites! 
 
 == Description ==
-**Latest update**: More than **375.000** votes collected by **27.900** blog post rating widgets published in **3.100** websites.
+**Latest update**: More than **379.000** votes collected by **28.800** blog post rating widgets published in **3.100** websites.
 
 The Feedweb Plugin is a simple and easy way to promote and improve your blog. By activating the plugin you can freely insert customized rating widgets into your selected posts. Choose questions you want to ask your readers and get comprehensive and precise feedback about your blog.
 
@@ -69,15 +69,10 @@ Follow us on [**Facebook**](https://www.facebook.com/feedwebresearch) and [**Twi
 == Installation ==
 
 1.	Install the Feedweb plugin on your blog and activate it. 
-2.	Go to the plugin settings page and set the following options:
-	* Widget interface language
-	* Widget size
-	* Widget appearance settings
-3.	Go to your posts' table, choose a post and click on the PLUS icon. 
-4.	Set the new widget's parameters and publish it.
-5.	Now you can browse to your post and see the widget at the bottom.
-6.	For the Feeder Sidebar Widget: Use short-code **[FeedwebFeederBar]** to display the Feeder widget in your blog.
-
+2.	Go to your posts' table, choose a post and click on the PLUS icon. 
+3.	Set the new widget's parameters and publish it.
+4.	Now you can browse to your post and see the widget at the bottom.
+5.	For the Feeder Sidebar Widget: Use short-code **[FeedwebFeederBar]** to display the Feeder widget in your blog.
 
 == Screenshots ==
 
@@ -93,6 +88,9 @@ Follow us on [**Facebook**](https://www.facebook.com/feedwebresearch) and [**Twi
 
 
 == Changelog ==
+
+= 3.0.7 =
+* New Feeder options: Run timeout and Date format.
 
 = 3.0.6 =
 * Posts screen performance improvement.

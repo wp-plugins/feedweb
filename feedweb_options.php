@@ -87,6 +87,36 @@ function BuildColorSchemeBox($scheme, $is_rating_widget)
 	echo "</select>";
 }
 
+function BuildRunTimeoutBox($timeout)
+{
+	echo "<select id='FeederRunTimeoutBox' name='FeederRunTimeoutBox' style='width: 145px;' onchange='OnChangeFeederRunTimeout()'>";
+	$values = array("1000" => "1 sec.", "1500" => "1.5 sec.", "2000" => "2 sec.", "3000" => "3 sec.", "5000" => "5 sec.");
+			
+	foreach ($values as $key => $value)
+	{
+		echo "<option";
+		if ($key == $timeout)
+			echo " selected='selected'";
+		echo " value='".$key."'>".$value."</option>";
+	}
+	echo "</select>";
+}
+
+function BuildDateFormatBox($timeout)
+{
+	echo "<select id='FeederDateFormatBox' name='FeederDateFormatBox' style='width: 145px;' onchange='OnChangeFeederDateFormat()'>";
+	$values = array("0" => "Full date", "1" => "Short (Relative)");
+			
+	foreach ($values as $key => $value)
+	{
+		echo "<option";
+		if ($key == $timeout)
+			echo " selected='selected'";
+		echo " value='".$key."'>".$value."</option>";
+	}
+	echo "</select>";
+}
+
 function BuildExternalBackgroundControl($color)
 {
 	echo "<input id='ExternalBackgroundBox' name='ExternalBackgroundBox' class='color' value='$color'>";
@@ -397,13 +427,6 @@ function FeedwebPluginOptions()
 					ResetWidgetPreview();
 				}
 				
-				/*
-				function OnWidgetPlacement(placement)
-				{
-					document.getElementById('RatingWidgetPlacement').value = placement;
-				}
-				*/
-				
 				function OnWidgetType(type)
 				{
 					if (type == "H")
@@ -534,6 +557,21 @@ function FeedwebPluginOptions()
 						'<?php _e("Max. image height is out of range", "FWTD")?>');
 				}
 				
+				function OnChangeFeederRunTimeout()
+				{
+					var box = document.getElementById("FeederRunTimeoutBox");
+					var input = document.getElementById("FeederRunTimeout");
+					input.value = box.options[box.selectedIndex].value;
+					//alert("RT: " + inp)
+				}
+				
+				function OnChangeFeederDateFormat()
+				{
+					var box = document.getElementById("FeederDateFormatBox");
+					var input = document.getElementById("FeederDateFormat");
+					input.value = box.options[box.selectedIndex].value;
+				}
+				
 				function OnFeederCheck(box_id, input_id)
 				{
 					var input = document.getElementById(input_id);
@@ -624,7 +662,7 @@ function FeedwebPluginOptions()
 				{
 					OnFeederCheck('FeederShowFooterBox', 'FeederShowFooter');
 				}
-				
+
 				function OnResetFeeder()
 				{
 					var mode = "";
@@ -663,7 +701,11 @@ function FeedwebPluginOptions()
 		                
 					box = document.getElementById("FeederWidgetInfoBox");
 					if (box.checked == true)
+					{
 		                mode += "I";
+						if(document.getElementById("FeederDateFormat").value == "1")
+		                	mode += "R";
+					}
 					
 					box = document.getElementById("FeederLinksNewTabBox");
 					if (box.checked == false)
@@ -680,12 +722,14 @@ function FeedwebPluginOptions()
 		            var mih = ValidateFeederImageHeight();
 					if (mih == 0)
 						return;
-					
+						
+					var timeout = document.getElementById("FeederRunTimeout").value;
 					var feeder = document.getElementById("FeederPreview");
 					var url = "<?php echo GetFeedwebUrl();?>";
 					var bac = "<?php echo GetBac(true);?>";
 					
-					feeder.src = url + "FPW/Feeder.aspx?bac=" + bac + "&mode=" + mode + "&mih=" + mih + "&bc=20&mfc=300";
+					feeder.src = url + "FPW/Feeder.aspx?bac=" + bac + "&mode=" + mode + 
+						"&mih=" + mih + "&rt=" + timeout + "&bc=20&mfc=300";
 					feeder.style.height = height.toString() + "px";
 					feeder.style.width = width.toString() + "px";
 				}
@@ -745,6 +789,8 @@ function FeedwebPluginOptions()
 			<input type='hidden' id='FeedwebCopyrightNotice' name='FeedwebCopyrightNotice' value='<?php echo $feedweb_data["copyright_notice_ex"];?>'/>
 			
 			<input type='hidden' id='FeederAutoRun' name='FeederAutoRun' value='<?php echo $feedweb_data["feeder_auto_run"];?>'/>
+			<input type='hidden' id='FeederRunTimeout' name='FeederRunTimeout' value='<?php echo $feedweb_data["feeder_run_timeout"];?>'/>
+			<input type='hidden' id='FeederDateFormat' name='FeederDateFormat' value='<?php echo $feedweb_data["feeder_date_format"];?>'/>
 			<input type='hidden' id='FeederShowHeader' name='FeederShowHeader' value='<?php echo $feedweb_data["feeder_show_header"];?>'/>
 			<input type='hidden' id='FeederAuthorInfo' name='FeederAuthorInfo' value='<?php echo $feedweb_data["feeder_author_info"];?>'/>
 			<input type='hidden' id='FeederWidgetInfo' name='FeederWidgetInfo' value='<?php echo $feedweb_data["feeder_widget_info"];?>'/>
@@ -753,7 +799,6 @@ function FeedwebPluginOptions()
 			<input type='hidden' id='FeederLinksNewTab' name='FeederLinksNewTab' value='<?php echo $feedweb_data["feeder_links_new_tab"];?>'/>
 			<input type='hidden' id='FeederOrderSelector' name='FeederOrderSelector' value='<?php echo $feedweb_data["feeder_order_selector"];?>'/>
 			<input type='hidden' id='FeederAuthorSelector' name='FeederAuthorSelector' value='<?php echo $feedweb_data["feeder_author_selector"];?>'/>
-			
 			<br/>
 			<div id="CSSEditorDiv" ><?php BuildCSSEditor();?></div> 
 			<table id="SettingsTable" cellpadding="0" cellspacing="0">
@@ -903,7 +948,7 @@ function FeedwebPluginOptions()
 								</tbody>
 							</table>
 						</div>
-						<div class="FeedwebSettingsDiv" style="display: none; height: 670px;">
+						<div class="FeedwebSettingsDiv" style="display: none; height: 770px;">
 							<table class="FeedwebSettingsTable" cellpadding="0" cellspacing="0">
 								<tbody>
 									<tr>
@@ -916,7 +961,7 @@ function FeedwebPluginOptions()
 										<td style='width: 320px; min-width: 320px;'>
 											<span><i><?php _e("Width of the Feeder in pixels.<br/>Allowed: 200 to 1000. Recommended: 300.", "FWTD")?></i></span>
 										</td>
-										<td style='padding: 0; background-color: #e0e0e0; vertical-align: top; min-width: 350px;' rowspan='12'>
+										<td style='padding: 0; background-color: #e0e0e0; vertical-align: top; min-width: 350px;' rowspan='14'>
 											<div style='position: relative; width: 100%; height: 100%; display: block; overflow-y: scroll; overflow-x: scroll;'>
 												<div style='position: absolute; display: block; top: 15px; bottom: 15px; left: 15px; right: 15px; text-align: right;'>
 													<iframe id="FeederPreview" style="position: relative;"></iframe>	
@@ -995,7 +1040,17 @@ function FeedwebPluginOptions()
 											<span><i><?php _e("Auto-play the Feeder on start.<br/>(*10 posts and up)", "FWTD")?></i></span>
 										</td>
 									</tr> 
-									
+									<tr>
+										<td style='height: 44px;'>
+											<span><b><?php _e("Feeder run timeout:", "FWTD")?></b></span>
+										</td>
+										<td>
+											<?php BuildRunTimeoutBox($feedweb_data['feeder_run_timeout']) ?>
+										</td>
+										<td>
+											<span><i><?php _e("The Feeder item scrolling timeout.", "FWTD")?></i></span>
+										</td>
+									</tr>
 									<tr>
 										<td style="height: 44px;">
 											<span><b><?php _e("Author Info:", "FWTD")?></b></span> 				
@@ -1018,6 +1073,17 @@ function FeedwebPluginOptions()
 										</td>
 										<td>
 											<span><i><?php _e("Show Post info in the Feeder Items<br/>(Date / Number of votes).", "FWTD")?></i></span>
+										</td>
+									</tr> 
+									<tr>
+										<td style="height: 44px;">
+											<span><b><?php _e("Post Date Format:", "FWTD")?></b></span> 				
+										</td>
+										<td>
+											<?php BuildDateFormatBox($feedweb_data['feeder_date_format']) ?>
+										</td>
+										<td>
+											<span><i><?php _e("Choose how to display post date.", "FWTD")?></i></span>
 										</td>
 									</tr> 
 									

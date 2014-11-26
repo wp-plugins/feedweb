@@ -74,6 +74,8 @@ function UpdateSettings()
 		$data["feeder_author_info"] = $_POST["FeederAuthorInfo"];
 		$data["feeder_widget_info"] = $_POST["FeederWidgetInfo"];
 		$data["feeder_show_footer"] = $_POST["FeederShowFooter"];
+		$data["feeder_run_timeout"] = $_POST["FeederRunTimeout"];
+		$data["feeder_date_format"] = $_POST["FeederDateFormat"];
 		$data["feeder_links_new_tab"] = $_POST["FeederLinksNewTab"];
 		$data["feeder_img_height"] = $_POST["FeederImageHeightEdit"];
 		$data["feeder_order_selector"] = $_POST["FeederOrderSelector"];

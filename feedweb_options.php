@@ -562,7 +562,6 @@ function FeedwebPluginOptions()
 					var box = document.getElementById("FeederRunTimeoutBox");
 					var input = document.getElementById("FeederRunTimeout");
 					input.value = box.options[box.selectedIndex].value;
-					//alert("RT: " + inp)
 				}
 				
 				function OnChangeFeederDateFormat()

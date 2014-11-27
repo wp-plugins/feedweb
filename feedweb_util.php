@@ -189,7 +189,7 @@ function GetFeedwebOptions()
 		"feeder_img_height" => "300",
 		"feeder_order_selector" => "1",
 		"feeder_author_selector" => "0",
-		"feeder_run_timeout" => "1500",
+		"feeder_run_timeout" => "2000",
 		"feeder_date_format" => "0"		
 		);
 		

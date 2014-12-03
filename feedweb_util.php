@@ -68,9 +68,13 @@ function RemovePac($id)
 
 function GetPac($id)
 {
-	global $wpdb;
-	$query = "SELECT meta_value FROM $wpdb->postmeta WHERE post_id=$id AND meta_key='feedweb_pac'";
-	return $wpdb->get_var($query);
+	if (is_int($id))
+	{
+		global $wpdb;
+		$query = "SELECT meta_value FROM $wpdb->postmeta WHERE post_id=$id AND meta_key='feedweb_pac'";
+		return $wpdb->get_var($query);
+	}
+	return null;
 }
 
 function GetBac($must_exist)

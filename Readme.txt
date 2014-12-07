@@ -3,12 +3,14 @@ Contributors: Feedweb
 Tags: blog, rate, rating, widget, network, feed, feeder, feedback, audience, engage, engagement, aggregator, aggregation, content, management, post, public, opinion, research, html5, media, press, news, politics, society, social, question, answer, survey, poll, polling, vote, voting, discussion, cooperation, comments, community, statistics, marketing, admin, sidebar, plugin, shortcode, publishing, exchange, networking, sharing, business, traffic
 Requires at least: 3.0
 Tested up to: 4.0.1
-Stable Tag: 3.0.7
+Stable Tag: 3.0.8
 
 Get precise feedback and expose your blog to a brand new audience at the same time. Join the community of 3000+ websites! 
 
 == Description ==
-**Latest update**: More than **379.000** votes collected by **28.800** blog post rating widgets published in **3.100** websites.
+**Latest update**: More than **382.000** votes collected by **29.300** blog post rating widgets published in **3.200** websites.
+
+[youtube http://www.youtube.com/watch?v=Sh7UFSTKBAc]
 
 The Feedweb Plugin is a simple and easy way to promote and improve your blog. By activating the plugin you can freely insert customized rating widgets into your selected posts. Choose questions you want to ask your readers and get comprehensive and precise feedback about your blog.
 
@@ -63,8 +65,8 @@ Follow us on [**Facebook**](https://www.facebook.com/feedwebresearch) and [**Twi
 * Turkish (tr)		 - Ayşe Nuray Ünyay  
 
 = We recommend =
-* Anti-spam plugin [**CleanTalk**](http://wordpress.org/plugins/cleantalk-spam-protect)
 * [**WPKnights**](http://creativemarket.com/retep007) premium themes
+* Anti-spam plugin [**CleanTalk**](http://wordpress.org/plugins/cleantalk-spam-protect)
 
 == Installation ==
 
@@ -87,7 +89,34 @@ Follow us on [**Facebook**](https://www.facebook.com/feedwebresearch) and [**Twi
 9. The Feeder sidebar widget (use shortcode [FeedwebFeederBar]).
 
 
+== Frequently Asked Questions ==
+
+= Q: Can the widget's appearance be changed? =
+A: Yes, the widget's background, border, colors and fonts can be set via CSS.
+
+= Q: Are the questions I ask saved? =
+A: Yes, once you have asked a question, that question is saved for use in future posts.
+
+= Q: Can I just ask a question, without getting a rating? =
+A: No, at this time you may not skip the rating feature.
+
+= Q: Can a widget be added to multiple posts at once? =
+A: No, at this time a widget needs to be added to each post manually.
+
+= Q: Do I have to place the Feeder in the sidebar? =
+A: No the Feeder can also be placed via the shortcode in other areas of the blog, such as at the end of a post.
+
+= Q: Can I add posts to the Feeder without the rating widgets? =
+A: No, at this time in order to add a post to the Feeder, it must have a rating widget.
+
+= Q: Can a post be featured in more than 1 channel in the Readers Community? =
+A: No, you need to select the most fitting channel.
+
+
 == Changelog ==
+
+= 3.0.8 =
+* Security fix.
 
 = 3.0.7 =
 * New Feeder options: Run timeout and Date format.

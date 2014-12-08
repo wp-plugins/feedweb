@@ -104,13 +104,30 @@ A: No, at this time you may not skip the rating feature.
 A: No, at this time a widget needs to be added to each post manually.
 
 = Q: Do I have to place the Feeder in the sidebar? =
-A: No the Feeder can also be placed via the shortcode in other areas of the blog, such as at the end of a post.
+A: No, the Feeder can also be placed via the shortcode in other areas of the blog, such as at the end of a post.
 
 = Q: Can I add posts to the Feeder without the rating widgets? =
 A: No, at this time in order to add a post to the Feeder, it must have a rating widget.
 
-= Q: Can a post be featured in more than 1 channel in the Readers Community? =
-A: No, you need to select the most fitting channel.
+= Q: What are the general guidelines regarding languages and channels in the Readers Community? =
+1. The language specified for the post must be the actual language of the post’s content.
+2. For English-language posts, an appropriate channel should be chosen.
+3. A post may be featured in only 1 channel.
+
+= Q: Does every submitted post have to include an image? =
+A: A post submitted to the Readers Community must have an image. Image should follow the censorship guidelines of Feedweb.
+
+= Q: Do I have to use a different image for each post? = 
+A: Images may not be reused within 2 weeks of posting.
+
+= Q: Can I use any name as author? = 
+A: You may use a “normal” name (John Smith, etc.). Names like “admin”, “owner”, “author”, “editor“, "publisher" and similar or their derivatives are not allowed.
+
+= Q:  Can every type of censored post be published in the Readers Community? =
+A: Only posts with “G” or “PG” censorship are allowed. 
+
+= Q: Do I have to ask a yes/no question? =
+A: Asking questions is optional. If you choose to ask a question, it must be binary (yes/no). Common questions that cannot be answered as "Yes", "No", or “Don’t Know/Can't Say” are not allowed.
 
 
 == Changelog ==

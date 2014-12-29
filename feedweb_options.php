@@ -90,8 +90,8 @@ function BuildColorSchemeBox($scheme, $is_rating_widget)
 function BuildRunTimeoutBox($timeout)
 {
 	echo "<select id='FeederRunTimeoutBox' name='FeederRunTimeoutBox' style='width: 145px;' onchange='OnChangeFeederRunTimeout()'>";
-	$values = array("1000" => __("1 sec.", "FWTD"), "1500" => __("1.5 sec.", "FWTD"), "2000" => __("2 sec.", "FWTD"), 
-		"2500" => __("2.5 sec.", "FWTD"), "3000" => __("3 sec.", "FWTD"), "5000" => __("5 sec.", "FWTD"), 
+	$values = array("1000" => __("1 sec.", "FWTD"), "1500" => __("1½ sec.", "FWTD"), "2000" => __("2 sec.", "FWTD"), 
+		"2500" => __("2½ sec.", "FWTD"), "3000" => __("3 sec.", "FWTD"), "5000" => __("5 sec.", "FWTD"), 
 		"7000" => __("7 sec.", "FWTD"), "10000" => __("10 sec.", "FWTD"));
 			
 	foreach ($values as $key => $value)

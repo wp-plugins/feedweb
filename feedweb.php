@@ -14,7 +14,6 @@ require_once(ABSPATH.'wp-admin/includes/plugin.php');
 
 $feedweb_cell_index = 0;
 $feedweb_blog_caps = null;
-$feedweb_rw_swf = "FL/RatingWidget.swf";
 
 function ContentFilter($content)
 {

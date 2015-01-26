@@ -300,7 +300,7 @@ function GetMaxPostAge()
 
 function IsRTL($language)
 {
-	if ($language == 'he' || $language == 'ar')
+	if ($language == 'he' || $language == 'ar' || $language == 'fa')
 		return true;
 	return false;
 }

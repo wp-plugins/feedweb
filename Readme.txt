@@ -3,12 +3,12 @@ Contributors: Feedweb
 Tags: blog, rate, rating, widget, network, feed, feeder, feedback, audience, engage, engagement, aggregator, aggregation, content, management, post, public, opinion, research, html5, media, press, news, politics, society, social, question, answer, survey, poll, polling, vote, voting, discussion, cooperation, comments, community, statistics, marketing, admin, sidebar, plugin, shortcode, publishing, exchange, networking, sharing, business, traffic
 Requires at least: 3.0
 Tested up to: 4.1
-Stable Tag: 3.0.10
+Stable Tag: 3.0.11
 
 Get precise feedback and expose your blog to a brand new audience at the same time. Join the community of 3000+ websites! 
 
 == Description ==
-**Latest update**: More than **390.000** votes collected by **31.000** blog post rating widgets published in **3.300** websites.
+**Latest update**: More than **392.000** votes collected by **31.700** blog post rating widgets published in **3.300** websites.
 
 [youtube http://www.youtube.com/watch?v=Sh7UFSTKBAc]
 
@@ -131,6 +131,9 @@ A: Asking questions is optional. If you choose to ask a question, it must be bin
 
 
 == Changelog ==
+
+= 3.0.11 =
+* Security fix.
 
 = 3.0.10 =
 * L10 update (Portuguese).

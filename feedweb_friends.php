@@ -2,6 +2,7 @@
 .FriendPromotionDiv
 {
 	position: relative;
+	display: block;
 }
 
 .FriendPromotionDiv div,

@@ -1,6 +1,7 @@
 <style>
 .FriendPromotionDiv
 {
+	background-color: #FFFFFF;
 	position: relative;
 	display: block;
 }

@@ -1,9 +1,10 @@
 <style>
 .FriendPromotionDiv
 {
-	background-color: #FFFFFF;
+	background-color: #fff;
 	position: relative;
 	display: block;
+	color: #444;
 }
 
 .FriendPromotionDiv div,

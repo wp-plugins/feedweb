@@ -1015,7 +1015,7 @@ function YesNoQuestionPrompt()
 			
 			function CheckAuthor()
 			{
-				var bad_names = ["admin", "editor", "publisher", "author", "master", "moderator"];
+				var bad_names = ["admin", "editor", "publisher", "author", "master", "moderator", "owner"];
 				var author = document.getElementById("AuthorText").value;
 				if (author == "")
 				{

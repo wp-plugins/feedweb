@@ -4,7 +4,7 @@
 	background-color: #fff;
 	position: relative;
 	display: block;
-	color: #555;
+	color: #444;
 }
 
 .FriendPromotionDiv div,
